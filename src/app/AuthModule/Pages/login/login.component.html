@@ -1,0 +1,39 @@
+<div class="relative flex items-center justify-center flex-col min-h-screen">
+
+    <!-- Imagen de fondo con transparencia oscura -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+      style="background-image: url('../../../../assets/images/login/img_login3.jpeg');">
+    </div>
+  
+    <!-- Overlay oscuro -->
+    <div class="absolute inset-0 bg-black opacity-65"></div>
+  
+    <!-- Contenedor del formulario con transparencia oscura -->
+    <div class="relative bg-gray-200 backdrop-filter bg-opacity-20 rounded-xl overflow-hidden w-[90%] max-w-[500px] min-h-[580px] p-6 sm:p-8 md:p-10">
+  
+      <div class="absolute top-0 h-full transition-all duration-600 ease-in-out left-0 w-full z-20 ">
+        <!-- Icono de flechita -->
+        <i class="fa-solid fa-arrow-left text-white z-20 buttonVolver text-xl cursor-pointer" (click)="goBack()"></i>
+  
+        <!-- Formulario -->
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="flex items-center justify-center flex-col h-full mt-[-3rem]">
+          <p class="text-3xl sm:text-4xl font-medium text-white">Iniciar Sesión</p>
+          <a class="text-sm sm:text-sm text-gray-300 text-center mb-4 w-[80%] mt-[10px]">
+            Accede a tu cuenta completando los campos a continuación y continúa disfrutando de nuestros servicios.
+          </a>
+  
+          <!-- Campos de entrada -->
+          <input type="text" placeholder="Usuario" formControlName="documento"
+            class="bg-black bg-opacity-10 border-b-2 text-white rounded py-2 px-4 sm:w-[80%] mb-4 outline-none mt-[30px]">
+          <input type="password" placeholder="Contraseña" formControlName="password"
+            class="bg-black bg-opacity-10 border-b-2 text-white rounded py-2 px-4 sm:w-[80%] mb-4 outline-none">
+  
+          <!-- Enlace y Botón -->
+          <a href="#" class="text-sm text-gray-300 mb-4 mt-[25px]">¿Olvidaste tu contraseña?</a>
+          <button type="submit" class="bg-sky-500 text-white text-sm sm:text-base py-2 px-6 rounded-full font-semibold uppercase hover:bg-sky-700 transition-colors">
+            Iniciar Sesión
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

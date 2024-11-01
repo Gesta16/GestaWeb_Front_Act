@@ -1,0 +1,177 @@
+<!-- Diseño de la landing pages -->
+<main>
+    <div class="relative pt-56 pb-52 flex content-center items-center justify-center min-h-screen-75">
+        <div class="absolute top-0 w-full h-[40rem] bg-center bg-cover mt-[-20px]"
+            style="background-image: url('assets/images/inicio/fondo.jpg');">
+            <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
+
+            <!-- logo y boton para el login -->
+            <div class="relative z-20 flex justify-between items-center mt-[20px]">
+
+                <!-- Estilo del logo -->
+                <div class="relative bg-stone-200 rounded-br-[30px] w-[15rem] h-[4.5rem] flex items-center">
+                    <img src="assets/images/inicio/log_ucc.png" alt="Logo"
+                        class="absolute ml-[35px] w-[78%] h-[78%] z-30">
+                </div>
+
+                <!-- Estilo del botón 'Iniciar sesión' -->
+                <button [routerLink]="'/login'"
+                    class="bg-[#00ACC9] hover:bg-[#0194ad] text-white text-xs py-2 px-6 rounded-[20px] font-semibold tracking-wide uppercase mt-1 mr-[8%] z-20">Iniciar
+                    sesión</button>
+            </div>
+        </div>
+
+        <!-- Mensaje de bienvenida y botón para abrir el modal -->
+        <div class="container relative mx-auto mt-[-90px]">
+            <div class="items-center flex flex-wrap">
+                <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                    <div class="pr70">
+                        <p class="text-white font-medium text-3xl">
+                            ¡Bienvenida a esta dulce aventura de tu embarazo, donde podrás cuidarte a ti misma y a tu
+                            bebé con amor y atención especializada!
+                        </p><br>
+                        <button (click)="abrirModal()"
+                            class="mt-2 bg-[#00ACC9] hover:bg-[#0194ad] rounded-[10px] text-lg py-2 px-4 text-white">Mensaje
+                            para tí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="pb-20 bg-blueGray-200 -mt-[90px]">
+
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap">
+
+                <!-- Diseño de la tarjeta 'Alimentación saludable' -->
+                <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+                    <div
+                        class="relative flex flex-col min-w-0 break-words bg-white h-[100%] w-full mb-8 shadow-lg rounded-lg border border-gray-300">
+                        <div class="px-4 py-5 flex-auto">
+                            <button (click)="abrirModalAlimentacion()"
+                                class="text-white p-3 text-center inline-flex items-center justify-center w-[75px] h-[75px] mb-5 shadow-lg rounded-full">
+                                <img class="scale-150" src="assets/images/inicio/AS.png" alt="">
+
+                            </button>
+                            <p class="text-lg font-medium">Alimentación saludable</p>
+                            <p class="mt-2 text-blueGray-500">
+                                Mantener una dieta balanceada durante el embarazo es esencial para tu salud y la de tu
+                                bebé.
+                                Una alimentación adecuada te da energía y asegura que recibas los nutrientes necesarios
+                                para el desarrollo óptimo de tu pequeño.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diseño de la tarjeta 'Ejercicio regular' -->
+                <div class="w-full md:w-4/12 px-4 text-center">
+                    <div
+                        class="relative flex flex-col min-w-0 break-words bg-white h-[80%] w-full mb-8 shadow-lg rounded-lg border border-gray-300">
+                        <div class="px-4 py-5 flex-auto">
+                            <button (click)="abrirModalEjercicio()"
+                                class="text-white p-3 text-center inline-flex items-center justify-center w-[80px] h-[75px] mb-5 shadow-lg rounded-full ">
+                                <img class="scale-150" src="assets/images/inicio/ER.png" alt="">
+                            </button>
+                            <p class="text-lg font-medium">Ejercicio regular</p>
+                            <p class="mt-2 mb-4 text-blueGray-500">
+                                ¡Mantenerse activa durante el embarazo es un regalo para ti y tu bebé!
+                                El ejercicio no solo reduce el estrés y mejora tu estado de ánimo, sino que también
+                                prepara tu cuerpo para un parto más fácil.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diseño de la tarjeta 'Crecimiento del Bebé' -->
+                <div class="pt-6 w-full md:w-4/12 px-4 text-center lg:pt-10">
+                    <div
+                        class="relative flex flex-col min-w-0 break-words bg-white h-[100%] w-full mb-8 shadow-lg rounded-lg border border-gray-300">
+                        <div class="px-4 py-5 flex-auto">
+                            <button (click)="abrirModalCrecimientoBebe()"
+                                class="text-white p-3 text-center inline-flex items-center justify-center w-[75px] h-[75px] mb-5 shadow-lg rounded-full">
+                                <img class="scale-150" src="assets/images/inicio/CB.png" alt="">
+                            </button>
+                            <p class="text-lg font-medium">Crecimiento del Bebé</p>
+                            <p class="mt-2 mb-4 text-blueGray-500">
+                                ¡Cada semana, tu bebé crece y se desarrolla dentro de ti, formando órganos y sistemas
+                                vitales para su futuro! Tu amor y
+                                cuidado son fundamentales para crear el ambiente perfecto para su crecimiento.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Estilos del footer -->
+<footer class=" bg-blueGray-200 ">
+    <div class="container mx-auto mt-[-52px]">
+
+        <!-- Diseño de la linea -->
+        <div class="h-[2px] mx-auto my-6 bg-black border-0 rounded md:my-10 dark:bg-gray-700"></div>
+
+        <div class="flex flex-wrap text-center lg:text-left">
+            <div class="w-full lg:w-6/12 px-1 mt-[-15px]">
+                <div class="flex flex-wrap items-top">
+                    <div class="w-full lg:w-4/12 px-4 ml-auto">
+                        <!-- <span
+                class="block uppercase text-blueGray-500 text-sm font-semibold mb-2"
+              >
+                Enlaces Útiles
+              </span> -->
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="text-blueGray-600 hover:text-blueGray-800 font-medium block pb-2 text-[13px]"
+                                    href="#">
+                                    Políticas de Privacidad
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-blueGray-600 hover:text-blueGray-800 font-medium block pb-2 text-[13px]"
+                                    href="#">
+                                    Terminos y Condiciones
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full lg:w-4/12 px-4">
+                        <!-- <span
+                class="block uppercase text-blueGray-500 text-sm font-medium mb-2"
+              >
+                Otros Recursos
+              </span> -->
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="text-blueGray-600 hover:text-blueGray-800 font-medium block pb-2 text-[13px]"
+                                    href="https://www.foscal.com.co/">
+                                    Clínica Foscal
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-blueGray-600 hover:text-blueGray-800 font-medium block pb-2 text-[13px]"
+                                    href="#">
+                                    Contáctanos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+                <div class="text-[13px] text-blueGray-500 font-medium py-1">
+                    <a href="https://www.creative-tim.com?ref=na-footer"
+                        [ngClass]="{'inline': isSmallScreen, 'block': !isSmallScreen}"
+                        class="text-blueGray-500 hover:text-blueGray-800 mt-5 lg:-mt-0 block">
+                        Copyright © 2024 Notus Angular by Creative Tim.
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

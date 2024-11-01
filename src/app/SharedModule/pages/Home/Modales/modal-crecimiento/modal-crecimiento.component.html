@@ -1,0 +1,153 @@
+<!-- Diseño de modal que se visualiza en 'Crecimiento del bb' -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto">
+    <div class="bg-white rounded-lg w-11/12 md:w-3/4 lg:w-2/3 p-8 relative max-h-full overflow-y-auto">
+      <!-- Icono de cerrar -->
+      <button (click)="cerrar()" class="absolute top-2 right-4 text-gray-500 hover:text-gray-700 text-3xl">
+        &times;
+      </button>
+  
+      <!-- Título principal centrado -->
+      <h2 class="text-3xl font-bold text-center mb-8 font-serif">Desarrollo del bebé</h2>
+      
+      <!-- Estilo de los circulitos debajo del título -->
+      <div class="flex justify-center space-x-2 mb-8 mt-[-28px]">
+        <div class="w-2 h-2 bg-[#E5AE41] rounded-full"></div>
+        <div class="w-2 h-2 bg-[#E2713E] rounded-full"></div>
+        <div class="w-2 h-2 bg-[#877363] rounded-full"></div>
+        <div class="w-2 h-2 bg-[#53A04D] rounded-full"></div>
+        <div class="w-2 h-2 bg-[#3eb6c6] rounded-full"></div>
+        <div class="w-2 h-2 bg-[#2E6B9C] rounded-full"></div>
+        <div class="w-2 h-2 bg-[#dd6cad] rounded-full"></div>
+      </div>
+  
+      <!-- Contenedor de las tarjetas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-------- * Primera tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#E5AE41] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-3xl font-semibold font-serif text-white mt-[5px]">1</h3>
+          </div>
+
+          <!-- Estilo del título y linea que se encuentra debajo del título -->
+          <h3 class="text-xl font-semibold mb-2 mt-4 font-serif text-[#E5AE41]">Concepción</h3>
+          <div class="w-[80%] h-[1px] bg-black rounded-[8px] ml-[30px] mt-[-4px]"></div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">Ocurre cuando un óvulo fertilizado por un espermatozoide se implanta en el útero de la mujer.</p>
+        </div>
+  
+        <!-------- * Segunda tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#E2713E] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-3xl font-semibold mt-[-8px] font-serif text-white mt-[5px]">2</h3>
+          </div>
+
+          <!-- Estilo del título y linea que se encuentra debajo del título -->
+          <h3 class="text-xl font-semibold mb-2 mt-4 font-serif text-[#E2713E]">Embrionaria</h3>
+          <div class="w-[80%] h-[1px] bg-black rounded-[8px] ml-[20px] mt-[-4px]"></div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">Después de la concepción, el embrión se forma con rápida división celular y desarrolla sistemas corporales básicos como el nervioso, el cardiovascular y el respiratorio.</p>
+        </div>
+  
+        <!-------- * Tercera tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#877363] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-2xl font-semibold mt-[-9px] font-serif text-white mt-[5px]">3</h3>
+          </div>
+
+          <!-- Estilo del título y linea que se encuentra debajo del título -->
+          <h3 class="text-xl font-semibold mb-2 mt-4 font-serif text-[#877363]">Fetal</h3>
+          <div class="w-[80%] h-[1px] bg-black rounded-[8px] ml-[20px] mt-[-4px]"></div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">A partir de la novena semana, el embrión se convierte en feto, desarrollando rápidamente órganos complejos, extremidades y sistema nervioso central, con latidos del corazón y movimientos.</p>
+        </div>
+  
+        <!-------- * Cuarta tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#53A04D] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-2xl font-semibold mt-[-9px] font-serif text-white mt-[5px]">4</h3>
+          </div>
+
+          <!-- Estilo del título y linea que se encuentra debajo del título -->
+          <h3 class="text-xl font-semibold mb-2 mt-4 font-serif text-[#53A04D]">Trimestres</h3>
+          <div class="w-[80%] h-[1px] bg-black rounded-[8px] ml-[20px] mt-[-4px]"></div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">El embarazo se divide en tres trimestres:</p>
+          <p class="text-black mt-[10px]">primer trimestre (semanas 1-12): Formación de órganos principales y desarrollo de embrión a feto.</p>
+        </div>
+  
+        <!-------- * Quinta tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#53A04D] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-2xl font-semibold mt-[4px] font-serif text-white">4.1</h3>
+          </div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">Segundo trimestre (semanas 13-26): Crecimiento rápido del feto y perfeccionamiento de órganos y sistemas.</p>
+          <p class="text-black mt-[20px]">Tercer trimestre (semanas 27-40): Preparación para el nacimiento, aumento de peso y desarrollo de reflejos básicos.</p>
+        </div>
+  
+        <!-------- * Sexta tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#3eb6c6] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-2xl font-semibold mt-[-9px] font-serif text-white mt-[5px]">5</h3>
+          </div>
+
+          <!-- Estilo del título y linea que se encuentra debajo del título -->
+          <h3 class="text-xl font-semibold mb-2 mt-4 font-serif text-[#3eb6c6]">Desarrollo bebé</h3>
+          <div class="w-[80%] h-[1px] bg-black rounded-[8px] ml-[20px] mt-[-4px]"></div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">A medida que avanza el embarazo, el bebé crece, se mueve, desarrolla patrones de sueño y vigilia, y responde a la voz de la madre.</p>
+        </div>
+  
+        <!-------- * Septima tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#2E6B9C] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-2xl font-semibold mt-[-6px] font-serif text-white mt-[8px]">6</h3>
+          </div>
+          
+          <!-- Estilo del título y linea que se encuentra debajo del título -->
+          <h3 class="text-xl font-semibold mb-2 mt-4 font-serif text-[#2E6B9C]">Preparto</h3>
+          <div class="w-[80%] h-[1px] bg-black rounded-[8px] ml-[20px] mt-[-4px]"></div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">En las últimas semanas del embarazo, el bebé se posiciona para el parto y el cuerpo de la madre se prepara con cambios como la dilatación del cuello uterino y las contracciones.</p>
+        </div>
+  
+        <!-------- * Octava tarjeta * -------->
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
+
+          <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
+          <div class="w-[17%] h-[17%] bg-[#dd6cad] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
+            <h3 class="text-2xl font-semibold mt-[-9px] font-serif text-white mt-[5px]">7</h3>
+          </div>
+
+          <!-- Estilo del título y linea que se encuentra debajo del título -->
+          <h3 class="text-xl font-semibold mb-2 mt-4 font-serif text-[#dd6cad]">Nacimiento</h3>
+          <div class="w-[80%] h-[1px] bg-black rounded-[8px] ml-[20px] mt-[-4px]"></div>
+
+          <!-- Estilo del texto -->
+          <p class="text-black mt-[30px]">Finalmente, después de aproximadamente 40 semanas de desarrollo, el bebé nace. Este proceso marca el comienzo de una nueva fase de crecimiento y desarrollo fuera del útero materno.</p>
+        </div>
+      </div>
+    </div>
+  </div>

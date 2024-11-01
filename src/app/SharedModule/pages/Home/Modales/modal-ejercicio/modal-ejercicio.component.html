@@ -1,0 +1,67 @@
+<!-- Diseño de modal que se visualiza en 'Ejercicio laboral' -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto">
+    <div class="bg-white rounded-lg w-11/12 md:w-3/4 lg:w-2/3 flex flex-col md:flex-row relative max-h-full overflow-y-auto">
+      
+      <!-- Sección de la imagen -->
+      <div class="w-full md:w-1/2 bg-cover bg-center rounded-t-lg md:rounded-l-lg relative" style="background-image: url('assets/images/inicio/modal_ejercicio.jpg');">
+        
+        <!-- Capa oscura -->
+        <span class="absolute inset-0 bg-black opacity-45 z-10"></span>
+  
+        <!-- Texto encima de la imagen -->
+        <div class="relative z-20 text-white p-4 md:p-8 mt-auto md:mt-[66%] w-full">
+          <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-8 font-serif">Ejercicio regular</h2>
+        </div>
+      </div>
+      
+      <!-- Sección del contenido -->
+      <div class="w-full md:w-1/2 p-4 md:p-8 relative">
+        
+        <!-- Icono de cerrar -->
+        <button (click)="cerrar()" class="absolute top-2 right-4 text-gray-500 hover:text-gray-700 text-2xl md:text-3xl">
+          &times;
+        </button>
+        
+        <!-- Estilo del texto -->
+        <div class="space-y-4 md:space-y-6 mt-4 md:mt-[50px]">
+  
+          <div>
+            <p class="text-black text-left text-sm md:text-base">
+              Durante el embarazo, es esencial mantenerse bien hidratada y proteger tu bienestar. 
+              Beber suficiente agua y evitar ejercicios de alto impacto o actividades que puedan 
+              poner en riesgo tu salud son claves para un embarazo saludable.
+            </p>
+          </div>
+  
+          <div>
+            <h3 class="text-md md:text-lg font-bold text-red-400">1. Caminar:</h3>
+            <p class="text-black text-left text-sm md:text-base">
+              Una de las formas más sencillas y seguras de ejercicio. Ayuda a mantener el corazón fuerte y mejorar el estado de ánimo.
+            </p>
+          </div>
+  
+          <div>
+            <h3 class="text-md md:text-lg font-bold text-red-400">2. Ejercicio de Respiración y Relajación:</h3>
+            <p class="text-black text-left text-sm md:text-base">
+              Practicar técnicas de respiración profunda y relajación para reducir el estrés y prepararse para el parto.
+            </p>
+          </div>
+  
+          <div>
+            <h3 class="text-md md:text-lg font-bold text-red-400">3. Ejercicios de Estiramiento:</h3>
+            <p class="text-black text-left text-sm md:text-base">
+              Estiramientos suaves para mejorar la flexibilidad y aliviar la tensión muscular. Ejemplos incluyen estiramiento de cuello, espalda, caderas y piernas.
+            </p>
+          </div>
+  
+          <!-- Párrafo centrado debajo de la imagen -->
+           <div class="w-full flex flex-col items-center mt-6 md:mt-4">
+             <p class="text-black font-bold font-serif text-sm md:text-base">
+               ¡Muévete y vive un embarazo más feliz y saludable!
+             </p>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

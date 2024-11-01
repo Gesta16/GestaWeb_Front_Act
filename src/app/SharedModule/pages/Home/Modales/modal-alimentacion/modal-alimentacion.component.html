@@ -1,0 +1,65 @@
+<!-- Diseño de modal que se visualiza en 'Alimentación saludable' -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto">
+  <div class="bg-white rounded-lg w-11/12 md:w-3/4 lg:w-2/3 flex flex-col md:flex-row relative max-h-full overflow-y-auto">
+    
+    <!-- Sección de la imagen -->
+    <div class="w-full md:w-1/2 bg-cover bg-center rounded-t-lg md:rounded-l-lg relative" style="background-image: url('assets/images/inicio/modal_alimentacion.jpg');">
+      
+      <!-- Capa oscura -->
+      <span class="absolute inset-0 bg-black opacity-45 z-10"></span>
+      
+      <!-- Texto encima de la imagen -->
+      <div class="relative z-20 text-white p-4 md:p-8 mt-auto md:mt-[66%] w-full">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-8 font-serif">Alimentación saludable</h2>
+      </div>
+    </div>
+    
+    <!-- Sección del texto -->
+    <div class="w-full md:w-1/2 p-4 md:p-8 relative">
+      
+      <!-- Icono de cerrar -->
+      <button (click)="cerrar()" class="absolute top-2 right-4 text-gray-500 hover:text-gray-700 text-2xl md:text-3xl">
+        &times;
+      </button>
+      
+      <!-- Estilo del texto -->
+      <div class="space-y-4 md:space-y-6 mt-4 md:mt-[50px]">
+        
+        <div>
+          <p class="text-black text-left text-sm md:text-base">
+            Mantén una buena hidratación durante el embarazo bebiendo al menos 8 vasos de agua al día.
+            Además, evita la cafeína, el alcohol y los alimentos crudos o no pasteurizados para prevenir posibles riesgos.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-md md:text-lg font-bold text-red-400">1. Dieta Equilibrada:</h3>
+          <p class="text-black text-left text-sm md:text-base">
+            Incluir una variedad de alimentos de todos los grupos alimenticios: fruta, verdura, proteínas, lácteos, granos integrales y grasas saludables.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-md md:text-lg font-bold text-red-400">2. Proteínas:</h3>
+          <p class="text-black text-left text-sm md:text-base">
+            Consumir fuentes magras de proteínas como pollo, pescado, carne magra, huevos, frijoles, lentejas y tofu. Las proteínas son esenciales para el crecimiento del bebé.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-md md:text-lg font-bold text-red-400">3. Frutas y verduras:</h3>
+          <p class="text-black text-left text-sm md:text-base">
+            Comer al menos cinco porciones al día, las frutas y verduras son ricas en vitaminas, minerales y fibra.
+          </p>
+        </div>
+        
+        <!-- Estilo de la frase -->
+        <div class="w-full flex flex-col items-center mt-6 md:mt-4">
+          <p class="text-black font-bold font-serif text-sm md:text-base">
+            ¡Cuidar tu alimentación es cuidar a tu bebé! 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

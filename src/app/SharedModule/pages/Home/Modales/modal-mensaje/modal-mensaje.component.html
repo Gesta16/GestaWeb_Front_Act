@@ -1,0 +1,35 @@
+<!-- Diseño de modal de 'Mensaje para tí' -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto">
+    <div class="bg-white rounded-lg h-[85%] w-[70%] md:w-[50%] lg:w-[42%] p-6 text-center relative max-h-full overflow-y-auto">
+      <!-- Botón de cerrar -->
+      <button (click)="cerrar()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-3xl p-2"> 
+        &times;
+      </button>
+  
+      <!-- Título -->
+      <h2 class="text-black text-2xl font-semibold mb-4 item-center">Querida futura mamá,</h2>
+  
+      <!-- Primer párrafo -->
+      <p class="mb-4">
+        Cada día que llevas vida dentro de ti es un recordatorio de tu fuerza y amor incondicional. 
+        Es increíble presenciar cómo tu cuerpo se transforma para dar vida a algo tan maravilloso. 
+        Confía en cada patadita y en cada latido que escuchas; son señales de que este viaje es verdaderamente milagroso.
+      </p>
+  
+      <!-- Segundo párrafo -->
+      <p class="mb-4">
+        Estás creando algo increíble, un vínculo eterno que transcenderá todos los límites. 
+        Mantén tu mente en positivo y tu corazón lleno de esperanza, porque cada paso que das 
+        hacia adelante en este camino es un testimonio de tu valentía y dedicación, 
+        Eres increíble y estás haciendo un trabajo asombroso, nutriendo y protegiendo esta pequeña vida con cada pensamiento amoroso.
+      </p>
+  
+      <!-- Tercer párrafo -->
+      <p class="mb-4">
+        Con cariño, Gestaweb
+      </p>
+  
+      <!-- Imagen -->
+      <img src="assets/images/inicio/imagen_modal_landing.jpg" alt="Imagen descriptiva" class="w-full md:w-4/5 lg:w-3/5 mx-auto mt-[40px]"> <!-- Cambia la ruta de la imagen según corresponda -->
+    </div>
+</div>
