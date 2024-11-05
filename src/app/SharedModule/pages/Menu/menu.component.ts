@@ -26,11 +26,18 @@ export class MenuComponent {
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated();
-    this.userRole = this.authService.getRole();
-
-    if (this.userRole) {
-      this.menuItems = this.menuService.getMenuItemsForRole(this.userRole);
-    }
+    this.authService.currentUser.subscribe(user => {
+      if (user) {
+        this.userRole = this.authService.getRole();
+        if (this.userRole) {
+          this.isAuthenticated = this.authService.isAuthenticated();
+          this.menuItems = this.menuService.getMenuItemsForRole(this.userRole);
+          console.log('Elementos del menú cargados:', this.menuItems);
+        }
+      } else {
+        console.log('Usuario no autenticado');
+      }
+    });
     // Suscribirse a cambios en el usuario para actualizar el menú dinámicamente
     this.authSubscription = this.authService.currentUser.subscribe(user => {
       this.userRole = user ? user.rol.nombre_rol : null;

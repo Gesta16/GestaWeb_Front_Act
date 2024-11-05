@@ -1,0 +1,88 @@
+<!-- Diseño de modal para registrar IPS -->
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg w-[90%] md:w-[70%] lg:w-[45%] p-6">
+      <h2 class="text-xl font-bold mb-4 text-center titulo">Formulario de Registro de IPS</h2>
+  
+      <form (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-2 gap-4 mt-6">
+  
+          <!-- Departamento -->
+          <div class="mb-4">
+            <label for="cod_departamento" class="block text-sm font-medium text-gray-700">Departamento</label>
+            <select id="cod_departamento" name="cod_departamento" [(ngModel)]="ips.cod_departamento" (change)="onDepartamentoChange($event)"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+              <option *ngFor="let departamento of listDepartamentos" [value]="departamento.cod_departamento">
+                {{departamento.nom_departamento}}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Municipio -->
+          <div class="mb-4">
+            <label for="cod_municipio" class="block text-sm font-medium text-gray-700">Municipio</label>
+            <select id="cod_municipio" name="cod_municipio" [(ngModel)]="ips.cod_municipio"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+              <option *ngFor="let municipio of listMunicipios" [value]="municipio.cod_municipio">
+                {{municipio.nom_municipio}}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Régimen -->
+          <div class="mb-4">
+            <label for="cod_regimen" class="block text-sm font-medium text-gray-700">Régimen</label>
+            <select id="cod_regimen" name="cod_regimen" [(ngModel)]="ips.cod_regimen"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+              <option *ngFor="let regimen of listRegimenes" [value]="regimen.cod_regimen">
+                {{regimen.nom_regimen}}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Nombre IPS -->
+          <div class="mb-4">
+            <label for="nom_ips" class="block text-sm font-medium text-gray-700">Nombre IPS</label>
+            <input type="text" id="nom_ips" name="nom_ips" [(ngModel)]="ips.nom_ips"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+          <!-- Dirección -->
+          <div class="mb-4">
+            <label for="dir_ips" class="block text-sm font-medium text-gray-700">Dirección</label>
+            <input type="text" id="dir_ips" name="dir_ips" [(ngModel)]="ips.dir_ips"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+          <!-- Teléfono -->
+          <div class="mb-4">
+            <label for="tel_ips" class="block text-sm font-medium text-gray-700">Teléfono</label>
+            <input type="text" id="tel_ips" name="tel_ips" [(ngModel)]="ips.tel_ips"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+          <!-- Email -->
+          <div class="mb-4">
+            <label for="email_ips" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email_ips" name="email_ips" [(ngModel)]="ips.email_ips"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+          <!-- NIT -->
+          <div class="mb-4">
+            <label for="nit_ips" class="block text-sm font-medium text-gray-700">NIT</label>
+            <input type="text" id="nit_ips" name="nit_ips" [(ngModel)]="ips.nit_ips"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+        </div>
+  
+        <!-- Botones -->
+        <div class="flex justify-end mt-6">
+          <button type="button" class="bg-[#80BA27] hover:bg-[#7cb02d] text-white font-bold py-2 px-4 rounded mr-2"
+            (click)="cerrar()">Cancelar</button>
+          <button type="submit" class="bg-[#00ACC9] hover:bg-[#0194ad] text-white font-bold py-2 px-4 rounded">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

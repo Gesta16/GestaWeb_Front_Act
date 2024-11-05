@@ -14,7 +14,7 @@ export class AuthService {
   public currentUser: Observable<any>;
 
   constructor(private http: HttpClient) {
-    const storedUser = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+    const storedUser = JSON.parse(sessionStorage.getItem('currentUser') || 'null');
     this.currentUserSubject = new BehaviorSubject<any>(storedUser);
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -27,7 +27,7 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}login`, credentials).pipe(
       tap(response => {
         // Guarda el token y la información del usuario
-        sessionStorage.setItem('token', response.token);
+        sessionStorage.setItem('token', response.access_token);
         sessionStorage.setItem('currentUser', JSON.stringify(response.user));
         this.currentUserSubject.next(response.user);
       })
@@ -48,8 +48,13 @@ export class AuthService {
   // Obtener el rol actual del usuario
   getRole(): string | null {
     const currentUser = this.currentUserSubject.value;
-    console.log('rol desde AuthService',currentUser.rol_id);
+    console.log('rol desde AuthService',currentUser.rol.nombre_rol);
     return currentUser ? currentUser.rol.nombre_rol : null;
   }
+
+  getToken(): string | null {
+    const token = sessionStorage.getItem('token');
+    return token;
+  }  
 
 }

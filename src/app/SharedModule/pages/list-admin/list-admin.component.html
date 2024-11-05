@@ -1,0 +1,74 @@
+<!-- Este archivo contiene la lista de administradores -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Encabezado -->
+<!-- <app-header></app-header> -->
+
+<!-- Contenedor principal -->
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+    'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
+    <div class="max-w-[94rem] mx-auto mt-12">
+        <!-- Título -->
+        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
+                <h1 class="font-bold text-2xl sm:text-3xl ml-2">Administradores</h1>
+                <button (click)="abrirModal()"
+                    class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
+                    Crear
+                </button>
+            </div>
+        </div>
+
+        <!-- Estilo de la tabla -->
+        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 overflow-x-auto mt-[50px]">
+            <table class="w-full text-sm text-center text-gray-700">
+                <thead class="text-xs text-gray-700 uppercase bg-[#44BDD4]">
+                    <tr>
+                        <th scope="col" class="px-5 py-3">Tipo de documento</th>
+                        <th scope="col" class="px-5 py-3">N° documento</th>
+                        <th scope="col" class="px-5 py-3">Nombre</th>
+                        <th scope="col" class="px-5 py-3">Apellido</th>
+                        <th scope="col" class="px-5 py-3">Teléfono</th>
+                        <th scope="col" class="px-5 py-3">Correo electrónico</th>
+                        <th scope="col" class="px-5 py-3">Desactivar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of paginatedAdmins" class="border-b hover:bg-gray-50">
+                        <td>{{ getTipoDocumentoNombre(admin.cod_documento) }}</td>
+                        <td>{{ admin.documento_admin }}</td>
+                        <td>{{ admin.nom_admin }}</td>
+                        <td>{{ admin.ape_admin }}</td>
+                        <td>{{ admin.tel_admin }}</td>
+                        <td>{{ admin.email_admin }}</td>
+                        <td class="px-12 py-4">
+                            <i class="fa-solid fa-toggle-off fa-xl" style="color: #000000;"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Paginación -->
+        <nav class="flex items-center justify-center pt-4 mb-4" aria-label="Table navigation">
+            <ul class="inline-flex -space-x-px text-sm h-8">
+                <li *ngIf="currentPage > 1">
+                    <a (click)="changePage(currentPage - 1)"
+                        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-cyan-500">Anterior</a>
+                </li>
+                <li *ngFor="let page of totalPagesArray">
+                    <a (click)="changePage(page)"
+                        [ngClass]="{'bg-[#E8f7fd] text-black': page === currentPage, 'text-gray-500 bg-white': page !== currentPage}"
+                        class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 hover:bg-cyan-500 hover:text-white">
+                        {{ page }}
+                    </a>
+                </li>
+                <li *ngIf="currentPage < totalPages">
+                    <a (click)="changePage(currentPage + 1)"
+                        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-cyan-500">Siguiente</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

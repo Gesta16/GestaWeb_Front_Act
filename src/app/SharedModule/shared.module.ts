@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
 import { SharedModuleRoutingModule } from './shared-routing.module';
 import { HomeComponent } from './pages/Home/home.component';
@@ -9,6 +11,11 @@ import { ModalEjercicioComponent } from './pages/Home/Modales/modal-ejercicio/mo
 import { ModalCrecimientoComponent } from './pages/Home/Modales/modal-crecimiento/modal-crecimiento.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './pages/Dashboard/dashboard.component';
+import { AddAdminComponent } from './pages/add-admin/add-admin.component';
+import { ListAdminComponent } from './pages/list-admin/list-admin.component';
+import { ListIpsComponent } from './pages/list-ips/list-ips.component';
+import { AddIpsComponent } from './pages/add-ips/add-ips.component';
+import { EditIpsComponent } from './pages/edit-ips/edit-ips.component';
 
 
 
@@ -24,12 +31,19 @@ import { DashboardComponent } from './pages/Dashboard/dashboard.component';
     ModalAlimentacionComponent,
     ModalEjercicioComponent,
     ModalCrecimientoComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddAdminComponent,
+    ListAdminComponent,
+    ListIpsComponent,
+    AddIpsComponent,
+    EditIpsComponent
   ],
   imports: [
     CommonModule,
     SharedModuleRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     MenuComponent 
