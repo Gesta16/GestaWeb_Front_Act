@@ -5,6 +5,8 @@ import { DashboardComponent } from './pages/Dashboard/dashboard.component';
 import { RoleGuard } from '../guards/role.guard';
 import { ListAdminComponent } from './pages/list-admin/list-admin.component';
 import { ListIpsComponent } from './pages/list-ips/list-ips.component';
+import { ListSuperAdminComponent } from './pages/list-super-admin/list-super-admin.component';
+import { ListOperadoresComponent } from './pages/list-operadores/list-operadores.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,16 @@ const routes: Routes = [
         path:'list-ips', component:ListIpsComponent,
         canActivate:[RoleGuard],
         data:{title:'IPS', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
+      },
+      {
+        path:'list-superadmin', component:ListSuperAdminComponent,
+        canActivate:[RoleGuard],
+        data:{title:'SuperAdmin', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
+      },
+      {
+        path:'list-operadores', component:ListOperadoresComponent,
+        canActivate:[RoleGuard],
+        data:{title:'Operadores', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
       }
     ]
   }

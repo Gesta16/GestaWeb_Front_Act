@@ -1,0 +1,57 @@
+<!-- Diseño de la modal para 'añadir un superadmin' -->
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg w-[90%] md:w-[70%] lg:w-[45%] p-6">
+      <h2 class="text-xl font-bold mb-4 text-center titulo">Formulario de Registro de SuperAdministrador</h2>
+      
+      <form (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Tipo de Documento -->
+          <div class="mb-4">
+            <label for="documento" class="block text-sm font-medium text-gray-700">Tipo de documento</label>
+            <select id="documento" name="documento" [(ngModel)]="superAdmin.cod_documento" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+              <option *ngFor="let tipoDocumento of listTipoDocumentos" [value]="tipoDocumento.cod_documento">
+                {{ tipoDocumento.nom_documento }}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Documento -->
+          <div class="mb-4">
+            <label for="documento" class="block text-sm font-medium text-gray-700">Documento</label>
+            <input type="text" id="documento" name="documento" [(ngModel)]="superAdmin.documento_superadmin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+          <!-- Nombre -->
+          <div class="mb-4">
+            <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="superAdmin.nom_superadmin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+          
+          <!-- Apellido -->
+          <div class="mb-4">
+            <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido</label>
+            <input type="text" id="apellido" name="apellido" [(ngModel)]="superAdmin.ape_superadmin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+          <!-- Teléfono -->
+          <div class="mb-4">
+            <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" [(ngModel)]="superAdmin.tel_superadmin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+  
+          <!-- Email -->
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" name="email" [(ngModel)]="superAdmin.email_superadmin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+        </div>
+  
+        <!-- Botones -->
+        <div class="flex justify-end mt-4">
+          <button type="button" class="bg-[#80BA27] hover:bg-[#7cb02d] text-white font-bold py-2 px-4 rounded mr-2" (click)="close()">Cancelar</button>
+          <button type="submit" class="bg-[#00ACC9] hover:bg-[#0194ad] text-white font-bold py-2 px-4 rounded">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

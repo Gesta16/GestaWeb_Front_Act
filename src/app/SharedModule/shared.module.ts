@@ -15,7 +15,10 @@ import { AddAdminComponent } from './pages/add-admin/add-admin.component';
 import { ListAdminComponent } from './pages/list-admin/list-admin.component';
 import { ListIpsComponent } from './pages/list-ips/list-ips.component';
 import { AddIpsComponent } from './pages/add-ips/add-ips.component';
-import { EditIpsComponent } from './pages/edit-ips/edit-ips.component';
+import { AddOperadoresComponent } from './pages/add-operdores/add-operdores.component';
+import { AddSuperAdminComponent } from './pages/add-super-admin/add-super-admin.component';
+import { ListOperadoresComponent } from './pages/list-operadores/list-operadores.component';
+import { ListSuperAdminComponent } from './pages/list-super-admin/list-super-admin.component';
 
 
 
@@ -36,7 +39,10 @@ import { EditIpsComponent } from './pages/edit-ips/edit-ips.component';
     ListAdminComponent,
     ListIpsComponent,
     AddIpsComponent,
-    EditIpsComponent
+    AddOperadoresComponent,
+    AddSuperAdminComponent,
+    ListOperadoresComponent,
+    ListSuperAdminComponent
   ],
   imports: [
     CommonModule,

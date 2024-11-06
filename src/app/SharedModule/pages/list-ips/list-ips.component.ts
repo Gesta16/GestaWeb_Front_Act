@@ -5,7 +5,6 @@ import { DepartamentoService } from '../../../Services/departamento.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MenuService } from '../../../Services/menu.service';
 import { AddIpsComponent } from '../add-ips/add-ips.component';
-import { EditIpsComponent } from '../edit-ips/edit-ips.component';
 import { Ips } from '../../../Models/Ips.model';
 
 @Component({
@@ -71,19 +70,19 @@ export class ListIpsComponent {
     });
   }
 
-  abrirModalEdit(ips: Ips): void {
-    const dialogRef = this._matDialog.open(EditIpsComponent, {
-      enterAnimationDuration: '0ms',
-      exitAnimationDuration: '0ms',
-      data: { ips: ips } // Pasar los datos del IPS seleccionado al modal
-    });
+  // abrirModalEdit(ips: Ips): void {
+  //   const dialogRef = this._matDialog.open(EditIpsComponent, {
+  //     enterAnimationDuration: '0ms',
+  //     exitAnimationDuration: '0ms',
+  //     data: { ips: ips } // Pasar los datos del IPS seleccionado al modal
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadIps(); // Volver a cargar los IPS después de cerrar el modal
-      }
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       this.loadIps(); // Volver a cargar los IPS después de cerrar el modal
+  //     }
+  //   });
+  // }
 
 
   private loadIps(): void {
