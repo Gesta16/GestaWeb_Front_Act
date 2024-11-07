@@ -1,0 +1,136 @@
+/* Inicio de los estilos del tirangulo */
+.custom-triangle {
+    position: relative;
+}
+
+.custom-triangle::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: -20px; /* Posición del triangulo */
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent; /* Tamaño del triángulo */
+    border-bottom: 32px solid transparent; /* Tamaño del triángulo */
+    border-left: 20px solid #E2713E; /* Color del triángulo */
+}
+/* Fin de los estilos del tirangulo */
+
+/* Inicio de los estilos del tirangulo2 */
+.custom-triangle2 {
+    position: relative;
+}
+
+.custom-triangle2::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: -20px; /* Posición del triangulo */
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent; /* Tamaño del triángulo */
+    border-bottom: 32px solid transparent; /* Tamaño del triángulo */
+    border-left: 20px solid #ea7c89; /* Color del triángulo */
+}
+/* Fin de los estilos del tirangulo */
+
+/* Inicio de los estilos del tirangulo3 */
+.custom-triangle3 {
+    position: relative;
+}
+
+.btn-custom {
+    height: 40px; /* Ajusta la altura según sea necesario */
+    padding: 0 16px; /* Establece padding horizontal fijo */
+    display: flex; /* Alinea el contenido del botón */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente */
+}
+
+.custom-triangle3::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: -20px; /* Posición del triangulo */
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent; /* Tamaño del triángulo */
+    border-bottom: 32px solid transparent; /* Tamaño del triángulo */
+    border-left: 20px solid #53A04D; /* Color del triángulo */
+}
+/* Fin de los estilos del tirangulo */
+
+/* Inicio de los estilos del tirangulo4 */
+.custom-triangle4 {
+    position: relative;
+}
+
+.select-custom {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    appearance: none;
+    position: relative;
+}
+
+.select-custom option {
+    background-color: white;
+    color: black;
+}
+
+
+
+.custom-triangle4::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: -20px; /* Posición del triangulo */
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent; /* Tamaño del triángulo */
+    border-bottom: 32px solid transparent; /* Tamaño del triángulo */
+    border-left: 20px solid #3eb6c6; /* Color del triángulo */
+}
+/* Fin de los estilos del tirangulo */
+
+/* Inicio de los estilos del tirangulo5 */
+.custom-triangle5 {
+    position: relative;
+}
+
+.custom-triangle5::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: -20px; /* Posición del triangulo */
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent; /* Tamaño del triángulo */
+    border-bottom: 32px solid transparent; /* Tamaño del triángulo */
+    border-left: 20px solid #2E6B9C; /* Color del triángulo */
+}
+/* Fin de los estilos del tirangulo */
+
+/* Inicio de los estilos del tirangulo6 */
+.custom-triangle6 {
+    position: relative;
+}
+
+.custom-triangle6::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: -20px; /* Posición del triangulo */
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent; /* Tamaño del triángulo */
+    border-bottom: 32px solid transparent; /* Tamaño del triángulo */
+    border-left: 20px solid #E5AE41; /* Color del triángulo */
+}
+/* Fin de los estilos del tirangulo */

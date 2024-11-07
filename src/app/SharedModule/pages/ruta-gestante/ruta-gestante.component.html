@@ -1,1 +1,245 @@
-<p>ruta-gestante works!</p>
+<!-- Este archivo contiene la ruta de la gestante -->
+<app-header></app-header>
+
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
+<div class="max-w-[94rem] mx-auto mt-12">
+
+    <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4" style="height: 80px;">
+        <div class="flex justify-between items-center h-full p-4">
+            <h1 class="font-bold text-3xl" style="margin-left: 30px;">Ruta materno perinatal</h1>
+
+            <div class="flex items-center space-x-2">
+                <select class="select-custom" [(ngModel)]="selectedOption">
+                    <option value="" disabled selected></option>
+                    <option *ngFor="let num of generarRango(procesosCount)" [value]="num">{{ num }}</option>
+                </select>
+
+                <button (click)="crearProceso()"
+                    class="bg-[#80BA27] text-white font-bold btn-custom rounded-xl hover:bg-[#66a800] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M11 13H5v-2h6V5h2v6h6v2h-6v6h-2z" />
+                    </svg>
+                </button>
+
+
+                <button (click)="volver()"
+                    class="bg-[#80BA27] text-white font-bold btn-custom rounded-xl hover:bg-[#66a800] focus:outline-none">
+                    Volver
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Contenedor gris-->
+    <div class="w-full max-w-[70rem] p-4 md:p-8 rounded-lg mx-auto">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto max-w-5xl ml-6">
+
+            <!-- Ruta 1 -->
+            <div
+                class="relative flex flex-col md:flex-row items-center bg-[#E2713E] rounded-xl shadow-lg overflow-visible h-auto md:h-[10rem] w-full md:w-[25rem]">
+
+                <!-- Contenido del número -->
+                <div
+                    class="relative bg-[#E2713E] text-white text-xl font-semibold p-4 rounded-t-xl md:rounded-l-xl md:rounded-tr-none custom-triangle z-30 w-full md:w-[17%] shadow-lg">
+                    <p class="text-center text-[37px]">01</p>
+                    <div class="h-0.5 mx-auto bg-white my-2"></div>
+                </div>
+
+                        <!-- Superposición translúcida -->
+                        <div class="w-full md:w-[24rem] md:absolute md:top-[-12px] md:left-[18%] z-20">
+                            <div class="p-6 bg-white bg-opacity-75 shadow-lg rounded-b-xl md:rounded-2xl relative">
+                                <h3 class="text-lg font-semibold text-gray-800 font-serif">Datos de la afiliada</h3>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Administra la información personal de la
+                                    gestante para un mejor seguimiento durante el embarazo
+                                </p>
+                                <button (click)="irUsuario()"
+                                    class="bg-[#E2713E] hover:bg-[#e75210] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                    Ingresar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Icono -->
+                        <div
+                            class="absolute top-2 right-2 md:top-auto md:right-auto md:ml-[79%] md:relative z-20 p-6 md:mt-[-15px]">
+                            <i class="fas fa-id-card fa-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Ruta 2 -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center bg-[#ea7c89] rounded-xl shadow-lg overflow-visible h-auto md:h-[10rem] w-full md:w-[25rem]">
+
+                        <!-- Contenido del número -->
+                        <div
+                            class="relative bg-[#ea7c89] text-white text-xl font-semibold p-4 rounded-t-xl md:rounded-l-xl md:rounded-tr-none custom-triangle2 z-30 w-full md:w-[17%] shadow-lg">
+                            <p class="text-center text-[37px]">02</p>
+                            <div class="h-0.5 mx-auto bg-white my-2"></div>
+                        </div>
+
+                        <!-- Superposición translúcida -->
+                        <div class="w-full md:w-[24rem] md:absolute md:top-[-12px] md:left-[18%] z-20">
+                            <div class="p-6 bg-white bg-opacity-75 rounded-b-xl md:rounded-2xl relative shadow-lg">
+                                <h3 class="text-lg font-semibold text-gray-800 font-serif">Gestión materna</h3>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Datos de ingreso a control prenatal. Datos primera consulta.
+                                </p>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Vacunación
+                                </p>
+                                <button (click)="irAControlPrenatal()"
+                                    class="bg-[#ea7c89] hover:bg-[#ea6f7d] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                    Ingresar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Icono -->
+                        <div
+                            class="absolute top-2 right-2 md:top-auto md:right-auto md:ml-[79%] md:relative z-20 p-6 md:mt-[-15px]">
+                            <i class="fas fa-heartbeat fa-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Ruta 3 -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center bg-[#53A04D] rounded-xl shadow-lg overflow-visible h-auto md:h-[10rem] w-full md:w-[25rem]">
+
+                        <!-- Contenido del número -->
+                        <div
+                            class="relative bg-[#53A04D] text-white text-xl font-semibold p-4 rounded-t-xl md:rounded-l-xl md:rounded-tr-none custom-triangle3 z-30 w-full md:w-[17%] shadow-lg">
+                            <p class="text-center text-[37px]">03</p>
+                            <div class="h-0.5 mx-auto bg-white my-2"></div>
+                        </div>
+
+                        <!-- Superposición translúcida -->
+                        <div class="w-full md:w-[24rem] md:absolute md:top-[-12px] md:left-[18%] z-20">
+                            <div class="p-6 bg-white bg-opacity-75 shadow-lg rounded-b-xl md:rounded-2xl relative">
+                                <h3 class="text-lg font-semibold text-gray-800 font-serif">Análisis y Prevención</h3>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Laboratorio I trimestre.
+                                </p>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Laboratorio II trimestre.
+                                </p>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Laboratorio III trimestre. ITS
+                                </p>
+                                <button (click)="irAnalisisPrevencion()"
+                                    class="bg-[#53A04D] hover:bg-[#419f3a] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                    Ingresar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Icono -->
+                        <div
+                            class="absolute top-2 right-2 md:top-auto md:right-auto md:ml-[79%] md:relative z-20 p-6 md:mt-[-15px]">
+                            <i class="fas fa-vial fa-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Ruta 4 -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center bg-[#3eb6c6] rounded-xl shadow-lg overflow-visible h-auto md:h-[10rem] w-full md:w-[25rem]">
+                        <!-- Contenido del número -->
+                        <div
+                            class="relative bg-[#3eb6c6] text-white text-xl font-semibold p-4 rounded-t-xl md:rounded-l-xl md:rounded-tr-none custom-triangle4 z-30 w-full md:w-[17%] shadow-lg">
+                            <p class="text-center text-[37px]">04</p>
+                            <div class="h-0.5 mx-auto bg-white my-2"></div>
+                        </div>
+
+                        <!-- Superposición translúcida -->
+                        <div class="w-full md:w-[24rem] md:absolute md:top-[-12px] md:left-[18%] z-20">
+                            <div class="p-6 bg-white bg-opacity-75 shadow-lg rounded-b-xl md:rounded-2xl relative">
+                                <h3 class="text-lg font-semibold text-gray-800 font-serif">Salud integral</h3>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Seguimiento consulta mensual. Seguimientos complementarios.
+                                    Micronutrientes
+                                </p>
+                                <button (click)="irSaludIntegral()"
+                                    class="bg-[#3eb6c6] hover:bg-[#0fb1c7] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                    Ingresar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Icono -->
+                        <div
+                            class="absolute top-2 right-2 md:top-auto md:right-auto md:ml-[79%] md:relative z-20 p-6 md:mt-[-15px]">
+                            <i class="fas fa-calendar-check fa-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Ruta 5 -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center bg-[#2E6B9C] rounded-xl shadow-lg overflow-visible h-auto md:h-[10rem] w-full md:w-[25rem]">
+                        <!-- Contenido del número -->
+                        <div
+                            class="relative bg-[#2E6B9C] text-white text-xl font-semibold p-4 rounded-t-xl md:rounded-l-xl md:rounded-tr-none custom-triangle5 z-30 w-full md:w-[17%] shadow-lg">
+                            <p class="text-center text-[37px]">05</p>
+                            <div class="h-0.5 mx-auto bg-white my-2"></div>
+                        </div>
+
+                        <!-- Superposición translúcida -->
+                        <div class="w-full md:w-[24rem] md:absolute md:top-[-12px] md:left-[18%] z-20">
+                            <div class="p-6 bg-white bg-opacity-75 shadow-lg rounded-b-xl md:rounded-2xl relative">
+                                <h3 class="text-lg font-semibold text-gray-800 font-serif">Preparto</h3>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Finalización de la gestación. Laboratorio intraparto de la gestante.
+                                    Seguimiento gestante. Mortalidad perinatal
+                                </p>
+                                <button (click)="irPreparto()"
+                                    class="bg-[#2E6B9C] hover:bg-[#14619e] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                    Ingresar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Icono -->
+                        <div
+                            class="absolute top-2 right-2 md:top-auto md:right-auto md:ml-[79%] md:relative z-20 p-6 md:mt-[-15px]">
+                            <i class="fas fa-briefcase-medical fa-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Ruta 6 -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center bg-[#E5AE41] rounded-xl shadow-lg overflow-visible h-auto md:h-[10rem] w-full md:w-[25rem]">
+                        <!-- Contenido del número -->
+                        <div
+                            class="relative bg-[#E5AE41] text-white text-xl font-semibold p-4 rounded-t-xl md:rounded-l-xl md:rounded-tr-none custom-triangle6 z-30 w-full md:w-[17%] shadow-lg">
+                            <p class="text-center text-[37px]">06</p>
+                            <div class="h-0.5 mx-auto bg-white my-2"></div>
+                        </div>
+
+                        <!-- Superposición translúcida -->
+                        <div class="w-full md:w-[24rem] md:absolute md:top-[-12px] md:left-[18%] z-20">
+                            <div class="p-6 bg-white bg-opacity-75 shadow-lg rounded-b-xl md:rounded-2xl relative">
+                                <h3 class="text-lg font-semibold text-gray-800 font-serif">Posparto</h3>
+                                <p class="text-gray-600 text-sm w-full md:w-[74%]">
+                                    Datos del recien nacido. Tamización neonatal.
+                                    Estudio hipotiroidismo congenito. Ruta PYMS
+                                </p>
+                                <button (click)="irPosparto()"
+                                    class="bg-[#E5AE41] hover:bg-[#e7a625] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                    Ingresar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Icono -->
+                        <div
+                            class="absolute top-2 right-2 md:top-auto md:right-auto md:ml-[79%] md:relative z-20 p-6 md:mt-[-15px]">
+                            <i class="fas fa-baby-carriage fa-2xl text-gray-400"></i>
+                        </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
