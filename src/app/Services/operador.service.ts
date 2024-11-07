@@ -15,17 +15,7 @@ export class OperadorService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   /* Crea y devuelve un objeto HttpHeaders con el token de acceso y el tipo de contenido */
-  private createHeaders(): HttpHeaders {
-    const token = this.authService.getToken();  
-    if (!token) {
-      throw new Error('No se encontró el token de autenticación.');
-    }
-
-    return new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    });
-  }
+  
 
 
   getOperadores(): Observable<any> {

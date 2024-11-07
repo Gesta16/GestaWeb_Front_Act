@@ -16,17 +16,7 @@ import { RegimenService } from '../../../Services/regimen.service';
 })
 export class AddIpsComponent {
 
-  ips: Ips = {
-    cod_ips: 0, 
-    cod_regimen: 0, 
-    cod_departamento: 0, 
-    nom_ips: '',
-    dir_ips: '',
-    tel_ips: '', 
-    email_ips: '',
-    nit_ips: '',
-    cod_municipio: 0,
-  };
+  ips: Ips = new Ips();
 
   constructor(
     public _matDialogRef: MatDialogRef<AddIpsComponent>,

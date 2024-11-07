@@ -57,4 +57,9 @@ export class AuthService {
     return token;
   }  
 
+  getUser(){
+    const identityJSON = sessionStorage.getItem('currentUser');
+    return identityJSON ? JSON.parse(identityJSON) : null;
+  }
+
 }

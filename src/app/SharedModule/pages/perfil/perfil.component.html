@@ -1,0 +1,125 @@
+<!-- Encabezado -->
+<!-- <app-header></app-header> -->
+
+<!-- Título -->
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+    'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
+    <div class="max-w-[94rem] mx-auto mt-12">
+        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
+                <h1 class="font-bold text-2xl sm:text-3xl ml-2">Información Personal</h1>
+                <button (click)="toggleEdit()"
+                    class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0">
+                    Editar
+                </button>
+            </div>
+        </div>
+
+        <!-- Contenedor principal -->
+        <div class="w-full max-w-[80rem] mx-auto p-4 mt-8 flex flex-col lg:flex-row items-start justify-center">
+            <!-- Contenedor con imagen y nombre -->
+            <div class="bg-white rounded-lg w-full lg:w-[30%] h-auto sm:h-[26rem] p-4 border shadow-lg flex flex-col items-center"
+                style="background-image: url('https://kinsta.com/es/wp-content/uploads/sites/8/2021/12/about-us-page.png'); background-size: cover; background-position: center;">
+                <!-- Aquí puedes agregar contenido, como un nombre o una imagen -->
+            </div>
+
+            <!-- Diseño de Información personal -->
+            <div
+                class="bg-white rounded-lg w-full lg:w-[65%] h-auto sm:h-[26rem] p-4 border shadow-lg flex flex-col justify-center mt-4 lg:mt-0">
+                <h2 class="text-xl font-bold mb-4 text-center">Perfil</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <!-- Tipo de documento -->
+                    <div class="mb-1" *ngIf="user?.userable">
+                        <label for="tipoDocumento" class="text-sm font-medium text-gray-700">Tipo de documento</label>
+                        <input type="text" id="tipoDocumento" name="tipoDocumento"
+                            class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                            [value]="getTipoDocumentoNombre(user?.userable?.cod_documento) || ''"
+                            [disabled]="!isEditing">
+                    </div>
+
+                    <!-- N° documento -->
+                    <div class="mb-1">
+                        <label for="numeroDocumento" class="text-sm font-medium text-gray-700">N° documento</label>
+                        <input type="text" id="numeroDocumento" name="numeroDocumento"
+                            class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                            [value]="user?.documento || ''" [disabled]="!isEditing">
+                    </div>
+
+                    <!-- Nombre -->
+                    <div class="mb-1">
+                        <label for="nombre" class="text-sm font-medium text-gray-700">Nombre</label>
+                        <input type="text" id="nombre" name="nombre"
+                            class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                            [value]="user?.userable?.nom_superadmin || user?.userable?.nom_usuario || user?.userable?.nom_admin || user?.userable?.nom_operador || ''"
+                            [disabled]="!isEditing">
+                    </div>
+
+                    <!-- Apellido -->
+                    <div class="mb-1">
+                        <label for="apellido" class="text-sm font-medium text-gray-700">Apellido</label>
+                        <input type="text" id="apellido" name="apellido"
+                            class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                            [value]="user?.userable?.ape_superadmin || user?.userable?.ape_usuario || user?.userable?.ape_admin || user?.userable?.ape_operador || ''"
+                            [disabled]="!isEditing">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-1">
+                        <label for="email" class="text-sm font-medium text-gray-700">E-mail</label>
+                        <input type="email" id="email" name="email"
+                            class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                            [value]="user?.userable?.email_superadmin || user?.userable?.email_usuario || user?.userable?.email_admin || user?.userable?.email_operador || ''"
+                            [disabled]="!isEditing">
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="mb-1">
+                        <label for="telefono" class="text-sm font-medium text-gray-700">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono"
+                            class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                            [value]="user?.userable?.tel_superadmin || user?.userable?.tel_usuario || user?.userable?.tel_admin || user?.userable?.tel_operador || ''"
+                            [disabled]="!isEditing">
+                    </div>
+
+                    <!-- Mostrar campos de contraseña solo cuando isEditing es verdadero -->
+                    <div *ngIf="isEditing" class="md:col-span-2 grid md:grid-cols-2 gap-4">
+                        <!-- Nueva contraseña -->
+                        <div class="mb-1">
+                            <label for="newPassword" class="text-sm font-medium text-gray-700">Nueva Contraseña</label>
+                            <input type="password" id="newPassword" name="newPassword"
+                                class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]">
+                        </div>
+
+                        <!-- Confirmar nueva contraseña -->
+                        <div class="mb-1">
+                            <label for="confirmPassword" class="text-sm font-medium text-gray-700">Confirmar
+                                Contraseña</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="flex justify-center space-x-4 mt-4">
+            <!-- Mostrar botón Cancelar solo cuando se está editando -->
+            <button *ngIf="isEditing" (click)="toggleEdit()"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Cancelar
+            </button>
+
+            <!-- Mostrar los botones según el estado de edición -->
+            <button *ngIf="isEditing; else editButton" (click)="toggleEdit()"
+                class="bg-[#00ACC9] hover:bg-[#0194ad] text-white font-bold py-2 px-4 rounded">
+                Guardar
+            </button>
+
+            <!-- Botón de Editar -->
+            <ng-template #editButton>
+
+            </ng-template>
+        </div>
+    </div>
+</div>

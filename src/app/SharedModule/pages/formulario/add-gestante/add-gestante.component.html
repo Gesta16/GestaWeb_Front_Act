@@ -1,0 +1,214 @@
+<!-- Llamado del encabezado -->
+<app-header></app-header>
+
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+    'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
+    <div class="max-w-[94rem] mx-auto mt-12">
+        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
+                <h1 class="font-bold text-2xl sm:text-3xl ml-2">Datos de la afiliada</h1>
+                <button (click)="volver()"
+                    class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
+                    Volver
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap mt-5">
+            <div class="w-[70%] justify-center mx-auto">
+                <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer">
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(1)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 1, 'text-white bg-[#00acc9]': openTab === 1}">
+                            Sección 1
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(2)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 2, 'text-white bg-[#00acc9]': openTab === 2}">
+                            Sección 2
+                        </a>
+                    </li>
+                </ul>
+
+                <div
+                    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded uppercase border border-gray-300">
+                    <div class="px-4 py-5 flex-auto">
+                        <div class="tab-content tab-space">
+
+                            <!-- Primer Tab -->
+                            <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex flex-col text-xs">
+                                        <label for="departamento" class="font-medium mb-1">Departamento de
+                                            residencia</label>
+                                        <select id="cod_departamento" [disabled]="isReadOnly" name="cod_departamento"
+                                            [(ngModel)]="usuario.cod_departamento"
+                                            (change)="onDepartamentoChange($event)"
+                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required>
+                                            <option *ngFor="let departamento of listDepartamentos"
+                                                [value]="departamento.cod_departamento">
+                                                {{departamento.nom_departamento}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="municipio" class="font-medium mb-1">Municipio de residencia</label>
+                                        <select id="cod_municipio" name="cod_municipio" [disabled]="isReadOnly"
+                                            [(ngModel)]="usuario.cod_municipio"
+                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required>
+                                            <option *ngFor="let municipio of listMunicipios"
+                                                [value]="municipio.cod_municipio">
+                                                {{municipio.nom_municipio}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="ips" class="font-medium mb-1">IPS</label>
+                                        <select id="cod_ips" name="cod_ips" [disabled]="isReadOnly"
+                                            [(ngModel)]="usuario.cod_ips"
+                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required>
+                                            <option *ngFor="let ips of listIps" [value]="ips.cod_ips">
+                                                {{ips.nom_ips}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_diag" class="font-medium mb-1">Fecha de diagnóstico</label>
+                                        <input type="date" id="fec_diag" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.fec_diag_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_ingreso" class="font-medium mb-1">Fecha de ingreso</label>
+                                        <input type="date" id="fec_ingreso" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.fec_ingreso"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="poblacion" class="font-medium mb-1">Población diferencial</label>
+                                        <select id="cod_poblacion" name="cod_poblacion" [disabled]="isReadOnly"
+                                            [(ngModel)]="usuario.cod_poblacion"
+                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required>
+                                            <option *ngFor="let poblacion of listPoblacionDiferencial"
+                                                [value]="poblacion.cod_poblacion">
+                                                {{poblacion.nom_poblacion}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="tipo_doc" class="font-medium mb-1">Tipo de documento</label>
+                                        <select id="tipoDocumento" name="tipoDocumento" [disabled]="isReadOnly"
+                                            [(ngModel)]="usuario.cod_documento"
+                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required>
+                                            <option *ngFor="let tipoDocumento of listTipoDocumentos"
+                                                [value]="tipoDocumento.cod_documento">
+                                                {{ tipoDocumento.nom_documento }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="numero_doc" class="font-medium mb-1">Número de documento</label>
+                                        <input type="text" id="numero_doc" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.documento_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Segundo Tab -->
+                            <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex flex-col text-xs">
+                                        <label for="nombre" class="font-medium mb-1">Nombres</label>
+                                        <input type="text" [readonly]="isReadOnly" id="nombre"
+                                            [(ngModel)]="usuario.nom_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="apellido" class="font-medium mb-1">Apellidos</label>
+                                        <input type="text" id="apellido" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.ape_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_nac" class="font-medium mb-1">Fecha de nacimiento</label>
+                                        <input type="date" id="fec_nac" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.fec_nacimiento" (change)="calcularEdad()"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="edad" class="font-medium mb-1">Edad</label>
+                                        <input type="text" id="edad" [readonly]="isReadOnlyEdad"
+                                            [(ngModel)]="usuario.edad_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] w-full">
+                                    </div>
+
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="telefono" class="font-medium mb-1">Teléfono</label>
+                                        <input type="text" id="telefono" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.tel_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="celular" class="font-medium mb-1">Celular</label>
+                                        <input type="text" id="celular" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.cel_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="direccion" class="font-medium mb-1">Dirección</label>
+                                        <input type="text" id="direccion" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.dir_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] w-full">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="email" class="font-medium mb-1">Email</label>
+                                        <input type="email" id="email" [readonly]="isReadOnly"
+                                            [(ngModel)]="usuario.email_usuario"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] w-full">
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 flex justify-center space-x-4">
+                                    <button type="button" (click)="toggleEdit()" [disabled]="!isReadOnly"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Editar
+                                    </button>
+
+                                    <button (click)="guardarUsuario()" [disabled]="isReadOnly"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

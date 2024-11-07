@@ -1,0 +1,310 @@
+<!-- Llamado del encabezado -->
+<app-header></app-header>
+
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+    'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
+    <div class="max-w-[94rem] mx-auto mt-12">
+        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
+                <h1 class="font-bold text-2xl sm:text-3xl ml-2">Preparto</h1>
+                <button (click)="volver()"
+                    class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
+                    Volver
+                </button>
+            </div>
+        </div>
+
+        <!-- Diseño del formulario -->
+        <div class="flex flex-wrap mt-5 uppercase ">
+            <div class="w-[70%] justify-center mx-auto">
+                <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer">
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(1)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 1, 'text-white bg-[#00acc9]': openTab === 1}">
+                            Final de gestación
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(2)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 2, 'text-white bg-[#00acc9]': openTab === 2}">
+                            Laboratorio intraparto
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(3)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 3, 'text-white bg-[#00acc9]': openTab === 3}">
+                            Seguimientos post obstétrico
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(4)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 4, 'text-white bg-[#00acc9]': openTab === 4}">
+                            Mortalidad perinatal
+                        </a>
+                    </li>
+                </ul>
+
+            <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded border border-gray-300">
+                <div class="px-4 py-5 flex-auto">
+                    <div class="tab-content tab-space">
+                        <!-- Final de gestación -->
+                        <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                <div class="flex flex-col text-xs ">
+                                    <label for="terminacion" class="font-medium mb-1">Terminación de la
+                                        gestación</label>
+                                    <select id="terminacion"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                        [(ngModel)]="finalizacionGestacion.cod_terminacion"
+                                        [disabled]="ReadonlyFinalizacionGestacion">
+                                        <option *ngFor="let terminacion of terminaciones"
+                                            [value]="terminacion.cod_terminacion">
+                                            {{ terminacion.nom_terminacion }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="fec_evento" class="font-medium mb-1 ">Fecha del evento
+                                        obstétrico</label>
+                                    <input type="date" id="fec_evento"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                        [(ngModel)]="finalizacionGestacion.fec_evento"
+                                        [readonly]="ReadonlyFinalizacionGestacion">
+                                </div>
+
+                            </div>
+                            <div class="mt-4 flex justify-center space-x-4">
+                                <button type="button" (click)="toggleEditFinalizacionGestacion()"
+                                    [disabled]="!ReadonlyFinalizacionGestacion"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Editar
+                                </button>
+
+                                <button (click)="guardarFinalizacionGestacion()"
+                                    [disabled]="ReadonlyFinalizacionGestacion && !isEditing"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+
+                            <!-- Laboratorio intraparto -->
+                            <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida para
+                                        sífilis
+                                        intraparto</label>
+                                    <select id="pru_sifilis" [(ngModel)]="laboratorioIntraparto.pru_sifilis"
+                                        [disabled]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                        <option value="Positivo">Positivo</option>
+                                        <option value="Negativo">Negativo</option>
+                                    </select>
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="fec_sifilis" class="font-medium mb-1">Fecha prueba treponémica rápida
+                                        para
+                                        sífilis intraparto</label>
+                                    <input type="date" id="fec_sifilis" [(ngModel)]="laboratorioIntraparto.fec_sifilis"
+                                        [readonly]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                </div>
+
+                                <!-- Select para prueba VDRL -->
+                                <div class="flex flex-col text-xs">
+                                    <label for="pruebaVDRL" class="font-medium mb-1">Prueba no treponémica (VDRL) para
+                                        sífilis intraparto</label>
+                                    <select id="pruebaVDRL" [(ngModel)]="laboratorioIntraparto.cod_vdrl"
+                                        [disabled]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                        <option *ngFor="let prueba of pruebaVDRL" [value]="prueba.cod_vdrl">
+                                            {{ prueba.num_vdrl }} <!-- Aquí muestra el valor directamente -->
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="fec_vdrl" class="font-medium mb-1">Fecha prueba no treponémica (VDRL)
+                                        para
+                                        sífilis intraparto</label>
+                                    <input type="date" id="fec_vdrl" [(ngModel)]="laboratorioIntraparto.fec_vdrl"
+                                        [readonly]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="rec_sifilis" class="font-medium mb-1">Recibió tratamiento para
+                                        sífilis</label>
+                                    <select id="rec_sifilis" [(ngModel)]="laboratorioIntraparto.rec_sifilis"
+                                        [disabled]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="fec_tratamiento" class="font-medium mb-1">Fecha de inicio de tratamiento
+                                        para sífilis intraparto</label>
+                                    <input type="date" id="fec_tratamiento"
+                                        [(ngModel)]="laboratorioIntraparto.fec_tratamiento"
+                                        [readonly]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
+                                    <select id="pru_vih" [(ngModel)]="laboratorioIntraparto.pru_vih"
+                                        [disabled]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                        <option value="Positivo">Positivo</option>
+                                        <option value="Negativo">Negativo</option>
+                                    </select>
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
+                                    <input type="date" id="fec_vih" [(ngModel)]="laboratorioIntraparto.fec_vih"
+                                        [readonly]="ReadonlyLaboratorioIntraparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                </div>
+
+                            </div>
+                            <div class="mt-4 flex justify-center space-x-4">
+                                <button type="button" (click)="toggleEditLaboratorioIntraparto()"
+                                    [disabled]="!ReadonlyLaboratorioIntraparto"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Editar
+                                </button>
+
+                                <button (click)="guardarLaboratorioIntraparto()"
+                                    [disabled]="ReadonlyLaboratorioIntraparto && !isEditing"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+
+
+                            <!-- Seguimientos post obstétrico -->
+                            <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                <div class="flex flex-col text-xs ">
+                                    <label for="condicionEgreso" class="font-medium mb-1">Condición al egreso tras el
+                                        parto
+                                        o aborto</label>
+                                    <select id="condicionEgreso" [(ngModel)]="seguimiento.con_egreso"
+                                        [disabled]="ReadonlySeguimiento"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                        <option value="Vivo">Vivo</option>
+                                        <option value="Muerto">Muerto</option>
+                                    </select>
+                                </div>
+
+                                <div *ngIf="seguimiento.con_egreso === 'Muerto'" class="flex flex-col text-xs">
+                                    <label for="fechaFallecimiento" class="font-medium mb-1 ">Fecha del
+                                        fallecimiento</label>
+                                    <input type="date" id="fechaFallecimiento"
+                                        [(ngModel)]="seguimiento.fec_fallecimiento" [readonly]="ReadonlySeguimiento"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="fechaPlanificacion" class="font-medium mb-1 ">Fecha de atención
+                                        planificación familiar posparto</label>
+                                    <input type="date" id="fechaPlanificacion"
+                                        [(ngModel)]="seguimiento.fec_planificacion" [readonly]="ReadonlySeguimiento"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                </div>
+
+                                <!-- Select para métodos anticonceptivos -->
+                                <div class="flex flex-col text-xs">
+                                    <label for="metodoAnticonceptivo" class="font-medium mb-1">Método anticonceptivo o
+                                        pos
+                                        evento obstétrico</label>
+                                    <select id="metodoAnticonceptivo" [(ngModel)]="seguimiento.cod_metodo"
+                                        [disabled]="ReadonlySeguimiento"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                        <option *ngFor="let metodo of metodos" [value]="metodo.cod_metodo">
+                                            {{ metodo.nom_metodo }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="mt-4 flex justify-center space-x-4">
+                                <button type="button" (click)="toggleEditSeguimiento()"
+                                    [disabled]="!ReadonlySeguimiento"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Editar
+                                </button>
+
+                                <button (click)="guardarSeguimiento()" [disabled]="ReadonlySeguimiento && !isEditing"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Guardar
+                                </button>
+                            </div>
+
+                        </div>
+
+
+
+                            <!-- Mortalidad preparto -->
+                            <div [ngClass]="{'hidden': openTab !== 4, 'block': openTab === 4}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="fec_defuncion" class="font-medium mb-1">Fecha de defunción</label>
+                                    <input type="date" id="fec_defuncion" [(ngModel)]="mortalidadPreparto.fec_defuncion"
+                                        [readonly]="ReadonlyMortalidadPreparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                </div>
+
+                                <div class="flex flex-col text-xs">
+                                    <label for="cod_mortalidad" class="font-medium mb-1">Clasificación según momento de
+                                        muerte</label>
+                                    <select id="cod_mortalidad" [(ngModel)]="mortalidadPreparto.cod_mortalidad"
+                                        [disabled]="ReadonlyMortalidadPreparto"
+                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                        <option *ngFor="let mortalidad of mortalidadPerinatal"
+                                            [value]="mortalidad.cod_mortalidad">
+                                            {{ mortalidad.cla_muerte }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="mt-4 flex justify-center space-x-4">
+                                <button type="button" (click)="toggleEditMortalidadPreparto()"
+                                    [disabled]="!ReadonlyMortalidadPreparto"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Editar
+                                </button>
+
+                                <button (click)="guardarMortalidadPreparto()"
+                                    [disabled]="ReadonlyMortalidadPreparto && !isEditing"
+                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

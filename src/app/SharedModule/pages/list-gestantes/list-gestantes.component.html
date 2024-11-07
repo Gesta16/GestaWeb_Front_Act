@@ -1,0 +1,93 @@
+<!-- Este archivo contiene la lista de usuarios (Mujeres gestantes) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Encabezado -->
+<!-- <app-header></app-header> -->
+
+<!-- Contenedor principal -->
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+    'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
+    <div class="max-w-[94rem] mx-auto mt-12">
+        <!-- Título y botón de crear -->
+        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
+                <h1 class="font-bold text-2xl sm:text-3xl ml-2">Gestantes</h1>
+                <button [routerLink]="['/add-usuarios']"
+                    class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
+                    Crear
+                </button>
+            </div>
+        </div>
+
+    <!-- Estructura y estilo tabla -->
+    <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 overflow-x-auto mt-[50px]">
+        <table class="w-full text-sm text-center text-gray-700">
+            <thead class="text-xs text-gray-700 uppercase bg-[#44BDD4]">
+                <tr>
+                    <th scope="col" class="px-5 py-3">Tipo de documento</th>
+                    <th scope="col" class="px-5 py-3">N° documento</th>
+                    <th scope="col" class="px-5 py-3">Nombre</th>
+                    <th scope="col" class="px-5 py-3">Apellido</th>
+                    <th scope="col" class="px-5 py-3">Edad</th>
+                    <th scope="col" class="px-5 py-3">Teléfono</th>
+                    <th scope="col" class="px-5 py-3">Correo electrónico</th>
+                    <th scope="col" class="px-5 py-3">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of paginatedUsuarios" class="border-b hover:bg-gray-50">
+                    <td class="px-6 py-4">{{ getTipoDocumentoNombre(usuario.cod_documento) }}</td>
+                    <td class="px-6 py-4">{{ usuario.documento_usuario }}</td>
+                    <td class="px-6 py-4">{{ usuario.nom_usuario }}</td>
+                    <td class="px-6 py-4">{{ usuario.ape_usuario }}</td>
+                    <td class="px-6 py-4">{{ usuario.edad_usuario }}</td>
+                    <td class="px-6 py-4">{{ usuario.tel_usuario }}</td>
+                    <td class="px-8 py-4">{{ usuario.email_usuario }}</td>
+                    <td class="px-7 py-4 flex justify-center space-x-2">
+                        <!-- Botón para abrir el modal de ver usuario -->
+                        <button (click)="abrirModalVer(usuario)"
+                            class="flex items-center h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
+                            <span class="iconify fa-lg" data-icon="fluent:form-24-filled"></span>
+                        </button>
+
+                        <!-- Botón para crear proceso si no hay ninguno -->
+                        <button (click)="crearProceso(usuario.id_usuario)" *ngIf="(usuario.procesosCount ?? 0) == 0"
+                            class="flex items-center h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
+                            <span class="iconify fa-lg" data-icon="mingcute:add-line"></span>
+                        </button>
+
+                        <!-- Botón para ver usuario si hay exactamente un proceso -->
+                        <button *ngIf="usuario.procesosCount != 0" (click)="verUsuario(usuario.id_usuario)"
+                                class="flex items-center h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
+                            <span class="iconify fa-lg" data-icon="fa-solid:baby"></span>
+                        </button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <!-- Paginación -->
+        <nav class="flex items-center justify-center pt-4 mb-4" aria-label="Table navigation">
+            <ul class="inline-flex -space-x-px text-sm h-8">
+                <li *ngIf="currentPage > 1">
+                    <a (click)="changePage(currentPage - 1)"
+                        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-cyan-500">Anterior</a>
+                </li>
+                <li *ngFor="let page of totalPagesArray">
+                    <a (click)="changePage(page)"
+                        [ngClass]="{'bg-[#E8f7fd] text-black': page === currentPage, 'text-gray-500 bg-white': page !== currentPage}"
+                        class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 hover:bg-cyan-500 hover:text-white">
+                        {{ page }}
+                    </a>
+                </li>
+                <li *ngIf="currentPage < totalPages">
+                    <a (click)="changePage(currentPage + 1)"
+                        class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-cyan-500">Siguiente</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

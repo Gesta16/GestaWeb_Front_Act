@@ -18,19 +18,7 @@ import { MunicipioService } from '../../../Services/municipio.service';
 })
 export class AddAdminComponent implements OnInit {
 
-  admin: Admin = {
-    id_admin: 0,
-    cod_ips: 0,
-    nom_admin: '',
-    ape_admin: '',
-    email_admin: '',
-    tel_admin: '',
-    cod_documento: 0,
-    documento_admin: '',
-    cod_departamento: 0,
-    cod_municipio: 0,
-    
-  };
+  admin: Admin = new Admin;
 
   listIps: Ips[] = [];
   listTipoDocumentos: TipoDocumento[] = [];
