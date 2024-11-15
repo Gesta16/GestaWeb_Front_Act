@@ -10,14 +10,15 @@ export class MenuService {
 
   private roleRoutes = {
     superadmin: SharedModuleRoutingModule.getRoutes(),
-    
+    admin: SharedModuleRoutingModule.getRoutes(),
+    operador: SharedModuleRoutingModule.getRoutes(),
+    user: SharedModuleRoutingModule.getRoutes(),
   };
 
-  constructor() {}
+  constructor() { }
 
   getMenuItemsForRole(role: string): any[] {
     const routes = this.roleRoutes[role] || [];
-  
     // Función para aplanar la estructura de rutas con rutas anidadas
     function flattenRoutes(routes: Routes): Routes {
       return routes.reduce((acc: Routes, route) => {
@@ -30,11 +31,11 @@ export class MenuService {
         return acc;
       }, []);
     }
-    
-  
+
+
     const flatRoutes = flattenRoutes(routes);
     //console.log('Rutas aplanadas:', flatRoutes);
-  
+
     // Filtrar y mapear las rutas basadas en los roles y `showInMenu`
     return flatRoutes
       .filter(route => {
@@ -48,8 +49,8 @@ export class MenuService {
         icon: route.data?.['icon'] || 'fa-solid fa-question'
       }));
   }
-  
-  
+
+
 
   private isExpandedSubject = new BehaviorSubject<boolean>(true); // Estado inicial de expansión
   isExpanded$ = this.isExpandedSubject.asObservable();

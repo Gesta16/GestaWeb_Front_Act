@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/Home/home.component';
-import { DashboardComponent } from './pages/Dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RoleGuard } from '../guards/role.guard';
 import { ListAdminComponent } from './pages/list-admin/list-admin.component';
 import { ListIpsComponent } from './pages/list-ips/list-ips.component';
@@ -9,6 +9,7 @@ import { ListSuperAdminComponent } from './pages/list-super-admin/list-super-adm
 import { ListOperadoresComponent } from './pages/list-operadores/list-operadores.component';
 import { ListGestantesComponent } from './pages/list-gestantes/list-gestantes.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
 
 const routes: Routes = [
   {
@@ -19,38 +20,43 @@ const routes: Routes = [
         path: 'dashboard', component: DashboardComponent,
         canActivate: [RoleGuard],
         data: {
-          title: 'Dashboard', icon: 'fa-solid fa-home', expectedRoles: ['superadmin', 'admin'], showInMenu: true
+          title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin','operador','user'], showInMenu: true
         }
-      },
-      {
-        path: 'list-admin', component: ListAdminComponent, 
-        canActivate:[RoleGuard],
-        data: { title: 'Admin', icon: 'fa-solid fa-home', expectedRoles: ['superadmin', 'admin'], showInMenu: true }
-      },
-      {
-        path:'list-ips', component:ListIpsComponent,
-        canActivate:[RoleGuard],
-        data:{title:'IPS', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
       },
       {
         path:'list-superadmin', component:ListSuperAdminComponent,
         canActivate:[RoleGuard],
-        data:{title:'SuperAdmin', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
+        data:{title:'SuperAdmin', icon:'fa-solid fa-user-tie', expectedRoles:['superadmin'], showInMenu:true}
+      },
+      {
+        path:'list-ips', component:ListIpsComponent,
+        canActivate:[RoleGuard],
+        data:{title:'IPS', icon:'fa-solid fa-hospital', expectedRoles:['superadmin','admin'], showInMenu:true}
+      },
+      {
+        path: 'list-admin', component: ListAdminComponent, 
+        canActivate:[RoleGuard],
+        data: { title: 'Administradores', icon: 'fa-solid fa-users', expectedRoles: ['superadmin', 'admin'], showInMenu: true }
       },
       {
         path:'list-operadores', component:ListOperadoresComponent,
         canActivate:[RoleGuard],
-        data:{title:'Operadores', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
+        data:{title:'Operadores', icon:'fa-solid fa-stethoscope', expectedRoles:['superadmin','admin'], showInMenu:true}
       },
       {
         path:'list-gestantes', component:ListGestantesComponent,
         canActivate:[RoleGuard],
-        data:{title:'Gestantes', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
+        data:{title:'Gestantes', icon:'fa-solid fa-users', expectedRoles:['superadmin','admin','operador'], showInMenu:true}
+      },
+      {
+        path:'reportes', component:ReporteComponent,
+        canActivate:[RoleGuard],
+        data:{title:'Reportes', icon:'fa-solid fa-clipboard-check', expectRoles:['superadmin'], showInMenu:true}
       },
       {
         path:'Perfil', component:PerfilComponent,
         canActivate:[RoleGuard],
-        data:{title:'Perfil', icon:'fa-solid fa-home', expectedRoles:['superadmin'], showInMenu:true}
+        data:{title:'Perfil', icon:'fa-solid fa-user', expectedRoles:['superadmin'], showInMenu:true}
       }
     ]
   }

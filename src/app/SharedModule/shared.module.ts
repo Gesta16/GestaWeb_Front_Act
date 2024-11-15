@@ -10,7 +10,7 @@ import { ModalAlimentacionComponent } from './pages/Home/Modales/modal-alimentac
 import { ModalEjercicioComponent } from './pages/Home/Modales/modal-ejercicio/modal-ejercicio.component';
 import { ModalCrecimientoComponent } from './pages/Home/Modales/modal-crecimiento/modal-crecimiento.component';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './pages/Dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddAdminComponent } from './pages/add-admin/add-admin.component';
 import { ListAdminComponent } from './pages/list-admin/list-admin.component';
 import { ListIpsComponent } from './pages/list-ips/list-ips.component';
@@ -29,7 +29,7 @@ import { Ruta3Component } from './pages/formulario/ruta-3/ruta-3.component';
 import { Ruta4Component } from './pages/formulario/ruta-4/ruta-4.component';
 import { Ruta5Component } from './pages/formulario/ruta-5/ruta-5.component';
 import { Ruta6Component } from './pages/formulario/ruta-6/ruta-6.component';
-import { DahboardComponent } from './pages/dahboard/dahboard.component';
+import { HeaderComponent } from './pages/header/header.component';
 
 
 
@@ -64,7 +64,7 @@ import { DahboardComponent } from './pages/dahboard/dahboard.component';
     Ruta4Component,
     Ruta5Component,
     Ruta6Component,
-    DahboardComponent
+    HeaderComponent
   ],
   imports: [
     CommonModule,

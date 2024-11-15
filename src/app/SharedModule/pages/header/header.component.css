@@ -1,0 +1,17 @@
+.header:hover {
+    animation: pulse 2.0s forwards;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: #00ACC9;
+    }
+
+    50% {
+        background-color: #0097A7;
+    }
+
+    100% {
+        background-color: #00ACC9;
+    }
+}
