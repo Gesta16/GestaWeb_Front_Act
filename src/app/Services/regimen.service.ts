@@ -26,6 +26,6 @@ export class RegimenService {
   }
 
   getRegimenes(): Observable<{ estado: string; regimen: Regimen[] }> {
-    return this.http.get<{ estado: string; regimen: Regimen[] }>(this.apiUrl);
+    return this.http.get<{ estado: string; regimen: Regimen[] }>(this.apiUrl,{headers:this.createHeaders()});
   }
 }

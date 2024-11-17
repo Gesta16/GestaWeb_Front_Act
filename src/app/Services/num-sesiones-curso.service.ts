@@ -10,7 +10,7 @@ import { NumSesionesCurso } from '../Models/Num-secciones-curso.model';
 })
 export class NumSesionesCursoService {
 
-  private apiUrl = environment.apiUrl + 'sesiones-curso-paternidad-maternidad';
+  private apiUrl = environment.apiUrl + 'sesiones-cpm';
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   private createHeaders(): HttpHeaders {
