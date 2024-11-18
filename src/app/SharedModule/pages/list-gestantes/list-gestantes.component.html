@@ -10,7 +10,7 @@
     'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
     <div class="max-w-[94rem] mx-auto mt-12">
         <!-- Título y botón de crear -->
-        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+        <div class="border-b border-gray-300 mb-4 h-auto">
             <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
                 <h1 class="font-bold text-2xl sm:text-3xl ml-2">Gestantes</h1>
                 <button [routerLink]="['/add-gestante']"
@@ -30,8 +30,6 @@
                     <th scope="col" class="px-5 py-3">Nombre</th>
                     <th scope="col" class="px-5 py-3">Apellido</th>
                     <th scope="col" class="px-5 py-3">Edad</th>
-                    <th scope="col" class="px-5 py-3">Teléfono</th>
-                    <th scope="col" class="px-5 py-3">Correo electrónico</th>
                     <th scope="col" class="px-5 py-3">Acciones</th>
                 </tr>
             </thead>
@@ -42,8 +40,6 @@
                     <td class="px-6 py-4">{{ usuario.nom_usuario }}</td>
                     <td class="px-6 py-4">{{ usuario.ape_usuario }}</td>
                     <td class="px-6 py-4">{{ usuario.edad_usuario }}</td>
-                    <td class="px-6 py-4">{{ usuario.tel_usuario }}</td>
-                    <td class="px-8 py-4">{{ usuario.email_usuario }}</td>
                     <td class="px-7 py-4 flex justify-center space-x-2">
                         <!-- Botón para abrir el modal de ver usuario -->
                         <!-- <button (click)="abrirModalVer(usuario)"

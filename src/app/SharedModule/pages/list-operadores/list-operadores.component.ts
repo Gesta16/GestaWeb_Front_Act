@@ -4,6 +4,7 @@ import { OperadorService } from '../../../Services/operador.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddOperadoresComponent } from '../add-operdores/add-operdores.component';
+import { MenuService } from '../../../Services/menu.service';
 
 @Component({
   selector: 'app-list-operadores',
@@ -28,12 +29,19 @@ export class ListOperadoresComponent {
     private operadorService: OperadorService,
     private tipoDocumentoService: TipoDocumentoService,
     private _matDialog: MatDialog,
+    private menuService: MenuService
   ) { }
 
   ngOnInit() {
     this.checkScreenSize();
     this.loadOperadores();
     this.loadTiposDocumento();
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
+    this.menuService.menuVisible$.subscribe(isVisible => {
+      this.isVisible = isVisible;
+    });
   }
 
   private checkScreenSize() {

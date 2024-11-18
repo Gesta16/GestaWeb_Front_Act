@@ -234,7 +234,7 @@ export class AddGestanteComponent {
 
   volver() {
     if (this.id == null || this.id == 0) {
-      this.router.navigate(['/list-usuarios']);
+      this.router.navigate(['/list-gestantes']);
     } else {
       this.router.navigate(['/ruta-gestante', this.id]);
     }

@@ -61,9 +61,9 @@ const routes: Routes = [
         data:{title:'Reportes', icon:'fa-solid fa-clipboard-check', expectRoles:['superadmin'], showInMenu:true}
       },
       {
-        path:'Perfil', component:PerfilComponent,
-        canActivate:[RoleGuard],
-        data:{title:'Perfil', icon:'fa-solid fa-user', expectedRoles:['superadmin'], showInMenu:true}
+        path:'perfil', component:PerfilComponent,
+        // canActivate:[RoleGuard],
+        data:{showInMenu:false}
       },
       {
         path:'add-gestante', component:AddGestanteComponent,

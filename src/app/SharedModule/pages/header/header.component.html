@@ -1,14 +1,50 @@
-<div class="w-full bg-[#00ACC9] h-20 fixed top-0 left-0 z-40">
-    <div class="p-2 flex items-center justify-between">
-        <!-- Imagen en la esquina superior izquierda -->
-        <img src="assets/images/header/ucc_white.png" alt="Imagen" class="h-16 w-auto">
 
-        <!-- Botón-->
-        <div class="flex items-center space-x-4 md:space-x-10 mr-8">
-            <button (click)="logout()"
-                class="h-10 bg-white text-[#00ACC9] py-2 px-4 rounded-xl hover:bg-[#f6f6f6] focus:outline-none">
-                Cerrar sesión
-            </button>
+<header class="w-full bg-[#00ACC9] h-20 fixed top-0 left-0 z-40 flex flex-col md:flex-row md:items-center md:h-20">
+
+    <div class="flex items-center justify-between w-full md:flex-row">
+        <!-- Estilos del icono del menú y el logo -->
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center justify-center w-20 h-20 bg-[#059ab4] cursor-pointer hover:bg-[#80BA27]"
+                (click)="toggleSidebar()">
+                <ng-container *ngIf="isExpanded; else burgerIcon">
+                    <i class="fa-solid fa-minus text-white text-3xl"></i> <!-- X cuando está expandido -->
+                </ng-container>
+                <ng-template #burgerIcon>
+                    <i class="fa-solid fa-bars text-white text-3xl"></i>
+                </ng-template>
+            </div>
+
+            <!-- Imagen en la esquina superior izquierda -->
+            <img src="assets/images/header/ucc_white.png" alt="Imagen" class="h-16 w-auto">
+        </div>
+
+        <!-- Contenedor del Buscador y el Perfil -->
+        <div class="flex items-center space-x-4 md:space-x-10 mr-8 relative">
+            <!-- Input de buscar -->
+            <div class="relative w-full sm:w-64 md:w-auto md:block lg:max-w-xs hidden">
+                <input type="text"
+                    class="w-full h-10 pl-4 pr-10 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#00ACC9]">
+                <span class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                    <i class="fa-solid fa-magnifying-glass text-[#00ACC9]"></i>
+                </span>
+            </div>
+
+            <!-- Icono de usuario y nombre -->
+            <div class="flex items-center space-x-2 cursor-pointer" (click)="toggleDropdown()">
+                <i class="fa-solid fa-circle-user text-white text-3xl"></i>
+                <p class="text-white hidden md:block">{{ roleName }}</p>
+            </div>
         </div>
     </div>
-</div>
+    
+    <!-- Menú desplegable de perfil y cerrar sesión -->
+    <div *ngIf="showDropdown" class="absolute right-0 mt-20 md:mt-40 mr-6 w-48 bg-white rounded-lg shadow-lg z-50">
+        <p class="text-gray-700 px-4 py-2 border-b font-semibold text-center">BIENVENIDO!</p>
+        <button [routerLink]="'/perfil'" class="flex items-center px-4 py-2 hover:bg-gray-100 w-full">
+            <i class="fa-solid fa-user text-gray-500 mr-2"></i> Perfil
+        </button>
+        <button (click)="logout()" class="flex items-center px-4 py-2 hover:bg-gray-100 w-full">
+            <i class="fa-solid fa-right-from-bracket text-gray-500 mr-2"></i> Cerrar Sesión
+        </button>
+    </div>
+</header>
