@@ -4,7 +4,7 @@
 <div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
     <div class="max-w-[94rem] mx-auto mt-12">
-        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+        <div class="border-b border-gray-300mb-4 h-auto">
             <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
                 <h1 class="font-bold text-2xl sm:text-3xl ml-2">Análisis y prevención</h1>
                 <button (click)="volver()"
@@ -14,916 +14,1172 @@
             </div>
         </div>
 
-    <!-- Diseño del formulario -->
-    <div class="flex flex-wrap mt-5 uppercase ">
-        <div class="w-[95%] justify-center mx-auto">
-            <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer">
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(1)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 1, 'text-white bg-[#00acc9]': openTab === 1}">
-                        I trimestre
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(2)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 2, 'text-white bg-[#00acc9]': openTab === 2}">
-                        Sección 2
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(3)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 3, 'text-white bg-[#00acc9]': openTab === 3}">
-                        Sección 3
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(4)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 4, 'text-white bg-[#00acc9]': openTab === 4}">
-                        Sección 4
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(5)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 5, 'text-white bg-[#00acc9]': openTab === 5}">
-                        II trimestre
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(6)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 6, 'text-white bg-[#00acc9]': openTab === 6}">
-                        Sección 2
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(7)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 7, 'text-white bg-[#00acc9]': openTab === 7}">
-                        Sección 3
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(8)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 8, 'text-white bg-[#00acc9]': openTab === 8}">
-                        III trimestre
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(9)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 9, 'text-white bg-[#00acc9]': openTab === 9}">
-                        Sección 2
-                    </a>
-                </li>
-                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                        (click)="toggleTabs(10)"
-                        [ngClass]="{'text-[#00acc9] bg-white': openTab !== 10, 'text-white bg-[#00acc9]': openTab === 10}">
-                        its
-                    </a>
-                </li>
-            </ul>
+        <!-- Diseño del formulario -->
+        <div class="flex flex-wrap mt-5 uppercase ">
+            <div class="w-[95%] justify-center mx-auto">
+                <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer">
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(1)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 1, 'text-white bg-[#00acc9]': openTab === 1}">
+                            I trimestre
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(2)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 2, 'text-white bg-[#00acc9]': openTab === 2}">
+                            Sección 2
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(3)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 3, 'text-white bg-[#00acc9]': openTab === 3}">
+                            Sección 3
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(4)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 4, 'text-white bg-[#00acc9]': openTab === 4}">
+                            Sección 4
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(5)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 5, 'text-white bg-[#00acc9]': openTab === 5}">
+                            II trimestre
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(6)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 6, 'text-white bg-[#00acc9]': openTab === 6}">
+                            Sección 2
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(7)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 7, 'text-white bg-[#00acc9]': openTab === 7}">
+                            Sección 3
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(8)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 8, 'text-white bg-[#00acc9]': openTab === 8}">
+                            III trimestre
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(9)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 9, 'text-white bg-[#00acc9]': openTab === 9}">
+                            Sección 2
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(10)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 10, 'text-white bg-[#00acc9]': openTab === 10}">
+                            its
+                        </a>
+                    </li>
+                </ul>
 
-            <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded border border-gray-300">
-                <div class="px-4 py-5 flex-auto">
-                    <div class="tab-content tab-space">
-                        <!-- laboratorio 1 trimestre -->
-                        <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div
+                    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded border border-gray-300">
+                    <div class="px-4 py-5 flex-auto">
+                        <div class="tab-content tab-space">
+                            <!-- laboratorio 1 trimestre -->
+                            <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="hemoclasificacion" class="font-medium mb-1">Hemoclasificación</label>
-                                    <select id="hemoclasificacion" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required [(ngModel)]="laboratorioITrimestre.cod_hemoclasifi"
-                                        name="cod_hemoclasifi">
-                                        <option *ngFor="let hemoclasificacion of hemoclasificaciones"
-                                            [value]="hemoclasificacion.cod_hemoclasifi">{{
-                                            hemoclasificacion.tip_hemoclasificacion }}
-                                        </option>
-                                    </select>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="hemoclasificacion"
+                                            class="font-medium mb-1">Hemoclasificación</label>
+                                        <select id="hemoclasificacion" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required [(ngModel)]="laboratorioITrimestre.cod_hemoclasifi"
+                                            name="cod_hemoclasifi">
+                                            <option *ngFor="let hemoclasificacion of hemoclasificaciones"
+                                                [value]="hemoclasificacion.cod_hemoclasifi">{{
+                                                hemoclasificacion.tip_hemoclasificacion }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_hemoclasificacion" class="font-medium mb-1">Fecha
+                                            hemoclasificación</label>
+                                        <input type="date" id="fec_hemoclasificacion"
+                                            [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_hemoclasificacion"
+                                            name="fec_hemoclasificacion">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="hemograma" class="font-medium mb-1">Hemograma</label>
+                                        <select id="hemograma" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.hem_laboratorio" name="hem_laboratorio">
+                                            <option value="Normal">Normal</option>
+                                            <option value="Anormal">Anormal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_hemograma" class="font-medium mb-1">Fecha hemograma</label>
+                                        <input type="date" id="fec_hemograma" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_hemograma" name="fec_hemograma">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="glicemia" class="font-medium mb-1">Glicemia</label>
+                                        <input type="text" id="glicemia" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.gli_laboratorio" name="gli_laboratorio">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_glicemia" class="font-medium mb-1">Fecha glicemia</label>
+                                        <input type="date" id="fec_glicemia" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_glicemia" name="fec_glicemia">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="antigeno" class="font-medium mb-1">Antígeno de superficie hepatitis
+                                            b</label>
+                                        <select id="antigeno" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.ant_laboratorio" name="ant_laboratorio">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_antigeno" class="font-medium mb-1">Fecha antígeno de superficie
+                                            hepatitis b</label>
+                                        <input type="date" id="fec_antigeno" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_antigeno" name="fec_antigeno">
+                                    </div>
+
                                 </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_hemoclasificacion" class="font-medium mb-1">Fecha
-                                        hemoclasificación</label>
-                                    <input type="date" id="fec_hemoclasificacion" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_hemoclasificacion"
-                                        name="fec_hemoclasificacion">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="hemograma" class="font-medium mb-1">Hemograma</label>
-                                    <select id="hemograma" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.hem_laboratorio" name="hem_laboratorio">
-                                        <option value="Normal">Normal</option>
-                                        <option value="Anormal">Anormal</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_hemograma" class="font-medium mb-1">Fecha hemograma</label>
-                                    <input type="date" id="fec_hemograma" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_hemograma" name="fec_hemograma">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="glicemia" class="font-medium mb-1">Glicemia</label>
-                                    <input type="text" id="glicemia" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.gli_laboratorio" name="gli_laboratorio">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_glicemia" class="font-medium mb-1">Fecha glicemia</label>
-                                    <input type="date" id="fec_glicemia" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_glicemia" name="fec_glicemia">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="antigeno" class="font-medium mb-1">Antígeno de superficie hepatitis
-                                        b</label>
-                                    <select id="antigeno" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.ant_laboratorio" name="ant_laboratorio">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_antigeno" class="font-medium mb-1">Fecha antígeno de superficie
-                                        hepatitis b</label>
-                                    <input type="date" id="fec_antigeno" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_antigeno" name="fec_antigeno">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Sección 2 -->
-                        <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
-                                    <select id="pru_vih" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.pru_vih" name="pru_vih">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecVih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
-                                    <input type="date" id="fecVih" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_vih">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pruSifilis" class="font-medium mb-1">Prueba treponémica rápida para
-                                        sífilis</label>
-                                    <select id="pruSifilis" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.pru_sifilis">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecSifilis" class="font-medium mb-1">Fecha prueba treponémica rápida
-                                        para
-                                        sífilis</label>
-                                    <input type="date" id="fecSifilis" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_sifilis">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="urocultivo" class="font-medium mb-1">Urocultivo</label>
-                                    <select id="urocultivo" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.uro_laboratorio">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecUrocultivo" class="font-medium mb-1">Fecha urocultivo</label>
-                                    <input type="date" id="fecUrocultivo" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_urocultivo">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="codAntibiograma" class="font-medium mb-1">Antibiograma</label>
-                                    <select id="codAntibiograma" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.cod_antibiograma" required>
-                                        <option *ngFor="let antibiograma of antibiogramas"
-                                            [value]="antibiograma.cod_antibiograma">{{ antibiograma.nom_antibiograma }}
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecAntibiograma" class="font-medium mb-1">Fecha antibiograma</label>
-                                    <input type="date" id="fecAntibiograma" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_antibiograma">
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                        <!-- Sección 3 -->
-                        <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="igGRubeola" class="font-medium mb-1">IG-G rubéola</label>
-                                    <select id="igGRubeola" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.ig_rubeola">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecIGGRubeola" class="font-medium mb-1">Fecha IG-G rubéola</label>
-                                    <input type="date" id="fecIGGRubeola" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_rubeola">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="igGToxoplasma" class="font-medium mb-1">IG-G toxoplasma</label>
-                                    <select id="igGToxoplasma" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.ig_toxoplasma">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecIGGToxoplasma" class="font-medium mb-1">Fecha IG-G toxoplasma</label>
-                                    <input type="date" id="fecIGGToxoplasma" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_toxoplasma">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="hemoparasito" class="font-medium mb-1">Hemoparásito - gota
-                                        gruesa</label>
-                                    <select id="hemoparasito" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.hem_gruesa">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecHemoparasito" class="font-medium mb-1">Fecha Hemoparásito - gota
-                                        gruesa</label>
-                                    <input type="date" id="fecHemoparasito" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_hemoparasito">
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <!-- Sección 4 -->
-                        <div [ngClass]="{'hidden': openTab !== 4, 'block': openTab === 4}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="elisaAntigenos" class="font-medium mb-1">Prueba de elisa antígenos
-                                        totales</label>
-                                    <select id="elisaAntigenos" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.pru_antigenos">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fechaElisaAntigenos" class="font-medium mb-1">Fecha prueba de elisa
-                                        antígenos totales</label>
-                                    <input type="date" id="fechaElisaAntigenos" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_antigenos">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="elisaAntigenosRecombinante" class="font-medium mb-1">Elisa antígenos
-                                        recombinante</label>
-                                    <select id="elisaAntigenosRecombinante" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.eli_recombinante">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fechaElisaRecombinante" class="font-medium mb-1">Fecha elisa antígenos
-                                        recombinante</label>
-                                    <input type="date" id="fechaElisaRecombinante" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_recombinante">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="coombisIndirecto" class="font-medium mb-1">Coombis indirecto
-                                        cuantitativo</label>
-                                    <select id="coombisIndirecto" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.coo_cuantitativo">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fechaCoombisIndirecto" class="font-medium mb-1">Fecha coombis
-                                        indirecto</label>
-                                    <input type="date" id="fechaCoombisIndirecto" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_coombs">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fechaEcografia" class="font-medium mb-1">Fecha ecografía obstétrica
-                                        tamizaje</label>
-                                    <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.fec_ecografia">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="edadGestacional" class="font-medium mb-1">Edad gestacional al momento de
-                                        la
-                                        ecografía</label>
-                                    <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.eda_gestacional">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="riesgoBiopsicosocial" class="font-medium mb-1">Riesgo biopsicosocial
-                                        escala
-                                        de herrera y hurtado</label>
-                                    <select id="riesgoBiopsicosocial" [disabled]="isReadOnlyLaboratorioI"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioITrimestre.rie_biopsicosocial">
-                                        <option value="alto_riesgo">Alto riesgo</option>
-                                        <option value="bajo_riesgo">Bajo riesgo</option>
-                                    </select>
-                                </div>
-
                             </div>
 
-                            <div class="mt-4 flex justify-center space-x-4">
-                                <button type="button" (click)="toggleEditLaboratorioI()"
-                                    [disabled]="!isReadOnlyLaboratorioI"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Editar
-                                </button>
+                            <!-- Sección 2 -->
+                            <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                <button (click)="guardarPrimerLaboratorio()"
-                                    [disabled]="isReadOnlyLaboratorioI && !isEditing"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Guardar
-                                </button>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba rápida
+                                            VIH</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
+                                        <select id="pru_vih" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.pru_vih" name="pru_vih">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecVih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
+                                        <input type="date" id="fecVih" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_vih">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba
+                                            treponémica rápida para sífilis</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pruSifilis" class="font-medium mb-1">Prueba treponémica rápida para
+                                            sífilis</label>
+                                        <select id="pruSifilis" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.pru_sifilis">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecSifilis" class="font-medium mb-1">Fecha prueba treponémica rápida
+                                            para
+                                            sífilis</label>
+                                        <input type="date" id="fecSifilis" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_sifilis">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó el
+                                            urocultivo</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="urocultivo" class="font-medium mb-1">Urocultivo</label>
+                                        <select id="urocultivo" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.uro_laboratorio">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecUrocultivo" class="font-medium mb-1">Fecha urocultivo</label>
+                                        <input type="date" id="fecUrocultivo" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_urocultivo">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó el
+                                            antibiograma</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="codAntibiograma" class="font-medium mb-1">Antibiograma</label>
+                                        <select id="codAntibiograma" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.cod_antibiograma" required>
+                                            <option *ngFor="let antibiograma of antibiogramas"
+                                                [value]="antibiograma.cod_antibiograma">{{ antibiograma.nom_antibiograma
+                                                }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecAntibiograma" class="font-medium mb-1">Fecha antibiograma</label>
+                                        <input type="date" id="fecAntibiograma" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_antibiograma">
+                                    </div>
+
+
+                                </div>
                             </div>
 
-                        </div>
+                            <!-- Sección 3 -->
+                            <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
+                                    <div class="flex flex-col text-xs">
+                                        <label for="igGRubeola" class="font-medium mb-1">IG-G rubéola</label>
+                                        <select id="igGRubeola" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.ig_rubeola">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
 
-                        <!-- Laboratorio 2 trimestre -->
-                        <div [ngClass]="{'hidden': openTab !== 5, 'block': openTab === 5}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecIGGRubeola" class="font-medium mb-1">Fecha IG-G rubéola</label>
+                                        <input type="date" id="fecIGGRubeola" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_rubeola">
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
-                                    <select id="pru_vih" [(ngModel)]="laboratorioIITrimestre.pru_vih"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="igGToxoplasma" class="font-medium mb-1">IG-G toxoplasma</label>
+                                        <select id="igGToxoplasma" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.ig_toxoplasma">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecIGGToxoplasma" class="font-medium mb-1">Fecha IG-G
+                                            toxoplasma</label>
+                                        <input type="date" id="fecIGGToxoplasma" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_toxoplasma">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="hemoparasito" class="font-medium mb-1">Hemoparásito - gota
+                                            gruesa</label>
+                                        <select id="hemoparasito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.hem_gruesa">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecHemoparasito" class="font-medium mb-1">Fecha Hemoparásito - gota
+                                            gruesa</label>
+                                        <input type="date" id="fecHemoparasito" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_hemoparasito">
+                                    </div>
+
                                 </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
-                                    <input type="date" id="fec_vih" [(ngModel)]="laboratorioIITrimestre.fec_vih"
-                                        [readonly]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida par
-                                        sífilis</label>
-                                    <select id="pru_sifilis" [(ngModel)]="laboratorioIITrimestre.pru_sifilis"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_sifilis" class="font-medium mb-1">Fecha prueba treponémica rápida
-                                        par
-                                        sífilis</label>
-                                    <input type="date" id="fec_sifilis" [(ngModel)]="laboratorioIITrimestre.fec_sifilis"
-                                        [readonly]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_oral" class="font-medium mb-1">Prueba de tolerancia oral a la
-                                        glucosa
-                                        (PTOG) basal</label>
-                                    <select id="pru_oral" [(ngModel)]="laboratorioIITrimestre.pru_oral"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Menor de 92mg/dl">Menor de 92mg/dl</option>
-                                        <option value="Mayor de 92mg/dl">Mayor de 92mg/dl</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_uno" class="font-medium mb-1">Prueba de tolerancia oral a la glucosa
-                                        (PTOG) 1 hora</label>
-                                    <select id="pru_uno" [(ngModel)]="laboratorioIITrimestre.pru_uno"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Menor de 180mg/dl">Menor de 180mg/dl</option>
-                                        <option value="Mayor de 180mg/dl">Mayor de 180mg/dl</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_dos" class="font-medium mb-1">Prueba de tolerancia oral a la glucosa
-                                        (PTOG) 2 hora</label>
-                                    <select id="pru_dos" [(ngModel)]="laboratorioIITrimestre.pru_dos"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Menor de 153mg/dl">Menor de 153mg/dl</option>
-                                        <option value="Mayor de 153mg/dl">Mayor de 153mg/dl</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_prueba" class="font-medium mb-1">Fecha prueba de tolerancia oral a
-                                        la
-                                        glucosa</label>
-                                    <input type="date" id="fec_prueba" [(ngModel)]="laboratorioIITrimestre.fec_prueba"
-                                        [readonly]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Sección 2-->
-                        <div [ngClass]="{'hidden': openTab !== 6, 'block': openTab === 6}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="rep_citologia" class="font-medium mb-1">Reporte de citología</label>
-                                    <select id="rep_citologia" [(ngModel)]="laboratorioIITrimestre.rep_citologia"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Normal">Normal</option>
-                                        <option value="Anormal">Anormal</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_citologia" class="font-medium mb-1">Fecha toma de citología</label>
-                                    <input type="date" id="fec_citologia"
-                                        [(ngModel)]="laboratorioIITrimestre.fec_citologia"
-                                        [readonly]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="ig_toxoplasma" class="font-medium mb-1">IG-M toxoplasma</label>
-                                    <select id="ig_toxoplasma" [(ngModel)]="laboratorioIITrimestre.ig_toxoplasma"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_toxoplasma" class="font-medium mb-1">Fecha IG-M toxoplasma</label>
-                                    <input type="date" id="fec_toxoplasma" [readonly]="isReadOnlyLaboratorioII"
-                                        [(ngModel)]="laboratorioIITrimestre.fec_toxoplasma"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_avidez" class="font-medium mb-1">Prueba de avidez IG-G</label>
-                                    <select id="pru_avidez" [(ngModel)]="laboratorioIITrimestre.pru_avidez"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_avidez" class="font-medium mb-1">Fecha Prueba de avidez IG-G</label>
-                                    <input type="date" id="fec_avidez" [(ngModel)]="laboratorioIITrimestre.fec_avidez"
-                                        [readonly]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="tox_laboratorio" class="font-medium mb-1">Toxoplasmosis IG-A</label>
-                                    <select id="tox_laboratorio" [(ngModel)]="laboratorioIITrimestre.tox_laboratorio"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_tox_laboratorio" class="font-medium mb-1">Fecha Toxoplasmosis
-                                        IG-A</label>
-                                    <input type="date" id="fec_tox_laboratorio" [readonly]="isReadOnlyLaboratorioII"
-                                        [(ngModel)]="laboratorioIITrimestre.fec_toxoplasmosis"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <!-- Sección 3-->
-                        <div [ngClass]="{'hidden': openTab !== 7, 'block': openTab === 7}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="hemoparasito" class="font-medium mb-1">Hemoparásito - gota
-                                        gruesa</label>
-                                    <select id="hemoparasito" [(ngModel)]="laboratorioIITrimestre.hem_gruesa"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fechaHemoparasito" class="font-medium mb-1">Fecha Hemoparásito - gota
-                                        gruesa</label>
-                                    <input type="date" id="fechaHemoparasito" [readonly]="isReadOnlyLaboratorioII"
-                                        [(ngModel)]="laboratorioIITrimestre.fec_hemoparasito"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="coombisIndirecto" class="font-medium mb-1">Coombis indirecto
-                                        cuantitativo</label>
-                                    <select id="coombisIndirecto" [(ngModel)]="laboratorioIITrimestre.coo_cualitativo"
-                                        [disabled]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="positivo">Positivo</option>
-                                        <option value="negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fechaCoombis" class="font-medium mb-1">Fecha coombis indirecto</label>
-                                    <input type="date" id="fechaCoombis" [(ngModel)]="laboratorioIITrimestre.fec_coombs"
-                                        [readonly]="isReadOnlyLaboratorioII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fechaEcografia" class="font-medium mb-1">Fecha ecografía obtétrica
-                                        detalle
-                                        anatómico</label>
-                                    <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioII"
-                                        [(ngModel)]="laboratorioIITrimestre.fec_ecografia"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="edadGestacional" class="font-medium mb-1">Edad gestacional al momento de
-                                        la
-                                        ecografía</label>
-                                    <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioII"
-                                        [(ngModel)]="laboratorioIITrimestre.eda_gestacional"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="riesgoBiopsicosocial" class="font-medium mb-1">Riesgo biopsicosocial
-                                        escala
-                                        de herrera y hurtado</label>
-                                    <select id="riesgoBiopsicosocial" [disabled]="isReadOnlyLaboratorioII"
-                                        [(ngModel)]="laboratorioIITrimestre.rie_biopsicosocial"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="alto">Alto riesgo</option>
-                                        <option value="bajo">Bajo riesgo</option>
-                                    </select>
-                                </div>
-
                             </div>
 
-                            <div class="mt-4 flex justify-center space-x-4">
-                                <button type="button" (click)="toggleEditLaboratorioII()"
-                                    [disabled]="!isReadOnlyLaboratorioII"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Editar
-                                </button>
 
-                                <button (click)="guardarSegundoLaboratorio()"
-                                    [disabled]="isReadOnlyLaboratorioII && !isEditing"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Guardar
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Sección 4 -->
+                            <div [ngClass]="{'hidden': openTab !== 4, 'block': openTab === 4}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                            elisa antígenos totales</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
 
-                        <!-- laboratorio 3 trimestre -->
-                        <div [ngClass]="{'hidden': openTab !== 8, 'block': openTab === 8}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="flex flex-col text-xs">
+                                        <label for="elisaAntigenos" class="font-medium mb-1">Prueba de elisa antígenos
+                                            totales</label>
+                                        <select id="elisaAntigenos" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.pru_antigenos">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="hemograma" class="font-medium mb-1">Hemograma</label>
-                                    <select id="hemograma" [disabled]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.hemograma">
-                                        <option value="Normal">Normal</option>
-                                        <option value="Anormal">Anormal</option>
-                                    </select>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fechaElisaAntigenos" class="font-medium mb-1">Fecha prueba de elisa
+                                            antígenos totales</label>
+                                        <input type="date" id="fechaElisaAntigenos" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_antigenos">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                            elisa antígenos recombinante</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="elisaAntigenosRecombinante" class="font-medium mb-1">Elisa antígenos
+                                            recombinante</label>
+                                        <select id="elisaAntigenosRecombinante" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.eli_recombinante">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fechaElisaRecombinante" class="font-medium mb-1">Fecha elisa
+                                            antígenos
+                                            recombinante</label>
+                                        <input type="date" id="fechaElisaRecombinante"
+                                            [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_recombinante">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de Coombis indirecto cuantitativo</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="coombisIndirecto" class="font-medium mb-1">Coombis indirecto
+                                            cuantitativo</label>
+                                        <select id="coombisIndirecto" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.coo_cuantitativo">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fechaCoombisIndirecto" class="font-medium mb-1">Fecha coombis
+                                            indirecto</label>
+                                        <input type="date" id="fechaCoombisIndirecto"
+                                            [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_coombs">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la ecografía obstétrica tamizaje</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fechaEcografia" class="font-medium mb-1">Fecha ecografía obstétrica
+                                            tamizaje</label>
+                                        <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_ecografia">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="edadGestacional" class="font-medium mb-1">Edad gestacional al
+                                            momento de
+                                            la
+                                            ecografía</label>
+                                        <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.eda_gestacional">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="riesgoBiopsicosocial" class="font-medium mb-1">Riesgo biopsicosocial
+                                            escala
+                                            de herrera y hurtado</label>
+                                        <select id="riesgoBiopsicosocial" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.rie_biopsicosocial">
+                                            <option value="alto_riesgo">Alto riesgo</option>
+                                            <option value="bajo_riesgo">Bajo riesgo</option>
+                                        </select>
+                                    </div>
+
                                 </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_hemograma" class="font-medium mb-1">Fecha hemograma</label>
-                                    <input type="date" id="fec_hemograma" [readonly]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.fec_hemograma">
-                                </div>
+                                <div class="mt-4 flex justify-center space-x-4">
+                                    <button type="button" (click)="toggleEditLaboratorioI()"
+                                        [disabled]="!isReadOnlyLaboratorioI"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Editar
+                                    </button>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
-                                    <select id="pru_vih" [disabled]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.pru_vih">
-                                        <option value="Normal">Normal</option>
-                                        <option value="Anormal">Anormal</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
-                                    <input type="date" id="fec_vih" [readonly]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.fec_vih">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida par
-                                        sífilis</label>
-                                    <select id="pru_sifilis" [disabled]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.pru_sifilis">
-                                        <option value="Normal">Normal</option>
-                                        <option value="Anormal">Anormal</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_sifilis" class="font-medium mb-1">Fecha prueba treponémica rápida
-                                        par
-                                        sífilis</label>
-                                    <input type="date" id="fec_sifilis" [readonly]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.fec_sifilis">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="ig_toxoplasma" class="font-medium mb-1">IG-M toxoplasma</label>
-                                    <select id="ig_toxoplasma" [disabled]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.ig_toxoplasma">
-                                        <option value="Normal">Normal</option>
-                                        <option value="Anormal">Anormal</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_toxoplasma" class="font-medium mb-1">Fecha IG-M toxoplasma</label>
-                                    <input type="date" id="fec_toxoplasma" [readonly]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.fec_toxoplasma">
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <!-- Seccion 2-->
-                        <div [ngClass]="{'hidden': openTab !== 9, 'block': openTab === 9}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="cul_rectal" class="font-medium mb-1">Cultivo rectal y vaginal</label>
-                                    <select id="cul_rectal" [disabled]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.cul_rectal">
-                                        <option value="Positivo">Positivo</option>
-                                        <option value="Negativo">Negativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_rectal" class="font-medium mb-1">Fecha cultivo rectal y
-                                        vaginal</label>
-                                    <input type="date" id="fec_rectal" [readonly]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.fec_rectal">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fec_biofisico" class="font-medium mb-1">Fecha Perfil biofísico</label>
-                                    <input type="date" id="fec_biofisico" [readonly]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.fec_biofisico">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="edad_gestacional" class="font-medium mb-1">Edad gestacional al momento
-                                        de la
-                                        ecografía</label>
-                                    <input type="text" id="edad_gestacional" [readonly]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.edad_gestacional">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="rie_biopsicosocial" class="font-medium mb-1">Riesgo biopsicosocial
-                                        escala de
-                                        herrera y hurtado</label>
-                                    <select id="rie_biopsicosocial" [disabled]="isReadOnlyLaboratorioIII"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="laboratorioIIITrimestre.rie_biopsicosocial">
-                                        <option value="Alto riesgo">Alto riesgo</option>
-                                        <option value="Bajo riesgo">Bajo riesgo</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <div class="mt-4 flex justify-center space-x-4">
-                                <button type="button" (click)="toggleEditLaboratorioIII()"
-                                    [disabled]="!isReadOnlyLaboratorioIII"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Editar
-                                </button>
-
-                                <button (click)="guardarTercerLaboratorio()"
-                                    [disabled]="isReadOnlyLaboratorioIII && !isEditing"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Guardar
-                                </button>
-                            </div>
-
-                        </div>
-
-                        <!-- ITS-->
-                        <div [ngClass]="{'hidden': openTab !== 10, 'block': openTab === 10}">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="eliVih" class="font-medium mb-1">Elisa para VIH</label>
-                                    <select id="eliVih" [disabled]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="its.eli_vih">
-                                        <option value="Reactivo">Reactivo</option>
-                                        <option value="No reactivo">No reactivo</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecVih" class="font-medium mb-1">Fecha elisa para VIH</label>
-                                    <input type="date" id="fecVih" [readonly]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="its.fec_vih">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="codVdrl" class="font-medium mb-1">Prueba no treponémica (VDRL) para
-                                        sífilis</label>
-                                    <select id="codVdrl" [disabled]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required [(ngModel)]="its.cod_vdrl">
-                                        <!-- Opción por defecto -->
-                                        <option *ngFor="let vdrl of Vdrl" [value]="vdrl.cod_vdrl">
-                                            {{ vdrl.num_vdrl }}
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecVdrl" class="font-medium mb-1">Fecha prueba no treponémica (VDRL)
-                                        para
-                                        sífilis</label>
-                                    <input type="date" id="fecVdrl" [readonly]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="its.fec_vdrl">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="codRpr" class="font-medium mb-1">Prueba no treponémica (RPR) para
-                                        sífilis</label>
-                                    <select id="codRpr" [disabled]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required [(ngModel)]="its.cod_rpr">
-                                        <!-- Opción por defecto -->
-                                        <option *ngFor="let rpr of Rpr" [value]="rpr.cod_rpr">
-                                            {{ rpr.num_rpr }}
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="fecRpr" class="font-medium mb-1">Fecha prueba no treponémica (RPR) para
-                                        sífilis</label>
-                                    <input type="date" id="fecRpr" [readonly]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="its.fec_rpr">
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="recTratamiento" class="font-medium mb-1">Recibió tratamiento para
-                                        sífilis</label>
-                                    <select id="recTratamiento" [disabled]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="its.rec_tratamiento">
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-
-                                <div class="flex flex-col text-xs">
-                                    <label for="recPareja" class="font-medium mb-1">Recibió tratamiento para sífilis
-                                        para la
-                                        pareja</label>
-                                    <select id="recPareja" [disabled]="isReadOnlyIts"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        [(ngModel)]="its.rec_pareja">
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
-                                    </select>
+                                    <button (click)="guardarPrimerLaboratorio()"
+                                        [disabled]="isReadOnlyLaboratorioI && !isEditing"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
                                 </div>
 
                             </div>
 
 
-                            <div class="mt-4 flex justify-center space-x-4">
-                                <button type="button" (click)="toggleEditIts()" [disabled]="!isReadOnlyIts"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Editar
-                                </button>
+                            <!-- Laboratorio 2 trimestre -->
+                            <div [ngClass]="{'hidden': openTab !== 5, 'block': openTab === 5}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                <button (click)="guardarIts()" [disabled]="isReadOnlyIts && !isEditing"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Guardar
-                                </button>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba rápida
+                                            VIH</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
+                                        <select id="pru_vih" [(ngModel)]="laboratorioIITrimestre.pru_vih"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
+                                        <input type="date" id="fec_vih" [(ngModel)]="laboratorioIITrimestre.fec_vih"
+                                            [readonly]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba treponémica rápida para
+                                            sífilis</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida para
+                                            sífilis</label>
+                                        <select id="pru_sifilis" [(ngModel)]="laboratorioIITrimestre.pru_sifilis"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_sifilis" class="font-medium mb-1">Fecha prueba treponémica
+                                            rápida para sífilis</label>
+                                        <input type="date" id="fec_sifilis"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_sifilis"
+                                            [readonly]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_oral" class="font-medium mb-1">Prueba de tolerancia oral a la
+                                            glucosa
+                                            (PTOG) basal</label>
+                                        <select id="pru_oral" [(ngModel)]="laboratorioIITrimestre.pru_oral"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Menor de 92mg/dl">Menor de 92mg/dl</option>
+                                            <option value="Mayor de 92mg/dl">Mayor de 92mg/dl</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_uno" class="font-medium mb-1">Prueba de tolerancia oral a la
+                                            glucosa
+                                            (PTOG) 1 hora</label>
+                                        <select id="pru_uno" [(ngModel)]="laboratorioIITrimestre.pru_uno"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Menor de 180mg/dl">Menor de 180mg/dl</option>
+                                            <option value="Mayor de 180mg/dl">Mayor de 180mg/dl</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_dos" class="font-medium mb-1">Prueba de tolerancia oral a la
+                                            glucosa
+                                            (PTOG) 2 hora</label>
+                                        <select id="pru_dos" [(ngModel)]="laboratorioIITrimestre.pru_dos"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Menor de 153mg/dl">Menor de 153mg/dl</option>
+                                            <option value="Mayor de 153mg/dl">Mayor de 153mg/dl</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_prueba" class="font-medium mb-1">Fecha prueba de tolerancia oral
+                                            a
+                                            la
+                                            glucosa</label>
+                                        <input type="date" id="fec_prueba"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_prueba"
+                                            [readonly]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Sección 2-->
+                            <div [ngClass]="{'hidden': openTab !== 6, 'block': openTab === 6}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la citología</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="rep_citologia" class="font-medium mb-1">Reporte de citología</label>
+                                        <select id="rep_citologia" [(ngModel)]="laboratorioIITrimestre.rep_citologia"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Normal">Normal</option>
+                                            <option value="Anormal">Anormal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_citologia" class="font-medium mb-1">Fecha toma de
+                                            citología</label>
+                                        <input type="date" id="fec_citologia"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_citologia"
+                                            [readonly]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="ig_toxoplasma" class="font-medium mb-1">IG-M toxoplasma</label>
+                                        <select id="ig_toxoplasma" [(ngModel)]="laboratorioIITrimestre.ig_toxoplasma"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_toxoplasma" class="font-medium mb-1">Fecha IG-M
+                                            toxoplasma</label>
+                                        <input type="date" id="fec_toxoplasma" [readonly]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_toxoplasma"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de avidez IG-G </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_avidez" class="font-medium mb-1">Prueba de avidez IG-G</label>
+                                        <select id="pru_avidez" [(ngModel)]="laboratorioIITrimestre.pru_avidez"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_avidez" class="font-medium mb-1">Fecha Prueba de avidez
+                                            IG-G</label>
+                                        <input type="date" id="fec_avidez"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_avidez"
+                                            [readonly]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+                                    
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de toxoplasmosis IG-A </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="tox_laboratorio" class="font-medium mb-1">Toxoplasmosis IG-A</label>
+                                        <select id="tox_laboratorio"
+                                            [(ngModel)]="laboratorioIITrimestre.tox_laboratorio"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_tox_laboratorio" class="font-medium mb-1">Fecha Toxoplasmosis
+                                            IG-A</label>
+                                        <input type="date" id="fec_tox_laboratorio" [readonly]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_toxoplasmosis"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <!-- Sección 3-->
+                            <div [ngClass]="{'hidden': openTab !== 7, 'block': openTab === 7}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba Hemoparásito - gota gruesa</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="hemoparasito" class="font-medium mb-1">Hemoparásito - gota
+                                            gruesa</label>
+                                        <select id="hemoparasito" [(ngModel)]="laboratorioIITrimestre.hem_gruesa"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fechaHemoparasito" class="font-medium mb-1">Fecha Hemoparásito -
+                                            gota
+                                            gruesa</label>
+                                        <input type="date" id="fechaHemoparasito" [readonly]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_hemoparasito"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba Coombis indirecto
+                                            cuantitativo </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="coombisIndirecto" class="font-medium mb-1">Coombis indirecto
+                                            cuantitativo</label>
+                                        <select id="coombisIndirecto"
+                                            [(ngModel)]="laboratorioIITrimestre.coo_cualitativo"
+                                            [disabled]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fechaCoombis" class="font-medium mb-1">Fecha coombis
+                                            indirecto</label>
+                                        <input type="date" id="fechaCoombis"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_coombs"
+                                            [readonly]="isReadOnlyLaboratorioII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la ecografía obstétrica
+                                            detalle anatómico </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fechaEcografia" class="font-medium mb-1">Fecha ecografía obstétrica
+                                            detalle anatómico</label>
+                                        <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_ecografia"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="edadGestacional" class="font-medium mb-1">Edad gestacional al
+                                            momento de la ecografía</label>
+                                        <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.eda_gestacional"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="riesgoBiopsicosocial" class="font-medium mb-1">Riesgo biopsicosocial
+                                            escala de herrera y hurtado</label>
+                                        <select id="riesgoBiopsicosocial" [disabled]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.rie_biopsicosocial"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="alto">Alto riesgo</option>
+                                            <option value="bajo">Bajo riesgo</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="mt-4 flex justify-center space-x-4">
+                                    <button type="button" (click)="toggleEditLaboratorioII()"
+                                        [disabled]="!isReadOnlyLaboratorioII"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Editar
+                                    </button>
+
+                                    <button (click)="guardarSegundoLaboratorio()"
+                                        [disabled]="isReadOnlyLaboratorioII && !isEditing"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            <!-- laboratorio 3 trimestre -->
+                            <div [ngClass]="{'hidden': openTab !== 8, 'block': openTab === 8}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="hemograma" class="font-medium mb-1">Hemograma</label>
+                                        <select id="hemograma" [disabled]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.hemograma">
+                                            <option value="Normal">Normal</option>
+                                            <option value="Anormal">Anormal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_hemograma" class="font-medium mb-1">Fecha hemograma</label>
+                                        <input type="date" id="fec_hemograma" [readonly]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.fec_hemograma">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba rápida VIH</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
+                                        <select id="pru_vih" [disabled]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.pru_vih">
+                                            <option value="Normal">Normal</option>
+                                            <option value="Anormal">Anormal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
+                                        <input type="date" id="fec_vih" [readonly]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.fec_vih">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba treponémica rápida para
+                                            sífilis </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida para
+                                            sífilis</label>
+                                        <select id="pru_sifilis" [disabled]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.pru_sifilis">
+                                            <option value="Normal">Normal</option>
+                                            <option value="Anormal">Anormal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_sifilis" class="font-medium mb-1">Fecha prueba treponémica
+                                            rápida
+                                            par
+                                            sífilis</label>
+                                        <input type="date" id="fec_sifilis" [readonly]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.fec_sifilis">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba IG-M toxoplasma </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="ig_toxoplasma" class="font-medium mb-1">IG-M toxoplasma</label>
+                                        <select id="ig_toxoplasma" [disabled]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.ig_toxoplasma">
+                                            <option value="Normal">Normal</option>
+                                            <option value="Anormal">Anormal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_toxoplasma" class="font-medium mb-1">Fecha IG-M
+                                            toxoplasma</label>
+                                        <input type="date" id="fec_toxoplasma" [readonly]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.fec_toxoplasma">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <!-- Seccion 2-->
+                            <div [ngClass]="{'hidden': openTab !== 9, 'block': openTab === 9}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de cultivo rectal y
+                                            vaginal </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="cul_rectal" class="font-medium mb-1">Cultivo rectal y
+                                            vaginal</label>
+                                        <select id="cul_rectal" [disabled]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.cul_rectal">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_rectal" class="font-medium mb-1">Fecha cultivo rectal y
+                                            vaginal</label>
+                                        <input type="date" id="fec_rectal" [readonly]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.fec_rectal">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de Perfil
+                                            biofísico </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_biofisico" class="font-medium mb-1">Fecha Perfil
+                                            biofísico</label>
+                                        <input type="date" id="fec_biofisico" [readonly]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.fec_biofisico">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="edad_gestacional" class="font-medium mb-1">Edad gestacional al
+                                            momento
+                                            de la
+                                            ecografía</label>
+                                        <input type="text" id="edad_gestacional" [readonly]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.edad_gestacional">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="rie_biopsicosocial" class="font-medium mb-1">Riesgo biopsicosocial
+                                            escala de
+                                            herrera y hurtado</label>
+                                        <select id="rie_biopsicosocial" [disabled]="isReadOnlyLaboratorioIII"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.rie_biopsicosocial">
+                                            <option value="Alto riesgo">Alto riesgo</option>
+                                            <option value="Bajo riesgo">Bajo riesgo</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="mt-4 flex justify-center space-x-4">
+                                    <button type="button" (click)="toggleEditLaboratorioIII()"
+                                        [disabled]="!isReadOnlyLaboratorioIII"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Editar
+                                    </button>
+
+                                    <button (click)="guardarTercerLaboratorio()"
+                                        [disabled]="isReadOnlyLaboratorioIII && !isEditing"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <!-- ITS-->
+                            <div [ngClass]="{'hidden': openTab !== 10, 'block': openTab === 10}">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba Elisa para VIH </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="eliVih" class="font-medium mb-1">Elisa para VIH</label>
+                                        <select id="eliVih" [disabled]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="its.eli_vih">
+                                            <option value="Reactivo">Reactivo</option>
+                                            <option value="No reactivo">No reactivo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecVih" class="font-medium mb-1">Fecha elisa para VIH</label>
+                                        <input type="date" id="fecVih" [readonly]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="its.fec_vih">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba no treponémica (VDRL) para
+                                            sífilis </label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="codVdrl" class="font-medium mb-1">Prueba no treponémica (VDRL) para
+                                            sífilis</label>
+                                        <select id="codVdrl" [disabled]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required [(ngModel)]="its.cod_vdrl">
+                                            <!-- Opción por defecto -->
+                                            <option *ngFor="let vdrl of Vdrl" [value]="vdrl.cod_vdrl">
+                                                {{ vdrl.num_vdrl }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecVdrl" class="font-medium mb-1">Fecha prueba no treponémica (VDRL)
+                                            para
+                                            sífilis</label>
+                                        <input type="date" id="fecVdrl" [readonly]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="its.fec_vdrl">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba no treponémica (RPR) para
+                                            sífilis</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="codRpr" class="font-medium mb-1">Prueba no treponémica (RPR) para
+                                            sífilis</label>
+                                        <select id="codRpr" [disabled]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required [(ngModel)]="its.cod_rpr">
+                                            <!-- Opción por defecto -->
+                                            <option *ngFor="let rpr of Rpr" [value]="rpr.cod_rpr">
+                                                {{ rpr.num_rpr }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fecRpr" class="font-medium mb-1">Fecha prueba no treponémica (RPR)
+                                            para
+                                            sífilis</label>
+                                        <input type="date" id="fecRpr" [readonly]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="its.fec_rpr">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="recTratamiento" class="font-medium mb-1">Recibió tratamiento para
+                                            sífilis</label>
+                                        <select id="recTratamiento" [disabled]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="its.rec_tratamiento">
+                                            <option value="Si">Si</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="recPareja" class="font-medium mb-1">Recibió tratamiento para sífilis
+                                            para la
+                                            pareja</label>
+                                        <select id="recPareja" [disabled]="isReadOnlyIts"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="its.rec_pareja">
+                                            <option value="Si">Si</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mt-4 flex justify-center space-x-4">
+                                    <button type="button" (click)="toggleEditIts()" [disabled]="!isReadOnlyIts"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Editar
+                                    </button>
+
+                                    <button (click)="guardarIts()" [disabled]="isReadOnlyIts && !isEditing"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -931,3 +1187,4 @@
             </div>
         </div>
     </div>
+</div>

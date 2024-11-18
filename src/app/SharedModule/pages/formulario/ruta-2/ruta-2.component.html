@@ -4,7 +4,7 @@
 <div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
     <div class="max-w-[94rem] mx-auto mt-12">
-        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 h-auto">
+        <div class="border-b border-gray-300 mb-4 h-auto">
             <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
                 <h1 class="font-bold text-2xl sm:text-3xl ml-2">Gestión Materna</h1>
                 <button (click)="volver()"
@@ -14,75 +14,74 @@
             </div>
         </div>
 
-            <!-- Diseño del formulario -->
-            <div class="flex flex-wrap mt-5 uppercase">
-                <div class="w-[70%] justify-center mx-auto">
-                    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer uppercase">
-                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                            <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                                (click)="toggleTabs(1)"
-                                [ngClass]="{'text-[#00acc9] bg-white': openTab !== 1, 'text-white bg-[#00acc9]': openTab === 1}">
-                                Control prenatal
-                            </a>
-                        </li>
-                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                            <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                                (click)="toggleTabs(2)"
-                                [ngClass]="{'text-[#00acc9] bg-white': openTab !== 2, 'text-white bg-[#00acc9]': openTab === 2}">
-                                Sección 2
-                            </a>
-                        </li>
-                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                            <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                                (click)="toggleTabs(3)"
-                                [ngClass]="{'text-[#00acc9] bg-white': openTab !== 3, 'text-white bg-[#00acc9]': openTab === 3}">
-                                Primera consulta
-                            </a>
-                        </li>
-                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                            <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                                (click)="toggleTabs(4)"
-                                [ngClass]="{'text-[#00acc9] bg-white': openTab !== 4, 'text-white bg-[#00acc9]': openTab === 4}">
-                                Sección 2
-                            </a>
-                        </li>
-                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                            <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
-                                (click)="toggleTabs(5)"
-                                [ngClass]="{'text-[#00acc9] bg-white': openTab !== 5, 'text-white bg-[#00acc9]': openTab === 5}">
-                                Vacunación
-                            </a>
-                        </li>
-                    </ul>
+        <!-- Diseño del formulario -->
+        <div class="flex flex-wrap mt-5 uppercase">
+            <div class="w-[70%] justify-center mx-auto">
+                <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row cursor-pointer uppercase">
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(1)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 1, 'text-white bg-[#00acc9]': openTab === 1}">
+                            Control prenatal
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(2)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 2, 'text-white bg-[#00acc9]': openTab === 2}">
+                            Sección 2
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(3)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 3, 'text-white bg-[#00acc9]': openTab === 3}">
+                            Primera consulta
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(4)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 4, 'text-white bg-[#00acc9]': openTab === 4}">
+                            Sección 2
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal border border-gray-300"
+                            (click)="toggleTabs(5)"
+                            [ngClass]="{'text-[#00acc9] bg-white': openTab !== 5, 'text-white bg-[#00acc9]': openTab === 5}">
+                            Vacunación
+                        </a>
+                    </li>
+                </ul>
 
-                    <div
-               
+                <div
                     class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded border border-gray-300">
-                        <div class="px-4 py-5 flex-auto">
-                            <div class="tab-content tab-space">
+                    <div class="px-4 py-5 flex-auto">
+                        <div class="tab-content tab-space">
 
                             <!-- Control prenatal -->
                             <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="" class="font-medium mb-1">Edad gestacional de inicio del control
-                                        prenatal</label>
-                                    <input type="text" id="edad_gestacional" [readonly]="isReadOnly"
-                                        [(ngModel)]="controlPrenatal.edad_gestacional"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Edad gestacional de inicio del control
+                                            prenatal</label>
+                                        <input type="text" id="edad_gestacional" [readonly]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.edad_gestacional"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="" class="font-medium mb-1">Trimestre de ingreso al control
-                                        prenatal</label>
-                                    <select id="trim_ingreso" [disabled]="isReadOnly"
-                                        [(ngModel)]="controlPrenatal.trim_ingreso"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">                           
-                                        <option value="1">Trimestre I: 1 a 13 sem</option>
-                                        <option value="2">Trimestre II: 14 a 27 sem</option>
-                                        <option value="3">Trimestre III: 28 a 42 sem</option>
-                                    </select>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Trimestre de ingreso al control
+                                            prenatal</label>
+                                        <select id="trim_ingreso" [disabled]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.trim_ingreso"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="1">Trimestre I: 1 a 13 sem</option>
+                                            <option value="2">Trimestre II: 14 a 27 sem</option>
+                                            <option value="3">Trimestre III: 28 a 42 sem</option>
+                                        </select>
 
                                     </div>
 
@@ -100,25 +99,25 @@
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="" class="font-medium mb-1">Embarazo planeado</label>
-                                    <select id="emb_planeado" [disabled]="isReadOnly"
-                                        [(ngModel)]="controlPrenatal.emb_planeado"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value=1>Sí</option>
-                                        <option value=0>No</option>
-                                    </select>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Embarazo planeado</label>
+                                        <select id="emb_planeado" [disabled]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.emb_planeado"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="" class="font-medium mb-1">Fracaso anticonceptivo</label>
-                                    <select id="fec_anticonceptivo" [disabled]="isReadOnly"
-                                        [(ngModel)]="controlPrenatal.fec_anticonceptivo"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value=1>Sí</option>
-                                        <option value=0>No</option>
-                                    </select>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Fracaso anticonceptivo</label>
+                                        <select id="fec_anticonceptivo" [disabled]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.fec_anticonceptivo"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="metodoFracaso" class="font-medium mb-1">Método fracaso</label>
@@ -128,6 +127,15 @@
                                             <option *ngFor="let metodo of metodosFracaso" [value]="metodo.cod_fracaso">
                                                 {{
                                                 metodo.nom_metodo }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Recibió atención preconcepcional</label>
+                                        <select id="emb_planeado" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
                                         </select>
                                     </div>
 
@@ -144,6 +152,17 @@
                             <!-- Sección 2 -->
                             <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Asistió a la consulta de control atención
+                                            preconcepcional</label>
+                                        <select id="emb_planeado" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha consulta de control atención
                                             preconcepcional</label>
@@ -152,15 +171,36 @@
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="" class="font-medium mb-1">Riesgo reproductivo indentificado</label>
-                                    <select id="" [(ngModel)]="controlPrenatal.ries_reproductivo"
-                                        [disabled]="isReadOnly"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="alto">Alto</option>
-                                        <option value="bajo">Bajo</option>
-                                    </select>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Riesgo reproductivo indentificado</label>
+                                        <select id="" [(ngModel)]="controlPrenatal.ries_reproductivo"
+                                            [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="alto">Alto</option>
+                                            <option value="bajo">Bajo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Usuario solicitó
+                                            IVE</label>
+                                        <select id="usuario-solicito" [(ngModel)]="controlPrenatal.usu_solicito"
+                                            [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a la asesoría
+                                            IVE</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha asesoría IVE</label>
@@ -169,16 +209,15 @@
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="usuario-solicito" class="font-medium mb-1">Usuario solicitó IVE</label>
-                                    <select id="usuario-solicito" [(ngModel)]="controlPrenatal.usu_solicito"
-                                        [disabled]="isReadOnly"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value=1>Sí</option>
-                                        <option value=0>No</option>
-                                    </select>
-                                </div>
-
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Ha tenido algún embarazo anterior</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+                                    
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha terminación de último
                                             embarazo</label>
@@ -187,16 +226,16 @@
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="" class="font-medium mb-1">Periodo intergenésico 12 meses</label>
-                                    <select id="per_intergenesico" [(ngModel)]="controlPrenatal.per_intergenesico"
-                                        [disabled]="isReadOnly"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value=1>Sí</option>
-                                        <option value=0>No</option>
-                                    </select>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="" class="font-medium mb-1">Periodo intergenésico 12 meses</label>
+                                        <select id="per_intergenesico" [(ngModel)]="controlPrenatal.per_intergenesico"
+                                            [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEdit()" [disabled]="!isReadOnly"
@@ -204,11 +243,11 @@
                                         Editar
                                     </button>
 
-                                <button (click)="guardarControlPrenatal()" [disabled]="isReadOnly && !isEditing"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Guardar
-                                </button>
-                            </div>
+                                    <button (click)="guardarControlPrenatal()" [disabled]="isReadOnly && !isEditing"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
+                                </div>
 
                             </div>
 
@@ -216,29 +255,29 @@
                             <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="peso_previo" class="font-medium mb-1">Peso previo (kg)</label>
-                                    <input type="text" id="peso_previo" [(ngModel)]="primeraConsulta.peso_previo"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="peso_previo" class="font-medium mb-1">Peso previo (kg)</label>
+                                        <input type="text" id="peso_previo" [(ngModel)]="primeraConsulta.peso_previo"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="tal_consulta" class="font-medium mb-1">Talla (metros)</label>
-                                    <input type="text" id="tal_consulta" [(ngModel)]="primeraConsulta.tal_consulta"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="tal_consulta" class="font-medium mb-1">Talla (metros)</label>
+                                        <input type="text" id="tal_consulta" [(ngModel)]="primeraConsulta.tal_consulta"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="imc_consulta" class="font-medium mb-1">I.M.C</label>
-                                    <input type="text" id="imc_consulta" [(ngModel)]="primeraConsulta.imc_consulta"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="imc_consulta" class="font-medium mb-1">I.M.C</label>
+                                        <input type="text" id="imc_consulta" [(ngModel)]="primeraConsulta.imc_consulta"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="diag_nutricional" class="font-medium mb-1">Diagnóstico nutricional
@@ -251,27 +290,27 @@
                                             required>
                                     </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="hta" class="font-medium mb-1">HTA</label>
-                                    <select id="hta" [(ngModel)]="primeraConsulta.hta"
-                                        [disabled]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                        <option value="0">No</option>
-                                        <option value="1">Si</option>
-                                    </select>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="hta" class="font-medium mb-1">HTA</label>
+                                        <select id="hta" [(ngModel)]="primeraConsulta.hta"
+                                            [disabled]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                            <option value="0">No</option>
+                                            <option value="1">Si</option>
+                                        </select>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="dm" class="font-medium mb-1">DM</label>
-                                    <select id="dm" [(ngModel)]="primeraConsulta.dm"
-                                        [disabled]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                        <option value="0">No</option>
-                                        <option value="1">Si</option>
-                                    </select>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="dm" class="font-medium mb-1">DM</label>
+                                        <select id="dm" [(ngModel)]="primeraConsulta.dm"
+                                            [disabled]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                            <option value="0">No</option>
+                                            <option value="1">Si</option>
+                                        </select>
+                                    </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="tipoDm" class="font-medium mb-1">Tipo de DM</label>
@@ -295,25 +334,25 @@
                                         </select>
                                     </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="fact_riesgo" class="font-medium mb-1">Factor de riesgo
-                                        identificado</label>
-                                    <input type="text" id="fact_riesgo" [(ngModel)]="primeraConsulta.fact_riesgo"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fact_riesgo" class="font-medium mb-1">Factor de riesgo
+                                            identificado</label>
+                                        <input type="text" id="fact_riesgo" [(ngModel)]="primeraConsulta.fact_riesgo"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="expo_violencia" class="font-medium mb-1">Exposición a
-                                        violencias</label>
-                                    <select id="expo_violencia" [(ngModel)]="primeraConsulta.expo_violencia"
-                                        [disabled]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="1">Si</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="expo_violencia" class="font-medium mb-1">Exposición a
+                                            violencias</label>
+                                        <select id="expo_violencia" [(ngModel)]="primeraConsulta.expo_violencia"
+                                            [disabled]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="1">Si</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
 
                                 </div>
                             </div>
@@ -322,51 +361,62 @@
                             <div [ngClass]="{'hidden': openTab !== 4, 'block': openTab === 4}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="ries_depresion" class="font-medium mb-1">Riesgo de depresión
-                                        posparto</label>
-                                    <select id="ries_depresion" [(ngModel)]="primeraConsulta.ries_depresion"
-                                        [disabled]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                        <option value="1">Si</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="ries_depresion" class="font-medium mb-1">Riesgo de depresión
+                                            posparto</label>
+                                        <select id="ries_depresion" [(ngModel)]="primeraConsulta.ries_depresion"
+                                            [disabled]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="1">Si</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="for_gestacion" class="font-medium mb-1">Fórmula obstétrica
-                                        gestaciones</label>
-                                    <input type="text" id="for_gestacion" [(ngModel)]="primeraConsulta.for_gestacion"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="for_gestacion" class="font-medium mb-1">Fórmula obstétrica
+                                            gestaciones</label>
+                                        <input type="text" id="for_gestacion"
+                                            [(ngModel)]="primeraConsulta.for_gestacion"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="for_parto" class="font-medium mb-1">Fórmula obstétrica partos
-                                        vaginales</label>
-                                    <input type="text" id="for_parto" [(ngModel)]="primeraConsulta.for_parto"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="for_parto" class="font-medium mb-1">Fórmula obstétrica partos
+                                            vaginales</label>
+                                        <input type="text" id="for_parto" [(ngModel)]="primeraConsulta.for_parto"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="for_cesarea" class="font-medium mb-1">Fórmula obstétrica
-                                        cesáreas</label>
-                                    <input type="text" id="for_cesarea" [(ngModel)]="primeraConsulta.for_cesarea"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="for_cesarea" class="font-medium mb-1">Fórmula obstétrica
+                                            cesáreas</label>
+                                        <input type="text" id="for_cesarea" [(ngModel)]="primeraConsulta.for_cesarea"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
 
-                                <div class="flex flex-col text-xs">
-                                    <label for="for_aborto" class="font-medium mb-1">Fórmula obstétrica abortos</label>
-                                    <input type="text" id="for_aborto" [(ngModel)]="primeraConsulta.for_aborto"
-                                        [readonly]="isReadOnlyPrimeraConsulta"
-                                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                        required>
-                                </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="for_aborto" class="font-medium mb-1">Fórmula obstétrica
+                                            abortos</label>
+                                        <input type="text" id="for_aborto" [(ngModel)]="primeraConsulta.for_aborto"
+                                            [readonly]="isReadOnlyPrimeraConsulta"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            required>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a la consejería lactancia materna</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_lactancia" class="font-medium mb-1">Fecha consejería
@@ -375,6 +425,15 @@
                                             [(ngModel)]="primeraConsulta.fec_lactancia"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a la consejería pretest VIH</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
@@ -396,13 +455,13 @@
                                         Editar
                                     </button>
 
-                                <button (click)="guardarPrimeraConsulta()"
-                                    [disabled]="isReadOnlyPrimeraConsulta && !isEditing"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Guardar
-                                </button>
+                                    <button (click)="guardarPrimeraConsulta()"
+                                        [disabled]="isReadOnlyPrimeraConsulta && !isEditing"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
+                                </div>
                             </div>
-                        </div>
 
 
 
@@ -411,11 +470,28 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="fec_unocovid" class="font-medium mb-1">Fecha primera dosis covid
-                                            19</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la primera dosis covid 19</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_unocovid" class="font-medium mb-1">Fecha primera dosis covid 19</label>
                                         <input type="date" id="fec_unocovid" [readonly]="isReadOnlyVacunacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_unocovid">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la segunda dosis covid 19</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
@@ -426,6 +502,15 @@
                                             [(ngModel)]="vacunacion.fec_doscovid">
                                     </div>
 
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió el refuerzo covid 19</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+                                    
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_refuerzo" class="font-medium mb-1">Fecha refuerzo covid
                                             19</label>
@@ -448,6 +533,15 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis influenza</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="fec_influenza" class="font-medium mb-1">Fecha dosis
                                             influenza</label>
                                         <input type="date" id="fec_influenza" [readonly]="isReadOnlyVacunacion"
@@ -456,11 +550,29 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis toxoide tetánico</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="fec_tetanico" class="font-medium mb-1">Fecha dosis toxoide
                                             tetánico</label>
                                         <input type="date" id="fec_tetanico" [readonly]="isReadOnlyVacunacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_tetanico">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis DPT a-celular</label>
+                                        <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
@@ -481,12 +593,13 @@
                                         Editar
                                     </button>
 
-                                <button (click)="guardarVacunacion()" [disabled]="isReadOnlyVacunacion && !isEditing"
-                                    class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
-                                    Guardar
-                                </button>
+                                    <button (click)="guardarVacunacion()"
+                                        [disabled]="isReadOnlyVacunacion && !isEditing"
+                                        class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
+                                        Guardar
+                                    </button>
+                                </div>
                             </div>
-                        </div>
 
                         </div>
                     </div>

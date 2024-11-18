@@ -27,7 +27,7 @@ const routes: Routes = [
         path: 'dashboard', component: DashboardComponent,
         canActivate: [RoleGuard],
         data: {
-          title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin','operador','user'], showInMenu: true
+          title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin','operador','usuario'], showInMenu: true
         }
       },
       {
