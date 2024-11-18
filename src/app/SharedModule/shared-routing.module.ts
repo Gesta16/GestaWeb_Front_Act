@@ -27,7 +27,7 @@ const routes: Routes = [
         path: 'dashboard', component: DashboardComponent,
         canActivate: [RoleGuard],
         data: {
-          title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin','operador','user'], showInMenu: true
+          title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin','operador','usuario'], showInMenu: true
         }
       },
       {
@@ -38,7 +38,7 @@ const routes: Routes = [
       {
         path:'list-ips', component:ListIpsComponent,
         canActivate:[RoleGuard],
-        data:{title:'IPS', icon:'fa-solid fa-hospital', expectedRoles:['superadmin','admin'], showInMenu:true}
+        data:{title:'IPS', icon:'fa-solid fa-hospital', expectedRoles:['superadmin'], showInMenu:true}
       },
       {
         path: 'list-admin', component: ListAdminComponent, 

@@ -3,7 +3,6 @@ import { TipoDocumento } from '../../../Models/Tipo-documento.model';
 import { AdminService } from '../../../Services/admin.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MenuService } from '../../../Services/menu.service';
 import { AddAdminComponent } from '../add-admin/add-admin.component';
 
 
@@ -30,19 +29,13 @@ export class ListAdminComponent implements OnInit {
     private adminService: AdminService,
     private tipoDocumentoService: TipoDocumentoService,
     private _matDialog: MatDialog,
-    private menuService: MenuService
+    
   ) {}
 
   ngOnInit() {
     this.checkScreenSize();
-    this.loadAdmins();
     this.loadTiposDocumento();
-    this.menuService.isExpanded$.subscribe(isExpanded => {
-      this.isExpanded = isExpanded;
-    });
-    this.menuService.menuVisible$.subscribe(isVisible => {
-      this.isVisible = isVisible;
-    });
+    this.loadAdmins();
   }
 
   private checkScreenSize() {
@@ -74,6 +67,7 @@ export class ListAdminComponent implements OnInit {
   private loadAdmins(): void {
     this.adminService.getAdmins().subscribe(
       (response: any) => {
+        console.log('Respuesta del backend:', response);
         this.admins = response.admin;
         this.updatePagination();
       },

@@ -32,7 +32,7 @@ export class MenuComponent {
         if (this.userRole) {
           this.isAuthenticated = this.authService.isAuthenticated();
           this.menuItems = this.menuService.getMenuItemsForRole(this.userRole);
-          console.log('Elementos del menú cargados:', this.menuItems);
+          //console.log('Elementos del menú cargados:', this.menuItems);
         }
       } else {
         console.log('Usuario no autenticado');
