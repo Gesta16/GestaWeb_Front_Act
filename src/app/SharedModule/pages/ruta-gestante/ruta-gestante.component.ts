@@ -116,7 +116,7 @@ export class RutaGestanteComponent {
 
   irUsuario() {
     if (this.id !== null) {
-      this.router.navigate(['/add-usuarios', this.id]); // Navegar a la ruta con el ID
+      this.router.navigate(['/add-gestante', this.id]); // Navegar a la ruta con el ID
     };
   }
 

@@ -15,8 +15,7 @@ export class UsuarioService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   private createHeaders(): HttpHeaders {
-    const token = this.authService.getRole();
-
+    const token = this.authService.getToken();
     if(!token){
       throw new Error('No se encontró el token de autenticación.');
     }

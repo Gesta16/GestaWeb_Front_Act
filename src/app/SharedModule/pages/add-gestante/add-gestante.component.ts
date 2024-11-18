@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../../../../Models/Usuario.model';
-import { Departamento } from '../../../../Models/Departamento.model';
-import { Municipio } from '../../../../Models/Municipio.model';
-import { Ips } from '../../../../Models/Ips.model';
-import { TipoDocumento } from '../../../../Models/Tipo-documento.model';
-import { PoblacionDiferencial } from '../../../../Models/Poblacion-diferencial.model';
-import { UsuarioService } from '../../../../Services/usuario.service';
+import { Usuario } from '../../../Models/Usuario.model';
+import { Departamento } from '../../../Models/Departamento.model';
+import { Municipio } from '../../../Models/Municipio.model';
+import { Ips } from '../../../Models/Ips.model';
+import { TipoDocumento } from '../../../Models/Tipo-documento.model';
+import { PoblacionDiferencial } from '../../../Models/Poblacion-diferencial.model';
+import { UsuarioService } from '../../../Services/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DepartamentoService } from '../../../../Services/departamento.service';
-import { MunicipioService } from '../../../../Services/municipio.service';
-import { IpsService } from '../../../../Services/ips.service';
-import { TipoDocumentoService } from '../../../../Services/tipo-documento.service';
-import { PoblacionDiferencialService } from '../../../../Services/poblacion-diferencial.service';
+import { DepartamentoService } from '../../../Services/departamento.service';
+import { MunicipioService } from '../../../Services/municipio.service';
+import { IpsService } from '../../../Services/ips.service';
+import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
+import { PoblacionDiferencialService } from '../../../Services/poblacion-diferencial.service';
 
 @Component({
   selector: 'app-add-gestante',
