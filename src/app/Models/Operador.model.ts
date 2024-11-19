@@ -25,20 +25,7 @@ export class Operador {
         documento_operador = '',
         cod_departamento = 0,
         cod_municipio = 0,
-    }: {
-        id_operador?: number,
-        id_admin?: number,
-        cod_ips?: number,
-        nom_operador?: string,
-        ape_operador?: string,
-        tel_operador?: string,
-        email_operador?: string,
-        esp_operador?: string,
-        cod_documento?: number,
-        documento_operador?: string,
-        cod_departamento?: number,
-        cod_municipio?: number,
-    } = {}) {
+    }: Partial<Operador> = {}) {
         this.id_operador = id_operador;
         this.id_admin = id_admin;
         this.cod_ips = cod_ips;
@@ -51,5 +38,10 @@ export class Operador {
         this.documento_operador = documento_operador;
         this.cod_departamento = cod_departamento;
         this.cod_municipio = cod_municipio;
+    }
+
+    // Método para asignar cod_ips dinámicamente
+    setCodIps(cod_ips: number): void {
+        this.cod_ips = cod_ips;
     }
 }

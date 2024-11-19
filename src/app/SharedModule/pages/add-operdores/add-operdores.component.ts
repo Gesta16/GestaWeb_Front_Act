@@ -12,6 +12,7 @@ import { AdminService } from '../../../Services/admin.service';
 import { DepartamentoService } from '../../../Services/departamento.service';
 import { MunicipioService } from '../../../Services/municipio.service';
 import { OperadorService } from '../../../Services/operador.service';
+import { AuthService } from '../../../Services/auth.service';
 
 @Component({
   selector: 'app-add-operdores',
@@ -36,6 +37,7 @@ export class AddOperadoresComponent {
     private adminService: AdminService,
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
+    private authService:AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -43,12 +45,20 @@ export class AddOperadoresComponent {
     this.getTipoDocumentos();
     this.getAdmins();
     this.getDepartamentos();
-    this.getMunicipios();
+    const user = this.authService.getUser();
+    
+    if (user && user.userable?.cod_ips) {
+        this.operador.setCodIps(user.userable.cod_ips); // Asignar cod_ips
+    }
+
+    console.log('Operador inicializado:', this.operador);
+    
   }
 
   onSubmit(): void {
     this.operadorService.createOperador(this.operador).subscribe(
       response => {
+        console.log(response);
         // Cierra el diálogo y pasa un valor de confirmación
         this.dialogRef.close(true);
       },
