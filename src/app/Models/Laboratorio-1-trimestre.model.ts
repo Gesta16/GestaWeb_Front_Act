@@ -34,7 +34,14 @@ export class LaboratorioITrimestre {
     eda_gestacional: string;
     rie_biopsicosocial: string;
     num_proceso: number;
-
+    reali_prueb_rapi_vih:boolean;
+    reali_prueb_trepo_sifilis:boolean;
+    reali_urocultivo:boolean;
+    reali_antibiograma:boolean;
+    reali_prueb_eliza_anti_tot:boolean;
+    reali_prueb_elisa_anti_recom:boolean;
+    reali_prueb_coombi_indi:boolean;
+    reali_eco_obste_tami:boolean;
 
     constructor({
         cod_laboratorio = 0,
@@ -71,7 +78,15 @@ export class LaboratorioITrimestre {
         fec_ecografia = '',
         eda_gestacional = '',
         rie_biopsicosocial = '',
-        num_proceso = 0
+        num_proceso = 0,
+        reali_prueb_rapi_vih=false,
+        reali_prueb_trepo_sifilis=false,
+        reali_urocultivo=false,
+        reali_antibiograma=false,
+        reali_prueb_eliza_anti_tot=false,
+        reali_prueb_elisa_anti_recom=false,
+        reali_prueb_coombi_indi=false,
+        reali_eco_obste_tami=false,
     }: {
         cod_laboratorio?: number,
         id_operador?: number,
@@ -107,7 +122,16 @@ export class LaboratorioITrimestre {
         fec_ecografia?: string,
         eda_gestacional?: string,
         rie_biopsicosocial?: string,
-        num_proceso?: number
+        num_proceso?: number,
+        reali_prueb_rapi_vih?:boolean,
+        reali_prueb_trepo_sifilis?:boolean,
+        reali_urocultivo?:boolean,
+        reali_antibiograma?:boolean,
+        reali_prueb_eliza_anti_tot?:boolean,
+        reali_prueb_elisa_anti_recom?:boolean,
+        reali_prueb_coombi_indi?:boolean,
+        reali_eco_obste_tami?:boolean,
+        
     } = {}) {
         this.cod_laboratorio = cod_laboratorio;
         this.id_operador = id_operador;
@@ -144,6 +168,14 @@ export class LaboratorioITrimestre {
         this.eda_gestacional = eda_gestacional;
         this.rie_biopsicosocial = rie_biopsicosocial;
         this.num_proceso = num_proceso;
+        this.reali_prueb_rapi_vih =reali_prueb_rapi_vih;
+        this.reali_prueb_trepo_sifilis = reali_prueb_trepo_sifilis;
+        this.reali_urocultivo = reali_urocultivo;
+        this.reali_antibiograma = reali_antibiograma;
+        this.reali_prueb_eliza_anti_tot = reali_prueb_eliza_anti_tot;
+        this.reali_prueb_elisa_anti_recom = reali_prueb_elisa_anti_recom;
+        this.reali_prueb_coombi_indi = reali_prueb_coombi_indi;
+        this.reali_eco_obste_tami = reali_eco_obste_tami;
 
     }
 }
