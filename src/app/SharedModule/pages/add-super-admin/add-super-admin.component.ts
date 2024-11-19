@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { SuperAdminService } from '../../../Services/super-admin.service';
 import { SuperAdmin } from '../../../Models/Super-admin.model';
+import { AlertService } from '../../../Services/alert.service';
 
 @Component({
   selector: 'app-add-super-admin',
@@ -19,7 +20,8 @@ export class AddSuperAdminComponent {
   constructor(
     public dialogRef: MatDialogRef<AddSuperAdminComponent>,
     private superAdminService: SuperAdminService,
-    private tipoDocumentoService: TipoDocumentoService
+    private tipoDocumentoService: TipoDocumentoService,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -29,10 +31,12 @@ export class AddSuperAdminComponent {
   onSubmit(): void {
     this.superAdminService.createSuperAdmin(this.superAdmin).subscribe(
       response => {
-        // Cierra el diálogo y pasa un valor de confirmación
-        this.dialogRef.close(true);
+        this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.dialogRef.close(true);
+        });
       },
       error => {
+        this.alertService.errorAlert('Error',error.error.message);
         console.error('Error al crear SuperAdmin:', error);
       }
     );

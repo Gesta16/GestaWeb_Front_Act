@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
+import { AlertService } from '../../../Services/alert.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alertService:AlertService,
   ){}
 
   login(){
@@ -34,9 +36,10 @@ export class LoginComponent {
       (response)=>{
         console.log(response);
         this.router.navigate(['dashboard']);
-        alert('ingreso exitoso')
+        this.alertService.successAlert('exito',response.message);
       },
       (error)=>{
+        this.alertService.errorAlert('Error', error.error.message);
         console.log('Login fallido', error);
         this.isSubmitting = false;
       }

@@ -67,6 +67,7 @@ export class AddOperadoresComponent {
         this.dialogRef.close(true);
       },
       error => {
+        this.alertService.errorAlert('Error',error.error.message);
         console.error('Error al crear Operador:', error);
       }
     );

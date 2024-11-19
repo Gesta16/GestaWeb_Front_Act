@@ -8,6 +8,7 @@ import { IpsService } from '../../../Services/ips.service';
 import { DepartamentoService } from '../../../Services/departamento.service';
 import { MunicipioService } from '../../../Services/municipio.service';
 import { RegimenService } from '../../../Services/regimen.service';
+import { AlertService } from '../../../Services/alert.service';
 
 @Component({
   selector: 'app-add-ips',
@@ -25,6 +26,7 @@ export class AddIpsComponent {
     private departamentoService: DepartamentoService,
     private regimenService: RegimenService,
     private municipioService: MunicipioService,
+    private alertService:AlertService,
   ) {}
 
   listDepartamentos: Departamento[] = [];
@@ -90,10 +92,12 @@ export class AddIpsComponent {
   onSubmit(): void {
     this.ipsService.createIps(this.ips).subscribe(
       response => {
-       
-        this._matDialogRef.close(true);
+        this.alertService.successAlert('Exito', response.message).then(()=>{
+          this._matDialogRef.close(true);
+        });
       },
       error => {
+        this.alertService.errorAlert('Error', error.error.message);
         console.error('Error al crear IPS:', error);
       }
     );

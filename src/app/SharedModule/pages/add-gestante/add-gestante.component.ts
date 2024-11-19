@@ -12,6 +12,7 @@ import { MunicipioService } from '../../../Services/municipio.service';
 import { IpsService } from '../../../Services/ips.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { PoblacionDiferencialService } from '../../../Services/poblacion-diferencial.service';
+import { AlertService } from '../../../Services/alert.service';
 
 @Component({
   selector: 'app-add-gestante',
@@ -43,7 +44,7 @@ export class AddGestanteComponent {
     private tipoDocumentoService: TipoDocumentoService,
     private poblacionDiferencialService: PoblacionDiferencialService,
     private route: ActivatedRoute,
-
+    private alertService: AlertService,
   ) { }
 
 
@@ -78,8 +79,9 @@ export class AddGestanteComponent {
           this.getMunicipios(this.usuario.cod_departamento);
         },
         (error) => {
+          this.alertService.errorAlert('Error', error.error.message);
           console.error('Error al obtener el usuario:', error);
-          //FALTA COLOCAR ALERTAS
+          
         });
     }
   }
@@ -105,34 +107,29 @@ export class AddGestanteComponent {
       // Editar usuario existente
       this.usuarioService.updateUsuario(this.id, this.usuario).subscribe({
         next: (response) => {
+          this.alertService.successAlert('Éxito', 'Operación realizada con éxito').then(() => {
+            this.isReadOnly = true;
+          });          
           console.log('Usuario actualizado:', response);
-          //FALTA COLOCAR ALERTA
+          
         },
         error: (error) => {
           console.error('Error al actualizar el usuario:', error);
-          //FALTA COLOCAR ALERTA
+          this.alertService.errorAlert('Error',error.error.message);
         }
       });
     } else {
       // Crear nuevo usuario
       this.usuarioService.createUsuario(this.usuario).subscribe({
         next: (response) => {
+          this.alertService.successAlert('Exito', response.message).then(()=>{
+            this.router.navigate(['/list-gestantes']);
+          });
           console.log('Usuario creado:', response);
-          // Swal.fire({
-          //   title: 'Éxito',
-          //   text: 'Usuario creado con éxito',
-          //   icon: 'success',
-          // }).then(() => {
-          //   this.router.navigate(['/list-usuarios']);
-          // });
         },
         error: (error) => {
           console.error('Error al crear el usuario:', error);
-          // Swal.fire({
-          //   title: 'Error',
-          //   text: 'Ocurrió un error al crear el usuario',
-          //   icon: 'error',
-          // });
+          this.alertService.errorAlert('Error', error.error.message);
         }
       });
     }

@@ -52,6 +52,7 @@ export class AddAdminComponent implements OnInit {
         this._matDialogRef.close(true);
       },
       error => {
+        this.alertService.errorAlert('Error',error.error.message);
         console.error('Error al crear Admin:', error);
       }
     );
