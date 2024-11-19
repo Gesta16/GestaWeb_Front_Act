@@ -20,6 +20,8 @@ export class PrimeraConsulta {
     fec_lactancia: Date;
     fec_consejeria: Date;
     num_proceso: number;
+    asis_conse_lactancia:boolean;
+    asis_conse_pre_vih:boolean;
 
     constructor({
 
@@ -41,7 +43,10 @@ export class PrimeraConsulta {
         fec_lactancia = new Date(),
         fec_consejeria = new Date(),
         id_usuario = 0,
-        num_proceso = 0
+        num_proceso = 0,
+        asis_conse_lactancia = false,
+        asis_conse_pre_vih = false
+
     }: {
         id_operador?: number,
         id_usuario?: number,
@@ -62,7 +67,9 @@ export class PrimeraConsulta {
         for_aborto?: string,
         fec_lactancia?: Date,
         fec_consejeria?: Date,
-        num_proceso?: number
+        num_proceso?: number,
+        asis_conse_lactancia?:boolean,
+        asis_conse_pre_vih?:boolean
     } = {}) {
 
         this.id_operador = this.id_operador;
@@ -85,5 +92,7 @@ export class PrimeraConsulta {
         this.fec_lactancia = fec_lactancia;
         this.fec_consejeria = fec_consejeria;
         this.num_proceso = num_proceso;
+        this.asis_conse_lactancia = asis_conse_lactancia;
+        this.asis_conse_pre_vih = asis_conse_pre_vih;
     }
 }

@@ -133,6 +133,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Recibió atención preconcepcional</label>
                                         <select id="emb_planeado" [disabled]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.reci_aten_preconcepcional"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -157,6 +158,7 @@
                                         <label for="" class="font-medium mb-1">Asistió a la consulta de control atención
                                             preconcepcional</label>
                                         <select id="emb_planeado" [disabled]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.asis_consul_control_aten_precon"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -196,6 +198,7 @@
                                         <label for="usuario-solicito" class="font-medium mb-1">Asistió a la asesoría
                                             IVE</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.asis_aseso_ive"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -210,14 +213,16 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Ha tenido algún embarazo anterior</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Ha tenido algún embarazo
+                                            anterior</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="controlPrenatal.tuvo_embarazos_antes"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
                                         </select>
                                     </div>
-                                    
+
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha terminación de último
                                             embarazo</label>
@@ -410,8 +415,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a la consejería lactancia materna</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a la consejería
+                                            lactancia materna</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="primeraConsulta.asis_conse_lactancia"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -428,8 +435,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a la consejería pretest VIH</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a la consejería
+                                            pretest VIH</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="primeraConsulta.asis_conse_pre_vih"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -470,8 +479,10 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la primera dosis covid 19</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la primera dosis
+                                            covid 19</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="vacunacion.reci_primer_dosis_covid"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -479,15 +490,18 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="fec_unocovid" class="font-medium mb-1">Fecha primera dosis covid 19</label>
+                                        <label for="fec_unocovid" class="font-medium mb-1">Fecha primera dosis covid
+                                            19</label>
                                         <input type="date" id="fec_unocovid" [readonly]="isReadOnlyVacunacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_unocovid">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la segunda dosis covid 19</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la segunda dosis
+                                            covid 19</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="vacunacion.reci_segu_dosis_covid"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -503,14 +517,16 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió el refuerzo covid 19</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió el refuerzo covid
+                                            19</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="vacunacion.reci_refue_covid"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
                                         </select>
                                     </div>
-                                    
+
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_refuerzo" class="font-medium mb-1">Fecha refuerzo covid
                                             19</label>
@@ -533,8 +549,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis influenza</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis
+                                            influenza</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="vacunacion.reci_dosis_influenza"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -550,8 +568,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis toxoide tetánico</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis toxoide
+                                            tetánico</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="vacunacion.reci_dosis_toxo_tetanico"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -567,8 +587,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis DPT a-celular</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Recibió la dosis DPT
+                                            a-celular</label>
                                         <select id="usuario-solicito" [disabled]="isReadOnly"
+                                            [(ngModel)]="vacunacion.reci_dosis_dpt_a_celular"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -581,8 +603,6 @@
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_dpt">
                                     </div>
-
-
                                 </div>
 
 
