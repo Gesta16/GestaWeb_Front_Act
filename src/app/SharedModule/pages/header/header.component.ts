@@ -10,9 +10,12 @@ import { MenuService } from '../../../Services/menu.service';
 })
 export class HeaderComponent {
 
-  constructor(private authService: AuthService,
+  constructor(
+    private authService: AuthService,
     private router: Router,
-    private menuService: MenuService) { }
+    private menuService: MenuService,
+    
+  ) { }
 
   showDropdown = false;
   roleName: string | null = 'Usuario';
@@ -42,7 +45,7 @@ export class HeaderComponent {
 
   logout() {
     this.authService.logout();
-    this.menuService.setMenuVisible(false); // Oculta el menú
+    this.menuService.setMenuVisible(false);
     this.router.navigate(['/login'])
   }
 }

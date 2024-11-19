@@ -10,6 +10,7 @@ import { IpsService } from '../../../Services/ips.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { DepartamentoService } from '../../../Services/departamento.service';
 import { MunicipioService } from '../../../Services/municipio.service';
+import { AlertService } from '../../../Services/alert.service';
 
 @Component({
   selector: 'app-add-admin',
@@ -34,6 +35,7 @@ export class AddAdminComponent implements OnInit {
     private tipoDocumentoService: TipoDocumentoService,
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
+    private alertService: AlertService,
   ) {}
 
 
@@ -46,6 +48,7 @@ export class AddAdminComponent implements OnInit {
   onSubmit(): void {
     this.adminService.createAdmin(this.admin).subscribe(
       response => {
+        this.alertService.successAlert('Exito', response.message);
         this._matDialogRef.close(true);
       },
       error => {

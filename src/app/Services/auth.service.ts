@@ -39,6 +39,7 @@ export class AuthService {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    
   }
 
   isAuthenticated(): boolean {

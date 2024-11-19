@@ -13,6 +13,8 @@ import { DepartamentoService } from '../../../Services/departamento.service';
 import { MunicipioService } from '../../../Services/municipio.service';
 import { OperadorService } from '../../../Services/operador.service';
 import { AuthService } from '../../../Services/auth.service';
+import { SweetAlertInput } from 'sweetalert2';
+import { AlertService } from '../../../Services/alert.service';
 
 @Component({
   selector: 'app-add-operdores',
@@ -38,6 +40,7 @@ export class AddOperadoresComponent {
     private departamentoService: DepartamentoService,
     private municipioService: MunicipioService,
     private authService:AuthService,
+    private alertService:AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +61,7 @@ export class AddOperadoresComponent {
   onSubmit(): void {
     this.operadorService.createOperador(this.operador).subscribe(
       response => {
+        this.alertService.successAlert('Exito',response.message)
         console.log(response);
         // Cierra el diálogo y pasa un valor de confirmación
         this.dialogRef.close(true);
