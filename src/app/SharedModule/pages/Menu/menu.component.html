@@ -3,28 +3,7 @@
 
 <nav class="sidebar fixed top-0 left-0 h-screen overflow-y-auto flex flex-col shadow-xl p-4 bg-white z-10" 
     [ngClass]="{ 'w-56': isExpanded, 'w-20': !isExpanded }" *ngIf="isAuthenticated && isVisible"  >
-
-    <!-- Encabezado y botón de colapso -->
-    <header class="relative z-20">
-        <div class="toggle absolute top-4 right-[-8px] h-[40px] w-[40px] flex items-center justify-center rounded-r-xl text-white text-xl transition-all duration-300 cursor-pointer"
-            (click)="toggleSidebar()">
-            <ng-container *ngIf="isExpanded; else burgerIcon">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-[25px] h-[25px] mt-24"
-                    viewBox="0 0 320 512">
-                    <path
-                        d="M207.6 256L332.7 130.8C339.6 123.9 339.6 112.1 332.7 105.2C325.8 98.3 314.1 98.3 307.2 105.2L182.6 229.7L57.1 104.2C50.2 97.3 38.4 97.3 31.5 104.2C24.6 111.1 24.6 122.9 31.5 129.8L157.4 256L31.5 382.2C24.6 389.1 24.6 400.9 31.5 407.8C38.4 414.7 50.2 414.7 57.1 407.8L182.6 282.3L307.2 407.8C314.1 414.7 325.8 414.7 332.7 407.8C339.6 400.9 339.6 389.1 332.7 382.2L207.6 256z" />
-                </svg>
-            </ng-container>
-        </div>
-        <ng-template #burgerIcon>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-[25px] h-[25px] mt-24 mr-[20px]"
-                viewBox="0 0 448 512">
-                <path
-                    d="M16 132h416c8.8 0 16-7.2 16-16V116c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v4c0 8.8 7.2 16 16 16zm0 128h416c8.8 0 16-7.2 16-16v-4c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v4c0 8.8 7.2 16 16 16zm416 112H16c-8.8 0-16 7.2-16 16v4c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-4c0-8.8-7.2-16-16-16z" />
-            </svg>
-        </ng-template>
-    </header>
-
+    
     <div class="flex flex-col justify-start md:pt-24 pt-28"> <!-- Aumentar el margen superior aquí -->
         <ul class="space-y-4">
             <li *ngFor="let item of menuItems" class="group h-12 flex items-center z-20 hover:bg-[#00ACC9] rounded-[5px] hover:text-white">

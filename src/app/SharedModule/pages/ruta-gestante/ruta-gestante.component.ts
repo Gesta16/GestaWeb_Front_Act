@@ -40,38 +40,38 @@ export class RutaGestanteComponent {
     }
   }
 
-  crearProceso() {
-    if (this.id !== null) {
-      this.usuarioService.crearProcesoGestativo(this.id).subscribe(
-        response => {
-          // Swal.fire({
-          //   icon: 'success',
-          //   title: 'Proceso Registrado',
-          //   text: 'Se ha registrado un nuevo proceso gestativo.',
-          //   confirmButtonText: 'Aceptar',
-          //   allowOutsideClick: false 
+  // crearProceso() {
+  //   if (this.id !== null) {
+  //     this.usuarioService.crearProcesoGestativo(this.id).subscribe(
+  //       response => {
+  //         // Swal.fire({
+  //         //   icon: 'success',
+  //         //   title: 'Proceso Registrado',
+  //         //   text: 'Se ha registrado un nuevo proceso gestativo.',
+  //         //   confirmButtonText: 'Aceptar',
+  //         //   allowOutsideClick: false 
 
-          // }).then((result) => {
-          //   if (result.isConfirmed) {
-          //     location.reload(); 
-          //   }
-          // });
-          console.log(response.message);
-        },
-        error => {
-          console.error('Error al crear el proceso gestativo:', error);
-          if (error.status == 400) {
-            // Swal.fire({
-            //   icon: 'error',
-            //   title: 'Error',
-            //   text: 'Hay un proceso en curso, no se ha registrado aun su finalización.',
-            //   confirmButtonText: 'Aceptar'
-            // });
-          }
-        }
-      );
-    }
-  }
+  //         // }).then((result) => {
+  //         //   if (result.isConfirmed) {
+  //         //     location.reload(); 
+  //         //   }
+  //         // });
+  //         console.log(response.message);
+  //       },
+  //       error => {
+  //         console.error('Error al crear el proceso gestativo:', error);
+  //         if (error.status == 400) {
+  //           // Swal.fire({
+  //           //   icon: 'error',
+  //           //   title: 'Error',
+  //           //   text: 'Hay un proceso en curso, no se ha registrado aun su finalización.',
+  //           //   confirmButtonText: 'Aceptar'
+  //           // });
+  //         }
+  //       }
+  //     );
+  //   }
+  // }
 
   contarProcesos(usuarioId: number) {
     this.usuarioService.contarProcesosGestativos(usuarioId).subscribe(response => {
@@ -121,6 +121,6 @@ export class RutaGestanteComponent {
   }
 
   volver() {
-    this.router.navigate(['/list-usuarios']);
+    this.router.navigate(['/list-gestantes']);
   }
 }

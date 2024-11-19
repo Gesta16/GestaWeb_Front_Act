@@ -44,6 +44,11 @@ export class MenuComponent {
 
     });
 
+    // Se utiliza para que el menú se expanda y cierre 
+    this.menuService.isExpanded$.subscribe(expanded => {
+      this.isExpanded = expanded; // Escuchar cambios de expansión
+    });
+
   }
 
   @HostListener('window:resize', ['$event'])

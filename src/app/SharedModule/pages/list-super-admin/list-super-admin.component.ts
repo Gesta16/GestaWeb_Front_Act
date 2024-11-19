@@ -4,6 +4,7 @@ import { SuperAdminService } from '../../../Services/super-admin.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddSuperAdminComponent } from '../add-super-admin/add-super-admin.component';
+import { MenuService } from '../../../Services/menu.service';
 
 @Component({
   selector: 'app-list-super-admin',
@@ -26,11 +27,18 @@ export class ListSuperAdminComponent {
     private superAdminService: SuperAdminService,
     private tipoDocumentoService: TipoDocumentoService,
     private _matDialog: MatDialog,
+    private menuService: MenuService
   ) { }
 
   ngOnInit(): void {
     this.loadSuperAdmins();
     this.loadTiposDocumento();
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
+    this.menuService.menuVisible$.subscribe(isVisible => {
+      this.isVisible = isVisible;
+    });
   }
 
   abrirModal(): void {

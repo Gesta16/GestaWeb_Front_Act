@@ -5,6 +5,7 @@ import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioService } from '../../../Services/usuario.service';
+import { MenuService } from '../../../Services/menu.service';
 
 @Component({
   selector: 'app-list-gestantes',
@@ -31,6 +32,7 @@ export class ListGestantesComponent {
     private tipoDocumentoService: TipoDocumentoService,
     private router: Router,
     private _matDialog: MatDialog,
+    private menuService: MenuService
   ) { }
 
 
@@ -38,6 +40,12 @@ export class ListGestantesComponent {
     this.checkScreenSize();
     this.loadUsuarios();
     this.loadTiposDocumento();
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
+    this.menuService.menuVisible$.subscribe(isVisible => {
+      this.isVisible = isVisible;
+    });
   }
 
   private checkScreenSize() {

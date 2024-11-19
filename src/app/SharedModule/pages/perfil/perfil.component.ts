@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TipoDocumento } from '../../../Models/Tipo-documento.model';
 import { AuthService } from '../../../Services/auth.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
+import { MenuService } from '../../../Services/menu.service';
 
 @Component({
   selector: 'app-perfil',
@@ -20,11 +21,18 @@ export class PerfilComponent {
   constructor(
     private authService: AuthService,
     private tipoDocumentoService: TipoDocumentoService,
+    private menuService: MenuService
   ) {}
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
     this.loadTiposDocumento();
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
+    this.menuService.menuVisible$.subscribe(isVisible => {
+      this.isVisible = isVisible;
+    });
   }
 
   toggleEdit() {
