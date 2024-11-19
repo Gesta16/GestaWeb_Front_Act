@@ -100,9 +100,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba treponémica rápida para
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba
+                                            treponémica rápida para
                                             sífilis intraparto</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyLaboratorioIntraparto"
+                                            [(ngModel)]="laboratorioIntraparto.reali_prueb_trepo_rap_sifilis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -130,9 +132,11 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba no treponémica (VDRL)
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba no
+                                            treponémica (VDRL)
                                             para sífilis intraparto </label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyLaboratorioIntraparto"
+                                            [(ngModel)]="laboratorioIntraparto.reali_prueb_no_trepo_vdrl_sifilis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -181,8 +185,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la Prueba rápida VIH</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la Prueba rápida
+                                            VIH</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyLaboratorioIntraparto"
+                                            [(ngModel)]="laboratorioIntraparto.reali_prueb_rapida_vih"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>

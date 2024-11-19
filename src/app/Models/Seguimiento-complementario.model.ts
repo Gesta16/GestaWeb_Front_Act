@@ -1,39 +1,50 @@
 export class SeguimientoComplementario {
     cod_segcomplementario: number;
-    id_usuario:number;
+    id_usuario: number;
     cod_sesiones: number;
-    fec_nutricion: string; 
-    fec_ginecologia: string; 
-    fec_psicologia: string; 
-    fec_odontologia: string; 
+    fec_nutricion: string;
+    fec_ginecologia: string;
+    fec_psicologia: string;
+    fec_odontologia: string;
     ina_seguimiento: string;
     cau_inasistencia: string;
     num_proceso: number;
-
+    asis_nutricionista: boolean;
+    asis_ginecologia: boolean;
+    asis_psicologia: boolean;
+    asis_odontologia: boolean;
 
     constructor(
-        {cod_segcomplementario=0,
-        id_usuario=0,
-        cod_sesiones=0,
-        fec_nutricion='',
-        fec_ginecologia='',
-        fec_psicologia='',
-        fec_odontologia='',
-        ina_seguimiento='',
-        cau_inasistencia='',
-        num_proceso=0
-    }:{
-        cod_segcomplementario?: number,
-        id_usuario?:number,
-        cod_sesiones?: number,
-        fec_nutricion?: string,
-        fec_ginecologia?: string,
-        fec_psicologia?: string,
-        fec_odontologia?: string,
-        ina_seguimiento?: string,
-        cau_inasistencia?: string,
-        num_proceso?: number
-    } = {}) {
+        { cod_segcomplementario = 0,
+            id_usuario = 0,
+            cod_sesiones = 0,
+            fec_nutricion = '',
+            fec_ginecologia = '',
+            fec_psicologia = '',
+            fec_odontologia = '',
+            ina_seguimiento = '',
+            cau_inasistencia = '',
+            num_proceso = 0,
+            asis_nutricionista = false,
+            asis_ginecologia = false,
+            asis_psicologia = false,
+            asis_odontologia = false,
+        }: {
+            cod_segcomplementario?: number,
+            id_usuario?: number,
+            cod_sesiones?: number,
+            fec_nutricion?: string,
+            fec_ginecologia?: string,
+            fec_psicologia?: string,
+            fec_odontologia?: string,
+            ina_seguimiento?: string,
+            cau_inasistencia?: string,
+            num_proceso?: number,
+            asis_nutricionista?: boolean,
+            asis_ginecologia?: boolean,
+            asis_psicologia?: boolean,
+            asis_odontologia?: boolean,
+        } = {}) {
         this.cod_segcomplementario = cod_segcomplementario;
         this.id_usuario = id_usuario
         this.cod_sesiones = cod_sesiones;
@@ -44,5 +55,9 @@ export class SeguimientoComplementario {
         this.ina_seguimiento = ina_seguimiento;
         this.cau_inasistencia = cau_inasistencia;
         this.num_proceso = num_proceso;
+        this.asis_nutricionista = asis_nutricionista
+        this.asis_ginecologia = asis_ginecologia
+        this.asis_psicologia = asis_psicologia
+        this.asis_odontologia = asis_odontologia
     }
 }

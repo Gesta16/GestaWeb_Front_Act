@@ -164,6 +164,7 @@
                                         <label for="usuario-solicito" class="font-medium mb-1">Se realizó la Prueba no
                                             treponémica recién nacido</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                            [(ngModel)]="nuevaTamizacion.reali_prueb_no_trepo_recien_nacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -193,6 +194,7 @@
                                         <label for="usuario-solicito" class="font-medium mb-1">Se realizó el Tamizaje
                                             auditivo</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                            [(ngModel)]="nuevaTamizacion.reali_tamiza_auditivo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -213,6 +215,7 @@
                                         <label for="usuario-solicito" class="font-medium mb-1">Se realizó el Tamizaje
                                             cardiopatías congénitas</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                            [(ngModel)]="nuevaTamizacion.reali_tamiza_cardiopatia_conge"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -233,6 +236,7 @@
                                         <label for="usuario-solicito" class="font-medium mb-1">Se realizó el Tamizaje
                                             visual</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                            [(ngModel)]="nuevaTamizacion.reali_tamiza_visual"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -337,8 +341,10 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna BCG</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna
+                                            BCG</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                            [(ngModel)]="nuevaRuta.aplico_vacuna_bcg"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -353,8 +359,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna de hepatitis</label>
+                                        <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna de
+                                            hepatitis</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                            [(ngModel)]="nuevaRuta.aplico_vacuna_hepatitis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -362,7 +370,8 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="fec_hepatitis" class="font-medium mb-1">Fecha vacunación hepatitis</label>
+                                        <label for="fec_hepatitis" class="font-medium mb-1">Fecha vacunación
+                                            hepatitis</label>
                                         <input type="date" id="fec_hepatitis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="nuevaRuta.fec_hepatitis" [readonly]="ReadonlyRutaPYMS"
@@ -382,6 +391,7 @@
                                         <label for="usuario-solicito" class="font-medium mb-1">Se realizó la entrega de
                                             carnet</label>
                                         <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                            [(ngModel)]="nuevaRuta.reali_entrega_carnet"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
