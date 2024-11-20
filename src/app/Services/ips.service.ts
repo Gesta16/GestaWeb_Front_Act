@@ -31,7 +31,7 @@ export class IpsService {
     return this.http.get<{ estado: string; ips: Ips[] }>(this.apiUrl, { headers: this.createHeaders() });
   }
 
-  createIps(ips: Ips): Observable<Ips> {
+  createIps(ips: Ips): Observable<any> {
     return this.http.post<Ips>(this.apiUrl, ips, { headers: this.createHeaders() });
   }
 

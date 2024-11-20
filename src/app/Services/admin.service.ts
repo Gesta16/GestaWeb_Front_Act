@@ -39,4 +39,8 @@ export class AdminService {
   createAdmin(admin: any): Observable<any> {
     return this.http.post(this.apiUrl, admin, { headers: this.createHeaders() });
   }
+
+  updateAdmin(admin:Admin, id:number):Observable<any>{
+    return this.http.put(`${this.apiUrl}/${id}`, admin, { headers: this.createHeaders() })
+  }
 }

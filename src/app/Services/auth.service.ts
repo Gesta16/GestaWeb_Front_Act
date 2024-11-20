@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environment/env';
+import { MenuService } from './menu.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,11 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private menuService:MenuService) {
     const storedUser = JSON.parse(sessionStorage.getItem('currentUser') || 'null');
     this.currentUserSubject = new BehaviorSubject<any>(storedUser);
     this.currentUser = this.currentUserSubject.asObservable();
+    
   }
 
   public get currentUserValue(): any {
@@ -30,6 +32,7 @@ export class AuthService {
         sessionStorage.setItem('token', response.access_token);
         sessionStorage.setItem('currentUser', JSON.stringify(response.user));
         this.currentUserSubject.next(response.user);
+        this.menuService.setMenuState(true, true);
       })
     );
   }
@@ -39,6 +42,7 @@ export class AuthService {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    
   }
 
   isAuthenticated(): boolean {

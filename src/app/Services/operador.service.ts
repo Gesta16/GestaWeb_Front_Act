@@ -36,4 +36,8 @@ export class OperadorService {
     return this.http.post(this.apiUrl, operador, { headers: this.createHeaders() });
   }
 
+  updateOperador(operador:Operador, id:number):Observable<any>{
+    return this.http.put(`${this.apiUrl}/${id}`, operador, { headers:this.createHeaders() })
+  }
+
 }

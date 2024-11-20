@@ -49,6 +49,10 @@ export class MenuComponent {
       this.isExpanded = expanded; // Escuchar cambios de expansión
     });
 
+    this.menuService.menuVisible$.subscribe(visible => {
+      this.isVisible = visible;
+    });
+
   }
 
   @HostListener('window:resize', ['$event'])
