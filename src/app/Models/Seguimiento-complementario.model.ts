@@ -9,10 +9,10 @@ export class SeguimientoComplementario {
     ina_seguimiento: string;
     cau_inasistencia: string;
     num_proceso: number;
-    asis_nutricionista: boolean;
-    asis_ginecologia: boolean;
-    asis_psicologia: boolean;
-    asis_odontologia: boolean;
+    asistio_nutricionista: boolean;
+    asistio_ginecologia: boolean;
+    asistio_psicologia: boolean;
+    asistio_odontologia: boolean;
 
     constructor(
         { cod_segcomplementario = 0,
@@ -25,10 +25,10 @@ export class SeguimientoComplementario {
             ina_seguimiento = '',
             cau_inasistencia = '',
             num_proceso = 0,
-            asis_nutricionista = false,
-            asis_ginecologia = false,
-            asis_psicologia = false,
-            asis_odontologia = false,
+            asistio_nutricionista = false,
+            asistio_ginecologia = false,
+            asistio_psicologia = false,
+            asistio_odontologia = false,
         }: {
             cod_segcomplementario?: number,
             id_usuario?: number,
@@ -40,10 +40,10 @@ export class SeguimientoComplementario {
             ina_seguimiento?: string,
             cau_inasistencia?: string,
             num_proceso?: number,
-            asis_nutricionista?: boolean,
-            asis_ginecologia?: boolean,
-            asis_psicologia?: boolean,
-            asis_odontologia?: boolean,
+            asistio_nutricionista?: boolean,
+            asistio_ginecologia?: boolean,
+            asistio_psicologia?: boolean,
+            asistio_odontologia?: boolean,
         } = {}) {
         this.cod_segcomplementario = cod_segcomplementario;
         this.id_usuario = id_usuario
@@ -55,9 +55,9 @@ export class SeguimientoComplementario {
         this.ina_seguimiento = ina_seguimiento;
         this.cau_inasistencia = cau_inasistencia;
         this.num_proceso = num_proceso;
-        this.asis_nutricionista = asis_nutricionista
-        this.asis_ginecologia = asis_ginecologia
-        this.asis_psicologia = asis_psicologia
-        this.asis_odontologia = asis_odontologia
+        this.asistio_nutricionista = asistio_nutricionista
+        this.asistio_ginecologia = asistio_ginecologia
+        this.asistio_psicologia = asistio_psicologia
+        this.asistio_odontologia = asistio_odontologia
     }
 }

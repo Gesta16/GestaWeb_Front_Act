@@ -151,6 +151,7 @@ export class Ruta6Component {
       // Crear nuevo registro de recién nacido
       this.datosRecienNacidoService.crearDatosRecienNacido(this.datosRecienNacido).subscribe({
         next: (response) => {
+          console.log(response);
           this.alertService.successAlert('Exito',response.message).then(()=>{
             this.id_DatosRecienNacido = response.cod_recien ?? null;
             this.ReadonlyDatosRecienNacido = true;
@@ -309,22 +310,14 @@ export class Ruta6Component {
       this.tamizacionNeonatalService.updateTamizacion(this.id_TamizacionNeonatal, this.nuevaTamizacion).subscribe({
         next: (response) => {
           console.log('Tamización neonatal actualizada:', response);
-          // Swal.fire({
-          //   title: 'Éxito',
-          //   text: 'Registro de tamización neonatal editado correctamente',
-          //   icon: 'success',
-          // }).then(() => {
-          //   this.ReadonlyTamizacionNeonatal = true;
-          //   this.isEditing = false;
-          // });
+          this.alertService.successAlert('Exito',response.message).then(()=>{
+            this.ReadonlyTamizacionNeonatal = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
           console.error('Error al actualizar el registro de tamización neonatal:', error);
-          // Swal.fire({
-          //   title: 'Error',
-          //   text: 'Ocurrió un error al actualizar el registro de tamización neonatal',
-          //   icon: 'error',
-          // });
+          this.alertService.errorAlert('Error',error.error.message);
         }
       });
     } else {
@@ -338,26 +331,14 @@ export class Ruta6Component {
       // Crear nuevo registro de tamización neonatal
       this.tamizacionNeonatalService.crearTamizacion(this.nuevaTamizacion).subscribe({
         next: (response) => {
-          // Swal.fire({
-          //   icon: 'success',
-          //   title: 'Éxito',
-          //   text: 'Registro de tamización neonatal guardado correctamente',
-          //   timer: 2000,
-          //   showConfirmButton: false
-          // }).then(() => {
-          //   this.id_TamizacionNeonatal = response.cod_tamizacion ?? null;
-          //   this.ReadonlyTamizacionNeonatal = true;
-          //   this.isEditing = false;
-          //   console.log(response);
-          //   console.log(this.id_TamizacionNeonatal);
-          // });
+          this.alertService.successAlert('Exito',response.message).then(()=>{
+            this.id_TamizacionNeonatal = response.cod_tamizacion ?? null;
+            this.ReadonlyTamizacionNeonatal = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
-          // Swal.fire({
-          //   icon: 'error',
-          //   title: 'Error',
-          //   text: 'Error al guardar el registro de tamización neonatal',
-          // });
+          this.alertService.errorAlert('Error',error.error.message);
           console.error('Error al guardar el registro de tamización neonatal', error.error);
         }
       });

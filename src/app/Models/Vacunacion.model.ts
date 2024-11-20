@@ -9,12 +9,12 @@ export class Vacunacion {
     fec_influenza: Date | null;
     fec_tetanico: Date | null;
     fec_dpt: Date | null;
-    reci_primer_dosis_covid:boolean;
-    reci_segu_dosis_covid:boolean;
-    reci_refue_covid:boolean;
-    reci_dosis_influenza:boolean;
-    reci_dosis_toxo_tetanico:boolean;
-    reci_dosis_dpt_a_celular:boolean;
+    recib_prim_dosis_covid19:boolean;
+    recib_segu_dosis_covid19:boolean;
+    recib_refu_covid19:boolean;
+    recib_dosis_influenza:boolean;
+    recib_dosis_tox_tetanico:boolean;
+    recib_dosis_dpt_a_celular:boolean;
 
     constructor(
        { id_usuario = 0,
@@ -25,12 +25,12 @@ export class Vacunacion {
         fec_influenza = new Date,
         fec_tetanico = new Date(),
         fec_dpt = new Date(),
-        reci_primer_dosis_covid = false,
-        reci_segu_dosis_covid = false,
-        reci_refue_covid = false,
-        reci_dosis_influenza = false,
-        reci_dosis_toxo_tetanico = false,
-        reci_dosis_dpt_a_celular = false,
+        recib_prim_dosis_covid19 = false,
+        recib_segu_dosis_covid19 = false,
+        recib_refu_covid19 = false,
+        recib_dosis_influenza = false,
+        recib_dosis_tox_tetanico = false,
+        recib_dosis_dpt_a_celular = false,
     }:{
         cod_vacunacion?: number,
         id_operador?: number,
@@ -42,12 +42,12 @@ export class Vacunacion {
         fec_influenza?: Date | null,
         fec_tetanico?: Date | null,
         fec_dpt?: Date | null,
-        reci_primer_dosis_covid?:boolean,
-        reci_segu_dosis_covid?:boolean,
-        reci_refue_covid?:boolean,
-        reci_dosis_influenza?:boolean,
-        reci_dosis_toxo_tetanico?:boolean,
-        reci_dosis_dpt_a_celular?:boolean
+        recib_prim_dosis_covid19?:boolean,
+        recib_segu_dosis_covid19?:boolean,
+        recib_refu_covid19?:boolean,
+        recib_dosis_influenza?:boolean,
+        recib_dosis_tox_tetanico?:boolean,
+        recib_dosis_dpt_a_celular?:boolean
     }={}) {
         this.cod_vacunacion = this.cod_vacunacion;
         this.id_operador = this.id_operador;
@@ -59,12 +59,12 @@ export class Vacunacion {
         this.fec_influenza = fec_influenza;
         this.fec_tetanico = fec_tetanico;
         this.fec_dpt = fec_dpt;
-        this.reci_primer_dosis_covid = reci_primer_dosis_covid;
-        this.reci_segu_dosis_covid = reci_segu_dosis_covid;
-        this.reci_refue_covid = reci_refue_covid;
-        this.reci_dosis_influenza = reci_dosis_influenza;
-        this.reci_dosis_toxo_tetanico = reci_dosis_toxo_tetanico;
-        this.reci_dosis_dpt_a_celular = reci_dosis_dpt_a_celular;
+        this.recib_prim_dosis_covid19 = recib_prim_dosis_covid19;
+        this.recib_segu_dosis_covid19 = recib_segu_dosis_covid19;
+        this.recib_refu_covid19 = recib_refu_covid19;
+        this.recib_dosis_influenza = recib_dosis_influenza;
+        this.recib_dosis_tox_tetanico = recib_dosis_tox_tetanico;
+        this.recib_dosis_dpt_a_celular = recib_dosis_dpt_a_celular;
 
     }
 

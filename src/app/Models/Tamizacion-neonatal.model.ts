@@ -10,10 +10,10 @@ export class TamizacionNeonatal {
     tamiza_cardi: string;
     tamiza_visual: string;
     num_proceso: number;
-    reali_prueb_no_trepo_recien_nacido: boolean;
-    reali_tamiza_auditivo: boolean;
-    reali_tamiza_cardiopatia_conge: boolean;
-    reali_tamiza_visual: boolean;
+    reali_prueb_trepo_recien_nacido: boolean;
+    reali_tami_auditivo: boolean;
+    reali_tami_cardiopatia_congenita: boolean;
+    reali_tami_visual: boolean;
 
     constructor(
         {
@@ -28,10 +28,10 @@ export class TamizacionNeonatal {
             tamiza_cardi = '',
             tamiza_visual = '',
             num_proceso = 0,
-            reali_prueb_no_trepo_recien_nacido = false,
-            reali_tamiza_auditivo = false,
-            reali_tamiza_cardiopatia_conge = false,
-            reali_tamiza_visual = false,
+            reali_prueb_trepo_recien_nacido = false,
+            reali_tami_auditivo = false,
+            reali_tami_cardiopatia_congenita = false,
+            reali_tami_visual = false,
         }: {
             cod_tamizacion?: number,
             id_usuario?: number,
@@ -44,10 +44,10 @@ export class TamizacionNeonatal {
             tamiza_cardi?: string,
             tamiza_visual?: string,
             num_proceso?: number,
-            reali_prueb_no_trepo_recien_nacido?: boolean,
-            reali_tamiza_auditivo?: boolean,
-            reali_tamiza_cardiopatia_conge?: boolean,
-            reali_tamiza_visual?: boolean,
+            reali_prueb_trepo_recien_nacido?: boolean,
+            reali_tami_auditivo?: boolean,
+            reali_tami_cardiopatia_congenita?: boolean,
+            reali_tami_visual?: boolean,
         } = {}) {
         this.cod_tamizacion = cod_tamizacion;
         this.id_usuario = id_usuario;
@@ -60,10 +60,10 @@ export class TamizacionNeonatal {
         this.tamiza_cardi = tamiza_cardi;
         this.tamiza_visual = tamiza_visual;
         this.num_proceso = num_proceso;
-        this.reali_prueb_no_trepo_recien_nacido = reali_prueb_no_trepo_recien_nacido
-        this.reali_tamiza_auditivo = reali_tamiza_auditivo
-        this.reali_tamiza_cardiopatia_conge = reali_tamiza_cardiopatia_conge
-        this.reali_tamiza_visual = reali_tamiza_visual
+        this.reali_prueb_trepo_recien_nacido = reali_prueb_trepo_recien_nacido
+        this.reali_tami_auditivo = reali_tami_auditivo
+        this.reali_tami_cardiopatia_congenita = reali_tami_cardiopatia_congenita
+        this.reali_tami_visual = reali_tami_visual
     }
 }
 

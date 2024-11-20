@@ -10,9 +10,9 @@ export class LaboratorioIntraparto {
     pru_vih: string;
     fec_vih: string;
     num_proceso: number;
-    reali_prueb_trepo_rap_sifilis: boolean;
-    reali_prueb_no_trepo_vdrl_sifilis: boolean;
-    reali_prueb_rapida_vih: boolean;
+    reali_prueb_trepo_rapi_sifilis_intra: boolean;
+    reali_prueb_no_trepo_vdrl_sifilis_intra: boolean;
+    reali_prueb_rapi_vih: boolean;
 
     constructor(
         {
@@ -27,9 +27,9 @@ export class LaboratorioIntraparto {
             pru_vih = '',
             fec_vih = '',
             num_proceso = 0,
-            reali_prueb_trepo_rap_sifilis = false,
-            reali_prueb_no_trepo_vdrl_sifilis = false,
-            reali_prueb_rapida_vih = false,
+            reali_prueb_trepo_rapi_sifilis_intra = false,
+            reali_prueb_no_trepo_vdrl_sifilis_intra = false,
+            reali_prueb_rapi_vih = false,
         }: {
             cod_intraparto?: number,
             id_usuario?: number,
@@ -42,9 +42,9 @@ export class LaboratorioIntraparto {
             pru_vih?: string,
             fec_vih?: string,
             num_proceso?: number,
-            reali_prueb_trepo_rap_sifilis?: boolean,
-            reali_prueb_no_trepo_vdrl_sifilis?: boolean,
-            reali_prueb_rapida_vih?: boolean,
+            reali_prueb_trepo_rapi_sifilis_intra?: boolean,
+            reali_prueb_no_trepo_vdrl_sifilis_intra?: boolean,
+            reali_prueb_rapi_vih?: boolean,
         } = {}) {
         this.cod_intraparto = cod_intraparto;
         this.id_usuario = id_usuario;
@@ -57,8 +57,8 @@ export class LaboratorioIntraparto {
         this.pru_vih = pru_vih;
         this.fec_vih = fec_vih;
         this.num_proceso = num_proceso;
-        this.reali_prueb_trepo_rap_sifilis = reali_prueb_trepo_rap_sifilis
-        this.reali_prueb_no_trepo_vdrl_sifilis = reali_prueb_no_trepo_vdrl_sifilis
-        this.reali_prueb_rapida_vih = reali_prueb_rapida_vih
+        this.reali_prueb_trepo_rapi_sifilis_intra = reali_prueb_trepo_rapi_sifilis_intra
+        this.reali_prueb_no_trepo_vdrl_sifilis_intra = reali_prueb_no_trepo_vdrl_sifilis_intra
+        this.reali_prueb_rapi_vih = reali_prueb_rapi_vih
     }
 }
