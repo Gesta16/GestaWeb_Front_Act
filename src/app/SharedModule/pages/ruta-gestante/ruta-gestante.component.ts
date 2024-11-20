@@ -13,7 +13,7 @@ export class RutaGestanteComponent {
   procesosCount: number = 0;
   selectedOption: number | null = null;
 
-
+  procesoId: number | null = null;
   isExpanded = true;
   isVisible = true;
 
@@ -26,6 +26,7 @@ export class RutaGestanteComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!;
+      this.procesoId = +params.get('procesoId')!;
       console.log('ID de la gestante:', this.id);
       if (this.id !== null) {
         this.contarProcesos(this.id);

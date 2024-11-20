@@ -79,6 +79,10 @@ const routes: Routes = [
         data:{showInMenu:false}
       },
       {
+        path:'ruta-gestante/:id/:procesoId', component:RutaGestanteComponent,
+        data:{showInMenu:false}
+      },
+      {
         path:'ruta-2', component:Ruta2Component,
         data:{showInMenu:false}
       },

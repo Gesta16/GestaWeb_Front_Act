@@ -27,6 +27,9 @@ export class ListGestantesComponent {
   isExpanded = true;
   isVisible = true;
 
+  showDropdown = false;
+  selectedProcess: number | null = null;
+
   constructor(
     private usuarioService: UsuarioService,
     private tipoDocumentoService: TipoDocumentoService,
@@ -96,16 +99,29 @@ export class ListGestantesComponent {
     });
   }
 
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+
   generarRango(cantidad: number): number[] {
     return Array.from({ length: cantidad }, (_, i) => i + 1);
   }
 
-  verUsuario(id: number): void {
-    this.selectedUserId = id;
-    console.log('ID del usuario seleccionado:', this.selectedUserId);
-
-    this.router.navigate(['/ruta-gestante', this.selectedUserId]);
+  // Redirigir a la ruta de detalles del proceso
+  verProceso(usuarioId: number, procesoId: number) {
+    if (usuarioId !== null && procesoId !== null) {
+      // Redirigir a la página donde se muestran los detalles del proceso
+      this.router.navigate(['/ruta-gestante', usuarioId, procesoId]);
+      this.showDropdown = false; // Cerrar el dropdown después de la selección
+    }
   }
+
+  // verUsuario(id: number): void {
+  //   this.selectedUserId = id;
+  //   console.log('ID del usuario seleccionado:', this.selectedUserId);
+
+  //   this.router.navigate(['/ruta-gestante', this.selectedUserId]);
+  // }
 
   private loadUsuarios(): void {
     this.usuarioService.getUsuarios().subscribe(
