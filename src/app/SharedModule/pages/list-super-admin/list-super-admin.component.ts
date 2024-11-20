@@ -36,9 +36,6 @@ export class ListSuperAdminComponent {
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
-    this.menuService.menuVisible$.subscribe(isVisible => {
-      this.isVisible = isVisible;
-    });
   }
 
   abrirModal(): void {

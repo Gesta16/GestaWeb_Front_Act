@@ -56,7 +56,7 @@ export class Ruta6Component {
     this.nuevaTamizacion = new TamizacionNeonatal();
   }
 
-  gOnInit() {
+  ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
       console.log('ID de la gestante:', this.id);
