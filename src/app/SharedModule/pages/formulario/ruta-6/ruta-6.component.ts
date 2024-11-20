@@ -10,7 +10,7 @@ import { DatosRecienNacidoService } from '../../../../Services/datos-recien-naci
 import { EstudioHipotiroidismoService } from '../../../../Services/estudio-hipotiroidismo.service';
 import { RutaPymsService } from '../../../../Services/ruta-pyms.service';
 import { TamizacionNeonatalService } from '../../../../Services/tamizacion-neonatal.service';
-
+import { AlertService } from '../../../../Services/alert.service';
 @Component({
   selector: 'app-ruta-6',
   templateUrl: './ruta-6.component.html',
@@ -49,6 +49,7 @@ export class Ruta6Component {
     private hemoclasificacionService: HemoclasificacionService,
     private tamizacionNeonatalService: TamizacionNeonatalService,
     private router: Router,
+    private alertService:AlertService,
   ) {
     this.datosRecienNacido = new DatosRecienNacido();
     this.estudioHipotiroidismo = new EstudioHipotiroidismo();
@@ -56,7 +57,7 @@ export class Ruta6Component {
     this.nuevaTamizacion = new TamizacionNeonatal();
   }
 
-  gOnInit() {
+  ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
       console.log('ID de la gestante:', this.id);
@@ -84,12 +85,7 @@ export class Ruta6Component {
 
   toggleTabs(tabNumber: number) {
     if (this.isEditing) {
-      // Swal.fire({
-      //   title: 'Advertencia',
-      //   text: 'Por favor, guarda los cambios antes de cambiar de pestaña.',
-      //   icon: 'warning',
-      //   confirmButtonText: 'OK'
-      // });
+      this.alertService.infoAlert('Advertencia', 'Por favor, guarda los cambios antes de cambiar de pestaña.');
       return;
     }
     this.openTab = tabNumber;
@@ -135,23 +131,14 @@ export class Ruta6Component {
       // Editar registro existente
       this.datosRecienNacidoService.updateDatosRecienNacido(this.id_DatosRecienNacido, this.datosRecienNacido).subscribe({
         next: (response) => {
-          console.log('Datos del recién nacido actualizados:', response);
-          // Swal.fire({
-          //   title: 'Éxito',
-          //   text: 'Registro de recién nacido editado correctamente',
-          //   icon: 'success',
-          // }).then(() => {
-          //   this.ReadonlyDatosRecienNacido = true;
-          //   this.isEditing = false;
-          // });
+          this.alertService.successAlert('Exito',response.message).then(()=>{
+            this.ReadonlyDatosRecienNacido = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
           console.error('Error al actualizar el registro de recién nacido:', error);
-          // Swal.fire({
-          //   title: 'Error',
-          //   text: 'Ocurrió un error al actualizar el registro de recién nacido',
-          //   icon: 'error',
-          // });
+          this.alertService.errorAlert('Error',error.error.message);
         }
       });
     } else {
@@ -164,26 +151,14 @@ export class Ruta6Component {
       // Crear nuevo registro de recién nacido
       this.datosRecienNacidoService.crearDatosRecienNacido(this.datosRecienNacido).subscribe({
         next: (response) => {
-          // Swal.fire({
-          //   icon: 'success',
-          //   title: 'Éxito',
-          //   text: 'Registro de recién nacido guardado correctamente',
-          //   timer: 2000,
-          //   showConfirmButton: false
-          // }).then(() => {
-          //   this.id_DatosRecienNacido = response.cod_recien ?? null;
-          //   this.ReadonlyDatosRecienNacido = true;
-          //   this.isEditing = false;
-          //   console.log(response);
-          //   console.log(this.id_DatosRecienNacido);
-          // });
+          this.alertService.successAlert('Exito',response.message).then(()=>{
+            this.id_DatosRecienNacido = response.cod_recien ?? null;
+            this.ReadonlyDatosRecienNacido = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
-          // Swal.fire({
-          //   icon: 'error',
-          //   title: 'Error',
-          //   text: 'Error al guardar el registro de recién nacido',
-          // });
+          this.alertService.errorAlert('Error', error.error.message);
           console.error('Error al guardar el registro de recién nacido', error.error);
         }
       });
@@ -215,22 +190,14 @@ export class Ruta6Component {
       this.estudioHipotiroidismoService.updateEstudioHipotiroidismo(this.id_EstudioHipotiroidismo, this.estudioHipotiroidismo).subscribe({
         next: (response) => {
           console.log('Estudio de hipotiroidismo actualizado:', response);
-          // Swal.fire({
-          //   title: 'Éxito',
-          //   text: 'Registro de estudio de hipotiroidismo editado correctamente',
-          //   icon: 'success',
-          // }).then(() => {
-          //   this.ReadonlyEstudioHipotiroidismo = true;
-          //   this.isEditing = false;
-          // });
+          this.alertService.successAlert('Exito',response.message).then(()=>{
+            this.ReadonlyEstudioHipotiroidismo = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
           console.error('Error al actualizar el registro de estudio de hipotiroidismo:', error);
-          // Swal.fire({
-          //   title: 'Error',
-          //   text: 'Ocurrió un error al actualizar el registro de estudio de hipotiroidismo',
-          //   icon: 'error',
-          // });
+          this.alertService.errorAlert('Error',error.error.message);
         }
       });
     } else {
@@ -243,26 +210,14 @@ export class Ruta6Component {
       // Crear nuevo registro de estudio de hipotiroidismo
       this.estudioHipotiroidismoService.crearEstudioHipotiroidismo(this.estudioHipotiroidismo).subscribe({
         next: (response) => {
-          // Swal.fire({
-          //   icon: 'success',
-          //   title: 'Éxito',
-          //   text: 'Registro de estudio de hipotiroidismo guardado correctamente',
-          //   timer: 2000,
-          //   showConfirmButton: false
-          // }).then(() => {
-          //   this.id_EstudioHipotiroidismo = response.cod_estudio ?? null;
-          //   this.ReadonlyEstudioHipotiroidismo = true;
-          //   this.isEditing = false;
-          //   console.log(response);
-          //   console.log(this.id_EstudioHipotiroidismo);
-          // });
+          this.alertService.successAlert('Exito',response.message).then(()=>{
+            this.id_EstudioHipotiroidismo = response.cod_estudio ?? null;
+            this.ReadonlyEstudioHipotiroidismo = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
-          // Swal.fire({
-          //   icon: 'error',
-          //   title: 'Error',
-          //   text: 'Error al guardar el registro de estudio de hipotiroidismo',
-          // });
+          this.alertService.errorAlert('Error',error.error.message);
           console.error('Error al guardar el registro de estudio de hipotiroidismo', error.error);
         }
       });
@@ -294,22 +249,14 @@ export class Ruta6Component {
       // Editar registro existente
       this.rutaPYMSService.updateRuta(this.id_RutaPYMS, this.nuevaRuta).subscribe({
         next: (response) => {
-          // Swal.fire({
-          //   title: 'Éxito',
-          //   text: 'Registro de ruta editado correctamente',
-          //   icon: 'success',
-          // }).then(() => {
-          //   this.ReadonlyRutaPYMS = true;
-          //   this.isEditing = false;
-          // });
+          this.alertService.successAlert('Exito', response.message).then(()=>{
+            this.ReadonlyRutaPYMS = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
           console.error('Error al actualizar el registro de ruta:', error);
-          // Swal.fire({
-          //   title: 'Error',
-          //   text: 'Ocurrió un error al actualizar el registro de ruta',
-          //   icon: 'error',
-          // });
+          this.alertService.errorAlert('Error', error.error.message);
         }
       });
     } else {
@@ -322,25 +269,14 @@ export class Ruta6Component {
       // Crear nuevo registro de ruta
       this.rutaPYMSService.crearRuta(this.nuevaRuta).subscribe({
         next: (response) => {
-          // Swal.fire({
-          //   icon: 'success',
-          //   title: 'Éxito',
-          //   text: 'Registro de ruta guardado correctamente',
-          //   timer: 2000,
-          //   showConfirmButton: false
-          // }).then(() => {
-          //   this.id_RutaPYMS = response.cod_ruta ?? null;
-          //   this.ReadonlyRutaPYMS = true;
-          //   this.isEditing = false;
-          //   console.log(response);
-          // });
+          this.alertService.successAlert('Exito',response.message).then(()=>{
+            this.id_RutaPYMS = response.cod_ruta ?? null;
+            this.ReadonlyRutaPYMS = true;
+            this.isEditing = false;
+          });
         },
         error: (error) => {
-          // Swal.fire({
-          //   icon: 'error',
-          //   title: 'Error',
-          //   text: 'Error al guardar el registro de ruta',
-          // });
+          this.alertService.errorAlert('Error',error.error.message);
           console.error('Error al guardar el registro de ruta', error.error);
         }
       });

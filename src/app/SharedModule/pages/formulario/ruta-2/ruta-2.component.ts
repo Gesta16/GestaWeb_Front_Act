@@ -15,6 +15,7 @@ import { Biologico } from '../../../../Models/Biologico.model';
 import { Riesgo } from '../../../../Models/Riesgo.model';
 import { TipoDm } from '../../../../Models/Tipo-dm.model';
 import { AlertService } from '../../../../Services/alert.service';
+import { MenuService } from '../../../../Services/menu.service';
 
 @Component({
   selector: 'app-ruta-2',
@@ -59,10 +60,15 @@ export class Ruta2Component {
     private router: Router,
     private controlPrenatalService: ControlPrenatalService,
     private alertService: AlertService,
+    private menuService: MenuService
   ) { }
 
 
   ngOnInit(): void {
+
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
 
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número

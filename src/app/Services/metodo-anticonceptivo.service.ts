@@ -10,7 +10,7 @@ import { MetodoAnticonceptivo } from '../Models/Metodo-anticonceptivo.model';
 })
 export class MetodoAnticonceptivoService {
 
-  private apiUrl = environment.apiUrl + 'terminacion-gestacion';
+  private apiUrl = environment.apiUrl + 'metodo-anticonceptivo';
 
   constructor(private http:HttpClient, private authService:AuthService) { }
 
