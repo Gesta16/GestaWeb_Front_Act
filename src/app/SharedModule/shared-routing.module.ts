@@ -58,7 +58,7 @@ const routes: Routes = [
       {
         path:'reportes', component:ReporteComponent,
         canActivate:[RoleGuard],
-        data:{title:'Reportes', icon:'fa-solid fa-clipboard-check', expectRoles:['superadmin'], showInMenu:true}
+        data:{title:'Reportes', icon:'fa-solid fa-clipboard-check', expectedRoles:['superadmin'], showInMenu:true}
       },
       {
         path:'perfil', component:PerfilComponent,
