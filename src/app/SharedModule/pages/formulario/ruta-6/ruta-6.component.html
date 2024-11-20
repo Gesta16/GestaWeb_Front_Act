@@ -343,7 +343,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna
                                             BCG</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="usuario-solicito" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.aplico_vacuna_bcg"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
@@ -361,7 +361,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna de
                                             hepatitis</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="usuario-solicito" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.aplico_vacuna_hepatitis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
@@ -390,7 +390,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="usuario-solicito" class="font-medium mb-1">Se realizó la entrega de
                                             carnet</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="usuario-solicito" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.reali_entrega_carnet"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>

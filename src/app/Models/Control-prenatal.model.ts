@@ -17,9 +17,9 @@ export class ControlPrenatal {
     fec_terminacion: Date;
     per_intergenesico: boolean;
     num_proceso: number;
-    reci_aten_preconcepcional:boolean;
-    asis_consul_control_aten_precon:boolean;
-    asis_aseso_ive:boolean;
+    recibio_atencion_preconcep:boolean;
+    asis_consul_control_precon:boolean;
+    asis_asesoria_ive:boolean;
     tuvo_embarazos_antes:boolean;
 
     constructor({
@@ -41,9 +41,9 @@ export class ControlPrenatal {
         fec_terminacion = new Date(),
         per_intergenesico = false,
         num_proceso = 0,
-        reci_aten_preconcepcional = false,
-        asis_consul_control_aten_precon = false,
-        asis_aseso_ive = false,
+        recibio_atencion_preconcep = false,
+        asis_consul_control_precon = false,
+        asis_asesoria_ive = false,
         tuvo_embarazos_antes = false
     }: {
         cod_control?: number,
@@ -64,9 +64,9 @@ export class ControlPrenatal {
         fec_terminacion?: Date,
         per_intergenesico?: boolean,
         num_proceso?: number,
-        reci_aten_preconcepcional?:boolean,
-        asis_consul_control_aten_precon?:boolean,
-        asis_aseso_ive?:boolean,
+        recibio_atencion_preconcep?:boolean,
+        asis_consul_control_precon?:boolean,
+        asis_asesoria_ive?:boolean,
         tuvo_embarazos_antes?:boolean
     }={}) {
         this.cod_control = cod_control;
@@ -87,9 +87,9 @@ export class ControlPrenatal {
         this.fec_terminacion = fec_terminacion;
         this.per_intergenesico = per_intergenesico;
         this.num_proceso = num_proceso;
-        this.reci_aten_preconcepcional = reci_aten_preconcepcional;
-        this.asis_consul_control_aten_precon = asis_consul_control_aten_precon;
-        this.asis_aseso_ive = asis_aseso_ive;
+        this.recibio_atencion_preconcep = recibio_atencion_preconcep;
+        this.asis_consul_control_precon = asis_consul_control_precon;
+        this.asis_asesoria_ive = asis_asesoria_ive;
         this.tuvo_embarazos_antes = tuvo_embarazos_antes;
     }
 }

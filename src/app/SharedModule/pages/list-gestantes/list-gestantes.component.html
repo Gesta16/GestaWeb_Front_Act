@@ -20,50 +20,62 @@
             </div>
         </div>
 
-    <!-- Estructura y estilo tabla -->
-    <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 overflow-x-auto mt-[50px]">
-        <table class="w-full text-sm text-center text-gray-700">
-            <thead class="text-xs text-gray-700 uppercase bg-[#44BDD4]">
-                <tr>
-                    <th scope="col" class="px-5 py-3">Tipo de documento</th>
-                    <th scope="col" class="px-5 py-3">N° documento</th>
-                    <th scope="col" class="px-5 py-3">Nombre</th>
-                    <th scope="col" class="px-5 py-3">Apellido</th>
-                    <th scope="col" class="px-5 py-3">Edad</th>
-                    <th scope="col" class="px-5 py-3">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let usuario of paginatedUsuarios" class="border-b hover:bg-gray-50">
-                    <td class="px-6 py-4">{{ getTipoDocumentoNombre(usuario.cod_documento) }}</td>
-                    <td class="px-6 py-4">{{ usuario.documento_usuario }}</td>
-                    <td class="px-6 py-4">{{ usuario.nom_usuario }}</td>
-                    <td class="px-6 py-4">{{ usuario.ape_usuario }}</td>
-                    <td class="px-6 py-4">{{ usuario.edad_usuario }}</td>
-                    <td class="px-7 py-4 flex justify-center space-x-2">
-                        <!-- Botón para abrir el modal de ver usuario -->
-                        <!-- <button (click)="abrirModalVer(usuario)"
+        <!-- Estructura y estilo tabla -->
+        <div class="rounded-lg border border-gray-300 bg-white shadow-md mb-4 overflow-x-auto mt-[50px]">
+            <table class="w-full text-sm text-center text-gray-700">
+                <thead class="text-xs text-gray-700 uppercase bg-[#44BDD4]">
+                    <tr>
+                        <th scope="col" class="px-5 py-3">Tipo de documento</th>
+                        <th scope="col" class="px-5 py-3">N° documento</th>
+                        <th scope="col" class="px-5 py-3">Nombre</th>
+                        <th scope="col" class="px-5 py-3">Apellido</th>
+                        <th scope="col" class="px-5 py-3">Edad</th>
+                        <th scope="col" class="px-5 py-3">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of paginatedUsuarios" class="border-b hover:bg-gray-50">
+                        <td class="px-6 py-4">{{ getTipoDocumentoNombre(usuario.cod_documento) }}</td>
+                        <td class="px-6 py-4">{{ usuario.documento_usuario }}</td>
+                        <td class="px-6 py-4">{{ usuario.nom_usuario }}</td>
+                        <td class="px-6 py-4">{{ usuario.ape_usuario }}</td>
+                        <td class="px-6 py-4">{{ usuario.edad_usuario }}</td>
+                        <td class="px-7 py-4 flex justify-center space-x-2">
+                            <!-- Botón para abrir el modal de ver usuario -->
+                            <!-- <button (click)="abrirModalVer(usuario)"
                             class="flex items-center h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
                             <span class="iconify fa-lg" data-icon="fluent:form-24-filled"></span>
                         </button> -->
 
-                        <!-- Botón para crear proceso si no hay ninguno -->
-                        <button (click)="crearProceso(usuario.id_usuario)" *ngIf="(usuario.procesosCount ?? 0) == 0"
-                            class="flex items-center h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
-                            <span class="iconify fa-lg" data-icon="mingcute:add-line"></span>
-                        </button>
+                            <!-- Botón para crear proceso si no hay ninguno -->
+                            <button (click)="crearProceso(usuario.id_usuario)"
+                                class="flex items-center h-8 border border-[#80BA27] bg-white text-black font-semibold px-2 rounded-xl hover:bg-[#EAF2DA] focus:outline-none">
+                                Nuevo proceso
+                            </button>
 
-                        <!-- Botón para ver usuario si hay exactamente un proceso -->
-                        <button *ngIf="usuario.procesosCount != 0" (click)="verUsuario(usuario.id_usuario)"
-                                class="flex items-center h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
-                            <span class="iconify fa-lg" data-icon="fa-solid:baby"></span>
-                        </button>
-                    </td>
+                            <!-- Botón para ver usuario si hay exactamente un proceso -->
+                            <button *ngIf="usuario.procesosCount != 0" (click)="toggleDropdown()"
+                                class="flex items-center h-8 border border-[#CAD400] bg-white font-semibold text-black px-2 rounded-xl hover:bg-[#F5F6DB] focus:outline-none">
+                                Ver proceso
+                            </button>
 
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                            <!-- Dropdown que se muestra al hacer clic en "Ver proceso" -->
+                            <div *ngIf="showDropdown"
+                                class="absolute right-0 mt-20 md:mt-40 mr-6 w-48 bg-white rounded-lg shadow-lg z-50">
+                                <select *ngIf="usuario.procesosCount > 0" class="select-custom"
+                                    [(ngModel)]="selectedProcess"
+                                    (change)="verProceso(usuario.id_usuario, selectedProcess)">
+                                    <option value="" disabled selected>Selecciona un proceso</option>
+                                    <option *ngFor="let num of generarRango(usuario.procesosCount)" [value]="num">{{ num}}</option>
+                                </select>
+                            </div>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!-- Paginación -->
         <nav class="flex items-center justify-center pt-4 mb-4" aria-label="Table navigation">
