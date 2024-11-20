@@ -36,7 +36,7 @@ export class SuperAdminService {
   }
 
   updateSuperadmin(superAdmin: SuperAdmin, id: number):Observable<any>{
-    return this.http.post<any>(`${this.apiUrl}/${id}`, superAdmin, { headers: this.createHeaders() });
+    return this.http.put<any>(`${this.apiUrl}/${id}`, superAdmin, { headers: this.createHeaders() });
   }
 
 

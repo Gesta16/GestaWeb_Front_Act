@@ -40,27 +40,28 @@
                     <!-- N° documento -->
                     <div class="mb-1">
                         <label for="numeroDocumento" class="text-sm font-medium text-gray-700">N° documento</label>
-                        <input type="text" id="numeroDocumento" name="numeroDocumento"
+                        <input type="text" id="numeroDocumento"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="user?.documento || ''" [disabled]="!isEditing">
+                            [value]="formData.documento_superadmin || formData.documento_admin || formData.documento_operador || ''"
+                            [disabled]="!isEditing" (input)="onInputChange($event, 'documento_superadmin')" />
                     </div>
 
                     <!-- Nombre -->
                     <div class="mb-1">
                         <label for="nombre" class="text-sm font-medium text-gray-700">Nombre</label>
-                        <input type="text" id="nombre" name="nombre"
+                        <input type="text" id="nombre"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="user?.userable?.nom_superadmin || user?.userable?.nom_usuario || user?.userable?.nom_admin || user?.userable?.nom_operador || ''"
-                            [disabled]="!isEditing">
+                            [value]="formData.nom_superadmin || formData.nom_admin || formData.nom_operador || ''"
+                            [disabled]="!isEditing" (input)="onInputChange($event, 'nom_superadmin')" />
                     </div>
 
                     <!-- Apellido -->
                     <div class="mb-1">
                         <label for="apellido" class="text-sm font-medium text-gray-700">Apellido</label>
-                        <input type="text" id="apellido" name="apellido"
+                        <input type="text" id="apellido"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="user?.userable?.ape_superadmin || user?.userable?.ape_usuario || user?.userable?.ape_admin || user?.userable?.ape_operador || ''"
-                            [disabled]="!isEditing">
+                            [value]="formData.ape_superadmin || formData.ape_admin || formData.ape_operador || ''"
+                            [disabled]="!isEditing" (input)="onInputChange($event, 'ape_admin')" />
                     </div>
 
                     <!-- Email -->
@@ -68,8 +69,8 @@
                         <label for="email" class="text-sm font-medium text-gray-700">E-mail</label>
                         <input type="email" id="email" name="email"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="user?.userable?.email_superadmin || user?.userable?.email_usuario || user?.userable?.email_admin || user?.userable?.email_operador || ''"
-                            [disabled]="!isEditing">
+                            [value]="formData.email_superadmin || formData.email_usuario || formData.email_admin || formData.email_operador || ''"
+                            [disabled]="!isEditing" (input)="onInputChange($event, 'email_superadmin')">
                     </div>
 
                     <!-- Teléfono -->
@@ -77,8 +78,8 @@
                         <label for="telefono" class="text-sm font-medium text-gray-700">Teléfono</label>
                         <input type="text" id="telefono" name="telefono"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="user?.userable?.tel_superadmin || user?.userable?.tel_usuario || user?.userable?.tel_admin || user?.userable?.tel_operador || ''"
-                            [disabled]="!isEditing">
+                            [value]="formData.tel_superadmin || formData.tel_usuario || formData.tel_admin || formData.tel_operador || ''"
+                            [disabled]="!isEditing" (input)="onInputChange($event, 'tel_superadmin')">
                     </div>
 
                     <!-- Mostrar campos de contraseña solo cuando isEditing es verdadero -->
@@ -87,7 +88,8 @@
                         <div class="mb-1">
                             <label for="newPassword" class="text-sm font-medium text-gray-700">Nueva Contraseña</label>
                             <input type="password" id="newPassword" name="newPassword"
-                                class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]">
+                                class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                                [(ngModel)]="formData.password" #password="ngModel">
                         </div>
 
                         <!-- Confirmar nueva contraseña -->
@@ -95,7 +97,8 @@
                             <label for="confirmPassword" class="text-sm font-medium text-gray-700">Confirmar
                                 Contraseña</label>
                             <input type="password" id="confirmPassword" name="confirmPassword"
-                                class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]">
+                                class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
+                                [(ngModel)]="formData.confirmPassword" #confirmPassword="ngModel">
                         </div>
                     </div>
                 </div>
@@ -111,9 +114,9 @@
             </button>
 
             <!-- Mostrar los botones según el estado de edición -->
-            <button *ngIf="isEditing; else editButton" (click)="toggleEdit()"
-                class="bg-[#00ACC9] hover:bg-[#0194ad] text-white font-bold py-2 px-4 rounded">
-                Guardar
+            <button type="button" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                *ngIf="isEditing" (click)="saveChanges()">
+                Guardar cambios
             </button>
 
             <!-- Botón de Editar -->
