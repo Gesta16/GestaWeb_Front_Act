@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../../Services/usuario.service';
+import { MenuService } from '../../../Services/menu.service';
 
 @Component({
   selector: 'app-ruta-gestante',
@@ -21,6 +22,7 @@ export class RutaGestanteComponent {
     private route: ActivatedRoute,
     private router: Router,
     private usuarioService: UsuarioService,
+    private menuService: MenuService,
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,9 @@ export class RutaGestanteComponent {
       if (this.id !== null) {
         this.contarProcesos(this.id);
       }
-      
+    });
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
     });
   }
 
