@@ -71,7 +71,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     SharedModuleRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    
   ],
   exports: [
     MenuComponent 

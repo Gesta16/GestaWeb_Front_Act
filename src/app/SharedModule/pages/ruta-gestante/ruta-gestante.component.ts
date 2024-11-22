@@ -22,7 +22,7 @@ export class RutaGestanteComponent {
     private route: ActivatedRoute,
     private router: Router,
     private usuarioService: UsuarioService,
-    private menuService: MenuService
+    private menuService: MenuService,
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +33,8 @@ export class RutaGestanteComponent {
       if (this.id !== null) {
         this.contarProcesos(this.id);
       }
-      
     });
-    this.menuService.isExpanded$.subscribe(isExpanded =>{
+    this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
   }

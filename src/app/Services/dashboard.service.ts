@@ -33,4 +33,19 @@ export class DashboardService {
   getProporcionTamizajeSifilis():Observable<any>{
     return this.http.get(this.apiUrl+'tamizaje-sifilis', {headers: this.createHeaders()});
   }
+
+  getCoverageData(role:string, cod_ips:number):Observable<any>{
+    const params = {role:role, cod_ips:cod_ips};
+    return this.http.get(`${this.apiUrl}seguimientos-comple`, {headers:this.createHeaders(), params})
+  }
+
+  getNeonatalMortalityRate(role:string, cod_ips:number):Observable<any>{
+    const params = {role:role, cod_ips:cod_ips};
+    return this.http.get(`${this.apiUrl}mortalidad-neonatalTemp`, {headers:this.createHeaders(), params})
+  }
+
+  getIveProportion(role:string, cod_ips:number):Observable<any>{
+    const params = {role:role, cod_ips:cod_ips};
+    return this.http.get(`${this.apiUrl}consultas-ive`,{headers:this.createHeaders(), params})
+  }
 }
