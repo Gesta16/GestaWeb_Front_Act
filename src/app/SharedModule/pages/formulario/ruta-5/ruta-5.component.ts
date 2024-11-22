@@ -182,7 +182,8 @@ export class Ruta5Component {
   }
 
   getTerminaciones() {
-    this.terminacionGestacionService.getTerminacionGestacion().subscribe(response => {
+    this.terminacionGestacionService.getTerminacionGestacion().subscribe(
+      response => {
       if (response.estado === 'Ok') {
         this.terminaciones = response['Terminacion gestacion'];
       }
@@ -192,7 +193,8 @@ export class Ruta5Component {
   }
 
   getMetodosAnticonceptivos() {
-    this.metodoAnticonceptivoService.getMetodosAnticonceptivos().subscribe(response => {
+    this.metodoAnticonceptivoService.getMetodosAnticonceptivos().subscribe(
+      response => {
       if (response.estado === 'Ok') {
         this.metodos = response['Metodo Anticonceptivo'];
       }
@@ -202,7 +204,8 @@ export class Ruta5Component {
   }
 
   getPruebaVDRL() {
-    this.pruebaVDRLService.getPruebaVDRL().subscribe(response => {
+    this.pruebaVDRLService.getPruebaVDRL().subscribe(
+      response => {
       if (response.estado === 'Ok') {
         this.pruebaVDRL = response['Prueba No Treponemica VDRL'];
       }
@@ -212,7 +215,8 @@ export class Ruta5Component {
   }
 
   getMortalidadPerinatal() {
-    this.mortalidadPerinatalService.getMortalidadPerinatal().subscribe(response => {
+    this.mortalidadPerinatalService.getMortalidadPerinatal().subscribe(
+      response => {
       if (response.estado === 'Ok') {
         this.mortalidadPerinatal = response['Mortalidad Perinatal'];
       }

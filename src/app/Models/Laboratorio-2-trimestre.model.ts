@@ -27,13 +27,13 @@ export class LaboratorioIITrimestre {
     rie_biopsicosocial: string;
     num_proceso: number;
     reali_prueb_rapi_vih: boolean;
-    reali_prueb_trepo_rap_sifilis: boolean;
+    real_prueb_trep_rap_sifilis: boolean;
     reali_citologia: boolean;
-    reali_prueb_avidez_igg: boolean;
-    reali_prueb_toxopla_iga: boolean;
+    reali_prueb_avidez_ig_g: boolean;
+    reali_prueb_toxoplasmosis_ig_a: boolean;
     reali_prueb_hemoparasito: boolean;
     reali_prueb_coombis_indi_cuanti: boolean;
-    reali_eco_obste_deta_anatomico: boolean;
+    reali_eco_obste_detalle_anato: boolean;
 
     constructor({
         cod_doslaboratorio = 0,
@@ -64,13 +64,13 @@ export class LaboratorioIITrimestre {
         rie_biopsicosocial = '',
         num_proceso = 0,
         reali_prueb_rapi_vih = false,
-        reali_prueb_trepo_rap_sifilis = false,
+        real_prueb_trep_rap_sifilis = false,
         reali_citologia = false,
-        reali_prueb_avidez_igg = false,
-        reali_prueb_toxopla_iga = false,
+        reali_prueb_avidez_ig_g = false,
+        reali_prueb_toxoplasmosis_ig_a = false,
         reali_prueb_hemoparasito = false,
         reali_prueb_coombis_indi_cuanti = false,
-        reali_eco_obste_deta_anatomico = false,
+        reali_eco_obste_detalle_anato = false,
     }: {
         cod_doslaboratorio?: number,
         id_operador?: number,
@@ -100,13 +100,13 @@ export class LaboratorioIITrimestre {
         rie_biopsicosocial?: string,
         num_proceso?: number,
         reali_prueb_rapi_vih?: boolean,
-        reali_prueb_trepo_rap_sifilis?: boolean,
+        real_prueb_trep_rap_sifilis?: boolean,
         reali_citologia?: boolean,
-        reali_prueb_avidez_igg?: boolean,
-        reali_prueb_toxopla_iga?: boolean,
+        reali_prueb_avidez_ig_g?: boolean,
+        reali_prueb_toxoplasmosis_ig_a?: boolean,
         reali_prueb_hemoparasito?: boolean,
         reali_prueb_coombis_indi_cuanti?: boolean,
-        reali_eco_obste_deta_anatomico?: boolean,
+        reali_eco_obste_detalle_anato?: boolean,
     } = {}) {
         this.cod_doslaboratorio = cod_doslaboratorio;
         this.id_operador = id_operador;
@@ -136,13 +136,13 @@ export class LaboratorioIITrimestre {
         this.rie_biopsicosocial = rie_biopsicosocial;
         this.num_proceso = num_proceso;
         this.reali_prueb_rapi_vih = reali_prueb_rapi_vih
-        this.reali_prueb_trepo_rap_sifilis = reali_prueb_trepo_rap_sifilis
+        this.real_prueb_trep_rap_sifilis = real_prueb_trep_rap_sifilis
         this.reali_citologia = reali_citologia
-        this.reali_prueb_avidez_igg = reali_prueb_avidez_igg
-        this.reali_prueb_toxopla_iga = reali_prueb_toxopla_iga
+        this.reali_prueb_avidez_ig_g = reali_prueb_avidez_ig_g
+        this.reali_prueb_toxoplasmosis_ig_a = reali_prueb_toxoplasmosis_ig_a
         this.reali_prueb_hemoparasito = reali_prueb_hemoparasito
         this.reali_prueb_coombis_indi_cuanti = reali_prueb_coombis_indi_cuanti
-        this.reali_eco_obste_deta_anatomico = reali_eco_obste_deta_anatomico
+        this.reali_eco_obste_detalle_anato = reali_eco_obste_detalle_anato
 
     }
 }
