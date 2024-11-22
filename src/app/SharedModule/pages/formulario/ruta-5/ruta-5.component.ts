@@ -18,6 +18,7 @@ import { MortalidadPerinatalService } from '../../../../Services/mortalidad-peri
 import { MortalidadPrepartoService } from '../../../../Services/mortalidad-preparto.service';
 import { AlertService } from '../../../../Services/alert.service';
 import { response } from 'express';
+import { MenuService } from '../../../../Services/menu.service';
 
 @Component({
   selector: 'app-ruta-5',
@@ -53,6 +54,13 @@ export class Ruta5Component {
   isExpanded = true;
   isVisible = true;
 
+  mostrarCampos:{[key:string]:boolean}={
+    reali_prueb_trepo_rapi_sifilis_intra: false,
+    reali_prueb_no_trepo_vdrl_sifilis_intra: false,
+    rec_sifilis: false,
+    reali_prueb_rapi_vih: false
+  }
+
   constructor(
     private route: ActivatedRoute,
     private terminacionGestacionService: TerminacionGestacionService,
@@ -65,6 +73,7 @@ export class Ruta5Component {
     private mortalidadPrepartoService: MortalidadPrepartoService,
     private router: Router,
     private alertService:AlertService,
+    private menuService:MenuService,
   ) {
     this.finalizacionGestacion = new FinalizacionGestacion();
     this.laboratorioIntraparto = new LaboratorioIntraparto();
@@ -99,6 +108,9 @@ export class Ruta5Component {
     this.getMetodosAnticonceptivos();
     this.getPruebaVDRL();
     this.getMortalidadPerinatal();
+    this.menuService.isExpanded$.subscribe(isExpanded =>{
+      this.isExpanded = isExpanded;
+    });
   }
 
   toggleTabs(tabNumber: number) {
@@ -133,6 +145,41 @@ export class Ruta5Component {
     this.isEditing = true;
   }
 
+  onPrepartoChange(campo:string){
+    const valorSeleccionado = Number(this.laboratorioIntraparto[campo]);
+    switch (campo){
+      case 'reali_prueb_trepo_rapi_sifilis_intra':
+        this.mostrarCampos['reali_prueb_trepo_rapi_sifilis_intra'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_prueb_trepo_rapi_sifilis_intra']){
+          this.laboratorioIntraparto.pru_sifilis = null,
+          this.laboratorioIntraparto.fec_sifilis = null;
+        }
+        break;
+
+      case 'reali_prueb_no_trepo_vdrl_sifilis_intra':
+        this.mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis_intra'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis_intra']){
+          this.laboratorioIntraparto.cod_vdrl = null,
+          this.laboratorioIntraparto.fec_vdrl = null;
+        }
+        break;
+
+      case 'rec_sifilis':
+        this.mostrarCampos['rec_sifilis'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['rec_sifilis']){
+          this.laboratorioIntraparto.fec_tratamiento = null;
+        }
+        break;
+
+      case 'reali_prueb_rapi_vih':
+        this.mostrarCampos['reali_prueb_rapi_vih'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_prueb_rapi_vih']){
+          this.laboratorioIntraparto.pru_vih = null,
+          this.laboratorioIntraparto.fec_vih = null;
+        }
+        break;
+    }
+  }
 
   getTerminaciones() {
     this.terminacionGestacionService.getTerminacionGestacion().subscribe(response => {

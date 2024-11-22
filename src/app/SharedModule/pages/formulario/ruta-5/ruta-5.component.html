@@ -100,11 +100,12 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba
+                                        <label for="reali_prueb_trepo_rapi_sifilis_intra" class="font-medium mb-1">Realizó la prueba
                                             treponémica rápida para
                                             sífilis intraparto</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyLaboratorioIntraparto"
+                                        <select id="reali_prueb_trepo_rapi_sifilis_intra" [disabled]="ReadonlyLaboratorioIntraparto"
                                             [(ngModel)]="laboratorioIntraparto.reali_prueb_trepo_rapi_sifilis_intra"
+                                            (change)="onPrepartoChange('reali_prueb_trepo_rapi_sifilis_intra')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -115,7 +116,7 @@
                                         <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida para
                                             sífilis intraparto</label>
                                         <select id="pru_sifilis" [(ngModel)]="laboratorioIntraparto.pru_sifilis"
-                                            [disabled]="ReadonlyLaboratorioIntraparto"
+                                            [disabled]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_trepo_rapi_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
                                             <option value="Negativo">Negativo</option>
@@ -127,16 +128,17 @@
                                             rápida para sífilis intraparto</label>
                                         <input type="date" id="fec_sifilis"
                                             [(ngModel)]="laboratorioIntraparto.fec_sifilis"
-                                            [readonly]="ReadonlyLaboratorioIntraparto"
+                                            [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_trepo_rapi_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba no
+                                        <label for="reali_prueb_no_trepo_vdrl_sifilis_intra" class="font-medium mb-1">Realizó la prueba no
                                             treponémica (VDRL)
                                             para sífilis intraparto </label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyLaboratorioIntraparto"
+                                        <select id="reali_prueb_no_trepo_vdrl_sifilis_intra" [disabled]="ReadonlyLaboratorioIntraparto"
                                             [(ngModel)]="laboratorioIntraparto.reali_prueb_no_trepo_vdrl_sifilis_intra"
+                                            (change)="onPrepartoChange('reali_prueb_no_trepo_vdrl_sifilis_intra')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -148,7 +150,7 @@
                                         <label for="pruebaVDRL" class="font-medium mb-1">Prueba no treponémica (VDRL)
                                             para sífilis intraparto</label>
                                         <select id="pruebaVDRL" [(ngModel)]="laboratorioIntraparto.cod_vdrl"
-                                            [disabled]="ReadonlyLaboratorioIntraparto"
+                                            [disabled]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let prueba of pruebaVDRL" [value]="prueba.cod_vdrl">
                                                 {{ prueba.num_vdrl }} <!-- Aquí muestra el valor directamente -->
@@ -160,7 +162,7 @@
                                         <label for="fec_vdrl" class="font-medium mb-1">Fecha prueba no treponémica
                                             (VDRL) para sífilis intraparto</label>
                                         <input type="date" id="fec_vdrl" [(ngModel)]="laboratorioIntraparto.fec_vdrl"
-                                            [readonly]="ReadonlyLaboratorioIntraparto"
+                                            [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
@@ -169,9 +171,10 @@
                                             sífilis</label>
                                         <select id="rec_sifilis" [(ngModel)]="laboratorioIntraparto.rec_sifilis"
                                             [disabled]="ReadonlyLaboratorioIntraparto"
+                                            (change)="onPrepartoChange('rec_sifilis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Si">Si</option>
-                                            <option value="No">No</option>
+                                            <option value="1">Si</option>
+                                            <option value="0">No</option>
                                         </select>
                                     </div>
 
@@ -180,15 +183,16 @@
                                             tratamiento para sífilis intraparto</label>
                                         <input type="date" id="fec_tratamiento"
                                             [(ngModel)]="laboratorioIntraparto.fec_tratamiento"
-                                            [readonly]="ReadonlyLaboratorioIntraparto"
+                                            [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['rec_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la Prueba rápida
+                                        <label for="reali_prueb_rapi_vih" class="font-medium mb-1">Realizó la Prueba rápida
                                             VIH</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyLaboratorioIntraparto"
+                                        <select id="reali_prueb_rapi_vih" [disabled]="ReadonlyLaboratorioIntraparto"
                                             [(ngModel)]="laboratorioIntraparto.reali_prueb_rapi_vih"
+                                            (change)="onPrepartoChange('reali_prueb_rapi_vih')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -198,7 +202,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
                                         <select id="pru_vih" [(ngModel)]="laboratorioIntraparto.pru_vih"
-                                            [disabled]="ReadonlyLaboratorioIntraparto"
+                                            [disabled]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
                                             <option value="Negativo">Negativo</option>
@@ -208,7 +212,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
                                         <input type="date" id="fec_vih" [(ngModel)]="laboratorioIntraparto.fec_vih"
-                                            [readonly]="ReadonlyLaboratorioIntraparto"
+                                            [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 

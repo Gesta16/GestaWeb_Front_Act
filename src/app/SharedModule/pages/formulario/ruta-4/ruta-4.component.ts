@@ -17,6 +17,7 @@ import { SeguimientoConsultaMensualService } from '../../../../Services/seguimie
 import { SeguimientoComplementarioService } from '../../../../Services/seguimiento-complementario.service';
 import { MicronutrientesService } from '../../../../Services/micronutrientes.service';
 import { AlertService } from '../../../../Services/alert.service';
+import { MenuService } from '../../../../Services/menu.service';
 
 @Component({
   selector: 'app-ruta-4',
@@ -49,6 +50,14 @@ export class Ruta4Component {
   isExpanded = true;
   isVisible = true;
 
+  mostrarCampos:{ [key:string]: boolean} ={
+    asistio_nutricionista: false,
+    asistio_ginecologia: false,
+    asistio_psicologia:false,
+    asistio_odontologia: false,
+    ina_seguimiento: false
+  }
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -61,6 +70,7 @@ export class Ruta4Component {
     private seguimientoComplementarioService: SeguimientoComplementarioService,
     private micronutrientesService: MicronutrientesService,
     private alertService:AlertService,
+    private menuService:MenuService
   ) {
     this.seguimientoConsulta = new SeguimientoConsultaMensual();
 
@@ -94,10 +104,10 @@ export class Ruta4Component {
     this.getFormasMedicion();
     this.getDiagnosticosNutricionales();
     this.getNumSesionesCurso();
+    this.menuService.isExpanded$.subscribe(isExpanded =>{
+      this.isExpanded = isExpanded;
+    });
   }
-
-
-
 
   toggleTabs(tabNumber: number) {
     // Permitir cambio entre las pestañas 1 y 2 en modo edición
@@ -128,6 +138,47 @@ export class Ruta4Component {
     if (!this.ReadonlyMicronutriente) return;
     this.ReadonlyMicronutriente = false;
     this.isEditing = true;
+  }
+
+  // habilitar o dehabilitar los campos
+  onSeguimientoChange(campo:string){
+    const valorSeleccionado = Number(this.seguimientoComplementario[campo]);
+    switch (campo){
+      case 'asistio_nutricionista':
+        this.mostrarCampos['asistio_nutricionista'] = valorSeleccionado === 1;
+        if(!this.mostrarCampos['asistio_nutricionista']){
+          this.seguimientoComplementario.fec_nutricion = null;
+        }
+        break;
+      
+      case 'asistio_ginecologia':
+        this.mostrarCampos['asistio_ginecologia'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['asistio_ginecologia']){
+          this.seguimientoComplementario.fec_ginecologia = null
+        }
+        break;
+      
+      case 'asistio_psicologia':
+        this.mostrarCampos['asistio_psicologia'] = valorSeleccionado === 1;
+        if(!this.mostrarCampos['asistio_psicologia']){
+          this.seguimientoComplementario.fec_psicologia = null;
+        }
+        break;
+
+      case 'asistio_odontologia':
+        this.mostrarCampos['asistio_odontologia'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['asistio_odontologia']){
+          this.seguimientoComplementario.fec_odontologia = null;
+        }
+        break;
+
+      case 'ina_seguimiento':
+        this.mostrarCampos['ina_seguimiento'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['ina_seguimiento']){
+          this.seguimientoComplementario.cau_inasistencia = null;
+        }
+        break;
+    }
   }
 
   getNumerosControl() {

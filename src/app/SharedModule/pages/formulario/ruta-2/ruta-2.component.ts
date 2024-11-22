@@ -50,6 +50,25 @@ export class Ruta2Component {
   id: number | null = null;
   num_proceso: number | null = null;
 
+  mostrarCampos:{ [key:string]: boolean} ={
+    fec_anticonceptivo: false,
+    recibio_atencion_preconcep: false,
+    asis_consul_control_precon: false,
+    usu_solicito: false,
+    asis_asesoria_ive: false,
+    tuvo_embarazos_antes: false,
+    
+    dm: false,
+    asis_conse_lactancia: false,
+    asis_conse_pre_vih: false,
+    recib_prim_dosis_covid19: false,
+    recib_segu_dosis_covid19: false,
+    recib_refu_covid19: false,
+    recib_dosis_influenza: false,
+    recib_dosis_tox_tetanico: false,
+    recib_dosis_dpt_a_celular: false
+  }
+
   constructor(private route: ActivatedRoute,
     private vacunacionService: VacunacionService,
     private biologicoService: BiologicoService,
@@ -129,6 +148,122 @@ export class Ruta2Component {
     });
   }
 
+  // habilitar o dehabilitar los campos
+  onControlPrenatalChange(campo:string){
+    const valorSeleccionado = Number(this.controlPrenatal[campo]);
+    const valorSeleccionado1 = Number(this.primeraConsulta[campo]);
+    const valorSeleccionado2 = Number(this.vacunacion[campo]);
+    switch (campo){
+      // Control prenatal
+      case 'fec_anticonceptivo':
+        this.mostrarCampos['fec_anticonceptivo'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['fec_anticonceptivo']){
+          this.controlPrenatal.cod_fracaso = null;
+        }
+        break;
+
+      case 'recibio_atencion_preconcep':
+        this.mostrarCampos['recibio_atencion_preconcep'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['recibio_atencion_preconcep']){
+          this.controlPrenatal.fec_consulta = null;
+        }
+        break;
+      
+      case 'asis_consul_control_precon':
+        this.mostrarCampos['asis_consul_control_precon'] = valorSeleccionado === 1;
+        if(!this.mostrarCampos['asis_consul_control_precon']){
+          this.controlPrenatal.fec_control = null;
+        }
+        break;
+      
+      case 'usu_solicito':
+        this.mostrarCampos['usu_solicito'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['usu_solicito']){
+          this.controlPrenatal.asis_asesoria_ive = null;
+        }
+        break;
+
+      case 'asis_asesoria_ive':
+        this.mostrarCampos['asis_asesoria_ive'] = valorSeleccionado ===1;
+        if (!this.mostrarCampos['asis_asesoria_ive']){
+          this.controlPrenatal.fac_asesoria = null;
+        }
+        break;
+      
+      case 'tuvo_embarazos_antes':
+        this.mostrarCampos['tuvo_embarazos_antes'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['tuvo_embarazos_antes']){
+          this.controlPrenatal.fec_terminacion = null;
+        }
+        break;
+      
+      // Primera consulta
+      case 'dm':
+        this.mostrarCampos['dm'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['dm']){
+          this.primeraConsulta.cod_dm = null;
+        }
+        break;
+
+      case 'asis_conse_lactancia':
+        this.mostrarCampos['asis_conse_lactancia'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['asis_conse_lactancia']){
+          this.primeraConsulta.fec_lactancia  = null;
+        }
+        break;
+      
+      case 'asis_conse_pre_vih':
+        this.mostrarCampos['asis_conse_pre_vih'] = valorSeleccionado1 === 1;
+        if(!this.mostrarCampos['asis_conse_pre_vih']){
+          this.primeraConsulta.fec_consejeria = null;
+        }
+        break;
+
+      // Vacunación
+      case 'recib_prim_dosis_covid19':
+        this.mostrarCampos['recib_prim_dosis_covid19'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['recib_prim_dosis_covid19']){
+          this.vacunacion.fec_unocovid = null;
+        }
+        break;
+      
+      case 'recib_segu_dosis_covid19':
+        this.mostrarCampos['recib_segu_dosis_covid19'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['recib_segu_dosis_covid19']){
+          this.vacunacion.fec_doscovid = null;
+        }
+        break;
+      
+      case 'recib_refu_covid19':
+        this.mostrarCampos['recib_refu_covid19'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['recib_refu_covid19']){
+          this.vacunacion.fec_refuerzo = null;
+        }
+        break;
+
+      case 'recib_dosis_influenza':
+        this.mostrarCampos['recib_dosis_influenza'] = valorSeleccionado2 === 1;
+        if(!this.mostrarCampos['recib_dosis_influenza']){
+          this.vacunacion.fec_influenza =  null;
+        }
+        break;
+      
+      case 'recib_dosis_tox_tetanico':
+        this.mostrarCampos['recib_dosis_tox_tetanico'] = valorSeleccionado2 === 1;
+        if(!this.mostrarCampos['recib_dosis_tox_tetanico']){
+          this.vacunacion.fec_tetanico = null;
+        }
+        break;
+      
+      case 'recib_dosis_dpt_a_celular':
+        this.mostrarCampos['recib_dosis_dpt_a_celular'] = valorSeleccionado2 === 1;
+        if(!this.mostrarCampos['recib_dosis_dpt_a_celular']){
+          this.vacunacion.fec_dpt = null;
+        }
+        break;
+    }
+  }
+
   toggleTabs(tabNumber: number) {
     // Definimos los grupos de tabs permitidos para el cambio
     const grupo1 = [1, 2];
@@ -188,12 +323,10 @@ export class Ruta2Component {
       // Editar usuario existente
       this.controlPrenatalService.updateControlPrenatal(this.id_control, this.controlPrenatal).subscribe({
         next: (response) => {
-          console.log('Control Prenatal actualizado:', response);
-          this.alertService.successAlert('Exito', response.message);
+          this.alertService.successAlert('Exito', response.mensaje);
         },
         error: (error) => {
-          console.error('Error al actualizar el Control Prenatal:', error);
-          this.alertService.errorAlert('Error', error.error.message);
+          this.alertService.errorAlert('Error', error.error.mensaje);
         }
       });
     } else {
@@ -206,12 +339,10 @@ export class Ruta2Component {
       console.log(this.controlPrenatal);
       this.controlPrenatalService.createControl(this.controlPrenatal).subscribe({
         next: (response) => {
-          console.log('Control prenatal creado:', response);
-          this.alertService.successAlert('Exito', response.message);
+          this.alertService.successAlert('Exito', response.mensaje);
         },
         error: (error) => {
-          console.error('Error al crear el control prenatal:', error);
-          this.alertService.errorAlert('Error', error.error.message);
+          this.alertService.errorAlert('Error', error.error.mensaje);
         }
       });
     }
@@ -262,12 +393,13 @@ export class Ruta2Component {
       this.primeraConsulta.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
       console.log(this.primeraConsulta);
       this.primeraConsultaService.createConsulta(this.primeraConsulta).subscribe({
+
         next: (response) => {
           console.log('Primera Consulta creada:', response);
-          this.alertService.successAlert('Exito', response.message).then(() => {
+          this.alertService.successAlert('Exito', response.mensage).then(() => {
             this.id_primeraConsulta = response.consulta.cod_consulta ?? null;
             this.isEditing = false;
-            console.log(response);
+            console.log(this.id_primeraConsulta);
           });
         },
         error: (error) => {

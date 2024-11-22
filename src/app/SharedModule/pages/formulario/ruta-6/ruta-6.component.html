@@ -161,10 +161,11 @@
 
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se realizó la Prueba no
+                                        <label for="reali_prueb_trepo_recien_nacido" class="font-medium mb-1">Se realizó la Prueba no
                                             treponémica recién nacido</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="reali_prueb_trepo_recien_nacido" [disabled]="ReadonlyTamizacionNeonatal"
                                             [(ngModel)]="nuevaTamizacion.reali_prueb_trepo_recien_nacido"
+                                            (change)="onPospartoChange('reali_prueb_trepo_recien_nacido')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -172,10 +173,10 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="" class="font-medium mb-1">Prueba no treponémica recién
+                                        <label for="pruetreponemica" class="font-medium mb-1">Prueba no treponémica recién
                                             nacido</label>
                                         <select [(ngModel)]="nuevaTamizacion.pruetreponemica"
-                                            [disabled]="ReadonlyTamizacionNeonatal"
+                                            [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_prueb_trepo_recien_nacido']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
                                             <option value="Negativo">Negativo</option>
@@ -183,18 +184,19 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="" class="font-medium mb-1">Fecha prueba no treponémica recién
+                                        <label for="fec_pruetrepo" class="font-medium mb-1">Fecha prueba no treponémica recién
                                             nacido</label>
                                         <input type="date" [(ngModel)]="nuevaTamizacion.fec_pruetrepo"
-                                            [readonly]="ReadonlyTamizacionNeonatal"
+                                            [readonly]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_prueb_trepo_recien_nacido']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se realizó el Tamizaje
+                                        <label for="reali_tami_auditivo" class="font-medium mb-1">Se realizó el Tamizaje
                                             auditivo</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="reali_tami_auditivo" [disabled]="ReadonlyTamizacionNeonatal"
                                             [(ngModel)]="nuevaTamizacion.reali_tami_auditivo"
+                                            (change)="onPospartoChange('reali_tami_auditivo')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -202,20 +204,21 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="" class="font-medium mb-1">Tamizaje auditivo</label>
+                                        <label for="tamiza_aud" class="font-medium mb-1">Tamizaje auditivo</label>
                                         <select [(ngModel)]="nuevaTamizacion.tamiza_aud"
-                                            [disabled]="ReadonlyTamizacionNeonatal"
+                                            [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_tami_auditivo']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Positivo">Positivo</option>
-                                            <option value="Negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se realizó el Tamizaje
+                                        <label for="reali_tami_cardiopatia_congenita" class="font-medium mb-1">Se realizó el Tamizaje
                                             cardiopatías congénitas</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="reali_tami_cardiopatia_congenita" [disabled]="ReadonlyTamizacionNeonatal"
                                             [(ngModel)]="nuevaTamizacion.reali_tami_cardiopatia_congenita"
+                                            (change)="onPospartoChange('reali_tami_cardiopatia_congenita')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -223,20 +226,21 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="" class="font-medium mb-1">Tamizaje cardiopatías congénitas</label>
+                                        <label for="tamiza_cardi" class="font-medium mb-1">Tamizaje cardiopatías congénitas</label>
                                         <select [(ngModel)]="nuevaTamizacion.tamiza_cardi"
-                                            [disabled]="ReadonlyTamizacionNeonatal"
+                                            [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_tami_cardiopatia_congenita']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Positivo">Positivo</option>
-                                            <option value="Negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se realizó el Tamizaje
+                                        <label for="reali_tami_visual" class="font-medium mb-1">Se realizó el Tamizaje
                                             visual</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="reali_tami_visual" [disabled]="ReadonlyTamizacionNeonatal"
                                             [(ngModel)]="nuevaTamizacion.reali_tami_visual"
+                                            (change)="onPospartoChange('reali_tami_visual')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -246,10 +250,10 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Tamizaje visual</label>
                                         <select [(ngModel)]="nuevaTamizacion.tamiza_visual"
-                                            [disabled]="ReadonlyTamizacionNeonatal"
+                                            [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_tami_visual']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Positivo">Positivo</option>
-                                            <option value="Negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
                                 </div>
@@ -341,10 +345,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna
+                                        <label for="aplico_vacuna_bcg" class="font-medium mb-1">Se aplicó la vacuna
                                             BCG</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyRutaPYMS"
+                                        <select id="aplico_vacuna_bcg" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.aplico_vacuna_bcg"
+                                            (change)="onPospartoChange('aplico_vacuna_bcg')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -355,14 +360,15 @@
                                         <label for="fec_bcg" class="font-medium mb-1">Fecha vacunación BCG</label>
                                         <input type="date" id="fec_bcg"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_bcg" [readonly]="ReadonlyRutaPYMS" required>
+                                            [(ngModel)]="nuevaRuta.fec_bcg" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_bcg']" required>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se aplicó la vacuna de
+                                        <label for="aplico_vacuna_hepatitis" class="font-medium mb-1">Se aplicó la vacuna de
                                             hepatitis</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyRutaPYMS"
+                                        <select id="aplico_vacuna_hepatitis" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.aplico_vacuna_hepatitis"
+                                            (change)="onPospartoChange('aplico_vacuna_hepatitis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -374,7 +380,7 @@
                                             hepatitis</label>
                                         <input type="date" id="fec_hepatitis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_hepatitis" [readonly]="ReadonlyRutaPYMS"
+                                            [(ngModel)]="nuevaRuta.fec_hepatitis" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_hepatitis']"
                                             required>
                                     </div>
 
@@ -388,10 +394,11 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Se realizó la entrega de
+                                        <label for="reali_entrega_carnet" class="font-medium mb-1">Se realizó la entrega de
                                             carnet</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlyRutaPYMS"
+                                        <select id="reali_entrega_carnet" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.reali_entrega_carnet"
+                                            (change)="onPospartoChange('reali_entrega_carnet')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -403,7 +410,7 @@
                                             carnet</label>
                                         <input type="date" id="fec_entrega"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_entrega" [readonly]="ReadonlyRutaPYMS" required>
+                                            [(ngModel)]="nuevaRuta.fec_entrega" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['reali_entrega_carnet']" required>
                                     </div>
                                 </div>
                                 <div class="mt-8 flex justify-center space-x-4">

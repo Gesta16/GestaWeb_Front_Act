@@ -13,6 +13,7 @@ import { IpsService } from '../../../Services/ips.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { PoblacionDiferencialService } from '../../../Services/poblacion-diferencial.service';
 import { AlertService } from '../../../Services/alert.service';
+import { MenuService } from '../../../Services/menu.service';
 
 @Component({
   selector: 'app-add-gestante',
@@ -45,6 +46,7 @@ export class AddGestanteComponent {
     private poblacionDiferencialService: PoblacionDiferencialService,
     private route: ActivatedRoute,
     private alertService: AlertService,
+    private menuService: MenuService,
   ) { }
 
 
@@ -63,6 +65,9 @@ export class AddGestanteComponent {
     this.getIps();
     this.getTipoDocumentos();
     this.getPoblacionDiferencial();
+    this.menuService.isExpanded$.subscribe(isExpanded =>{
+      this.isExpanded = isExpanded;
+    });
   }
 
 

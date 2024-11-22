@@ -11,6 +11,7 @@ import { EstudioHipotiroidismoService } from '../../../../Services/estudio-hipot
 import { RutaPymsService } from '../../../../Services/ruta-pyms.service';
 import { TamizacionNeonatalService } from '../../../../Services/tamizacion-neonatal.service';
 import { AlertService } from '../../../../Services/alert.service';
+import { MenuService } from '../../../../Services/menu.service';
 @Component({
   selector: 'app-ruta-6',
   templateUrl: './ruta-6.component.html',
@@ -41,6 +42,16 @@ export class Ruta6Component {
   isExpanded = true;
   isVisible = true;
 
+  mostrarCampos: {[key:string]:boolean} = {
+    reali_prueb_trepo_recien_nacido:false,
+    reali_tami_auditivo: false,
+    reali_tami_cardiopatia_congenita: false,
+    reali_tami_visual: false,
+    aplico_vacuna_bcg: false,
+    aplico_vacuna_hepatitis: false,
+    reali_entrega_carnet: false
+  }
+
   constructor(
     private route: ActivatedRoute,
     private datosRecienNacidoService: DatosRecienNacidoService,
@@ -50,6 +61,7 @@ export class Ruta6Component {
     private tamizacionNeonatalService: TamizacionNeonatalService,
     private router: Router,
     private alertService:AlertService,
+    private menuService:MenuService
   ) {
     this.datosRecienNacido = new DatosRecienNacido();
     this.estudioHipotiroidismo = new EstudioHipotiroidismo();
@@ -80,6 +92,9 @@ export class Ruta6Component {
     }
 
     this.getHemoclasificaciones();
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
   }
 
 
@@ -114,6 +129,64 @@ export class Ruta6Component {
     if (!this.ReadonlyRutaPYMS) return;
     this.ReadonlyRutaPYMS = false;
     this.isEditing = true;
+  }
+
+  // habilitar o dehabilitar los campos
+  onPospartoChange(campo:string){
+    const valorSeleccionado = Number(this.nuevaTamizacion[campo]);
+    const valorSeleccionado1 = Number(this.nuevaRuta [campo]);
+    switch (campo){
+      case 'reali_prueb_trepo_recien_nacido':
+        this.mostrarCampos['reali_prueb_trepo_recien_nacido'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_prueb_trepo_recien_nacido']){
+          this.nuevaTamizacion.pruetreponemica = null,
+          this.nuevaTamizacion.fec_pruetrepo = null;
+        }
+        break;
+
+      case 'reali_tami_auditivo':
+        this.mostrarCampos['reali_tami_auditivo'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_tami_auditivo']){
+          this.nuevaTamizacion.tamiza_aud = null;
+        }
+        break;
+      
+      case 'reali_tami_cardiopatia_congenita':
+        this.mostrarCampos['reali_tami_cardiopatia_congenita'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_tami_cardiopatia_congenita']){
+          this.nuevaTamizacion.tamiza_cardi = null;
+        }
+        break;
+      
+      case 'reali_tami_visual':
+        this.mostrarCampos['reali_tami_visual'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_tami_visual']){
+          this.nuevaTamizacion.tamiza_visual = null;
+        }
+        break;
+        
+      // Ruta PYMS
+      case 'aplico_vacuna_bcg':
+        this.mostrarCampos['aplico_vacuna_bcg'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['aplico_vacuna_bcg']){
+          this.nuevaRuta.fec_bcg = null;
+        }
+        break;
+      
+      case 'aplico_vacuna_hepatitis':
+        this.mostrarCampos['aplico_vacuna_hepatitis'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['aplico_vacuna_hepatitis']){
+          this.nuevaRuta.fec_hepatitis = null;
+        }
+        break;
+      
+      case 'reali_entrega_carnet':
+        this.mostrarCampos['reali_entrega_carnet'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_entrega_carnet']){
+          this.nuevaRuta.fec_entrega = null;
+        }
+        break;
+    }
   }
 
   getHemoclasificaciones() {

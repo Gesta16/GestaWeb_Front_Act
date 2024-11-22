@@ -17,6 +17,7 @@ export class Usuario {
     cod_poblacion: number;
     dir_usuario: string;
     procesosCount?: number;
+    showDropdown?: boolean;
 
     constructor({
         id_usuario = 0,

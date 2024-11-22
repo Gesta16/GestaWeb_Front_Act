@@ -17,6 +17,7 @@ import { LaboratorioisemestreService } from '../../../../Services/laboratorioise
 import { HemoclasificacionService } from '../../../../Services/hemoclasificacion.service';
 import { AntibiogramaService } from '../../../../Services/antibiograma.service';
 import { AlertService } from '../../../../Services/alert.service';
+import { MenuService } from '../../../../Services/menu.service';
 
 @Component({
   selector: 'app-ruta-3',
@@ -64,6 +65,7 @@ export class Ruta3Component {
     private antibiogramaService: AntibiogramaService,
     private router: Router,
     private alertService: AlertService,
+    private menuService: MenuService
   ) { }
 
 
@@ -92,7 +94,9 @@ export class Ruta3Component {
     this.cargarAntibiograma();
     this.cargarRPR();
     this.cargarVDRL();
-
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
   }
 
   toggleTabs(tabNumber: number) {

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioService } from '../../../Services/usuario.service';
 import { MenuService } from '../../../Services/menu.service';
+import { AlertService } from '../../../Services/alert.service';
 
 @Component({
   selector: 'app-list-gestantes',
@@ -35,7 +36,8 @@ export class ListGestantesComponent {
     private tipoDocumentoService: TipoDocumentoService,
     private router: Router,
     private _matDialog: MatDialog,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private alertService: AlertService,
   ) { }
 
 
@@ -99,8 +101,14 @@ export class ListGestantesComponent {
     });
   }
 
-  toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
+  toggleDropdown(usuario: Usuario) {
+    this.usuarios.forEach(u=>{
+      if (u.id_usuario === usuario.id_usuario){
+        u.showDropdown = !u.showDropdown;
+      } else{
+        u.showDropdown = false;
+      }
+    })
   }
 
   generarRango(cantidad: number): number[] {

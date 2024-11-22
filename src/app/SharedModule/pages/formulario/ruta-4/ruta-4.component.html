@@ -207,10 +207,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a
+                                        <label for="asistio_nutricionista" class="font-medium mb-1">Asistió a
                                             nutrición</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlySeguimientoComplementario"
+                                        <select id="asistio_nutricionista" [disabled]="ReadonlySeguimientoComplementario"
                                             [(ngModel)]="seguimientoComplementario.asistio_nutricionista"
+                                            (change)="onSeguimientoChange('asistio_nutricionista')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -222,15 +223,16 @@
                                             nutrición</label>
                                         <input type="date" id="fecNutricion"
                                             [(ngModel)]="seguimientoComplementario.fec_nutricion"
-                                            [readonly]="ReadonlySeguimientoComplementario"
+                                            [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_nutricionista']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a
+                                        <label for="asistio_ginecologia" class="font-medium mb-1">Asistió a
                                             ginecología</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlySeguimientoComplementario"
+                                        <select id="asistio_ginecologia" [disabled]="ReadonlySeguimientoComplementario"
                                             [(ngModel)]="seguimientoComplementario.asistio_ginecologia"
+                                            (change)="onSeguimientoChange('asistio_ginecologia')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -242,15 +244,16 @@
                                             ginecología</label>
                                         <input type="date" id="fecGinecologia"
                                             [(ngModel)]="seguimientoComplementario.fec_ginecologia"
-                                            [readonly]="ReadonlySeguimientoComplementario"
+                                            [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_ginecologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a
+                                        <label for="asistio_psicologia" class="font-medium mb-1">Asistió a
                                             psicología</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlySeguimientoComplementario"
+                                        <select id="asistio_psicologia" [disabled]="ReadonlySeguimientoComplementario"
                                             [(ngModel)]="seguimientoComplementario.asistio_psicologia"
+                                            (change)="onSeguimientoChange('asistio_psicologia')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -262,15 +265,16 @@
                                             psicología</label>
                                         <input type="date" id="fecPsicologia"
                                             [(ngModel)]="seguimientoComplementario.fec_psicologia"
-                                            [readonly]="ReadonlySeguimientoComplementario"
+                                            [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_psicologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Asistió a
+                                        <label for="asistio_odontologia" class="font-medium mb-1">Asistió a
                                             odontología</label>
-                                        <select id="usuario-solicito" [disabled]="ReadonlySeguimientoComplementario"
+                                        <select id="asistio_odontologia" [disabled]="ReadonlySeguimientoComplementario"
                                             [(ngModel)]="seguimientoComplementario.asistio_odontologia"
+                                            (change)="onSeguimientoChange('asistio_odontologia')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -282,7 +286,7 @@
                                             odontología</label>
                                         <input type="date" id="fecOdontologia"
                                             [(ngModel)]="seguimientoComplementario.fec_odontologia"
-                                            [readonly]="ReadonlySeguimientoComplementario"
+                                            [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_odontologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
@@ -290,10 +294,11 @@
                                         <label for="inaSeguimiento" class="font-medium mb-1">Inasistencia</label>
                                         <select id="inaSeguimiento"
                                             [(ngModel)]="seguimientoComplementario.ina_seguimiento"
+                                            (change)="onSeguimientoChange('ina_seguimiento')"
                                             [disabled]="ReadonlySeguimientoComplementario"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Si">Si</option>
-                                            <option value="No">No</option>
+                                            <option value="1">Si</option>
+                                            <option value="0">No</option>
                                         </select>
                                     </div>
 
@@ -302,7 +307,7 @@
                                             inasistencia</label>
                                         <input type="text" id="causalInasistencia"
                                             [(ngModel)]="seguimientoComplementario.cau_inasistencia"
-                                            [readonly]="ReadonlySeguimientoComplementario"
+                                            [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['ina_seguimiento']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
