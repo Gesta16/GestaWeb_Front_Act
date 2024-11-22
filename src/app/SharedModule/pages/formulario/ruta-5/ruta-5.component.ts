@@ -472,6 +472,6 @@ export class Ruta5Component {
 
 
   volver() {
-    this.router.navigate(['/ruta-gestante', this.id]);
+    this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]);
   }
 }

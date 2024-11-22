@@ -413,6 +413,6 @@ export class Ruta4Component {
 
 
   volver() {
-    this.router.navigate(['/ruta-gestante', this.id]); // Navegar a la ruta con el ID
+    this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]); // Navegar a la ruta con el ID
   }
 }

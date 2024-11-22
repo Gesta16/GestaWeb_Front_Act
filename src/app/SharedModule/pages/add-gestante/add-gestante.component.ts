@@ -34,6 +34,7 @@ export class AddGestanteComponent {
   id: number | null = null;
   isExpanded = true;
   isVisible = true;
+  num_proceso: number | null = null;
 
 
   constructor(
@@ -60,6 +61,10 @@ export class AddGestanteComponent {
       } else {
         console.log('No se proporcionó un ID válido.');
       }
+      this.route.paramMap.subscribe(params => {
+        this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
+        console.log('num_proceso:', this.num_proceso);
+      });
     });
     this.getDepartamentos();
     this.getIps();
@@ -238,7 +243,7 @@ export class AddGestanteComponent {
     if (this.id == null || this.id == 0) {
       this.router.navigate(['/list-gestantes']);
     } else {
-      this.router.navigate(['/ruta-gestante', this.id]);
+      this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]);
     }
   }
 }
