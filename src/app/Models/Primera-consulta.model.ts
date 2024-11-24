@@ -17,8 +17,8 @@ export class PrimeraConsulta {
     for_parto: string;
     for_cesarea: string;
     for_aborto: string;
-    fec_lactancia: Date;
-    fec_consejeria: Date;
+    fec_lactancia?: Date | null;
+    fec_consejeria?: Date | null;
     num_proceso: number;
     asis_conse_lactancia:boolean;
     asis_conse_pre_vih:boolean;

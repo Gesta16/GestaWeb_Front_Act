@@ -1,10 +1,10 @@
 export class RutaPYMS {
     cod_ruta: number;
     id_usuario: number;
-    fec_bcg: string;
-    fec_hepatitis: string;
+    fec_bcg?: string | null;
+    fec_hepatitis?: string | null;
     fec_seguimiento: string;
-    fec_entrega: string;
+    fec_entrega?: string | null;
     num_proceso: number;
     aplico_vacuna_bcg: boolean;
     aplico_vacuna_hepatitis: boolean;

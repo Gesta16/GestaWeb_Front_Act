@@ -2,10 +2,10 @@ export class SeguimientoComplementario {
     cod_segcomplementario: number;
     id_usuario: number;
     cod_sesiones: number;
-    fec_nutricion: string;
-    fec_ginecologia: string;
-    fec_psicologia: string;
-    fec_odontologia: string;
+    fec_nutricion?: string | null;
+    fec_ginecologia?: string | null;
+    fec_psicologia?: string | null;
+    fec_odontologia?: string | null;
     ina_seguimiento: string;
     cau_inasistencia: string;
     num_proceso: number;

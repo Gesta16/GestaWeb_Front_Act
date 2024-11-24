@@ -319,6 +319,8 @@ export class Ruta2Component {
 
   guardarControlPrenatal(): void {
 
+    
+
     if (this.id_control) {
       // Editar usuario existente
       this.controlPrenatalService.updateControlPrenatal(this.id_control, this.controlPrenatal).subscribe({
@@ -335,6 +337,8 @@ export class Ruta2Component {
         this.controlPrenatal.id_usuario = this.id; // Asigna el ID al objeto controlPrenatal
       }
       this.controlPrenatal.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
+      
+      
 
       console.log(this.controlPrenatal);
       this.controlPrenatalService.createControl(this.controlPrenatal).subscribe({
@@ -375,7 +379,7 @@ export class Ruta2Component {
       this.primeraConsultaService.updatePrimeraConsulta(this.id_primeraConsulta, this.primeraConsulta).subscribe({
         next: (response) => {
           console.log('Primera Consulta actualizada:', response);
-          this.alertService.successAlert('Exito', response.message).then(() => {
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyPrimeraConsulta = true;
             this.isEditing = false;
           });
@@ -396,7 +400,7 @@ export class Ruta2Component {
 
         next: (response) => {
           console.log('Primera Consulta creada:', response);
-          this.alertService.successAlert('Exito', response.mensage).then(() => {
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.id_primeraConsulta = response.consulta.cod_consulta ?? null;
             this.isEditing = false;
             console.log(this.id_primeraConsulta);
@@ -437,7 +441,7 @@ export class Ruta2Component {
       this.vacunacionService.updateVacunacion(this.id_vacunacion, this.vacunacion).subscribe({
         next: (response) => {
           console.log('Vacunacion actualizada:', response);
-          this.alertService.successAlert('Exito', response.message).then(() => {
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyVacunacion = true;
             this.isEditing = false;
           });
@@ -457,7 +461,7 @@ export class Ruta2Component {
       this.vacunacionService.createVacunacion(this.vacunacion).subscribe({
         next: (response) => {
           console.log('Vacunacion creada:', response);
-          this.alertService.successAlert('Exito', response.message).then(() => {
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyVacunacion = true;
             this.id_vacunacion = response.vacunacion.cod_vacunacion ?? null;
             this.isEditing = false;

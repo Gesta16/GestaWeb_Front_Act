@@ -243,7 +243,7 @@ export class Ruta4Component {
       this.seguimientoConsultaMensualService.updateSeguimientoConsulta(this.id_SeguimientoConsulta, this.seguimientoConsulta).subscribe({
         next: (response) => {
           console.log('Seguimiento Consulta actualizado:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlySeguimientoConsulta = true;
             this.isEditing = false;
           });
@@ -262,7 +262,7 @@ export class Ruta4Component {
 
 
       this.seguimientoConsultaMensualService.crearSeguimientoConsulta(this.seguimientoConsulta).subscribe(response => {
-        this.alertService.successAlert('Exito', response.message).then(()=>{
+        this.alertService.successAlert('Exito', response.mensaje).then(()=>{
           this.id_SeguimientoConsulta = response.cod_seguimiento ?? null;
           this.ReadonlySeguimientoConsulta = true;
           this.isEditing = false;
@@ -301,7 +301,7 @@ export class Ruta4Component {
       this.seguimientoComplementarioService.updateSeguimientoComplementario(this.id_SeguimientoComplementario, this.seguimientoComplementario).subscribe({
         next: (response) => {
           console.log('Seguimiento complementario actualizado:', response);
-          this.alertService.successAlert('Exito',response.message).then(()=>{
+          this.alertService.successAlert('Exito',response.mensaje).then(()=>{
             this.ReadonlySeguimientoComplementario = true;
             this.isEditing = false;
           });
@@ -320,7 +320,7 @@ export class Ruta4Component {
 
 
       this.seguimientoComplementarioService.crearSeguimientoComplementario(this.seguimientoComplementario).subscribe(response => {
-        this.alertService.successAlert('Exito',response.message).then(()=>{
+        this.alertService.successAlert('Exito',response.mensaje).then(()=>{
           this.id_SeguimientoComplementario = response.cod_segcomplementario ?? null;
           this.ReadonlySeguimientoComplementario = true;
           this.isEditing = false;
@@ -358,14 +358,14 @@ export class Ruta4Component {
       this.micronutrientesService.updateMicronutriente(this.id_Micronutriente, this.micronutriente).subscribe({
         next: (response) => {
           console.log('Micronutriente actualizado:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlyMicronutriente = true;
             this.isEditing = false;
           });
         },
         error: (error) => {
           console.error('Error al actualizar el micronutriente:', error);
-          this.alertService.errorAlert('Error', error.error.message);
+          this.alertService.errorAlert('Error', error.error.mensaje);
         }
       });
     } else {
@@ -377,7 +377,7 @@ export class Ruta4Component {
 
 
       this.micronutrientesService.crearMicronutriente(this.micronutriente).subscribe(response => {
-        this.alertService.successAlert('Exito', response.message).then(()=>{
+        this.alertService.successAlert('Exito', response.mensaje).then(()=>{
           this.id_Micronutriente = response.cod_micronutriente ?? null;
           this.ReadonlyMicronutriente = true;
           this.isEditing = false;

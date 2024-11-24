@@ -216,7 +216,7 @@ export class Ruta3Component {
       this.laboratorioISemestreservice.updateLaboratorioISemestre(this.id_laboratorioI, this.laboratorioITrimestre).subscribe({
         next: (response) => {
           console.log('Primer laboratorio trimestre actualizado:', response);
-          this.alertService.successAlert('Exito', response.message).then(() => {
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyLaboratorioI = true;
             this.isEditing = false;
           });
@@ -237,7 +237,7 @@ export class Ruta3Component {
       this.laboratorioISemestreservice.createLaboratorioPrimerSemestre(this.laboratorioITrimestre).subscribe({
         next: (response) => {
           console.log('Laboratorio del primer semestre creado:', response);
-          this.alertService.successAlert('Exito', response.message).then(() => {
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.id_laboratorioI = response.data.cod_laboratorio ?? null;
             this.isReadOnlyLaboratorioI = true;
             this.isEditing = false;
@@ -276,7 +276,7 @@ export class Ruta3Component {
       this.laboratorioIISemestreservice.updateLaboratorioIISemestre(this.id_laboratorioII, this.laboratorioIITrimestre).subscribe({
         next: (response) => {
           console.log('Segundo laboratorio trimestre actualizado:', response);
-          this.alertService.successAlert('Exito', response.message).then(() => {
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyLaboratorioII = true;
             this.isEditing = false;
           });
@@ -336,7 +336,7 @@ export class Ruta3Component {
       this.laboratorioIIISemestreservice.updateLaboratorioIIISemestre(this.id_laboratorioIII, this.laboratorioIIITrimestre).subscribe({
         next: (response) => {
           console.log('Tercer laboratorio trimestre actualizado:', response);
-          this.alertService.successAlert('Exito',response.message).then(()=>{
+          this.alertService.successAlert('Exito',response.mensaje).then(()=>{
             this.isReadOnlyLaboratorioIII = true;
             this.isEditing = false;
           });
@@ -359,7 +359,7 @@ export class Ruta3Component {
       this.laboratorioIIISemestreservice.createLaboratorioTercerSemestre(this.laboratorioIIITrimestre).subscribe({
         next: (response) => {
           console.log('Laboratorio del tercer semestre creado:', response);
-          this.alertService.successAlert('Exito',response.message).then(()=>{
+          this.alertService.successAlert('Exito',response.mensaje).then(()=>{
             this.id_laboratorioIII = response.data.cod_treslaboratorio ?? null;
             this.isReadOnlyLaboratorioIII = true;
             this.isEditing = false;
@@ -400,7 +400,7 @@ export class Ruta3Component {
       this.itsService.updateIts(this.id_its, this.its).subscribe({
         next: (response) => {
           console.log('Its actualizado:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.isReadOnlyIts = true;
             this.isEditing = false;
           });
@@ -423,7 +423,7 @@ export class Ruta3Component {
       this.itsService.createIts(this.its).subscribe({
         next: (response) => {
           console.log('Its creada:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.id_its = response.data.cod_its ?? null;
             this.isReadOnlyIts = true;
             this.isEditing = false;

@@ -4,11 +4,11 @@ export class TamizacionNeonatal {
     cod_hemoclasifi: number;
     fec_tsh: string;
     resul_tsh: string;
-    fec_pruetrepo: string;
-    pruetreponemica: string;
-    tamiza_aud: string;
-    tamiza_cardi: string;
-    tamiza_visual: string;
+    fec_pruetrepo?: string |null;
+    pruetreponemica?: string |null;
+    tamiza_aud?: string |null;
+    tamiza_cardi?: string |null;
+    tamiza_visual?: string |null;
     num_proceso: number;
     reali_prueb_trepo_recien_nacido: boolean;
     reali_tami_auditivo: boolean;

@@ -232,7 +232,7 @@ export class Ruta5Component {
       this.finalizacionGestacionServicio.updateFinalizacionGestacion(this.id_FinalizacionGestacion, this.finalizacionGestacion).subscribe({
         next: (response) => {
           console.log('Finalización de gestación actualizada:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlyFinalizacionGestacion = true;
             this.isEditing = false;
           });
@@ -250,7 +250,7 @@ export class Ruta5Component {
       this.finalizacionGestacion.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
       this.finalizacionGestacionServicio.crearFinalizacionGestacion(this.finalizacionGestacion).subscribe({
         next: (response) => {
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.id_FinalizacionGestacion = response.cod_finalizacion ?? null;
             this.ReadonlyFinalizacionGestacion = true;
             this.isEditing = false;
@@ -291,7 +291,7 @@ export class Ruta5Component {
       this.laboratorioIntrapartoServicio.updateLaboratorioIntraparto(this.id_LaboratorioIntraparto, this.laboratorioIntraparto).subscribe({
         next: (response) => {
           console.log('Laboratorio intraparto actualizado:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlyLaboratorioIntraparto = true;
             this.isEditing = false;
           });
@@ -311,7 +311,7 @@ export class Ruta5Component {
       // Crear nuevo laboratorio intraparto
       this.laboratorioIntrapartoServicio.crearLaboratorio(this.laboratorioIntraparto).subscribe({
         next: (response) => {
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.id_LaboratorioIntraparto = response.cod_intraparto ?? null;
             this.ReadonlyLaboratorioIntraparto = true;
             this.isEditing = false;
@@ -355,7 +355,7 @@ export class Ruta5Component {
       this.seguimientoPostObstetricoServicio.updateSeguimientoPostObstetrico(this.id_Seguimiento, this.seguimiento).subscribe({
         next: (response) => {
           console.log('Seguimiento actualizado:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlySeguimiento = true;
             this.isEditing = false;
           });
@@ -374,7 +374,7 @@ export class Ruta5Component {
       // Crear nuevo seguimiento
       this.seguimientoPostObstetricoServicio.crearSeguimiento(this.seguimiento).subscribe({
         next: (response) => {
-         this.alertService.successAlert('Exito',response.message).then(()=>{
+         this.alertService.successAlert('Exito',response.mensaje).then(()=>{
           this.id_Seguimiento = response.cod_evento ?? null;
             this.ReadonlySeguimiento = true;
             this.isEditing = false;
@@ -416,7 +416,7 @@ export class Ruta5Component {
       this.mortalidadPrepartoService.updateMortalidadPreparto(this.id_MortalidadPreparto, this.mortalidadPreparto).subscribe({
         next: (response) => {
           console.log('Mortalidad preparto actualizada:', response);
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlyMortalidadPreparto = true;
             this.isEditing = false;
           });
@@ -434,7 +434,7 @@ export class Ruta5Component {
       // Crear nuevo registro de mortalidad preparto
       this.mortalidadPrepartoService.crearMortalidadPreparto(this.mortalidadPreparto).subscribe({
         next: (response) => {
-          this.alertService.successAlert('Exito', response.message).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.id_MortalidadPreparto = response.cod_mortalpreparto ?? null;
             this.ReadonlyMortalidadPreparto = true;
             this.isEditing = false;

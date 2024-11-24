@@ -135,12 +135,12 @@ export class ListGestantesComponent {
     this.usuarioService.getUsuarios().subscribe(
       (response: any) => {
         this.usuarios = response.usuarios;
-
+        console.log(response);
         // Contar los procesos gestativos para cada usuario
         this.usuarios.forEach(usuario => {
           this.contarProcesos(usuario.id_usuario);
         });
-        console.log(response)
+        
 
         this.updatePagination();
       },

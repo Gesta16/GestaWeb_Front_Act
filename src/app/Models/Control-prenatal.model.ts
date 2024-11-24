@@ -2,24 +2,24 @@ export class ControlPrenatal {
     cod_control?: number;
     id_operador?: number;
     id_usuario?: number;
-    cod_fracaso: number;
+    cod_fracaso?: number | null;
     edad_gestacional: string;
     trim_ingreso: string;
     fec_mestruacion: Date;
     fec_parto: Date;
     emb_planeado: boolean;
     fec_anticonceptivo: boolean;
-    fec_consulta: Date;
-    fec_control: Date;
+    fec_consulta?: Date | null;
+    fec_control?: Date | null;
     ries_reproductivo: string;
     fac_asesoria: Date;
     usu_solicito: boolean;
-    fec_terminacion: Date;
+    fec_terminacion?: Date | null;
     per_intergenesico: boolean;
     num_proceso: number;
     recibio_atencion_preconcep:boolean;
     asis_consul_control_precon:boolean;
-    asis_asesoria_ive:boolean;
+    asis_asesoria_ive?:boolean | null;
     tuvo_embarazos_antes:boolean;
 
     constructor({

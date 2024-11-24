@@ -39,7 +39,7 @@ export class VacunacionService {
   }
 
   updateVacunacion(id:number, vacunacion:Vacunacion):Observable<any>{
-    return this.http.post(`${this.apiUrl}/${id}`, vacunacion, { headers: this.createHeaders() })
+    return this.http.put(`${this.apiUrl}/${id}`, vacunacion, { headers: this.createHeaders() })
   }
 
 }

@@ -1,14 +1,14 @@
 export class LaboratorioIntraparto {
     cod_intraparto: number;
     id_usuario: number;
-    cod_vdrl: number;
-    pru_sifilis: string;
-    fec_sifilis: string;
-    fec_vdrl: string;
-    rec_sifilis: string;
-    fec_tratamiento: string;
-    pru_vih: string;
-    fec_vih: string;
+    cod_vdrl?: number | null;
+    pru_sifilis?: string | null;
+    fec_sifilis?: string | null;
+    fec_vdrl?: string | null;
+    rec_sifilis?: string | null;
+    fec_tratamiento?: string | null;
+    pru_vih?: string | null;
+    fec_vih?: string | null;
     num_proceso: number;
     reali_prueb_trepo_rapi_sifilis_intra: boolean;
     reali_prueb_no_trepo_vdrl_sifilis_intra: boolean;
