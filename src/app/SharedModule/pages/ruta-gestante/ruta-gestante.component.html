@@ -10,10 +10,10 @@
                 <h1 class="font-bold text-3xl" style="margin-left: 30px;">Ruta materno perinatal</h1>
     
                 <div class="flex items-center space-x-2">
-                    <!-- <select class="select-custom" [(ngModel)]="selectedOption">
+                    <select class="select-custom" [(ngModel)]="selectedOption">
                         <option value="" disabled selected></option>
-                        <option *ngFor="let num of generarRango(procesosCount)" [value]="num">{{ num }}</option>
-                    </select> -->
+                        <option *ngFor="let num of generarRango(procesosCount)" [value]="num"> Proceso {{ num }}</option>
+                    </select>
     
                     <!-- <button (click)="crearProceso()"
                         class="bg-[#80BA27] text-white font-bold btn-custom rounded-xl hover:bg-[#66a800] focus:outline-none">
@@ -160,10 +160,16 @@
                                 Seguimiento consulta mensual. Seguimientos complementarios.
                                 Micronutrientes
                             </p>
-                            <button (click)="irSaludIntegral()"
+                            <div class="flex gap-x-8">
+                                <button (click)="irSaludIntegral()"
                                 class="bg-[#3eb6c6] hover:bg-[#0fb1c7] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
-                                Ingresar
-                            </button>
+                                    Ingresar
+                                </button>
+                                <button
+                                    class="bg-[#3eb6c6] hover:bg-[#0fb1c7] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                    Nuevo registro
+                                </button>
+                            </div>
                         </div>
                     </div>
 

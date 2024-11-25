@@ -18,6 +18,7 @@ import { HemoclasificacionService } from '../../../../Services/hemoclasificacion
 import { AntibiogramaService } from '../../../../Services/antibiograma.service';
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
+import { iif } from 'rxjs';
 
 @Component({
   selector: 'app-ruta-3',
@@ -53,6 +54,32 @@ export class Ruta3Component {
   laboratorioIITrimestre: LaboratorioIITrimestre = new LaboratorioIITrimestre();
   laboratorioIIITrimestre: LaboratorioIIITrimestre = new LaboratorioIIITrimestre();
   its: Its = new Its();
+
+  mostrarCampos:{[key: string]:boolean} = {
+    real_prueb_rapi_vih: false,
+    reali_prueb_trepo_rapid_sifilis: false,
+    realizo_urocultivo: false,
+    realizo_antibiograma: false,
+    real_prueb_eliza_anti_total: false,
+    real_prueb_eliza_anti_recomb: false,
+    real_prueb_coombis_indi_cuanti: false,
+    real_eco_obste_tamizaje: false,
+    reali_prueb_rapi_vih: false,
+    real_prueb_trep_rap_sifilis: false,
+    reali_citologia: false,
+    reali_prueb_avidez_ig_g: false,
+    reali_prueb_toxoplasmosis_ig_a: false,
+    reali_prueb_hemoparasito: false,
+    reali_prueb_coombis_indi_cuanti: false,
+    reali_eco_obste_detalle_anato: false,
+    reali_prueb_trepo_rapi_sifilis: false,
+    reali_prueb_igm_toxoplasma: false,
+    reali_prueb_culti_rect_vagi: false,
+    reali_prueb_perfil_biofisico: false,
+    reali_prueb_elisa_vih: false,
+    reali_prueb_no_trepo_vdrl_sifilis: false,
+    reali_prueb_no_trepo_rpr_sifilis: false
+  }
 
   constructor(private itsService: ItsService,
     private vdrlService: PruebaVdrlService,
@@ -164,6 +191,210 @@ export class Ruta3Component {
     if (!this.isReadOnlyIts) return;
     this.isReadOnlyIts = false;
     this.isEditing = true;
+  }
+
+  // habilitar o dehabilitar los campos
+  onLaboratoriosChange(campo:string) {
+    const valorSeleccionado = Number(this.laboratorioITrimestre[campo]);
+    const valorSeleccionado1 = Number(this.laboratorioIITrimestre[campo]);
+    const valorSeleccionado2 = Number(this.laboratorioIIITrimestre[campo]);
+    const valorSeleccionado3 = Number(this.its[campo]);
+    switch (campo) {
+      case 'real_prueb_rapi_vih':
+        this.mostrarCampos['real_prueb_rapi_vih'] = valorSeleccionado === 1;
+        if(!this.mostrarCampos['real_prueb_rapi_vih']){
+          this.laboratorioITrimestre.pru_vih = null,
+          this.laboratorioITrimestre.fec_vih = null;
+        };
+        break;
+      
+      case 'reali_prueb_trepo_rapid_sifilis':
+        this.mostrarCampos['reali_prueb_trepo_rapid_sifilis'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['reali_prueb_trepo_rapid_sifilis']){
+          this.laboratorioITrimestre.pru_sifilis = null,
+          this.laboratorioITrimestre.fec_sifilis = null;
+        }
+        break;
+
+      case 'realizo_urocultivo':
+        this.mostrarCampos['realizo_urocultivo'] = valorSeleccionado === 1;
+        if(!this.mostrarCampos['realizo_urocultivo']){
+          this.laboratorioITrimestre.uro_laboratorio = null,
+          this.laboratorioITrimestre.fec_urocultivo = null;
+        }
+        break;
+
+      case 'realizo_antibiograma':
+        this.mostrarCampos['realizo_antibiograma'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['realizo_antibiograma']){
+          this.laboratorioITrimestre.cod_antibiograma = null,
+          this.laboratorioITrimestre.fec_antibiograma = null;
+        }
+        break;
+
+      case 'real_prueb_eliza_anti_total':
+        this.mostrarCampos['real_prueb_eliza_anti_total'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['real_prueb_eliza_anti_total']){
+          this.laboratorioITrimestre.pru_antigenos = null,
+          this.laboratorioITrimestre.fec_antigenos = null;
+        }
+        break;
+
+      case 'real_prueb_eliza_anti_recomb':
+        this.mostrarCampos['real_prueb_eliza_anti_recomb'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['real_prueb_eliza_anti_recomb']){
+          this.laboratorioITrimestre.eli_recombinante = null,
+          this.laboratorioITrimestre.fec_recombinante = null;
+        }
+        break;
+
+      case 'real_prueb_coombis_indi_cuanti':
+        this.mostrarCampos['real_prueb_coombis_indi_cuanti'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['real_prueb_coombis_indi_cuanti']){
+          this.laboratorioITrimestre.coo_cuantitativo = null,
+          this.laboratorioITrimestre.fec_coombs = null;
+        }
+        break;
+
+      case 'real_eco_obste_tamizaje':
+        this.mostrarCampos['real_eco_obste_tamizaje'] = valorSeleccionado === 1;
+        if (!this.mostrarCampos['real_eco_obste_tamizaje']){
+          this.laboratorioITrimestre.fec_ecografia = null,
+          this.laboratorioITrimestre.eda_gestacional = null;
+        }
+        break;
+      
+      // laboratorio II trimestre
+      case 'reali_prueb_rapi_vih':
+        this.mostrarCampos['reali_prueb_rapi_vih'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_prueb_rapi_vih']){
+          this.laboratorioITrimestre.pru_vih = null,
+          this.laboratorioITrimestre.fec_vih = null;
+        }
+        break;
+
+      case 'real_prueb_trep_rap_sifilis':
+        this.mostrarCampos['real_prueb_trep_rap_sifilis'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['real_prueb_trep_rap_sifilis']){
+          this.laboratorioITrimestre.pru_sifilis = null,
+          this.laboratorioITrimestre.fec_sifilis = null;
+        }
+        break;
+
+      case 'reali_citologia':
+        this.mostrarCampos['reali_citologia'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_citologia']){
+          this.laboratorioIITrimestre.rep_citologia = null,
+          this.laboratorioIITrimestre.fec_citologia = null;
+        }
+        break;
+        
+      case 'reali_prueb_avidez_ig_g':
+        this.mostrarCampos['reali_prueb_avidez_ig_g'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_prueb_avidez_ig_g']){
+          this.laboratorioIITrimestre.pru_avidez = null,
+          this.laboratorioIITrimestre.fec_avidez = null;
+        }
+        break;
+        
+      case 'reali_prueb_toxoplasmosis_ig_a':
+        this.mostrarCampos['reali_prueb_toxoplasmosis_ig_a'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_prueb_toxoplasmosis_ig_a']){
+          this.laboratorioIITrimestre.tox_laboratorio = null,
+          this.laboratorioIITrimestre.fec_toxoplasmosis = null;
+        }
+        break;
+        
+      case 'reali_prueb_hemoparasito':
+        this.mostrarCampos['reali_prueb_hemoparasito'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_prueb_hemoparasito']){
+          this.laboratorioIITrimestre.hem_gruesa = null,
+          this.laboratorioIITrimestre.fec_hemoparasito =  null;
+        }
+        break;
+
+      case 'reali_prueb_coombis_indi_cuanti':
+        this.mostrarCampos['reali_prueb_coombis_indi_cuanti'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_prueb_coombis_indi_cuanti']){
+          this.laboratorioIITrimestre.coo_cualitativo = null,
+          this.laboratorioIITrimestre.fec_coombs = null;
+        }
+        break;
+
+      case 'reali_eco_obste_detalle_anato':
+        this.mostrarCampos['reali_eco_obste_detalle_anato'] = valorSeleccionado1 === 1;
+        if (!this.mostrarCampos['reali_eco_obste_detalle_anato']){
+          this.laboratorioIITrimestre.fec_ecografia = null,
+          this.laboratorioIITrimestre.eda_gestacional = null;
+        }
+        break;
+      
+      // Laboratoio III trimestre
+      // case 'reali_prueb_rapi_vih':
+      //   this.mostrarCampos['reali_prueb_rapi_vih'] = valorSeleccionado2 === 1;
+      //   if (!this.mostrarCampos['reali_prueb_rapi_vih']){
+      //     this.laboratorioIIITrimestre.pru_vih = null,
+      //     this.laboratorioIIITrimestre.fec_vih = null;
+      //   }
+      //   break;
+
+      case 'reali_prueb_trepo_rapi_sifilis':
+        this.mostrarCampos['reali_prueb_trepo_rapi_sifilis'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['reali_prueb_trepo_rapi_sifilis']){
+          this.laboratorioIIITrimestre.pru_sifilis = null,
+          this.laboratorioIIITrimestre.fec_sifilis = null;
+        }
+        break;
+
+      case 'reali_prueb_igm_toxoplasma':
+        this.mostrarCampos['reali_prueb_igm_toxoplasma'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['reali_prueb_igm_toxoplasma']){
+          this.laboratorioIIITrimestre.ig_toxoplasma = null,
+          this.laboratorioIIITrimestre.fec_toxoplasma = null;
+        }
+        break;
+
+      case 'reali_prueb_culti_rect_vagi':
+        this.mostrarCampos['reali_prueb_culti_rect_vagi'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['reali_prueb_culti_rect_vagi']){
+          this.laboratorioIIITrimestre.cul_rectal = null,
+          this.laboratorioIIITrimestre.fec_rectal = null;
+        }
+        break;
+
+      case 'reali_prueb_perfil_biofisico':
+        this.mostrarCampos['reali_prueb_perfil_biofisico'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['reali_prueb_perfil_biofisico']){
+          this.laboratorioIIITrimestre.fec_biofisico = null,
+          this.laboratorioIIITrimestre.edad_gestacional = null;
+        }
+        break;
+
+      // ITS
+      case 'reali_prueb_elisa_vih':
+        this.mostrarCampos['reali_prueb_elisa_vih'] = valorSeleccionado3 === 1;
+        if (!this.mostrarCampos['reali_prueb_elisa_vih']){
+          this.its.eli_vih = null,
+          this.its.fec_vih = null;
+        }
+        break;
+      
+      case 'reali_prueb_no_trepo_vdrl_sifilis':
+        this.mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis'] = valorSeleccionado3 === 1;
+        if (!this.mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis']){
+          this.its.cod_vdrl = null,
+          this.its.fec_vdrl = null;
+        }
+        break;
+      
+      case 'reali_prueb_no_trepo_rpr_sifilis':
+        this.mostrarCampos['reali_prueb_no_trepo_rpr_sifilis'] = valorSeleccionado3 === 1;
+        if (!this.mostrarCampos['reali_prueb_no_trepo_rpr_sifilis']){
+          this.its.cod_rpr = null,
+          this.its.fec_rpr = null;
+        }
+        break;
+    }
   }
 
   cargarHemoclasificacion(): void {

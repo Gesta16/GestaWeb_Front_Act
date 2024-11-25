@@ -180,10 +180,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba rápida
+                                        <label for="real_prueb_rapi_vih" class="font-medium mb-1">Realizó la prueba rápida
                                             VIH</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="real_prueb_rapi_vih" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.real_prueb_rapi_vih"
+                                            (change)="onLaboratoriosChange('real_prueb_rapi_vih')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -192,7 +193,7 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
-                                        <select id="pru_vih" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="pru_vih" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.pru_vih" name="pru_vih">
                                             <option value="Positivo">Positivo</option>
@@ -202,16 +203,17 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fecVih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
-                                        <input type="date" id="fecVih" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fecVih" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_vih">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba
+                                        <label for="reali_prueb_trepo_rapid_sifilis" class="font-medium mb-1">Realizó la prueba
                                             treponémica rápida para sífilis</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="reali_prueb_trepo_rapid_sifilis" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.reali_prueb_trepo_rapid_sifilis"
+                                            (change)="onLaboratoriosChange('reali_prueb_trepo_rapid_sifilis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -221,7 +223,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="pruSifilis" class="font-medium mb-1">Prueba treponémica rápida para
                                             sífilis</label>
-                                        <select id="pruSifilis" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="pruSifilis" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['reali_prueb_trepo_rapid_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.pru_sifilis">
                                             <option value="positivo">Positivo</option>
@@ -233,16 +235,17 @@
                                         <label for="fecSifilis" class="font-medium mb-1">Fecha prueba treponémica rápida
                                             para
                                             sífilis</label>
-                                        <input type="date" id="fecSifilis" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fecSifilis" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['reali_prueb_trepo_rapid_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_sifilis">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó el
+                                        <label for="realizo_urocultivo" class="font-medium mb-1">Realizó el
                                             urocultivo</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="realizo_urocultivo" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.realizo_urocultivo"
+                                            (change)="onLaboratoriosChange('realizo_urocultivo')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -251,26 +254,27 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="urocultivo" class="font-medium mb-1">Urocultivo</label>
-                                        <select id="urocultivo" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="urocultivo" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['realizo_urocultivo']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.uro_laboratorio">
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fecUrocultivo" class="font-medium mb-1">Fecha urocultivo</label>
-                                        <input type="date" id="fecUrocultivo" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fecUrocultivo" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['realizo_urocultivo']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_urocultivo">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó el
+                                        <label for="realizo_antibiograma" class="font-medium mb-1">Realizó el
                                             antibiograma</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="realizo_antibiograma" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.realizo_antibiograma"
+                                            (change)="onLaboratoriosChange('realizo_antibiograma')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -279,7 +283,7 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="codAntibiograma" class="font-medium mb-1">Antibiograma</label>
-                                        <select id="codAntibiograma" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="codAntibiograma" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['realizo_antibiograma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.cod_antibiograma" required>
                                             <option *ngFor="let antibiograma of antibiogramas"
@@ -291,7 +295,7 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fecAntibiograma" class="font-medium mb-1">Fecha antibiograma</label>
-                                        <input type="date" id="fecAntibiograma" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fecAntibiograma" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['realizo_antibiograma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_antibiograma">
                                     </div>
@@ -367,10 +371,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                        <label for="real_prueb_eliza_anti_total" class="font-medium mb-1">Realizó la prueba de
                                             elisa antígenos totales</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="real_prueb_eliza_anti_total" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.real_prueb_eliza_anti_total"
+                                            (change)="onLaboratoriosChange('real_prueb_eliza_anti_total')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -380,7 +385,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="elisaAntigenos" class="font-medium mb-1">Prueba de elisa antígenos
                                             totales</label>
-                                        <select id="elisaAntigenos" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="elisaAntigenos" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_eliza_anti_total']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.pru_antigenos">
                                             <option value="positivo">Positivo</option>
@@ -391,16 +396,17 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fechaElisaAntigenos" class="font-medium mb-1">Fecha prueba de elisa
                                             antígenos totales</label>
-                                        <input type="date" id="fechaElisaAntigenos" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fechaElisaAntigenos" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_eliza_anti_total']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_antigenos">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                        <label for="real_prueb_eliza_anti_recomb" class="font-medium mb-1">Realizó la prueba de
                                             elisa antígenos recombinante</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="real_prueb_eliza_anti_recomb" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.real_prueb_eliza_anti_recomb"
+                                            (change)="onLaboratoriosChange('real_prueb_eliza_anti_recomb')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -410,11 +416,11 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="elisaAntigenosRecombinante" class="font-medium mb-1">Elisa antígenos
                                             recombinante</label>
-                                        <select id="elisaAntigenosRecombinante" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="elisaAntigenosRecombinante" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_eliza_anti_recomb']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.eli_recombinante">
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
@@ -423,16 +429,17 @@
                                             antígenos
                                             recombinante</label>
                                         <input type="date" id="fechaElisaRecombinante"
-                                            [readonly]="isReadOnlyLaboratorioI"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_eliza_anti_recomb']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_recombinante">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                        <label for="real_prueb_coombis_indi_cuanti" class="font-medium mb-1">Realizó la prueba de
                                             Coombis indirecto cuantitativo</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="real_prueb_coombis_indi_cuanti" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.real_prueb_coombis_indi_cuanti"
+                                            (change)="onLaboratoriosChange('real_prueb_coombis_indi_cuanti')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -442,7 +449,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="coombisIndirecto" class="font-medium mb-1">Coombis indirecto
                                             cuantitativo</label>
-                                        <select id="coombisIndirecto" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="coombisIndirecto" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_coombis_indi_cuanti']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.coo_cuantitativo">
                                             <option value="positivo">Positivo</option>
@@ -454,16 +461,17 @@
                                         <label for="fechaCoombisIndirecto" class="font-medium mb-1">Fecha coombis
                                             indirecto</label>
                                         <input type="date" id="fechaCoombisIndirecto"
-                                            [readonly]="isReadOnlyLaboratorioI"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_prueb_coombis_indi_cuanti']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_coombs">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la ecografía
+                                        <label for="real_eco_obste_tamizaje" class="font-medium mb-1">Realizó la ecografía
                                             obstétrica tamizaje</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="real_eco_obste_tamizaje" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.real_eco_obste_tamizaje"
+                                            (change)="onLaboratoriosChange('real_eco_obste_tamizaje')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -473,7 +481,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fechaEcografia" class="font-medium mb-1">Fecha ecografía obstétrica
                                             tamizaje</label>
-                                        <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_eco_obste_tamizaje']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_ecografia">
                                     </div>
@@ -483,7 +491,7 @@
                                             momento de
                                             la
                                             ecografía</label>
-                                        <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_eco_obste_tamizaje']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.eda_gestacional">
                                     </div>
@@ -524,10 +532,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba rápida
+                                        <label for="reali_prueb_rapi_vih" class="font-medium mb-1">Realizó la prueba rápida
                                             VIH</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="reali_prueb_rapi_vih" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.reali_prueb_rapi_vih"
+                                            (change)="onLaboratoriosChange('reali_prueb_rapi_vih')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -537,7 +546,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
                                         <select id="pru_vih" [(ngModel)]="laboratorioIITrimestre.pru_vih"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
                                             <option value="Negativo">Negativo</option>
@@ -547,16 +556,17 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
                                         <input type="date" id="fec_vih" [(ngModel)]="laboratorioIITrimestre.fec_vih"
-                                            [readonly]="isReadOnlyLaboratorioII"
+                                            [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba
+                                        <label for="real_prueb_trep_rap_sifilis" class="font-medium mb-1">Realizó la prueba
                                             treponémica rápida para
                                             sífilis</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="real_prueb_trep_rap_sifilis" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.real_prueb_trep_rap_sifilis"
+                                            (change)="onLaboratoriosChange('real_prueb_trep_rap_sifilis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -567,10 +577,10 @@
                                         <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida para
                                             sífilis</label>
                                         <select id="pru_sifilis" [(ngModel)]="laboratorioIITrimestre.pru_sifilis"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['real_prueb_trep_rap_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Positivo">Positivo</option>
-                                            <option value="Negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
@@ -579,7 +589,7 @@
                                             rápida para sífilis</label>
                                         <input type="date" id="fec_sifilis"
                                             [(ngModel)]="laboratorioIITrimestre.fec_sifilis"
-                                            [readonly]="isReadOnlyLaboratorioII"
+                                            [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['real_prueb_trep_rap_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
@@ -638,10 +648,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la
+                                        <label for="reali_citologia" class="font-medium mb-1">Realizó la
                                             citología</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="reali_citologia" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.reali_citologia"
+                                            (change)="onLaboratoriosChange('reali_citologia')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -651,7 +662,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="rep_citologia" class="font-medium mb-1">Reporte de citología</label>
                                         <select id="rep_citologia" [(ngModel)]="laboratorioIITrimestre.rep_citologia"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['reali_citologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Normal">Normal</option>
                                             <option value="Anormal">Anormal</option>
@@ -663,7 +674,7 @@
                                             citología</label>
                                         <input type="date" id="fec_citologia"
                                             [(ngModel)]="laboratorioIITrimestre.fec_citologia"
-                                            [readonly]="isReadOnlyLaboratorioII"
+                                            [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_citologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
@@ -686,10 +697,11 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                        <label for="reali_prueb_avidez_ig_g" class="font-medium mb-1">Realizó la prueba de
                                             avidez IG-G </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="reali_prueb_avidez_ig_g" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.reali_prueb_avidez_ig_g"
+                                            (change)="onLaboratoriosChange('reali_prueb_avidez_ig_g')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -699,10 +711,10 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="pru_avidez" class="font-medium mb-1">Prueba de avidez IG-G</label>
                                         <select id="pru_avidez" [(ngModel)]="laboratorioIITrimestre.pru_avidez"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_avidez_ig_g']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Positivo">Positivo</option>
-                                            <option value="Negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
@@ -711,15 +723,16 @@
                                             IG-G</label>
                                         <input type="date" id="fec_avidez"
                                             [(ngModel)]="laboratorioIITrimestre.fec_avidez"
-                                            [readonly]="isReadOnlyLaboratorioII"
+                                            [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_avidez_ig_g']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                        <label for="reali_prueb_toxoplasmosis_ig_a" class="font-medium mb-1">Realizó la prueba de
                                             toxoplasmosis IG-A </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="reali_prueb_toxoplasmosis_ig_a" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.reali_prueb_toxoplasmosis_ig_a"
+                                            (change)="onLaboratoriosChange('reali_prueb_toxoplasmosis_ig_a')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -730,17 +743,17 @@
                                         <label for="tox_laboratorio" class="font-medium mb-1">Toxoplasmosis IG-A</label>
                                         <select id="tox_laboratorio"
                                             [(ngModel)]="laboratorioIITrimestre.tox_laboratorio"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_toxoplasmosis_ig_a']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="Positivo">Positivo</option>
-                                            <option value="Negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_tox_laboratorio" class="font-medium mb-1">Fecha Toxoplasmosis
                                             IG-A</label>
-                                        <input type="date" id="fec_tox_laboratorio" [readonly]="isReadOnlyLaboratorioII"
+                                        <input type="date" id="fec_tox_laboratorio" [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_toxoplasmosis_ig_a']"
                                             [(ngModel)]="laboratorioIITrimestre.fec_toxoplasmosis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -754,10 +767,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba
+                                        <label for="reali_prueb_hemoparasito" class="font-medium mb-1">Realizó la prueba
                                             Hemoparásito - gota gruesa</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="reali_prueb_hemoparasito" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.reali_prueb_hemoparasito"
+                                            (change)="onLaboratoriosChange('reali_prueb_hemoparasito')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -768,10 +782,10 @@
                                         <label for="hemoparasito" class="font-medium mb-1">Hemoparásito - gota
                                             gruesa</label>
                                         <select id="hemoparasito" [(ngModel)]="laboratorioIITrimestre.hem_gruesa"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_hemoparasito']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
@@ -779,17 +793,18 @@
                                         <label for="fechaHemoparasito" class="font-medium mb-1">Fecha Hemoparásito -
                                             gota
                                             gruesa</label>
-                                        <input type="date" id="fechaHemoparasito" [readonly]="isReadOnlyLaboratorioII"
+                                        <input type="date" id="fechaHemoparasito" [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_hemoparasito']"
                                             [(ngModel)]="laboratorioIITrimestre.fec_hemoparasito"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba Coombis
+                                        <label for="reali_prueb_coombis_indi_cuanti" class="font-medium mb-1">Realizó la prueba Coombis
                                             indirecto
                                             cuantitativo </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="reali_prueb_coombis_indi_cuanti" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.reali_prueb_coombis_indi_cuanti"
+                                            (change)="onLaboratoriosChange('reali_prueb_coombis_indi_cuanti')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -801,10 +816,10 @@
                                             cuantitativo</label>
                                         <select id="coombisIndirecto"
                                             [(ngModel)]="laboratorioIITrimestre.coo_cualitativo"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_coombis_indi_cuanti']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
@@ -813,16 +828,17 @@
                                             indirecto</label>
                                         <input type="date" id="fechaCoombis"
                                             [(ngModel)]="laboratorioIITrimestre.fec_coombs"
-                                            [readonly]="isReadOnlyLaboratorioII"
+                                            [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_prueb_coombis_indi_cuanti']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la ecografía
+                                        <label for="reali_eco_obste_detalle_anato" class="font-medium mb-1">Realizó la ecografía
                                             obstétrica
                                             detalle anatómico </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioII"
+                                        <select id="reali_eco_obste_detalle_anato" [disabled]="isReadOnlyLaboratorioII"
                                             [(ngModel)]="laboratorioIITrimestre.reali_eco_obste_detalle_anato"
+                                            (change)="onLaboratoriosChange('reali_eco_obste_detalle_anato')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -832,7 +848,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fechaEcografia" class="font-medium mb-1">Fecha ecografía obstétrica
                                             detalle anatómico</label>
-                                        <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioII"
+                                        <input type="date" id="fechaEcografia" [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_eco_obste_detalle_anato']"
                                             [(ngModel)]="laboratorioIITrimestre.fec_ecografia"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -840,7 +856,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="edadGestacional" class="font-medium mb-1">Edad gestacional al
                                             momento de la ecografía</label>
-                                        <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioII"
+                                        <input type="text" id="edadGestacional" [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['reali_eco_obste_detalle_anato']"
                                             [(ngModel)]="laboratorioIITrimestre.eda_gestacional"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -896,10 +912,11 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba rápida
+                                        <label for="reali_prueb_rapi_vih" class="font-medium mb-1">Realizó la prueba rápida
                                             VIH</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="reali_prueb_rapi_vih" [disabled]="isReadOnlyLaboratorioIII"
                                             [(ngModel)]="laboratorioIIITrimestre.reali_prueb_rapi_vih"
+                                            (change)="onLaboratoriosChange('reali_prueb_rapi_vih')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -908,27 +925,28 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
-                                        <select id="pru_vih" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="pru_vih" [disabled]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.pru_vih">
-                                            <option value="Normal">Normal</option>
-                                            <option value="Anormal">Anormal</option>
+                                            <option value="1">Normal</option>
+                                            <option value="0">Anormal</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
-                                        <input type="date" id="fec_vih" [readonly]="isReadOnlyLaboratorioIII"
+                                        <input type="date" id="fec_vih" [readonly]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.fec_vih">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba
+                                        <label for="reali_prueb_trepo_rapi_sifilis" class="font-medium mb-1">Realizó la prueba
                                             treponémica rápida para
                                             sífilis </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="reali_prueb_trepo_rapi_sifilis" [disabled]="isReadOnlyLaboratorioIII"
                                             [(ngModel)]="laboratorioIIITrimestre.reali_prueb_trepo_rapi_sifilis"
+                                            (change)="onLaboratoriosChange('reali_prueb_trepo_rapi_sifilis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -938,7 +956,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida para
                                             sífilis</label>
-                                        <select id="pru_sifilis" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="pru_sifilis" [disabled]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_trepo_rapi_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.pru_sifilis">
                                             <option value="Normal">Normal</option>
@@ -951,16 +969,17 @@
                                             rápida
                                             par
                                             sífilis</label>
-                                        <input type="date" id="fec_sifilis" [readonly]="isReadOnlyLaboratorioIII"
+                                        <input type="date" id="fec_sifilis" [readonly]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_trepo_rapi_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.fec_sifilis">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba IG-M
+                                        <label for="reali_prueb_igm_toxoplasma" class="font-medium mb-1">Realizó la prueba IG-M
                                             toxoplasma </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="reali_prueb_igm_toxoplasma" [disabled]="isReadOnlyLaboratorioIII"
                                             [(ngModel)]="laboratorioIIITrimestre.reali_prueb_igm_toxoplasma"
+                                            (change)="onLaboratoriosChange('reali_prueb_igm_toxoplasma')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -969,18 +988,18 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="ig_toxoplasma" class="font-medium mb-1">IG-M toxoplasma</label>
-                                        <select id="ig_toxoplasma" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="ig_toxoplasma" [disabled]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_igm_toxoplasma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.ig_toxoplasma">
-                                            <option value="Normal">Normal</option>
-                                            <option value="Anormal">Anormal</option>
+                                            <option value="1">Normal</option>
+                                            <option value="0">Anormal</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_toxoplasma" class="font-medium mb-1">Fecha IG-M
                                             toxoplasma</label>
-                                        <input type="date" id="fec_toxoplasma" [readonly]="isReadOnlyLaboratorioIII"
+                                        <input type="date" id="fec_toxoplasma" [readonly]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_igm_toxoplasma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.fec_toxoplasma">
                                     </div>
@@ -994,11 +1013,12 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                        <label for="reali_prueb_culti_rect_vagi" class="font-medium mb-1">Realizó la prueba de
                                             cultivo rectal y
                                             vaginal </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="reali_prueb_culti_rect_vagi" [disabled]="isReadOnlyLaboratorioIII"
                                             [(ngModel)]="laboratorioIIITrimestre.reali_prueb_culti_rect_vagi"
+                                            (change)="onLaboratoriosChange('reali_prueb_culti_rect_vagi')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -1008,28 +1028,29 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="cul_rectal" class="font-medium mb-1">Cultivo rectal y
                                             vaginal</label>
-                                        <select id="cul_rectal" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="cul_rectal" [disabled]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_culti_rect_vagi']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.cul_rectal">
-                                            <option value="Positivo">Positivo</option>
-                                            <option value="Negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_rectal" class="font-medium mb-1">Fecha cultivo rectal y
                                             vaginal</label>
-                                        <input type="date" id="fec_rectal" [readonly]="isReadOnlyLaboratorioIII"
+                                        <input type="date" id="fec_rectal" [readonly]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_culti_rect_vagi']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.fec_rectal">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba de
+                                        <label for="reali_prueb_perfil_biofisico" class="font-medium mb-1">Realizó la prueba de
                                             Perfil
                                             biofísico </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="reali_prueb_perfil_biofisico" [disabled]="isReadOnlyLaboratorioIII"
                                             [(ngModel)]="laboratorioIIITrimestre.reali_prueb_perfil_biofisico"
+                                            (change)="onLaboratoriosChange('reali_prueb_perfil_biofisico')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -1039,7 +1060,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_biofisico" class="font-medium mb-1">Fecha Perfil
                                             biofísico</label>
-                                        <input type="date" id="fec_biofisico" [readonly]="isReadOnlyLaboratorioIII"
+                                        <input type="date" id="fec_biofisico" [readonly]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_perfil_biofisico']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.fec_biofisico">
                                     </div>
@@ -1049,7 +1070,7 @@
                                             momento
                                             de la
                                             ecografía</label>
-                                        <input type="text" id="edad_gestacional" [readonly]="isReadOnlyLaboratorioIII"
+                                        <input type="text" id="edad_gestacional" [readonly]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_prueb_perfil_biofisico']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.edad_gestacional">
                                     </div>
@@ -1089,10 +1110,11 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba Elisa
+                                        <label for="reali_prueb_elisa_vih" class="font-medium mb-1">Realizó la prueba Elisa
                                             para VIH </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyIts"
+                                        <select id="reali_prueb_elisa_vih" [disabled]="isReadOnlyIts"
                                             [(ngModel)]="its.reali_prueb_elisa_vih"
+                                            (change)="onLaboratoriosChange('reali_prueb_elisa_vih')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -1101,7 +1123,7 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="eliVih" class="font-medium mb-1">Elisa para VIH</label>
-                                        <select id="eliVih" [disabled]="isReadOnlyIts"
+                                        <select id="eliVih" [disabled]="isReadOnlyIts || !mostrarCampos['reali_prueb_elisa_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="its.eli_vih">
                                             <option value="Reactivo">Reactivo</option>
@@ -1111,17 +1133,18 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fecVih" class="font-medium mb-1">Fecha elisa para VIH</label>
-                                        <input type="date" id="fecVih" [readonly]="isReadOnlyIts"
+                                        <input type="date" id="fecVih" [readonly]="isReadOnlyIts || !mostrarCampos['reali_prueb_elisa_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="its.fec_vih">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba no
+                                        <label for="reali_prueb_no_trepo_vdrl_sifilis" class="font-medium mb-1">Realizó la prueba no
                                             treponémica (VDRL) para
                                             sífilis </label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyIts"
+                                        <select id="reali_prueb_no_trepo_vdrl_sifilis" [disabled]="isReadOnlyIts"
                                             [(ngModel)]="its.reali_prueb_no_trepo_vdrl_sifilis"
+                                            (change)="onLaboratoriosChange('reali_prueb_no_trepo_vdrl_sifilis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -1131,7 +1154,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="codVdrl" class="font-medium mb-1">Prueba no treponémica (VDRL) para
                                             sífilis</label>
-                                        <select id="codVdrl" [disabled]="isReadOnlyIts"
+                                        <select id="codVdrl" [disabled]="isReadOnlyIts || !mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required [(ngModel)]="its.cod_vdrl">
                                             <!-- Opción por defecto -->
@@ -1145,17 +1168,18 @@
                                         <label for="fecVdrl" class="font-medium mb-1">Fecha prueba no treponémica (VDRL)
                                             para
                                             sífilis</label>
-                                        <input type="date" id="fecVdrl" [readonly]="isReadOnlyIts"
+                                        <input type="date" id="fecVdrl" [readonly]="isReadOnlyIts || !mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="its.fec_vdrl">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="usuario-solicito" class="font-medium mb-1">Realizó la prueba no
+                                        <label for="reali_prueb_no_trepo_rpr_sifilis" class="font-medium mb-1">Realizó la prueba no
                                             treponémica (RPR) para
                                             sífilis</label>
-                                        <select id="usuario-solicito" [disabled]="isReadOnlyIts"
+                                        <select id="reali_prueb_no_trepo_rpr_sifilis" [disabled]="isReadOnlyIts"
                                             [(ngModel)]="its.reali_prueb_no_trepo_rpr_sifilis"
+                                            (change)="onLaboratoriosChange('reali_prueb_no_trepo_rpr_sifilis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -1165,7 +1189,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="codRpr" class="font-medium mb-1">Prueba no treponémica (RPR) para
                                             sífilis</label>
-                                        <select id="codRpr" [disabled]="isReadOnlyIts"
+                                        <select id="codRpr" [disabled]="isReadOnlyIts || !mostrarCampos['reali_prueb_no_trepo_rpr_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required [(ngModel)]="its.cod_rpr">
                                             <!-- Opción por defecto -->
@@ -1179,7 +1203,7 @@
                                         <label for="fecRpr" class="font-medium mb-1">Fecha prueba no treponémica (RPR)
                                             para
                                             sífilis</label>
-                                        <input type="date" id="fecRpr" [readonly]="isReadOnlyIts"
+                                        <input type="date" id="fecRpr" [readonly]="isReadOnlyIts || !mostrarCampos['reali_prueb_no_trepo_rpr_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="its.fec_rpr">
                                     </div>
