@@ -3,7 +3,7 @@ export class PrimeraConsulta {
     id_operador?: number;
     id_usuario?: number;
     cod_riesgo: number;
-    cod_dm: number;
+    cod_dm?: number | null;
     peso_previo: string;
     tal_consulta: string;
     imc_consulta: string;
