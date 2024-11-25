@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
 import { ReportesService } from '../../../Services/reportes.service';
+import { PoblacionDiferencialService } from '../../../Services/poblacion-diferencial.service';
+import { DepartamentoService } from '../../../Services/departamento.service';
 
 @Component({
   selector: 'app-reporte',
@@ -30,7 +32,7 @@ export class ReporteComponent {
       valor: 'gestacion_saludable',
       subcategorias: [
         { nombre: 'Micronutrientes', valor: 'Micronutrientes' },
-        { nombre: 'Curso Prenatal', valor: 'Curso_prenatal' },
+        { nombre: 'Curso Prenatal', valor: 'Curso Prenatal' },
         { nombre: 'Nutrición', valor: 'Nutricion' },
         { nombre: 'Salud Bucal', valor: 'Salud_bucal' },
         { nombre: 'Psicología', valor: 'Psicologia' },
@@ -87,11 +89,14 @@ export class ReporteComponent {
   ];
 
   subcategorias = [];
-
+  poblaciones = [];
+  departamentos = [];
 
   constructor(
     private menuService: MenuService,
-    private reporteService: ReportesService
+    private reporteService: ReportesService,
+    private poblacionDifeService: PoblacionDiferencialService,
+    private departamentoService: DepartamentoService
   ) { }
 
 
@@ -102,6 +107,8 @@ export class ReporteComponent {
     this.menuService.menuVisible$.subscribe(isVisible => {
       this.isVisible = isVisible;
     });
+    this.getPoblacionDiferencial();
+    this.getDepartamentos();
   }
 
   onCategoriaChange() {
@@ -111,15 +118,50 @@ export class ReporteComponent {
 
   // Método para enviar los filtros y obtener los reportes
   aplicarFiltros() {
-    console.log('Aplicando filtros...', this.filtros); 
+    console.log('Aplicando filtros...', this.filtros);
+
+    // Llamar al servicio para descargar el Excel
     this.reporteService.filtrarReportes(this.filtros).subscribe(
-      (data) => {
-        this.resultados = data; // Guardar los resultados obtenidos
-        console.log('Resultados:', data);
+      (response) => {
+        console.log('Descarga iniciada');
+        const blob = new Blob([response], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'reporte.xlsx'; // Nombre del archivo
+        a.click();
+        window.URL.revokeObjectURL(url);
       },
       (error) => {
-        console.error('Error al obtener los indicadores:', error);
+        console.error('Error al descargar el archivo:', error);
       }
     );
+  }
+
+
+  getPoblacionDiferencial(){
+    this.poblacionDifeService.getPoblacionDiferencial().subscribe(
+      (response)=>{
+        console.log(response);
+        this.poblaciones = response.poblacion;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  getDepartamentos(){
+    this.departamentoService.getDepartamentos().subscribe(
+      (response)=>{
+        console.log(response);
+        this.departamentos = response.departamento;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 }

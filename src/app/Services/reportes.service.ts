@@ -13,6 +13,6 @@ export class ReportesService {
   constructor(private http:HttpClient) { }
 
   filtrarReportes(filtros:any):Observable<any>{
-    return this.http.post(`${this.apiUrl}filtrar-indicadores`,filtros);
+    return this.http.post(`${this.apiUrl}filtrar-indicadores`,filtros,{responseType: 'blob',});
   }
 }
