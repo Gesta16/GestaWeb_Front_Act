@@ -34,16 +34,16 @@ export class ReporteComponent {
         { nombre: 'Micronutrientes', valor: 'Micronutrientes' },
         { nombre: 'Curso Prenatal', valor: 'Curso Prenatal' },
         { nombre: 'Nutrición', valor: 'Nutrición' },
-        { nombre: 'Salud Bucal', valor: 'Salud_bucal' },
-        { nombre: 'Psicología', valor: 'Psicologia' },
-        { nombre: 'Ginecología', valor: 'Ginecologia' },
+        { nombre: 'Salud Bucal', valor: 'Salud Bucal' },
+        { nombre: 'Psicología', valor: 'Psicología' },
+        { nombre: 'Ginecología', valor: 'Ginecología' },
       ],
     },
     {
       nombre: 'Parto Humanizado',
       valor: 'parto_humanizado',
       subcategorias: [
-        { nombre: 'Cesáreas', valor: 'cesareas' },
+        { nombre: 'Cesáreas', valor: 'Cesáreas' },
         { nombre: 'Monitorización', valor: 'monitorizacion' },
       ],
     },
@@ -66,15 +66,15 @@ export class ReporteComponent {
       nombre: 'Planeación Familiar',
       valor: 'planeacion_familiar',
       subcategorias: [
-        { nombre: 'Intención Reproductiva', valor: 'intencion_reproductiva' },
-        { nombre: 'Consulta IVE', valor: 'consulta_ive' },
+        { nombre: 'Intención Reproductiva', valor: 'Intención Reproductiva' },
+        { nombre: 'Consulta IVE', valor: 'Consulta IVE' },
       ],
     },
     {
       nombre: 'Gestantes Sin Riesgo',
       valor: 'gestantes_sin_riesgo',
       subcategorias: [
-        { nombre: 'Tratamiento de Sífilis', valor: 'tratamiento_sifilis' },
+        { nombre: 'Tratamiento de Sífilis', valor: 'Tratamiento de Sífilis' },
       ],
     },
     {
