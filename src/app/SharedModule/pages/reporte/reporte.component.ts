@@ -33,7 +33,7 @@ export class ReporteComponent {
       subcategorias: [
         { nombre: 'Micronutrientes', valor: 'Micronutrientes' },
         { nombre: 'Curso Prenatal', valor: 'Curso Prenatal' },
-        { nombre: 'Nutrición', valor: 'Nutricion' },
+        { nombre: 'Nutrición', valor: 'Nutrición' },
         { nombre: 'Salud Bucal', valor: 'Salud_bucal' },
         { nombre: 'Psicología', valor: 'Psicologia' },
         { nombre: 'Ginecología', valor: 'Ginecologia' },
