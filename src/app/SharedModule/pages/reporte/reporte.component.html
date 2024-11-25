@@ -1,8 +1,7 @@
 <app-header></app-header>
 
 <div class="flex min-h-screen justify-center items-center px-4">
-    <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 px-4 ml-56 mt-24"
-    [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+    <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 px-4 ml-56 mt-24" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
         <div class="bg-white rounded-lg shadow-lg p-6 w-full mb-4">
 
@@ -37,8 +36,9 @@
                             </svg>
                             <span>Categoría de Indicadores</span>
                         </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]">
+                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.categoria" (change)="onCategoriaChange()">
                             <option>Selecciona una categoría</option>
+                            <option *ngFor="let cat of categorias" [value]="cat.valor">{{ cat.nombre }}</option>
                         </select>
                     </div>
                     <div class="flex flex-col text-xs">
@@ -51,8 +51,9 @@
                             </svg>
                             <span>Subcategoría de Indicadores</span>
                         </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]">
-                            <option>Selecciona una subcategoría</option>
+                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.subcategoria">
+                            <option >Selecciona una subcategoría</option>
+                            <option *ngFor="let sub of subcategorias" [value]="sub.valor">{{ sub.nombre }}</option>
                         </select>
                     </div>
                 </div>
@@ -139,12 +140,12 @@
                         </select>
                     </div>
                 </div>
-                
+
             </div>
 
             <!-- Botón -->
             <div class="px-6 py-4 flex justify-end">
-                <button class="w-32 py-2 rounded-lg shadow border border-[#80ba27] hover:bg-[#F5F6DB]">
+                <button class="w-32 py-2 rounded-lg shadow border border-[#80ba27] hover:bg-[#F5F6DB]" (click)="aplicarFiltros()">
                     Aplicar Filtros
                 </button>
             </div>
