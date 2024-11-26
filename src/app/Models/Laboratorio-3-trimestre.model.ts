@@ -13,7 +13,7 @@ export class LaboratorioIIITrimestre {
     cul_rectal?: string | null;
     fec_rectal?: string | null;
     fec_biofisico?: string | null;
-    edad_gestacional: string;
+    edad_gestacional?: string | null;
     rie_biopsicosocial: string;
     num_proceso: number;
     reali_prueb_rapi_vih_3: boolean;
