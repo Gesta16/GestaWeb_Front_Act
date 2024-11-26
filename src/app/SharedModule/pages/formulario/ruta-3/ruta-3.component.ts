@@ -78,7 +78,9 @@ export class Ruta3Component {
     reali_prueb_perfil_biofisico: false,
     reali_prueb_elisa_vih: false,
     reali_prueb_no_trepo_vdrl_sifilis: false,
-    reali_prueb_no_trepo_rpr_sifilis: false
+    reali_prueb_no_trepo_rpr_sifilis: false,
+    reali_prueb_rapi_vih_3: false,
+
   }
 
   constructor(private itsService: ItsService,
@@ -329,14 +331,14 @@ export class Ruta3Component {
         }
         break;
       
-      // Laboratoio III trimestre
-      // case 'reali_prueb_rapi_vih':
-      //   this.mostrarCampos['reali_prueb_rapi_vih'] = valorSeleccionado2 === 1;
-      //   if (!this.mostrarCampos['reali_prueb_rapi_vih']){
-      //     this.laboratorioIIITrimestre.pru_vih = null,
-      //     this.laboratorioIIITrimestre.fec_vih = null;
-      //   }
-      //   break;
+      //Laboratoio III trimestre
+      case 'reali_prueb_rapi_vih_3':
+        this.mostrarCampos['reali_prueb_rapi_vih_3'] = valorSeleccionado2 === 1;
+        if (!this.mostrarCampos['reali_prueb_rapi_vih_3']){
+          this.laboratorioIIITrimestre.pru_vih = null,
+          this.laboratorioIIITrimestre.fec_vih = null;
+        }
+        break;
 
       case 'reali_prueb_trepo_rapi_sifilis':
         this.mostrarCampos['reali_prueb_trepo_rapi_sifilis'] = valorSeleccionado2 === 1;

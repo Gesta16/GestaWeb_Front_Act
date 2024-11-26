@@ -16,7 +16,7 @@ export class LaboratorioIIITrimestre {
     edad_gestacional: string;
     rie_biopsicosocial: string;
     num_proceso: number;
-    reali_prueb_rapi_vih: boolean;
+    reali_prueb_rapi_vih_3: boolean;
     reali_prueb_trepo_rapi_sifilis: boolean;
     reali_prueb_igm_toxoplasma: boolean;
     reali_prueb_culti_rect_vagi: boolean;
@@ -39,7 +39,7 @@ export class LaboratorioIIITrimestre {
         edad_gestacional = '',
         rie_biopsicosocial = '',
         num_proceso = 0,
-        reali_prueb_rapi_vih = false,
+        reali_prueb_rapi_vih_3 = false,
         reali_prueb_trepo_rapi_sifilis = false,
         reali_prueb_igm_toxoplasma = false,
         reali_prueb_culti_rect_vagi = false,
@@ -62,7 +62,7 @@ export class LaboratorioIIITrimestre {
         edad_gestacional?: string,
         rie_biopsicosocial?: string,
         num_proceso?: number,
-        reali_prueb_rapi_vih?: boolean,
+        reali_prueb_rapi_vih_3?: boolean,
         reali_prueb_trepo_rapi_sifilis?: boolean,
         reali_prueb_igm_toxoplasma?: boolean,
         reali_prueb_culti_rect_vagi?: boolean,
@@ -85,7 +85,7 @@ export class LaboratorioIIITrimestre {
         this.edad_gestacional = edad_gestacional;
         this.rie_biopsicosocial = rie_biopsicosocial;
         this.num_proceso = num_proceso;
-        this.reali_prueb_rapi_vih = reali_prueb_rapi_vih
+        this.reali_prueb_rapi_vih_3 = reali_prueb_rapi_vih_3;
         this.reali_prueb_trepo_rapi_sifilis = reali_prueb_trepo_rapi_sifilis
         this.reali_prueb_igm_toxoplasma = reali_prueb_igm_toxoplasma
         this.reali_prueb_culti_rect_vagi = reali_prueb_culti_rect_vagi
