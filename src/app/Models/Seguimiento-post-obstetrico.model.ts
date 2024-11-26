@@ -5,6 +5,7 @@ export class SeguimientoPostObstetrico {
     con_egreso: string;
     fec_fallecimiento: string;
     fec_planificacion: string;
+    recib_aseso_anticonceptiva: boolean;
     num_proceso: number;
 
 
@@ -16,6 +17,7 @@ export class SeguimientoPostObstetrico {
             con_egreso = '',
             fec_fallecimiento = '',
             fec_planificacion = '',
+            recib_aseso_anticonceptiva = false,
             num_proceso = 0
         }: {
             cod_evento?: number,
@@ -24,6 +26,7 @@ export class SeguimientoPostObstetrico {
             con_egreso?: string,
             fec_fallecimiento?: string,
             fec_planificacion?: string,
+            recib_aseso_anticonceptiva?: boolean,
             num_proceso?: number
         } = {}) {
         this.cod_evento = cod_evento;
@@ -32,6 +35,7 @@ export class SeguimientoPostObstetrico {
         this.con_egreso = con_egreso;
         this.fec_fallecimiento = fec_fallecimiento;
         this.fec_planificacion = fec_planificacion;
+        this.recib_aseso_anticonceptiva = recib_aseso_anticonceptiva;
         this.num_proceso = num_proceso;
     }
 }

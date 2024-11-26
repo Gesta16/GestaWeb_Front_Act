@@ -64,7 +64,7 @@
                 <!-- Fechas -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3">
+                        <label class="flex items-center space-x-2 text-sm font-medium mb-3" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-calendar-range">
@@ -80,10 +80,10 @@
                             <span>Fecha de inicio</span>
                         </label>
                         <input type="date"
-                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" />
+                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.fecha_fin" />
                     </div>
                     <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3">
+                        <label class="flex items-center space-x-2 text-sm font-medium mb-3" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-calendar-range">
@@ -99,7 +99,7 @@
                             <span>Fecha de fin</span>
                         </label>
                         <input type="date"
-                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" />
+                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.fecha_inicio"/>
                     </div>
                 </div>
 
@@ -119,9 +119,9 @@
                             </svg>
                             <span>Ubicación</span>
                         </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]">
+                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.cod_departamento">
                             <option>Selecciona una ubicación</option>
-                            <option *ngFor="let dep of departamentos">{{dep.nom_departamento}}</option>
+                            <option *ngFor="let dep of departamentos"[value]="dep.cod_departamento">{{dep.nom_departamento}}</option>
                         </select>
                     </div>
                     <div class="flex flex-col text-xs">
@@ -136,9 +136,9 @@
                             </svg>
                             <span>Segmento de Población</span>
                         </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]">
-                            <option>Selecciona una población</option>
-                            <option *ngFor="let poblacion of poblaciones">{{poblacion.nom_poblacion}}</option>
+                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.cod_poblacion">
+                            <option >Selecciona una población</option>
+                            <option *ngFor="let poblacion of poblaciones" [value]="poblacion.cod_poblacion">{{poblacion.nom_poblacion}}</option>
                         </select>
                     </div>
                 </div>

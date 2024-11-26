@@ -52,7 +52,7 @@ export class ReporteComponent {
       valor: 'puerperio_seguro',
       subcategorias: [
         { nombre: 'Asesoría Anticonceptiva', valor: 'asesoria_anticonceptiva' },
-        { nombre: 'Métodos Anticonceptivos', valor: 'metodos_anticonceptivos' },
+        { nombre: 'Métodos Anticonceptivos', valor: 'Métodos Anticonceptivos' },
       ],
     },
     {
