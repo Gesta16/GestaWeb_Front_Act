@@ -30,7 +30,7 @@
                         <th scope="col" class="px-5 py-3">Dirección</th>
                         <th scope="col" class="px-5 py-3">Teléfono</th>
                         <th scope="col" class="px-5 py-3">Editar</th>
-                        <th scope="col" class="px-5 py-3">Desactivar</th>
+                        <!-- <th scope="col" class="px-5 py-3">Desactivar</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -39,15 +39,15 @@
                         <td>{{ getDepartamentoNombre(ips.cod_departamento) }}</td>
                         <td>{{ ips.dir_ips }}</td>
                         <td>{{ ips.tel_ips }}</td>
-                        <td class="px-7 py-4">
+                        <td class="px-5 py-2">
                             <button (click)="abrirModalEdit(ips)"
                                 class="flex items-center ml-[34%] h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
                                 <i class="fa-solid fa-pencil fa-lg text-black"></i>
                             </button>
                         </td>
-                        <td class="px-12 py-4">
+                        <!-- <td class="px-12 py-4">
                             <i class="fa-solid fa-toggle-off fa-xl" style="color: #000000;"></i>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
             </table>

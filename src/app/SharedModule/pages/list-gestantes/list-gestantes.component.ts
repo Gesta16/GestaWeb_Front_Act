@@ -22,7 +22,7 @@ export class ListGestantesComponent {
   tiposDocumento: TipoDocumento[] = [];
   paginatedUsuarios: Usuario[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 15;
+  itemsPerPage: number = 10;
   totalPages: number = 1;
 
   isExpanded = true;

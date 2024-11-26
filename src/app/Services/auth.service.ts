@@ -52,7 +52,6 @@ export class AuthService {
   // Obtener el rol actual del usuario
   getRole(): string | null {
     const currentUser = this.currentUserSubject.value;
-    console.log('rol desde AuthService', currentUser.rol.nombre_rol);
     return currentUser ? currentUser.rol.nombre_rol : null;
 
   }

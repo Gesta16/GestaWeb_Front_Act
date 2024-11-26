@@ -36,6 +36,7 @@ export class IpsService {
   }
 
   updateIps(ips: Ips): Observable<Ips> {
-    return this.http.post<Ips>(`${this.apiUrl}/${ips.cod_ips}`, ips, { headers: this.createHeaders() });
+    return this.http.put<Ips>(`${this.apiUrl}/${ips.cod_ips}`, ips, { headers: this.createHeaders() });
   }
+  
 }
