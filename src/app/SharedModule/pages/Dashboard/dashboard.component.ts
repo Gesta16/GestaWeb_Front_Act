@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
-import { DashboardService } from '../../../Services/dashboard.service';
+import { Consulta, DashboardService } from '../../../Services/dashboard.service';
 import * as echarts from 'echarts';
-import { features } from 'process';
-import { response } from 'express';
+import { CalendarOptions } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import { AuthService } from '../../../Services/auth.service';
 @Component({
   selector: 'app-dashboard',
@@ -26,6 +26,22 @@ export class DashboardComponent {
   chartOptionsConsultasIve: echarts.EChartsOption;
   user: any;
   chartInstances: Record<string, any> = {};
+  consultas: Consulta[] = [];
+  loading: boolean = true;
+  errorMessage: string | null = null;
+
+
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin],
+    locale: 'es',
+    events: [],
+    headerToolbar: {
+      left: 'title', // Puedes dejar solo los botones de "prev" y "next"
+      center: '',
+      right: 'prev,next' // No agregues el botón "today"
+    }
+  };
 
   constructor(
     private menuService: MenuService,
@@ -41,11 +57,20 @@ export class DashboardComponent {
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
-    this.getConteos();
-    this.getTamizajeSifilis();
-    this.getSeguimientosComplementarios();
-    this.getMortalidadNeonatal();
-    this.getConsultasIve();
+    if(this.user.rol_id != 4){
+      this.getConteos();
+      this.getTamizajeSifilis();
+      this.getSeguimientosComplementarios();
+      this.getMortalidadNeonatal();
+      this.getConsultasIve();
+    }else if (this.user.rol_id === 4) {
+      // Solo carga el calendario si el rol es gestante (4)
+      this.cargarConsultas();
+    } else {
+      console.log('El usuario no tiene acceso');
+      this.loading = false; // Variable para ocultar el calendario en el HTML
+    }
+   
   }
 
   getConteos() {
@@ -71,7 +96,7 @@ export class DashboardComponent {
         this.charOptionsTamizajeSifi = {
           title: {
             text: 'Proporción de Tamizaje para Sífilis por Trimestre',
-            left:'center'
+            left: 'center'
           },
           tooltip: {
             trigger: 'axis'
@@ -138,13 +163,13 @@ export class DashboardComponent {
           legend: {
             orient: 'horizontal',
             left: 'center',
-            top:40
+            top: 40
           },
           series: {
             name: 'Datos',
             type: 'pie',
             data: chartData,
-            top:40,
+            top: 40,
             emphasis: {
               itemStyle: {
                 shadowBlur: 10,
@@ -172,9 +197,9 @@ export class DashboardComponent {
         console.log('Datos de mortalidad neonatal:', chartData);
 
         this.chartOptionsMortalidad = {
-          title:{
-            text:'Mortalidad Neonatal Temprana',
-            left:'center'
+          title: {
+            text: 'Mortalidad Neonatal Temprana',
+            left: 'center'
           },
           tooltip: {
             trigger: 'axis',
@@ -205,7 +230,7 @@ export class DashboardComponent {
               data: response.map(item => item.total_neonatal_temprana),
               itemStyle: {
                 color: (params: any) => {
-                  const colors = [ '#73C0DE', '#EE6666', '#FAC858', '#91CC75'];
+                  const colors = ['#73C0DE', '#EE6666', '#FAC858', '#91CC75'];
                   return colors[params.dataIndex % colors.length];
                 }
               },
@@ -298,9 +323,6 @@ export class DashboardComponent {
   }
 
 
-
-
-
   initChart(chartId: string, chartOptions: any): void {
     const chartDom = document.getElementById(chartId) as HTMLElement;
 
@@ -320,6 +342,59 @@ export class DashboardComponent {
     // Si necesitas mantener la instancia para actualizaciones futuras
     this.chartInstances = this.chartInstances || {}; // Asegúrate de inicializar el objeto si no existe
     this.chartInstances[chartId] = chartInstance; // Guarda la instancia por ID del gráfico
+  }
+
+
+  cargarConsultas() {
+    this.dashboardService.getCalendarioUsuario().subscribe(
+      (response) => {
+        if (response.estado === 'Ok') {
+          this.consultas = response.data;
+          this.calendarOptions.events = this.mapearConsultasAEventos(this.consultas); // Mapear las consultas a eventos
+          console.log(this.calendarOptions.events);
+        } else {
+          this.errorMessage = response.mensaje;
+        }
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Error al cargar las consultas:', error);
+        this.errorMessage = 'Error al cargar las consultas';
+        this.loading = false;
+      }
+    );
+  }
+
+  private mapearConsultasAEventos(consultas: Consulta[]): any[] {
+    const colorConsultas: { [key: string]: { background: string, text: string } } = {
+      "Control Prenatal": { background: "#A8E6CF", text: "#000000" },
+      "Primera Consulta": { background: "#DCEDC1", text: "#000000" },
+      "Laboratorios primer trimestre": { background: "#FFD3B6", text: "#000000" },
+      "Laboratorios segundo trimestre": { background: "#FFAAA5", text: "#000000" },
+      "Laboratorios tercer semestre": { background: "#D0E8FF", text: "#000000" },
+      "Consulta Mensual": { background: "#E8DFFF", text: "#000000" },
+      "Control Complementario": { background: "#A8E6CF", text: "#000000" },
+      "Finalizacion Gestación": { background: "#FFD3B6", text: "#000000" }
+    };
+
+    return consultas.map(consulta => {
+      const { background, text } = colorConsultas[consulta.nombre_consulta] || { background: "#D0E8FF", text: "#000000" };
+      return {
+        title: consulta.nombre_consulta,
+        start: consulta.fecha,
+        backgroundColor: background,
+        textColor: text,
+        eventContent: () => {
+          return {
+            html: `
+              <div class="scrollable-container" style="background-color: ${background}; color: ${text};">
+                <span class="scrollable-text">${consulta.nombre_consulta}</span>
+              </div>
+            `
+          };
+        }
+      };
+    });
   }
 
 }

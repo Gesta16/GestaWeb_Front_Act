@@ -12,7 +12,7 @@ export class MenuService {
     superadmin: SharedModuleRoutingModule.getRoutes(),
     admin: SharedModuleRoutingModule.getRoutes(),
     operador: SharedModuleRoutingModule.getRoutes(),
-    user: SharedModuleRoutingModule.getRoutes(),
+    usuario: SharedModuleRoutingModule.getRoutes(),
   };
 
   constructor() { }

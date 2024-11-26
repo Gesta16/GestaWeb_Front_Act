@@ -74,7 +74,8 @@ const routes: Routes = [
       },
       {
         path:'ruta-gestante/:id/:procesoId', component:RutaGestanteComponent,
-        data:{showInMenu:false}
+        canActivate:[RoleGuard],
+        data:{title: 'Ruta',icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu:true, }
       },
       {
         path:'ruta-gestante/:id/:procesoId', component:RutaGestanteComponent,

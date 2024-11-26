@@ -52,7 +52,7 @@ export class AuthService {
   // Obtener el rol actual del usuario
   getRole(): string | null {
     const currentUser = this.currentUserSubject.value;
-    console.log('rol desde AuthService', currentUser.rol.nombre_rol);
+    //console.log('rol desde AuthService', currentUser.rol.nombre_rol);
     return currentUser ? currentUser.rol.nombre_rol : null;
 
   }
@@ -67,8 +67,8 @@ export class AuthService {
         return isMobile ? '40px' : '90px';
       case 'operador':
         return '70px';
-      case 'user':
-        return '10px';
+      case 'usuario':
+        return '100px';
       default:
         return '5px';
     }

@@ -1,7 +1,7 @@
 <!-- Encabezado -->
 <app-header></app-header>
 
-<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+<div *ngIf="loading;" class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
     <div class="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:space-x-4">
         <!-- Grafico tamizaje sifilis -->
@@ -98,4 +98,13 @@
     <div class="bg-white rounded-lg p-4 shadow mt-4 mb-8">
         <div id="tamizajeChart" style="width: 100%; height: 400px;"></div>
     </div>
+
+    <div *ngIf="loading;" class="m-3 flex-[0_0_75%] h-[95%] full-calendar-container overflow-auto">
+        <div class="border border-gray-300 bg-white shadow-md rounded-lg p-3 h-full overflow-hidden">
+          <br />
+          <div class="calendar-container">
+            <full-calendar [options]="calendarOptions" class="calendar"></full-calendar>
+          </div>
+        </div>
+      </div>
 </div>
