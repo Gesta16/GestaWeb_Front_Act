@@ -88,4 +88,7 @@ export class MenuComponent {
     return false; // Valor por defecto si no se puede acceder a window
   }
 
+  getMenuMarginTop(): string {
+    return this.authService.getMarginTopForRole();
+  }
 }
