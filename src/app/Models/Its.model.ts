@@ -4,12 +4,12 @@ export class Its {
     id_usuario: number;
     cod_vdrl: number;
     cod_rpr: number;
-    eli_vih: string;
-    fec_vih: Date;
-    fec_vdrl: Date;
-    fec_rpr: Date;
-    rec_tratamiento: string;
-    rec_pareja: string;
+    eli_vih?: string | null;
+    fec_vih?: Date | null;
+    fec_vdrl?: Date | null;
+    fec_rpr?: Date | null;
+    rec_tratamiento?: string | null;
+    rec_pareja?: string | null;
     num_proceso: number;
     reali_prueb_elisa_vih: boolean;
     reali_prueb_no_trepo_vdrl_sifilis: boolean;
