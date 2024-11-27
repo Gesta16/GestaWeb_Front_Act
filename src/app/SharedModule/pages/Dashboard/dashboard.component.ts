@@ -63,6 +63,7 @@ export class DashboardComponent {
       this.getSeguimientosComplementarios();
       this.getMortalidadNeonatal();
       this.getConsultasIve();
+      this.loading = true;
     }else {
       // Solo carga el calendario si el rol es gestante (4)
       this.cargarConsultas();
