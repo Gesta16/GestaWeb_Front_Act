@@ -42,8 +42,11 @@ export class SeguimientoConsultaMensualService {
     return this.http.post(`${this.apiUrl}/${id}`, data, { headers:this.createHeaders() });
   }
 
-  getSeguimientosMensuales(idUsuario: number): Observable<any> {
-    const params = idUsuario ? { id_usuario: idUsuario } : {};
+  getSeguimientosMensuales(idUsuario: number, num_proceso:number): Observable<any> {
+    const params = {
+      id_usuario: idUsuario.toString(),
+      num_proceso: num_proceso.toString()
+    };
     return this.http.get<any>(`${environment.apiUrl}seguimientos-mensuales`, { headers:this.createHeaders(),params });
   }
   

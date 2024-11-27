@@ -130,7 +130,7 @@ export class Ruta4Component {
   }
 
   getSeguimientosMensualesGestantes(){
-    this.seguimientoConsultaMensualService.getSeguimientosMensuales(this.id).subscribe(
+    this.seguimientoConsultaMensualService.getSeguimientosMensuales(this.id, this.num_proceso).subscribe(
       (response) => {
         if (response.estado === 'Ok') {
           this.seguimientos = response.data; // Accede directamente al arreglo en 'data'
