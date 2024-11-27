@@ -31,20 +31,20 @@
                         <th scope="col" class="px-5 py-3">Apellido</th>
                         <th scope="col" class="px-5 py-3">Teléfono</th>
                         <th scope="col" class="px-5 py-3">Correo electrónico</th>
-                        <th scope="col" class="px-5 py-3">Desactivar</th>
+                        <!-- <th scope="col" class="px-5 py-3">Desactivar</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let admin of paginatedAdmins" class="border-b hover:bg-gray-50">
-                        <td>{{ getTipoDocumentoNombre(admin.cod_documento) }}</td>
+                        <td class="px-12 py-4">{{ getTipoDocumentoNombre(admin.cod_documento) }}</td>
                         <td>{{ admin.documento_admin }}</td>
                         <td>{{ admin.nom_admin }}</td>
                         <td>{{ admin.ape_admin }}</td>
                         <td>{{ admin.tel_admin }}</td>
                         <td>{{ admin.email_admin }}</td>
-                        <td class="px-12 py-4">
+                        <!-- <td class="px-12 py-4">
                             <i class="fa-solid fa-toggle-off fa-xl" style="color: #000000;"></i>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
             </table>

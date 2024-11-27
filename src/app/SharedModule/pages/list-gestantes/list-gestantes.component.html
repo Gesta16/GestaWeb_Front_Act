@@ -35,12 +35,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let usuario of paginatedUsuarios" class="border-b hover:bg-gray-50">
-                        <td class="px-6 py-4">{{ getTipoDocumentoNombre(usuario.cod_documento) }}</td>
-                        <td class="px-6 py-4">{{ usuario.documento_usuario }}</td>
-                        <td class="px-6 py-4">{{ usuario.nom_usuario }}</td>
-                        <td class="px-6 py-4">{{ usuario.ape_usuario }}</td>
-                        <td class="px-6 py-4">{{ usuario.edad_usuario }}</td>
-                        <td class="px-7 py-4 flex justify-center space-x-2">
+                        <td class="px-6 py-2">{{ getTipoDocumentoNombre(usuario.cod_documento) }}</td>
+                        <td>{{ usuario.documento_usuario }}</td>
+                        <td>{{ usuario.nom_usuario }}</td>
+                        <td>{{ usuario.ape_usuario }}</td>
+                        <td>{{ usuario.edad_usuario }}</td>
+                        <td class="px-7 py-3 flex justify-center space-x-2">
                             <!-- Botón para abrir el modal de ver usuario -->
                             <!-- <button (click)="abrirModalVer(usuario)"
                             class="flex items-center h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">

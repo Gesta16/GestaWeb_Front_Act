@@ -19,7 +19,7 @@ export class ListOperadoresComponent {
   tiposDocumento: TipoDocumento[] = [];
   paginatedOperadores: any[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 4;
+  itemsPerPage: number = 10;
   totalPages: number = 1;
 
   isExpanded = true;

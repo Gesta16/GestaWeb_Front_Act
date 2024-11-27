@@ -31,20 +31,20 @@
                         <th scope="col" class="px-5 py-3">Apellido</th>
                         <th scope="col" class="px-5 py-3">Teléfono</th>
                         <th scope="col" class="px-5 py-3">Correo electrónico</th>
-                        <th scope="col" class="px-5 py-3">Desactivar</th>
+                        <!-- <th scope="col" class="px-5 py-3">Desactivar</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let operador of paginatedOperadores" class="border-b hover:bg-gray-50">
-                        <td>{{ getTipoDocumentoNombre(operador.cod_documento) }}</td>
+                        <td class="px-12 py-4">{{ getTipoDocumentoNombre(operador.cod_documento) }}</td>
                         <td>{{ operador.documento_operador }}</td>
                         <td>{{ operador.nom_operador }}</td>
                         <td>{{ operador.ape_operador }}</td>
                         <td>{{ operador.tel_operador }}</td>
                         <td>{{ operador.email_operador }}</td>
-                        <td class="px-12 py-4">
+                        <!-- <td class="px-12 py-4">
                             <i class="fa-solid fa-toggle-off fa-xl" style="color: #000000;"></i>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
             </table>

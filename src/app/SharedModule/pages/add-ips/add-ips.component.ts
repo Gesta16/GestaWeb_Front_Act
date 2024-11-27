@@ -26,22 +26,28 @@ export class AddIpsComponent {
     private departamentoService: DepartamentoService,
     private regimenService: RegimenService,
     private municipioService: MunicipioService,
-    private alertService:AlertService,
-  ) {}
+    private alertService: AlertService,
+  ) { }
 
   listDepartamentos: Departamento[] = [];
   listRegimenes: Regimen[] = [];
   listMunicipios: Municipio[] = [];
 
   ngOnInit(): void {
+    if (this.data && this.data.ips) {
+      this.ips = { ...this.data.ips }; 
+    }
     this.getDepartamentos();
     this.getRegimenes();
+    if (this.ips.cod_departamento) {
+      this.getMunicipios(this.ips.cod_departamento);
+    }
   }
 
   onDepartamentoChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     const departamentoId = +target.value;
-    this.getMunicipios(departamentoId); 
+    this.getMunicipios(departamentoId);
   }
 
   getDepartamentos(): void {
@@ -58,6 +64,7 @@ export class AddIpsComponent {
       }
     );
   }
+
 
   getMunicipios(departamentoId?: number): void {
     this.municipioService.getMunicipios(departamentoId).subscribe(
@@ -90,10 +97,20 @@ export class AddIpsComponent {
   }
 
   onSubmit(): void {
+    if (this.ips.cod_ips > 0) {
+      // Si existe un código de IPS, significa que estamos editando
+      this.updateIps();
+    } else {
+      // Si no existe código de IPS, estamos agregando una nueva
+      this.createIps();
+    }
+  }
+
+  createIps(): void {
     this.ipsService.createIps(this.ips).subscribe(
       response => {
-        this.alertService.successAlert('Exito', response.message).then(()=>{
-          this._matDialogRef.close(true);
+        this.alertService.successAlert('Éxito', response.message).then(() => {
+          this._matDialogRef.close(true); // Cierra el modal con un valor true para indicar éxito
         });
       },
       error => {
@@ -102,6 +119,21 @@ export class AddIpsComponent {
       }
     );
   }
+
+  // Método para actualizar una IPS existente
+  updateIps(): void {
+    this.ipsService.updateIps(this.ips).subscribe(
+      response => {
+        console.log('IPS actualizada correctamente', response);
+        this._matDialogRef.close(true); // Cierra el modal con un valor true para indicar éxito
+      },
+      error => {
+        console.error('Error al actualizar IPS:', error);
+        this.alertService.errorAlert('Error', error.error.message);
+      }
+    );
+  }
+  
 
   cerrar(): void {
     this._matDialogRef.close();

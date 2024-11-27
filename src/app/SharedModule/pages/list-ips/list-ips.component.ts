@@ -19,7 +19,7 @@ export class ListIpsComponent {
   departamentos: Departamento[] = [];
   paginatedIps: any[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 15;
+  itemsPerPage: number = 10;
   totalPages: number = 1;
 
   isExpanded = true;
@@ -75,8 +75,9 @@ export class ListIpsComponent {
       enterAnimationDuration: '0ms',
       exitAnimationDuration: '0ms',
       data: { ips: ips }
+      
     });
-
+    console.log(ips);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadIps(); 

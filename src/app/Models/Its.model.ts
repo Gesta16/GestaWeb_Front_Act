@@ -3,7 +3,7 @@ export class Its {
     id_operador: number;
     id_usuario: number;
     cod_vdrl: number;
-    cod_rpr: number;
+    cod_rpr?: number | null;
     eli_vih?: string | null;
     fec_vih?: Date | null;
     fec_vdrl?: Date | null;
