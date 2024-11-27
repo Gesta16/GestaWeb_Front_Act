@@ -79,12 +79,12 @@ export class Ruta6Component {
     
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
-      console.log('ID de la gestante:', this.id);
+      //console.log('ID de la gestante:', this.id);
     });
 
     this.route.paramMap.subscribe(params => {
       this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
-      console.log('num_proceso:', this.num_proceso);
+      //console.log('num_proceso:', this.num_proceso);
     });
 
     if (this.id !== null && this.id > 0) {
@@ -231,7 +231,7 @@ export class Ruta6Component {
       // Crear nuevo registro de recién nacido
       this.datosRecienNacidoService.crearDatosRecienNacido(this.datosRecienNacido).subscribe({
         next: (response) => {
-          console.log(response);
+          //console.log(response);
           this.alertService.successAlert('Exito',response.message).then(()=>{
             this.id_DatosRecienNacido = response.cod_recien ?? null;
             this.ReadonlyDatosRecienNacido = true;
@@ -251,7 +251,7 @@ export class Ruta6Component {
       this.datosRecienNacidoService.getDatosRecienNacidobyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.datosRecienNacido = response.data;
-          console.log(response);
+          //console.log(response);
           this.ReadonlyDatosRecienNacido = true;
           this.id_DatosRecienNacido = response.data.cod_recien ?? null;
         },
@@ -270,7 +270,7 @@ export class Ruta6Component {
       // Editar registro existente
       this.estudioHipotiroidismoService.updateEstudioHipotiroidismo(this.id_EstudioHipotiroidismo, this.estudioHipotiroidismo).subscribe({
         next: (response) => {
-          console.log('Estudio de hipotiroidismo actualizado:', response);
+          //console.log('Estudio de hipotiroidismo actualizado:', response);
           this.alertService.successAlert('Exito',response.message).then(()=>{
             this.ReadonlyEstudioHipotiroidismo = true;
             this.isEditing = false;
@@ -310,7 +310,7 @@ export class Ruta6Component {
       this.estudioHipotiroidismoService.getEstudioHipotiroidismobyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.estudioHipotiroidismo = response.data;
-          console.log(response);
+          //console.log(response);
           this.ReadonlyEstudioHipotiroidismo = true;
           this.id_EstudioHipotiroidismo = response.data.cod_estudio ?? null;
         },
@@ -369,7 +369,7 @@ export class Ruta6Component {
       this.rutaPYMSService.getRutaPymsId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.nuevaRuta = response.data;
-          console.log(response);
+          //console.log(response);
           this.ReadonlyRutaPYMS = true;
           this.id_RutaPYMS = response.data.cod_ruta ?? null;
         },
@@ -389,7 +389,7 @@ export class Ruta6Component {
       // Editar registro existente
       this.tamizacionNeonatalService.updateTamizacion(this.id_TamizacionNeonatal, this.nuevaTamizacion).subscribe({
         next: (response) => {
-          console.log('Tamización neonatal actualizada:', response);
+          //console.log('Tamización neonatal actualizada:', response);
           this.alertService.successAlert('Exito',response.message).then(()=>{
             this.ReadonlyTamizacionNeonatal = true;
             this.isEditing = false;
@@ -430,7 +430,7 @@ export class Ruta6Component {
       this.tamizacionNeonatalService.getTamizacionbyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.nuevaTamizacion = response.data;
-          console.log(response);
+          //console.log(response);
           this.ReadonlyTamizacionNeonatal = true;
           this.id_TamizacionNeonatal = response.data.cod_tamizacion ?? null;
         },

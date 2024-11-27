@@ -90,19 +90,19 @@ export class Ruta2Component {
   ngOnInit(): void {
     this.user = this.authService.currentUserValue;
     this.isRole4 = this.user.rol_id === 4;
-    console.log('¿Es rol 4?', this.isRole4);
+
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
 
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
-      console.log('ID de la gestante:', this.id);
+      //console.log('ID de la gestante:', this.id);
     });
 
     this.route.paramMap.subscribe(params => {
       this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
-      console.log('num_proceso:', this.num_proceso);
+      //console.log('num_proceso:', this.num_proceso);
     });
 
     if (this.id !== null && this.id > 0) {
@@ -130,7 +130,7 @@ export class Ruta2Component {
   cargarRiesgos(): void {
     this.riesgoService.getRiesgos().subscribe(response => {
       this.riesgos = response.riesgo;
-      console.log(response)
+      //console.log(response)
     }, error => {
       console.error('Error al cargar los riesgos:', error);
     });
@@ -139,7 +139,7 @@ export class Ruta2Component {
   cargarBiologicos(): void {
     this.biologicoService.getBiologicos().subscribe(response => {
       this.biologicos = response.biologico;
-      console.log(response)
+      //console.log(response)
     }, error => {
       console.error('Error al cargar los biologicos:', error);
     });
@@ -148,7 +148,7 @@ export class Ruta2Component {
   cargarTipoDm(): void {
     this.tipoDmService.getTipos().subscribe(response => {
       this.tiposDm = response.tipos;
-      console.log(response)
+      //console.log(response)
     }, error => {
       console.error('Error al cargar los tipos de diabetes:', error);
     });
@@ -360,7 +360,7 @@ export class Ruta2Component {
       this.controlPrenatalService.getControlById(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.controlPrenatal = response.Control;
-          console.log(response);
+          //console.log(response);
           this.id_control = response.Control.cod_control ?? null;
           this.isReadOnly = true;
 
@@ -381,7 +381,7 @@ export class Ruta2Component {
       // Editar usuario existente
       this.primeraConsultaService.updatePrimeraConsulta(this.id_primeraConsulta, this.primeraConsulta).subscribe({
         next: (response) => {
-          console.log('Primera Consulta actualizada:', response);
+          //console.log('Primera Consulta actualizada:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyPrimeraConsulta = true;
             this.isEditing = false;
@@ -398,15 +398,15 @@ export class Ruta2Component {
         this.primeraConsulta.id_usuario = this.id;
       }
       this.primeraConsulta.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
-      console.log(this.primeraConsulta);
+      //console.log(this.primeraConsulta);
       this.primeraConsultaService.createConsulta(this.primeraConsulta).subscribe({
 
         next: (response) => {
-          console.log('Primera Consulta creada:', response);
+          //console.log('Primera Consulta creada:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.id_primeraConsulta = response.consulta.cod_consulta ?? null;
             this.isEditing = false;
-            console.log(this.id_primeraConsulta);
+            //console.log(this.id_primeraConsulta);
           });
         },
         error: (error) => {
@@ -422,7 +422,7 @@ export class Ruta2Component {
       this.primeraConsultaService.getPrimeraConsulta(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.primeraConsulta = response.consulta;
-          console.log(response);
+          //console.log(response);
           this.isReadOnlyPrimeraConsulta = true;
 
           this.id_primeraConsulta = response.consulta.cod_consulta ?? null;
@@ -443,7 +443,7 @@ export class Ruta2Component {
 
       this.vacunacionService.updateVacunacion(this.id_vacunacion, this.vacunacion).subscribe({
         next: (response) => {
-          console.log('Vacunacion actualizada:', response);
+          //console.log('Vacunacion actualizada:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyVacunacion = true;
             this.isEditing = false;
@@ -460,10 +460,10 @@ export class Ruta2Component {
         this.vacunacion.id_usuario = this.id;
       }
 
-      console.log(this.vacunacion);
+      //console.log(this.vacunacion);
       this.vacunacionService.createVacunacion(this.vacunacion).subscribe({
         next: (response) => {
-          console.log('Vacunacion creada:', response);
+          //console.log('Vacunacion creada:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyVacunacion = true;
             this.id_vacunacion = response.vacunacion.cod_vacunacion ?? null;
@@ -483,7 +483,7 @@ export class Ruta2Component {
       this.vacunacionService.getVacunacionById(this.id).subscribe(
         (response) => {
           this.vacunacion = response.vacunacion;
-          console.log(response);
+          //console.log(response);
           this.id_vacunacion = response.vacunacion.cod_vacunacion ?? null;
           this.isReadOnlyVacunacion = true;
 

@@ -51,9 +51,9 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.user = this.authService.currentUserValue;
-    console.log(this.user);
-    console.log(this.user.rol_id);
-    console.log(this.user.userable.cod_ips);
+    //console.log(this.user);
+    //console.log(this.user.rol_id);
+    //console.log(this.user.userable.cod_ips);
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
@@ -90,7 +90,7 @@ export class DashboardComponent {
   getTamizajeSifilis() {
     this.dashboardService.getProporcionTamizajeSifilis().subscribe(
       (response) => {
-        console.log(response);
+        //console.log(response);
         this.charOptionsTamizajeSifi = {
           title: {
             text: 'Proporción de Tamizaje para Sífilis por Trimestre',
@@ -149,7 +149,7 @@ export class DashboardComponent {
             value: response[key] || 0
           };
         });
-        console.log(response);
+        //console.log(response);
         this.chartOptionsSeguimientos = {
           title: {
             text: 'Seguimientos complementarios',
@@ -192,7 +192,7 @@ export class DashboardComponent {
           name: item.mes,
           value: item.total_neonatal_temprana
         }));
-        console.log('Datos de mortalidad neonatal:', chartData);
+        //console.log('Datos de mortalidad neonatal:', chartData);
 
         this.chartOptionsMortalidad = {
           title: {
@@ -260,7 +260,7 @@ export class DashboardComponent {
   getConsultasIve() {
     this.dashboardService.getIveProportion(this.user.rol_id, this.user.userable.cod_ips).subscribe(
       (response) => {
-        console.log('consultas IVE', response);
+        //console.log('consultas IVE', response);
 
         // Mapear los datos para la gráfica
         const chartData = response.map(item => ({
@@ -349,12 +349,12 @@ export class DashboardComponent {
         if (response.estado === 'Ok') {
           this.consultas = response.data;
           this.calendarOptions.events = this.mapearConsultasAEventos(this.consultas); // Mapear las consultas a eventos
-          console.log(this.calendarOptions.events);
+          //console.log(this.calendarOptions.events);
         } else {
           this.errorMessage = response.mensaje;
           this.calendarOptions.events = [];
         }
-        console.log(this.calendarOptions);
+        
         this.loading = false;
       },
       (error) => {

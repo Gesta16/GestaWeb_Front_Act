@@ -91,12 +91,12 @@ export class Ruta5Component {
 
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
-      console.log('ID de la gestante:', this.id);
+      //console.log('ID de la gestante:', this.id);
     });
 
     this.route.paramMap.subscribe(params => {
       this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
-      console.log('num_proceso:', this.num_proceso);
+      //console.log('num_proceso:', this.num_proceso);
     });
 
     if (this.id !== null && this.id > 0) {
@@ -237,7 +237,7 @@ export class Ruta5Component {
 
       this.finalizacionGestacionServicio.updateFinalizacionGestacion(this.id_FinalizacionGestacion, this.finalizacionGestacion).subscribe({
         next: (response) => {
-          console.log('Finalización de gestación actualizada:', response);
+          //console.log('Finalización de gestación actualizada:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlyFinalizacionGestacion = true;
             this.isEditing = false;
@@ -260,8 +260,8 @@ export class Ruta5Component {
             this.id_FinalizacionGestacion = response.cod_finalizacion ?? null;
             this.ReadonlyFinalizacionGestacion = true;
             this.isEditing = false;
-            console.log(response);
-            console.log(this.id_FinalizacionGestacion);
+            //console.log(response);
+            //console.log(this.id_FinalizacionGestacion);
           })
         },
         error: (error) => {
@@ -277,7 +277,7 @@ export class Ruta5Component {
       this.finalizacionGestacionServicio.getFinalizacionGestacionbyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.finalizacionGestacion = response.finalizacion;
-          console.log(response);
+          //console.log(response);
           this.ReadonlyFinalizacionGestacion = true;
           this.id_FinalizacionGestacion = response.finalizacion.cod_finalizacion ?? null;
         },
@@ -296,7 +296,7 @@ export class Ruta5Component {
       // Editar laboratorio intraparto existente
       this.laboratorioIntrapartoServicio.updateLaboratorioIntraparto(this.id_LaboratorioIntraparto, this.laboratorioIntraparto).subscribe({
         next: (response) => {
-          console.log('Laboratorio intraparto actualizado:', response);
+          //console.log('Laboratorio intraparto actualizado:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlyLaboratorioIntraparto = true;
             this.isEditing = false;
@@ -340,7 +340,7 @@ export class Ruta5Component {
       this.laboratorioIntrapartoServicio.getLaboratoriobyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.laboratorioIntraparto = response.data;
-          console.log(response);
+          //console.log(response);
           this.ReadonlyLaboratorioIntraparto = true;
           this.id_LaboratorioIntraparto = response.data.cod_intraparto ?? null;
         },
@@ -360,7 +360,7 @@ export class Ruta5Component {
       // Editar seguimiento existente
       this.seguimientoPostObstetricoServicio.updateSeguimientoPostObstetrico(this.id_Seguimiento, this.seguimiento).subscribe({
         next: (response) => {
-          console.log('Seguimiento actualizado:', response);
+          //console.log('Seguimiento actualizado:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlySeguimiento = true;
             this.isEditing = false;
@@ -384,8 +384,8 @@ export class Ruta5Component {
           this.id_Seguimiento = response.cod_evento ?? null;
             this.ReadonlySeguimiento = true;
             this.isEditing = false;
-            console.log(response);
-            console.log(this.id_Seguimiento);
+            //console.log(response);
+            //console.log(this.id_Seguimiento);
          });
         },
         error: (error) => {
@@ -402,7 +402,7 @@ export class Ruta5Component {
       this.seguimientoPostObstetricoServicio.getSeguimientobyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.seguimiento = response.seguimiento;
-          console.log(response);
+          //console.log(response);
           this.ReadonlySeguimiento = true;
           this.id_Seguimiento = response.seguimiento.cod_evento ?? null;
         },
@@ -421,7 +421,7 @@ export class Ruta5Component {
       // Editar mortalidad preparto existente
       this.mortalidadPrepartoService.updateMortalidadPreparto(this.id_MortalidadPreparto, this.mortalidadPreparto).subscribe({
         next: (response) => {
-          console.log('Mortalidad preparto actualizada:', response);
+          //console.log('Mortalidad preparto actualizada:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.ReadonlyMortalidadPreparto = true;
             this.isEditing = false;
@@ -444,8 +444,8 @@ export class Ruta5Component {
             this.id_MortalidadPreparto = response.cod_mortalpreparto ?? null;
             this.ReadonlyMortalidadPreparto = true;
             this.isEditing = false;
-            console.log(response);
-            console.log(this.id_MortalidadPreparto);
+            //console.log(response);
+            //console.log(this.id_MortalidadPreparto);
           });
         },
         error: (error) => {
@@ -462,7 +462,7 @@ export class Ruta5Component {
       this.mortalidadPrepartoService.getMortalidadPrepartobyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.mortalidadPreparto = response.mortalidad;
-          console.log(response);
+          //console.log(response);
           this.ReadonlyMortalidadPreparto = true;
           this.id_MortalidadPreparto = response.mortalidad.cod_mortalpreparto ?? null;
         },

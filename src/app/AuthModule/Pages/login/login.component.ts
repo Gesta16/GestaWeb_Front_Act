@@ -34,7 +34,7 @@ export class LoginComponent {
     const credentials = {documento:this.loginForm.get('documento').value, password:this.loginForm.get('password').value}
     this.authService.login(credentials).subscribe(
       (response)=>{
-        console.log(response);
+        //console.log(response);
         this.router.navigate(['dashboard']);
         this.alertService.successAlert('exito',response.message);
       },

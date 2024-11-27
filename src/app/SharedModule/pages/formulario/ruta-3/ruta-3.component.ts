@@ -109,12 +109,12 @@ export class Ruta3Component {
 
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
-      console.log('ID de la gestante:', this.id);
+      //console.log('ID de la gestante:', this.id);
     });
 
     this.route.paramMap.subscribe(params => {
       this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
-      console.log('num_proceso:', this.num_proceso);
+      //console.log('num_proceso:', this.num_proceso);
     });
 
     if (this.id !== null && this.id > 0) {
@@ -409,7 +409,7 @@ export class Ruta3Component {
   cargarHemoclasificacion(): void {
     this.hemoclasificacionService.getHemoclasificaciones().subscribe(response => {
       this.hemoclasificaciones = response.Hemoclasificacion;
-      console.log(response)
+      //console.log(response)
     }, error => {
       console.error('Error al cargar hemoclasificacion:', error);
     });
@@ -418,7 +418,7 @@ export class Ruta3Component {
   cargarVDRL(): void {
     this.vdrlService.getPruebaVDRL().subscribe(response => {
       this.Vdrl = response['Prueba No Treponemica VDRL'];
-      console.log(response)
+      //console.log(response)
     }, error => {
       console.error('Error al cargar las pruebas VDRL:', error);
     });
@@ -429,7 +429,7 @@ export class Ruta3Component {
       console.log('Respuesta del servicio:', response); // Verifica la respuesta
       if (response.estado === 'Ok') {
         this.Rpr = response['Prueba no Treponemica RPR']; // Usa el nombre correcto
-        console.log('Datos de RPR:', this.Rpr); // Comprueba que se asigna correctamente
+        //console.log('Datos de RPR:', this.Rpr); // Comprueba que se asigna correctamente
       } else {
         console.error('Estado no OK:', response.estado);
       }
@@ -443,7 +443,7 @@ export class Ruta3Component {
   cargarAntibiograma(): void {
     this.antibiogramaService.getAntibiogramas().subscribe(response => {
       this.antibiogramas = response.antibiograma;
-      console.log(response)
+      //console.log(response)
     }, error => {
       console.error('Error al cargar antibiograma:', error);
     });
@@ -455,14 +455,14 @@ export class Ruta3Component {
       // Editar usuario existente
       this.laboratorioISemestreservice.updateLaboratorioISemestre(this.id_laboratorioI, this.laboratorioITrimestre).subscribe({
         next: (response) => {
-          console.log('Primer laboratorio trimestre actualizado:', response);
+          //console.log('Primer laboratorio trimestre actualizado:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyLaboratorioI = true;
             this.isEditing = false;
           });
         },
         error: (error) => {
-          console.error('Error al actualizar el Primer laboratorio trimestre:', error);
+          //console.error('Error al actualizar el Primer laboratorio trimestre:', error);
           this.alertService.errorAlert('Error', error.error.message);
         }
       });
@@ -473,7 +473,7 @@ export class Ruta3Component {
       }
       this.laboratorioITrimestre.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
 
-      console.log(this.laboratorioITrimestre);
+      //console.log(this.laboratorioITrimestre);
       this.laboratorioISemestreservice.createLaboratorioPrimerSemestre(this.laboratorioITrimestre).subscribe({
         next: (response) => {
           console.log('Laboratorio del primer semestre creado:', response);
@@ -496,7 +496,7 @@ export class Ruta3Component {
       this.laboratorioISemestreservice.getLaboratorioISemestrebyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.laboratorioITrimestre = response.data;
-          console.log(response);
+          //console.log(response);
           this.isReadOnlyLaboratorioI = true;
           this.id_laboratorioI = this.laboratorioITrimestre.cod_laboratorio;
         },
@@ -515,7 +515,7 @@ export class Ruta3Component {
       // Editar usuario existente
       this.laboratorioIISemestreservice.updateLaboratorioIISemestre(this.id_laboratorioII, this.laboratorioIITrimestre).subscribe({
         next: (response) => {
-          console.log('Segundo laboratorio trimestre actualizado:', response);
+          //console.log('Segundo laboratorio trimestre actualizado:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.isReadOnlyLaboratorioII = true;
             this.isEditing = false;
@@ -537,7 +537,7 @@ export class Ruta3Component {
       console.log(this.laboratorioIITrimestre);
       this.laboratorioIISemestreservice.createLaboratorioSegundoSemestre(this.laboratorioIITrimestre).subscribe({
         next: (response) => {
-          console.log('Laboratorio del segundo semestre creado:', response);
+          //console.log('Laboratorio del segundo semestre creado:', response);
           this.alertService.successAlert('Exito',response.data).then(()=>{
             this.id_laboratorioII = response.data.cod_doslaboratorio ?? null;
             this.isReadOnlyLaboratorioII = true;
@@ -557,7 +557,7 @@ export class Ruta3Component {
       this.laboratorioIISemestreservice.getLaboratorioIISemestrebyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.laboratorioIITrimestre = response.data;
-          console.log(response);
+          //console.log(response);
           this.isReadOnlyLaboratorioII = true;
           this.id_laboratorioII = this.laboratorioIITrimestre.cod_doslaboratorio;
         },
@@ -575,7 +575,7 @@ export class Ruta3Component {
       // Editar usuario existente
       this.laboratorioIIISemestreservice.updateLaboratorioIIISemestre(this.id_laboratorioIII, this.laboratorioIIITrimestre).subscribe({
         next: (response) => {
-          console.log('Tercer laboratorio trimestre actualizado:', response);
+          //console.log('Tercer laboratorio trimestre actualizado:', response);
           this.alertService.successAlert('Exito',response.mensaje).then(()=>{
             this.isReadOnlyLaboratorioIII = true;
             this.isEditing = false;
@@ -598,7 +598,7 @@ export class Ruta3Component {
       console.log(this.laboratorioIIITrimestre);
       this.laboratorioIIISemestreservice.createLaboratorioTercerSemestre(this.laboratorioIIITrimestre).subscribe({
         next: (response) => {
-          console.log('Laboratorio del tercer semestre creado:', response);
+          //console.log('Laboratorio del tercer semestre creado:', response);
           this.alertService.successAlert('Exito',response.mensaje).then(()=>{
             this.id_laboratorioIII = response.data.cod_treslaboratorio ?? null;
             this.isReadOnlyLaboratorioIII = true;
@@ -618,7 +618,7 @@ export class Ruta3Component {
       this.laboratorioIIISemestreservice.getLaboratorioIIISemestrebyId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.laboratorioIIITrimestre = response.data;
-          console.log(response);
+         //console.log(response);
           this.isReadOnlyLaboratorioIII = true;
           this.id_laboratorioIII = this.laboratorioIIITrimestre.cod_treslaboratorio ?? null;
 
@@ -639,7 +639,7 @@ export class Ruta3Component {
       // Editar usuario existente
       this.itsService.updateIts(this.id_its, this.its).subscribe({
         next: (response) => {
-          console.log('Its actualizado:', response);
+          //console.log('Its actualizado:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.isReadOnlyIts = true;
             this.isEditing = false;
@@ -662,7 +662,7 @@ export class Ruta3Component {
       console.log(this.its);
       this.itsService.createIts(this.its).subscribe({
         next: (response) => {
-          console.log('Its creada:', response);
+          //console.log('Its creada:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(()=>{
             this.id_its = response.data.cod_its ?? null;
             this.isReadOnlyIts = true;
@@ -683,7 +683,7 @@ export class Ruta3Component {
       this.itsService.getItsId(this.id, this.num_proceso ?? 0).subscribe(
         (response) => {
           this.its = response.data;
-          console.log(response);
+          //console.log(response);
           this.id_its = this.its.cod_its ?? null;
           this.isReadOnlyIts = true;
 

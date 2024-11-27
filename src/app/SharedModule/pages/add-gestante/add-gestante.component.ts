@@ -54,7 +54,7 @@ export class AddGestanteComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
-      console.log('ID de la gestante:', this.id);
+      //console.log('ID de la gestante:', this.id);
 
       if (this.id > 0) {
         this.getUsuario();
@@ -63,7 +63,7 @@ export class AddGestanteComponent {
       }
       this.route.paramMap.subscribe(params => {
         this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
-        console.log('num_proceso:', this.num_proceso);
+        //console.log('num_proceso:', this.num_proceso);
       });
     });
     this.getDepartamentos();
@@ -85,7 +85,7 @@ export class AddGestanteComponent {
         (response) => {
           this.usuario = response.usuario;
           this.isReadOnly = true;
-          console.log(response);
+          //console.log(response);
           this.getMunicipios(this.usuario.cod_departamento);
         },
         (error) => {
@@ -120,7 +120,7 @@ export class AddGestanteComponent {
           this.alertService.successAlert('Éxito', 'Operación realizada con éxito').then(() => {
             this.isReadOnly = true;
           });          
-          console.log('Usuario actualizado:', response);
+          //console.log('Usuario actualizado:', response);
           
         },
         error: (error) => {
@@ -135,7 +135,7 @@ export class AddGestanteComponent {
           this.alertService.successAlert('Exito', response.message).then(()=>{
             this.router.navigate(['/list-gestantes']);
           });
-          console.log('Usuario creado:', response);
+          //console.log('Usuario creado:', response);
         },
         error: (error) => {
           console.error('Error al crear el usuario:', error);
