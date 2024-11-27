@@ -512,13 +512,13 @@
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditLaboratorioI()"
-                                        [disabled]="!isReadOnlyLaboratorioI"
+                                        [disabled]="!isReadOnlyLaboratorioI || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarPrimerLaboratorio()"
-                                        [disabled]="isReadOnlyLaboratorioI && !isEditing"
+                                        [disabled]="(isReadOnlyLaboratorioI && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -876,13 +876,13 @@
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditLaboratorioII()"
-                                        [disabled]="!isReadOnlyLaboratorioII"
+                                        [disabled]="!isReadOnlyLaboratorioII || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarSegundoLaboratorio()"
-                                        [disabled]="isReadOnlyLaboratorioII && !isEditing"
+                                        [disabled]="(isReadOnlyLaboratorioII && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -1091,13 +1091,13 @@
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditLaboratorioIII()"
-                                        [disabled]="!isReadOnlyLaboratorioIII"
+                                        [disabled]="!isReadOnlyLaboratorioIII || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarTercerLaboratorio()"
-                                        [disabled]="isReadOnlyLaboratorioIII && !isEditing"
+                                        [disabled]="(isReadOnlyLaboratorioIII && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -1235,12 +1235,12 @@
 
 
                                 <div class="mt-4 flex justify-center space-x-4">
-                                    <button type="button" (click)="toggleEditIts()" [disabled]="!isReadOnlyIts"
+                                    <button type="button" (click)="toggleEditIts()" [disabled]="!isReadOnlyIts || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
-                                    <button (click)="guardarIts()" [disabled]="isReadOnlyIts && !isEditing"
+                                    <button (click)="guardarIts()" [disabled]="(isReadOnlyIts && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>

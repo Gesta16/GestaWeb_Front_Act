@@ -188,13 +188,13 @@
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditSeguimientoConsulta()"
-                                        [disabled]="!ReadonlySeguimientoConsulta"
+                                        [disabled]="!ReadonlySeguimientoConsulta || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarSeguimientoConsulta()"
-                                        [disabled]="ReadonlySeguimientoConsulta && !isEditing"
+                                        [disabled]="(ReadonlySeguimientoConsulta && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -326,13 +326,13 @@
                                 </div>
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditSeguimientoComplementario()"
-                                        [disabled]="!ReadonlySeguimientoComplementario"
+                                        [disabled]="!ReadonlySeguimientoComplementario || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarSeguimientoComplementario()"
-                                        [disabled]="ReadonlySeguimientoComplementario && !isEditing"
+                                        [disabled]="(ReadonlySeguimientoComplementario && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -386,13 +386,13 @@
                                 </div>
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditMicronutriente()"
-                                        [disabled]="!ReadonlyMicronutriente"
+                                        [disabled]="!ReadonlyMicronutriente || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarMicronutriente()"
-                                        [disabled]="ReadonlyMicronutriente && !isEditing"
+                                        [disabled]="(ReadonlyMicronutriente && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>

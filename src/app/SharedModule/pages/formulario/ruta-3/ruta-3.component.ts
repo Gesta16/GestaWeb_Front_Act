@@ -19,6 +19,7 @@ import { AntibiogramaService } from '../../../../Services/antibiograma.service';
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
 import { iif } from 'rxjs';
+import { AuthService } from '../../../../Services/auth.service';
 
 @Component({
   selector: 'app-ruta-3',
@@ -54,6 +55,8 @@ export class Ruta3Component {
   laboratorioIITrimestre: LaboratorioIITrimestre = new LaboratorioIITrimestre();
   laboratorioIIITrimestre: LaboratorioIIITrimestre = new LaboratorioIIITrimestre();
   its: Its = new Its();
+  user:any;
+  isRole4:any;
 
   mostrarCampos:{[key: string]:boolean} = {
     real_prueb_rapi_vih: false,
@@ -94,11 +97,15 @@ export class Ruta3Component {
     private antibiogramaService: AntibiogramaService,
     private router: Router,
     private alertService: AlertService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private authService: AuthService
   ) { }
 
 
   ngOnInit(): void {
+    this.user = this.authService.currentUserValue;
+    this.isRole4 = this.user.rol_id === 4;
+    
 
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número

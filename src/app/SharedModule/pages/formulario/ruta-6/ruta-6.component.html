@@ -116,13 +116,13 @@
                                 </div>
                                 <div class="mt-8 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditDatosRecienNacido()"
-                                        [disabled]="!ReadonlyDatosRecienNacido"
+                                        [disabled]="!ReadonlyDatosRecienNacido || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarDatosRecienNacido()"
-                                        [disabled]="ReadonlyDatosRecienNacido && !isEditing"
+                                        [disabled]="(ReadonlyDatosRecienNacido && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -260,13 +260,13 @@
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditTamizacionNeonatal()"
-                                        [disabled]="!ReadonlyTamizacionNeonatal"
+                                        [disabled]="!ReadonlyTamizacionNeonatal || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarTamizacionNeonatal()"
-                                        [disabled]="ReadonlyTamizacionNeonatal && !isEditing"
+                                        [disabled]="(ReadonlyTamizacionNeonatal && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -327,13 +327,13 @@
                                 </div>
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditEstudioHipotiroidismo()"
-                                        [disabled]="!ReadonlyEstudioHipotiroidismo"
+                                        [disabled]="!ReadonlyEstudioHipotiroidismo || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarEstudioHipotiroidismo()"
-                                        [disabled]="ReadonlyEstudioHipotiroidismo && !isEditing"
+                                        [disabled]="(ReadonlyEstudioHipotiroidismo && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -414,12 +414,12 @@
                                     </div>
                                 </div>
                                 <div class="mt-8 flex justify-center space-x-4">
-                                    <button type="button" (click)="toggleEditRutaPYMS()" [disabled]="!ReadonlyRutaPYMS"
+                                    <button type="button" (click)="toggleEditRutaPYMS()" [disabled]="!ReadonlyRutaPYMS || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
-                                    <button (click)="guardarRutaPYMS()" [disabled]="ReadonlyRutaPYMS && !isEditing"
+                                    <button (click)="guardarRutaPYMS()" [disabled]="(ReadonlyRutaPYMS && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>

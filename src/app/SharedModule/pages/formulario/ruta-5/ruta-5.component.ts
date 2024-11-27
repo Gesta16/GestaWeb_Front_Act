@@ -19,6 +19,7 @@ import { MortalidadPrepartoService } from '../../../../Services/mortalidad-prepa
 import { AlertService } from '../../../../Services/alert.service';
 import { response } from 'express';
 import { MenuService } from '../../../../Services/menu.service';
+import { AuthService } from '../../../../Services/auth.service';
 
 @Component({
   selector: 'app-ruta-5',
@@ -53,6 +54,8 @@ export class Ruta5Component {
 
   isExpanded = true;
   isVisible = true;
+  user:any;
+  isRole4:any;
 
   mostrarCampos:{[key:string]:boolean}={
     reali_prueb_trepo_rapi_sifilis_intra: false,
@@ -74,6 +77,7 @@ export class Ruta5Component {
     private router: Router,
     private alertService:AlertService,
     private menuService:MenuService,
+    private authService: AuthService
   ) {
     this.finalizacionGestacion = new FinalizacionGestacion();
     this.laboratorioIntraparto = new LaboratorioIntraparto();
@@ -82,6 +86,8 @@ export class Ruta5Component {
   }
 
   ngOnInit() {
+    this.user = this.authService.currentUserValue;
+    this.isRole4 = this.user.rol_id === 4;
 
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número

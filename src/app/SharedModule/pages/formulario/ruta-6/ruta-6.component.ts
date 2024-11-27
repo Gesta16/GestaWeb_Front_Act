@@ -12,6 +12,7 @@ import { RutaPymsService } from '../../../../Services/ruta-pyms.service';
 import { TamizacionNeonatalService } from '../../../../Services/tamizacion-neonatal.service';
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
+import { AuthService } from '../../../../Services/auth.service';
 @Component({
   selector: 'app-ruta-6',
   templateUrl: './ruta-6.component.html',
@@ -41,6 +42,8 @@ export class Ruta6Component {
 
   isExpanded = true;
   isVisible = true;
+  user:any;
+  isRole4:any;
 
   mostrarCampos: {[key:string]:boolean} = {
     reali_prueb_trepo_recien_nacido:false,
@@ -61,7 +64,8 @@ export class Ruta6Component {
     private tamizacionNeonatalService: TamizacionNeonatalService,
     private router: Router,
     private alertService:AlertService,
-    private menuService:MenuService
+    private menuService:MenuService,
+    private authService:AuthService
   ) {
     this.datosRecienNacido = new DatosRecienNacido();
     this.estudioHipotiroidismo = new EstudioHipotiroidismo();
@@ -70,6 +74,9 @@ export class Ruta6Component {
   }
 
   ngOnInit() {
+    this.user = this.authService.currentUserValue;
+    this.isRole4 = this.user.rol_id === 4;
+    
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número
       console.log('ID de la gestante:', this.id);

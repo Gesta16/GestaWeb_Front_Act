@@ -250,12 +250,12 @@
                                 </div>
 
                                 <div class="mt-4 flex justify-center space-x-4">
-                                    <button type="button" (click)="toggleEdit()" [disabled]="!isReadOnly"
+                                    <button type="button" (click)="toggleEdit()" [disabled]="!isReadOnly || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
-                                    <button (click)="guardarControlPrenatal()" [disabled]="isReadOnly && !isEditing"
+                                    <button (click)="guardarControlPrenatal()" [disabled]="(isReadOnly && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -467,13 +467,13 @@
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditPrimeraConsulta()"
-                                        [disabled]="!isReadOnlyPrimeraConsulta"
+                                        [disabled]="!isReadOnlyPrimeraConsulta || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarPrimeraConsulta()"
-                                        [disabled]="isReadOnlyPrimeraConsulta && !isEditing"
+                                        [disabled]="(isReadOnlyPrimeraConsulta && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -622,13 +622,13 @@
 
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditVacunacion()"
-                                        [disabled]="!isReadOnlyVacunacion"
+                                        [disabled]="!isReadOnlyVacunacion || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarVacunacion()"
-                                        [disabled]="isReadOnlyVacunacion && !isEditing"
+                                        [disabled]="(isReadOnlyVacunacion && !isEditing)|| isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>

@@ -1,0 +1,9 @@
+.calendar-container .fc-day.fc-has-event:hover {
+    transform: scale(1.9); /* Aumenta el tamaño al 110% */
+    transition: transform 0.2s ease; /* Suaviza la transición */
+    z-index: 10; /* Asegura que el elemento hover esté por encima */
+}
+
+.calendar{
+    height: 500px;
+}

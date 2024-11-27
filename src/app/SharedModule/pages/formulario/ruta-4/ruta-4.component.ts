@@ -18,6 +18,7 @@ import { SeguimientoComplementarioService } from '../../../../Services/seguimien
 import { MicronutrientesService } from '../../../../Services/micronutrientes.service';
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
+import { AuthService } from '../../../../Services/auth.service';
 
 @Component({
   selector: 'app-ruta-4',
@@ -49,6 +50,8 @@ export class Ruta4Component {
   isEditing = false;
   isExpanded = true;
   isVisible = true;
+  user:any;
+  isRole4:any;
 
   mostrarCampos:{ [key:string]: boolean} ={
     asistio_nutricionista: false,
@@ -70,7 +73,8 @@ export class Ruta4Component {
     private seguimientoComplementarioService: SeguimientoComplementarioService,
     private micronutrientesService: MicronutrientesService,
     private alertService:AlertService,
-    private menuService:MenuService
+    private menuService:MenuService,
+    private authService:AuthService
   ) {
     this.seguimientoConsulta = new SeguimientoConsultaMensual();
 
@@ -80,6 +84,8 @@ export class Ruta4Component {
   }
 
   ngOnInit() {
+    this.user = this.authService.currentUserValue;
+    this.isRole4 = this.user.rol_id === 4;
 
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id')!; // Obtiene el ID como número

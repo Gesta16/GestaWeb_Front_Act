@@ -57,19 +57,17 @@ export class DashboardComponent {
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
-    if(this.user.rol_id != 4){
+    if(this.user.rol_id !== 4){
       this.getConteos();
       this.getTamizajeSifilis();
       this.getSeguimientosComplementarios();
       this.getMortalidadNeonatal();
       this.getConsultasIve();
-    }else if (this.user.rol_id === 4) {
+    }else {
       // Solo carga el calendario si el rol es gestante (4)
       this.cargarConsultas();
-    } else {
-      console.log('El usuario no tiene acceso');
-      this.loading = false; // Variable para ocultar el calendario en el HTML
-    }
+      this.loading = false;
+    } 
    
   }
 
@@ -354,7 +352,9 @@ export class DashboardComponent {
           console.log(this.calendarOptions.events);
         } else {
           this.errorMessage = response.mensaje;
+          this.calendarOptions.events = [];
         }
+        console.log(this.calendarOptions);
         this.loading = false;
       },
       (error) => {

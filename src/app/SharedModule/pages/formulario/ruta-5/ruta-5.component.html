@@ -82,13 +82,13 @@
                                 </div>
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditFinalizacionGestacion()"
-                                        [disabled]="!ReadonlyFinalizacionGestacion"
+                                        [disabled]="!ReadonlyFinalizacionGestacion || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarFinalizacionGestacion()"
-                                        [disabled]="ReadonlyFinalizacionGestacion && !isEditing"
+                                        [disabled]="(ReadonlyFinalizacionGestacion && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -219,13 +219,13 @@
                                 </div>
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditLaboratorioIntraparto()"
-                                        [disabled]="!ReadonlyLaboratorioIntraparto"
+                                        [disabled]="!ReadonlyLaboratorioIntraparto || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarLaboratorioIntraparto()"
-                                        [disabled]="ReadonlyLaboratorioIntraparto && !isEditing"
+                                        [disabled]="(ReadonlyLaboratorioIntraparto && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -294,13 +294,13 @@
                                 </div>
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditSeguimiento()"
-                                        [disabled]="!ReadonlySeguimiento"
+                                        [disabled]="!ReadonlySeguimiento || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarSeguimiento()"
-                                        [disabled]="ReadonlySeguimiento && !isEditing"
+                                        [disabled]="(ReadonlySeguimiento && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -339,13 +339,13 @@
                                 </div>
                                 <div class="mt-4 flex justify-center space-x-4">
                                     <button type="button" (click)="toggleEditMortalidadPreparto()"
-                                        [disabled]="!ReadonlyMortalidadPreparto"
+                                        [disabled]="!ReadonlyMortalidadPreparto || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
                                     <button (click)="guardarMortalidadPreparto()"
-                                        [disabled]="ReadonlyMortalidadPreparto && !isEditing"
+                                        [disabled]="(ReadonlyMortalidadPreparto && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>

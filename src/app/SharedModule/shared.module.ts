@@ -30,7 +30,7 @@ import { Ruta5Component } from './pages/formulario/ruta-5/ruta-5.component';
 import { Ruta6Component } from './pages/formulario/ruta-6/ruta-6.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
@@ -72,7 +72,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    
+    FullCalendarModule
   ],
   exports: [
     MenuComponent 

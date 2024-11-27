@@ -34,7 +34,7 @@ export class PrimeraConsultaService {
   }
 
   getPrimeraConsulta(id: number,num_proceso: number): Observable<{ estado: string; consulta: PrimeraConsulta }> {
-    return this.http.get<{ estado: string; consulta: PrimeraConsulta }>(`${this.apiUrl}/${id}/${num_proceso}`);
+    return this.http.get<{ estado: string; consulta: PrimeraConsulta }>(`${this.apiUrl}/${id}/${num_proceso}`,{headers:this.createHeaders()});
   }
 
   updatePrimeraConsulta(id:number, consulta:PrimeraConsulta):Observable<any>{

@@ -16,6 +16,7 @@ import { Riesgo } from '../../../../Models/Riesgo.model';
 import { TipoDm } from '../../../../Models/Tipo-dm.model';
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
+import { AuthService } from '../../../../Services/auth.service';
 
 @Component({
   selector: 'app-ruta-2',
@@ -38,6 +39,8 @@ export class Ruta2Component {
   isExpanded = true;
   isVisible = true;
   isEditing = false;
+  user:any;
+  isRole4:any;
 
   selectedMetodoFracaso: number | null = null;
 
@@ -79,12 +82,15 @@ export class Ruta2Component {
     private router: Router,
     private controlPrenatalService: ControlPrenatalService,
     private alertService: AlertService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private authService: AuthService
   ) { }
 
 
   ngOnInit(): void {
-
+    this.user = this.authService.currentUserValue;
+    this.isRole4 = this.user.rol_id === 4;
+    console.log('¿Es rol 4?', this.isRole4);
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
@@ -318,9 +324,6 @@ export class Ruta2Component {
   }
 
   guardarControlPrenatal(): void {
-
-    
-
     if (this.id_control) {
       // Editar usuario existente
       this.controlPrenatalService.updateControlPrenatal(this.id_control, this.controlPrenatal).subscribe({

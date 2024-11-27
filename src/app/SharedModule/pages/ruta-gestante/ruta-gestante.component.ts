@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../../Services/usuario.service';
 import { MenuService } from '../../../Services/menu.service';
+import { AuthService } from '../../../Services/auth.service';
 
 @Component({
   selector: 'app-ruta-gestante',
@@ -17,69 +18,66 @@ export class RutaGestanteComponent {
   procesoId: number | null = null;
   isExpanded = true;
   isVisible = true;
+  user: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private usuarioService: UsuarioService,
     private menuService: MenuService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.id = +params.get('id')!;
-      this.procesoId = +params.get('procesoId')!;
-      console.log('ID de la gestante:', this.id);
-      if (this.id !== null) {
-        this.contarProcesos(this.id);
-      }
-    });
-    this.menuService.isExpanded$.subscribe(isExpanded => {
+    this.user = this.authService.currentUserValue;
+
+    // Verificar el rol del usuario
+    if (this.user.rol_id === 4) {
+      this.id = this.user.userable.id_usuario; // Obtener el ID del usuario autenticado
+      console.log('ID del usuario (rol 4):', this.id);
+      this.contarProcesos(this.id);
+      // Llamar al servicio para cargar los datos del usuario completo
+      this.usuarioService.getUsuarioCompleto(this.id).subscribe(
+        (response) => {
+          console.log('Usuario completo:', response.data);
+        },
+        (error) => {
+          console.error('Error al cargar usuario completo:', error);
+        }
+      );
+    } else {
+      // Si no es rol 4, obtener el ID desde los parámetros de la ruta
+      this.route.paramMap.subscribe((params) => {
+        this.id = +params.get('id')!;
+        this.procesoId = +params.get('procesoId')!;
+        console.log('ID de la gestante:', this.id);
+
+        if (this.id !== null) {
+          this.contarProcesos(this.id);
+        }
+      });
+    }
+
+    // Controlar el estado del menú
+    this.menuService.isExpanded$.subscribe((isExpanded) => {
       this.isExpanded = isExpanded;
     });
   }
 
+
   irAControlPrenatal() {
     if (this.id !== null) {
+      console.log('Navegando a la ruta con parámetros:', {
+        id: this.id,
+        selectedOption: this.selectedOption
+      });
       this.router.navigate(['/ruta-2', this.id, this.selectedOption]);
     }
   }
 
-  // crearProceso() {
-  //   if (this.id !== null) {
-  //     this.usuarioService.crearProcesoGestativo(this.id).subscribe(
-  //       response => {
-  //         // Swal.fire({
-  //         //   icon: 'success',
-  //         //   title: 'Proceso Registrado',
-  //         //   text: 'Se ha registrado un nuevo proceso gestativo.',
-  //         //   confirmButtonText: 'Aceptar',
-  //         //   allowOutsideClick: false 
-
-  //         // }).then((result) => {
-  //         //   if (result.isConfirmed) {
-  //         //     location.reload(); 
-  //         //   }
-  //         // });
-  //         console.log(response.message);
-  //       },
-  //       error => {
-  //         console.error('Error al crear el proceso gestativo:', error);
-  //         if (error.status == 400) {
-  //           // Swal.fire({
-  //           //   icon: 'error',
-  //           //   title: 'Error',
-  //           //   text: 'Hay un proceso en curso, no se ha registrado aun su finalización.',
-  //           //   confirmButtonText: 'Aceptar'
-  //           // });
-  //         }
-  //       }
-  //     );
-  //   }
-  // }
 
   contarProcesos(usuarioId: number) {
-    this.usuarioService.contarProcesosGestativos(usuarioId).subscribe(response => {
+    this.usuarioService.contarProcesosGestativos(this.id).subscribe(response => {
       this.procesosCount = response.numero_de_procesos_gestativos;
       this.selectedOption = this.procesosCount;
 

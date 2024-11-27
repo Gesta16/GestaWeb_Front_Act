@@ -73,7 +73,7 @@ const routes: Routes = [
         data: { showInMenu: false }
       },
       {
-        path:'ruta-gestante/:id/:procesoId', component:RutaGestanteComponent,
+        path:'ruta-ver-gestante/:id/:procesoId', component:RutaGestanteComponent,
         canActivate:[RoleGuard],
         data:{title: 'Ruta',icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu:true, }
       },
