@@ -8,21 +8,21 @@
         <div class="border-b border-gray-300 mb-4 h-auto">
             <div class="flex justify-between items-center h-full p-4">
                 <h1 class="font-bold text-3xl" style="margin-left: 30px;">Ruta materno perinatal</h1>
-    
+
                 <div class="flex items-center space-x-2">
                     <!-- <select class="select-custom" [(ngModel)]="selectedOption">
                         <option value="" disabled selected></option>
                         <option *ngFor="let num of generarRango(procesosCount)" [value]="num"> Proceso {{ num }}</option>
                     </select> -->
-    
+
                     <!-- <button (click)="crearProceso()"
                         class="bg-[#80BA27] text-white font-bold btn-custom rounded-xl hover:bg-[#66a800] focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M11 13H5v-2h6V5h2v6h6v2h-6v6h-2z" />
                         </svg>
                     </button> -->
-    
-    
+
+
                     <button (click)="volver()"
                         class="bg-[#80BA27] text-white font-bold btn-custom rounded-xl hover:bg-[#66a800] focus:outline-none">
                         Volver
@@ -161,15 +161,18 @@
                                 Micronutrientes
                             </p>
                             <div class="flex gap-x-8">
-                                <button (click)="irSaludIntegral()"
-                                class="bg-[#3eb6c6] hover:bg-[#0fb1c7] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
+                                <!-- Botón Ingresar -->
+                                <button (click)="irSaludIntegral(false)"
+                                    class="bg-[#3eb6c6] hover:bg-[#0fb1c7] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
                                     Ingresar
                                 </button>
-                                <button
+                                <!-- Botón Nuevo Registro -->
+                                <button (click)="irSaludIntegral(true) " [hidden]="isRole4"
                                     class="bg-[#3eb6c6] hover:bg-[#0fb1c7] text-white text-[12px] py-1 px-2 rounded-[20px] font-semibold mt-2 z-20">
                                     Nuevo registro
                                 </button>
                             </div>
+
                         </div>
                     </div>
 

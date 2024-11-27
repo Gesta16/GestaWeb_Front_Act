@@ -102,7 +102,7 @@ const routes: Routes = [
         data: { showInMenu: false }
       },
       {
-        path: 'ruta-4/:id/:num_proceso', component: Ruta4Component,
+        path: 'ruta-4/:id/:num_proceso/:action', component: Ruta4Component,
         data: { showInMenu: false }
       },
       {

@@ -7,11 +7,24 @@
         <div class="border-b border-gray-300mb-4 h-auto">
             <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
                 <h1 class="font-bold text-2xl sm:text-3xl ml-2">Salud Integral</h1>
-                <button (click)="volver()"
-                    class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
-                    Volver
-                </button>
+
+                <div class="flex items-center space-x-2">
+                    <label for="fechas" class="text-sm font-medium text-gray-700">Fechas consultas:</label>
+                    <select id="fechas" (change)="onFechaSeleccionada($event)"
+                      class="block w-auto p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#00acc9] focus:border-[#00acc9] sm:text-sm">
+                      <option *ngFor="let seguimiento of seguimientos" [value]="seguimiento.fec_consulta">
+                        {{ seguimiento.fec_consulta }}
+                      </option>
+                    </select>
+                    <button (click)="volver()"
+                      class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none">
+                      Volver
+                    </button>
+                  </div>
+                
             </div>
+            
+
         </div>
 
         <!-- Diseño del formulario -->
@@ -194,7 +207,7 @@
                                     </button>
 
                                     <button (click)="guardarSeguimientoConsulta()"
-                                        [disabled]="(ReadonlySeguimientoConsulta && !isEditing) || isRole4"
+                                        [disabled]="(ReadonlySeguimientoConsulta && !isEditing) || isRole4 || isIngresar"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>
@@ -209,7 +222,8 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="asistio_nutricionista" class="font-medium mb-1">Asistió a
                                             nutrición</label>
-                                        <select id="asistio_nutricionista" [disabled]="ReadonlySeguimientoComplementario"
+                                        <select id="asistio_nutricionista"
+                                            [disabled]="ReadonlySeguimientoComplementario"
                                             [(ngModel)]="seguimientoComplementario.asistio_nutricionista"
                                             (change)="onSeguimientoChange('asistio_nutricionista')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">

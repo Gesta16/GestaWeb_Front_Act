@@ -19,6 +19,7 @@ export class RutaGestanteComponent {
   isExpanded = true;
   isVisible = true;
   user: any;
+  isRole4:any;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,12 +35,13 @@ export class RutaGestanteComponent {
     // Verificar el rol del usuario
     if (this.user.rol_id === 4) {
       this.id = this.user.userable.id_usuario; // Obtener el ID del usuario autenticado
-      console.log('ID del usuario (rol 4):', this.id);
+      this.isRole4 = this.user.rol_id === 4;
+      //console.log('ID del usuario (rol 4):', this.id);
       this.contarProcesos(this.id);
       // Llamar al servicio para cargar los datos del usuario completo
       this.usuarioService.getUsuarioCompleto(this.id).subscribe(
         (response) => {
-          console.log('Usuario completo:', response.data);
+          //console.log('Usuario completo:', response.data);
         },
         (error) => {
           console.error('Error al cargar usuario completo:', error);
@@ -50,7 +52,7 @@ export class RutaGestanteComponent {
       this.route.paramMap.subscribe((params) => {
         this.id = +params.get('id')!;
         this.procesoId = +params.get('procesoId')!;
-        console.log('ID de la gestante:', this.id);
+        //console.log('ID de la gestante:', this.id);
 
         if (this.id !== null) {
           this.contarProcesos(this.id);
@@ -67,10 +69,6 @@ export class RutaGestanteComponent {
 
   irAControlPrenatal() {
     if (this.id !== null) {
-      console.log('Navegando a la ruta con parámetros:', {
-        id: this.id,
-        selectedOption: this.selectedOption
-      });
       this.router.navigate(['/ruta-2', this.id, this.selectedOption]);
     }
   }
@@ -81,7 +79,7 @@ export class RutaGestanteComponent {
       this.procesosCount = response.numero_de_procesos_gestativos;
       this.selectedOption = this.procesosCount;
 
-      console.log(`Número de procesos gestativos para ${usuarioId}: ${this.procesosCount}`);
+      //console.log(`Número de procesos gestativos para ${usuarioId}: ${this.procesosCount}`);
     }, error => {
       console.error('Error al contar los procesos gestativos:', error);
     });
@@ -98,11 +96,12 @@ export class RutaGestanteComponent {
     };
   }
 
-  irSaludIntegral() {
+  irSaludIntegral(isNuevoRegistro: boolean = false): void {
     if (this.id !== null) {
-      this.router.navigate(['/ruta-4', this.id, this.selectedOption]); // Navegar a la ruta con el ID
-    };
+      this.router.navigate(['/ruta-4', this.id, this.selectedOption, isNuevoRegistro ? 'nuevo' : 'ingresar']); // Navegar a la ruta con el indicador
+    }
   }
+  
 
 
   irPreparto() {

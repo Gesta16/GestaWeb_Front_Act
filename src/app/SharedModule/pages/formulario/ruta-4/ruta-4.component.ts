@@ -50,13 +50,15 @@ export class Ruta4Component {
   isEditing = false;
   isExpanded = true;
   isVisible = true;
-  user:any;
-  isRole4:any;
+  user: any;
+  isRole4: any;
+  seguimientos:any;
+  isIngresar:any;
 
-  mostrarCampos:{ [key:string]: boolean} ={
+  mostrarCampos: { [key: string]: boolean } = {
     asistio_nutricionista: false,
     asistio_ginecologia: false,
-    asistio_psicologia:false,
+    asistio_psicologia: false,
     asistio_odontologia: false,
     ina_seguimiento: false
   }
@@ -72,9 +74,9 @@ export class Ruta4Component {
     private seguimientoConsultaMensualService: SeguimientoConsultaMensualService,
     private seguimientoComplementarioService: SeguimientoComplementarioService,
     private micronutrientesService: MicronutrientesService,
-    private alertService:AlertService,
-    private menuService:MenuService,
-    private authService:AuthService
+    private alertService: AlertService,
+    private menuService: MenuService,
+    private authService: AuthService
   ) {
     this.seguimientoConsulta = new SeguimientoConsultaMensual();
 
@@ -95,24 +97,53 @@ export class Ruta4Component {
     this.route.paramMap.subscribe(params => {
       this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
       //console.log('num_proceso:', this.num_proceso);
+      const action = params.get('action');
+      
+      if(action === 'nuevo'){
+        this.limpiarFormulario();
+      }else if(action === 'ingresar'){
+        if (this.id !== null && this.id > 0) {
+          this.getSeguimientoConsulta();
+          this.getSeguimientosMensualesGestantes();
+          this.getSeguimientoComplementario();
+          this.getMicronutientes();
+        } else {
+          console.log('No se proporcionó un ID válido.');
+        }
+      }
+  
     });
-
-    if (this.id !== null && this.id > 0) {
-      this.getSeguimientoConsulta();
-      this.getSeguimientoComplementario();
-      this.getMicronutientes();
-    } else {
-      console.log('No se proporcionó un ID válido.');
-    }
 
     this.getNumerosControl();
     this.getRiesgos();
     this.getFormasMedicion();
     this.getDiagnosticosNutricionales();
     this.getNumSesionesCurso();
-    this.menuService.isExpanded$.subscribe(isExpanded =>{
+    this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
+  }
+
+  limpiarFormulario(): void {
+    this.seguimientoConsulta = new SeguimientoConsultaMensual;
+    //console.log('Formulario limpiado para nuevo registro');
+  }
+
+  getSeguimientosMensualesGestantes(){
+    this.seguimientoConsultaMensualService.getSeguimientosMensuales(this.id).subscribe(
+      (response) => {
+        if (response.estado === 'Ok') {
+          this.seguimientos = response.data; // Accede directamente al arreglo en 'data'
+          console.log('Fechas de consultas mensuales:', this.seguimientos);
+        } else {
+          console.error('Error en la respuesta del servidor:', response.message);
+        }
+      },
+      (error) => {
+        console.error('Error al cargar las fechas de las consultas mensuales:', error);
+      }
+    );
+    
   }
 
   toggleTabs(tabNumber: number) {
@@ -146,41 +177,58 @@ export class Ruta4Component {
     this.isEditing = true;
   }
 
+  onFechaSeleccionada(event: Event): void {
+    const fechaSeleccionada = (event.target as HTMLSelectElement).value;
+    
+    // Encuentra el seguimiento correspondiente en la lista
+    const seguimiento = this.seguimientos.find(seg => seg.fec_consulta === fechaSeleccionada);
+    
+    if (seguimiento) {
+      // Actualiza seguimientoConsulta con los datos del seguimiento seleccionado
+      this.seguimientoConsulta = { ...seguimiento };
+      console.log('Seguimiento seleccionado:', this.seguimientoConsulta);
+    } else {
+      // Limpia los datos si no hay un seguimiento correspondiente
+      this.seguimientoConsulta = new SeguimientoConsultaMensual();
+    }
+  }
+  
+
   // habilitar o dehabilitar los campos
-  onSeguimientoChange(campo:string){
+  onSeguimientoChange(campo: string) {
     const valorSeleccionado = Number(this.seguimientoComplementario[campo]);
-    switch (campo){
+    switch (campo) {
       case 'asistio_nutricionista':
         this.mostrarCampos['asistio_nutricionista'] = valorSeleccionado === 1;
-        if(!this.mostrarCampos['asistio_nutricionista']){
+        if (!this.mostrarCampos['asistio_nutricionista']) {
           this.seguimientoComplementario.fec_nutricion = null;
         }
         break;
-      
+
       case 'asistio_ginecologia':
         this.mostrarCampos['asistio_ginecologia'] = valorSeleccionado === 1;
-        if (!this.mostrarCampos['asistio_ginecologia']){
+        if (!this.mostrarCampos['asistio_ginecologia']) {
           this.seguimientoComplementario.fec_ginecologia = null
         }
         break;
-      
+
       case 'asistio_psicologia':
         this.mostrarCampos['asistio_psicologia'] = valorSeleccionado === 1;
-        if(!this.mostrarCampos['asistio_psicologia']){
+        if (!this.mostrarCampos['asistio_psicologia']) {
           this.seguimientoComplementario.fec_psicologia = null;
         }
         break;
 
       case 'asistio_odontologia':
         this.mostrarCampos['asistio_odontologia'] = valorSeleccionado === 1;
-        if (!this.mostrarCampos['asistio_odontologia']){
+        if (!this.mostrarCampos['asistio_odontologia']) {
           this.seguimientoComplementario.fec_odontologia = null;
         }
         break;
 
       case 'ina_seguimiento':
         this.mostrarCampos['ina_seguimiento'] = valorSeleccionado === 1;
-        if (!this.mostrarCampos['ina_seguimiento']){
+        if (!this.mostrarCampos['ina_seguimiento']) {
           this.seguimientoComplementario.cau_inasistencia = null;
         }
         break;
@@ -249,7 +297,7 @@ export class Ruta4Component {
       this.seguimientoConsultaMensualService.updateSeguimientoConsulta(this.id_SeguimientoConsulta, this.seguimientoConsulta).subscribe({
         next: (response) => {
           //console.log('Seguimiento Consulta actualizado:', response);
-          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.ReadonlySeguimientoConsulta = true;
             this.isEditing = false;
           });
@@ -268,7 +316,7 @@ export class Ruta4Component {
 
 
       this.seguimientoConsultaMensualService.crearSeguimientoConsulta(this.seguimientoConsulta).subscribe(response => {
-        this.alertService.successAlert('Exito', response.mensaje).then(()=>{
+        this.alertService.successAlert('Exito', response.mensaje).then(() => {
           this.id_SeguimientoConsulta = response.cod_seguimiento ?? null;
           this.ReadonlySeguimientoConsulta = true;
           this.isEditing = false;
@@ -307,7 +355,7 @@ export class Ruta4Component {
       this.seguimientoComplementarioService.updateSeguimientoComplementario(this.id_SeguimientoComplementario, this.seguimientoComplementario).subscribe({
         next: (response) => {
           //console.log('Seguimiento complementario actualizado:', response);
-          this.alertService.successAlert('Exito',response.mensaje).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.ReadonlySeguimientoComplementario = true;
             this.isEditing = false;
           });
@@ -326,7 +374,7 @@ export class Ruta4Component {
 
 
       this.seguimientoComplementarioService.crearSeguimientoComplementario(this.seguimientoComplementario).subscribe(response => {
-        this.alertService.successAlert('Exito',response.mensaje).then(()=>{
+        this.alertService.successAlert('Exito', response.mensaje).then(() => {
           this.id_SeguimientoComplementario = response.cod_segcomplementario ?? null;
           this.ReadonlySeguimientoComplementario = true;
           this.isEditing = false;
@@ -364,7 +412,7 @@ export class Ruta4Component {
       this.micronutrientesService.updateMicronutriente(this.id_Micronutriente, this.micronutriente).subscribe({
         next: (response) => {
           //console.log('Micronutriente actualizado:', response);
-          this.alertService.successAlert('Exito', response.mensaje).then(()=>{
+          this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.ReadonlyMicronutriente = true;
             this.isEditing = false;
           });
@@ -383,7 +431,7 @@ export class Ruta4Component {
 
 
       this.micronutrientesService.crearMicronutriente(this.micronutriente).subscribe(response => {
-        this.alertService.successAlert('Exito', response.mensaje).then(()=>{
+        this.alertService.successAlert('Exito', response.mensaje).then(() => {
           this.id_Micronutriente = response.cod_micronutriente ?? null;
           this.ReadonlyMicronutriente = true;
           this.isEditing = false;
