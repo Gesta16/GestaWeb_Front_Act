@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div class="flex min-h-screen justify-center items-center px-4">
+
+    <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 px-4 ml-56 mt-24" > <!-- [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+        'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}" -->
+
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full mb-4">
+
+            <!-- Contenedor del título -->
+            <div class=" px-6 py-4 flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-file-sliders">
+                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                    <path d="M8 12h8"/>
+                    <path d="M10 11v2"/>
+                    <path d="M8 17h8"/>
+                    <path d="M14 16v2"/>
+                </svg>
+                <h2 class="text-lg font-bold">Importar Excel</h2>
+            </div>
+
+            <!-- Estilos para subir la imagen -->
+            <div class="mt-4" >
+
+                <!-- Área de arrastre de archivos -->
+                <div class="mt-2 block w-full border-2 border-dashed border-[#00ACC9] rounded-md text-center cursor-pointer" (dragover)="onDragOver($event)" (drop)="onDrop($event)" (click)="fileInput.click()" (click)="$event.stopPropagation()"> <!--  -->
+                    <p class="text-gray-500 my-4">{{ nombreExcel ? nombreExcel : 'Haga clic para subir o arrastre y suelte el Excel' }}</p>
+                    <input type="file" name="excel" for="excel" id="inputExcel"
+                    accept=".xls,.xlsx,.xlsm" #fileInput (change)="onFileSelected($event)" class="hidden" /> <!--  -->
+                </div>
+            </div>
+
+            <div class="mt-5 flex justify-center">
+				<button type="button" (click)="limpiarInput(true)" class="bg-[#ec5353] hover:bg-[#ff4040] text-white font-bold py-2 px-4 rounded mr-2">Cancelar</button>
+				<button type="button" (click)="enviarExcel()" 
+                    class="bg-[#00ACC9] text-white px-4 py-2 rounded-md font-bold hover:bg-[#00bee2] min-w-24">
+                    {{ enviandose ? 'Enviando...' : 'Enviar' }}
+                </button>
+			</div>
+            
+
+        </div>
+    
+    </div>
+
+</div>

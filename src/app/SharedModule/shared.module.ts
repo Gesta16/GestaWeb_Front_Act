@@ -32,6 +32,7 @@ import { HeaderComponent } from './pages/header/header.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NotasComponent } from './pages/notas/notas.component';
+import { ImportExcelComponent } from './pages/import-excel/import-excel.component';
 
 
 
@@ -67,6 +68,7 @@ import { NotasComponent } from './pages/notas/notas.component';
     HeaderComponent,
     DashboardComponent,
     NotasComponent,
+    ImportExcelComponent,
   ],
   imports: [
     CommonModule,
