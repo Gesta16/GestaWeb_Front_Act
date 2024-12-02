@@ -17,7 +17,6 @@ import { Ruta4Component } from './pages/formulario/ruta-4/ruta-4.component';
 import { Ruta5Component } from './pages/formulario/ruta-5/ruta-5.component';
 import { Ruta6Component } from './pages/formulario/ruta-6/ruta-6.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { NotasComponent } from './pages/notas/notas.component';
 
 const routes: Routes = [
   {
@@ -27,7 +26,7 @@ const routes: Routes = [
       {
         path: 'dashboard', component: DashboardComponent,
         canActivate: [RoleGuard],
-        data: { title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin', 'operador', 'usuario'], showInMenu: true }
+        data: { title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin', 'operador'], showInMenu: true }
       },
       {
         path: 'list-superadmin', component: ListSuperAdminComponent,
@@ -59,11 +58,7 @@ const routes: Routes = [
         canActivate: [RoleGuard],
         data: { title: 'Reportes', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['superadmin'], showInMenu: true }
       },
-      {
-        path: 'notas', component: NotasComponent,
-        canActivate: [RoleGuard],
-        data: { title: 'Notas', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu: true }
-      },
+      
       {
         path: 'perfil', component: PerfilComponent,
         // canActivate:[RoleGuard],
@@ -78,11 +73,11 @@ const routes: Routes = [
         path: 'add-gestante/:id', component: AddGestanteComponent,
         data: { showInMenu: false }
       },
-      {
-        path:'ruta-ver-gestante/:id/:procesoId', component:RutaGestanteComponent,
-        canActivate:[RoleGuard],
-        data:{title: 'Ruta',icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu:true, }
-      },
+      // {
+      //   path:'ruta-ver-gestante/:id/:procesoId', component:RutaGestanteComponent,
+      //   canActivate:[RoleGuard],
+      //   data:{title: 'Ruta',icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu:true, }
+      // },
       {
         path:'ruta-gestante/:id/:procesoId', component:RutaGestanteComponent,
         data:{showInMenu:false}

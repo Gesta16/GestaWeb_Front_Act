@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './AuthModule/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { GestantesModule } from './Gestantes/gestantes.module';
 import { SharedModule } from './SharedModule/shared.module';
+
+
 
 
 
@@ -14,13 +17,16 @@ import { SharedModule } from './SharedModule/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    GestantesModule,
     SharedModule,
-    AuthModule
+    AuthModule,
+    
   ],
   providers: [
     provideClientHydration(),
