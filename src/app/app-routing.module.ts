@@ -11,6 +11,10 @@ const routes: Routes = [
     path:'',
     loadChildren:()=>import('./SharedModule/shared.module').then(m => m.SharedModule)
   },
+  {
+    path:'',
+    loadChildren:()=>import('./Gestantes/gestantes.module').then(m =>m.GestantesModule)
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' } 

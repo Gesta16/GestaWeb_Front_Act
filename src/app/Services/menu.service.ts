@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SharedModuleRoutingModule } from '../SharedModule/shared-routing.module';
 import { Routes } from '@angular/router';
+import { GestantesRoutingModule } from '../Gestantes/gestantes-routing.module';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class MenuService {
     superadmin: SharedModuleRoutingModule.getRoutes(),
     admin: SharedModuleRoutingModule.getRoutes(),
     operador: SharedModuleRoutingModule.getRoutes(),
-    usuario: SharedModuleRoutingModule.getRoutes(),
+    usuario: GestantesRoutingModule.getRoutes(),
   };
 
   constructor() { }

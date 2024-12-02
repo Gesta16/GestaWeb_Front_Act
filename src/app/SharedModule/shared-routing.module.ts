@@ -26,7 +26,7 @@ const routes: Routes = [
       {
         path: 'dashboard', component: DashboardComponent,
         canActivate: [RoleGuard],
-        data: { title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin', 'operador', 'usuario'], showInMenu: true }
+        data: { title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles: ['superadmin', 'admin', 'operador'], showInMenu: true }
       },
       {
         path: 'list-superadmin', component: ListSuperAdminComponent,
@@ -58,6 +58,7 @@ const routes: Routes = [
         canActivate: [RoleGuard],
         data: { title: 'Reportes', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['superadmin'], showInMenu: true }
       },
+      
       {
         path: 'perfil', component: PerfilComponent,
         // canActivate:[RoleGuard],
@@ -72,11 +73,11 @@ const routes: Routes = [
         path: 'add-gestante/:id', component: AddGestanteComponent,
         data: { showInMenu: false }
       },
-      {
-        path:'ruta-ver-gestante/:id/:procesoId', component:RutaGestanteComponent,
-        canActivate:[RoleGuard],
-        data:{title: 'Ruta',icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu:true, }
-      },
+      // {
+      //   path:'ruta-ver-gestante/:id/:procesoId', component:RutaGestanteComponent,
+      //   canActivate:[RoleGuard],
+      //   data:{title: 'Ruta',icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu:true, }
+      // },
       {
         path:'ruta-gestante/:id/:procesoId', component:RutaGestanteComponent,
         data:{showInMenu:false}
