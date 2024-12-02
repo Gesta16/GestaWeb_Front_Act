@@ -17,6 +17,7 @@ import { Ruta4Component } from './pages/formulario/ruta-4/ruta-4.component';
 import { Ruta5Component } from './pages/formulario/ruta-5/ruta-5.component';
 import { Ruta6Component } from './pages/formulario/ruta-6/ruta-6.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NotasComponent } from './pages/notas/notas.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,11 @@ const routes: Routes = [
         path: 'reportes', component: ReporteComponent,
         canActivate: [RoleGuard],
         data: { title: 'Reportes', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['superadmin'], showInMenu: true }
+      },
+      {
+        path: 'notas', component: NotasComponent,
+        canActivate: [RoleGuard],
+        data: { title: 'Notas', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu: true }
       },
       {
         path: 'perfil', component: PerfilComponent,

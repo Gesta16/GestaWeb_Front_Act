@@ -86,7 +86,11 @@ export class AuthService {
 
   getUser() {
     const identityJSON = sessionStorage.getItem('currentUser');
-    return identityJSON ? JSON.parse(identityJSON) : null;
+    const currentUser = identityJSON ? JSON.parse(identityJSON) : null;
+  
+    //console.log('getUser - Current User:', currentUser);  // Agregamos el log para verificar el contenido
+    return currentUser;
   }
+  
 
 }
