@@ -1,6 +1,6 @@
 <!-- Diseño de modal que se visualiza en 'Crecimiento del bb' -->
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto">
-    <div class="bg-white rounded-lg w-full max-w-4xl p-8 relative max-h-full overflow-y-auto">
+    <div class="bg-white rounded-lg w-11/12 md:w-3/4 lg:w-2/3 p-8 relative max-h-full overflow-y-auto">
       <!-- Icono de cerrar -->
       <button (click)="cerrar()" class="absolute top-2 right-4 text-gray-500 hover:text-gray-700 text-3xl">
         &times;
@@ -21,10 +21,10 @@
       </div>
   
       <!-- Contenedor de las tarjetas -->
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
         <!-------- * Primera tarjeta * -------->
-        <div class="bg-gray-200 rounded-lg p-4 text-center shadow-lg relative">
+        <div class="bg-gray-200 rounded-lg p-6 text-center shadow-lg relative">
 
           <!-- Estilo de la linea que se encuentra encima de la tarjeta -->
           <div class="w-12 h-12 bg-[#E5AE41] absolute -top-[25px] left-1/2 transform -translate-x-1/2 rounded-full">
