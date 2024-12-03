@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { AuthService } from '../../../Services/auth.service';  // Asegúrate de importar AuthService
 
 @Component({
   selector: 'app-modal',
@@ -6,25 +7,39 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
-  isVisible = true;  // El modal está visible por defecto
-  isAccepted = false; // Estado del checkbox (aceptado o no)
+  isVisible = true;  
+  isAccepted = false;
+  showErrorMessage = false;  // Variable para controlar la visibilidad del mensaje de error
 
-  // EventEmitter para emitir el resultado (aceptado o rechazado)
   @Output() closeModalEvent = new EventEmitter<boolean>();
+
+  constructor(private authService: AuthService) { }  
 
   // Función que se llama cuando el usuario hace clic en los botones
   closeModal(isAccepted: boolean): void {
     if (isAccepted) {
-      this.isVisible = false; // Cierra el modal solo si el checkbox está marcado
-      this.closeModalEvent.emit(true); // Emitir que se aceptaron los términos
+      this.isVisible = false; 
+      this.closeModalEvent.emit(true);  // Emitir el valor de aceptación
     } else {
-      this.isVisible = false; // Cierra el modal también si se rechaza
-      this.closeModalEvent.emit(false); // Emitir que no se aceptaron los términos
+      this.isVisible = false; 
+      this.closeModalEvent.emit(false);  // Emitir el valor de rechazo
+      
+      this.authService.logout();  // Log out si el usuario rechaza
     }
   }
 
   // Método para verificar si el checkbox está marcado
   isAcceptButtonEnabled(): boolean {
-    return this.isAccepted;  // El botón está habilitado solo si isAccepted es true
+    return this.isAccepted;  
+  }
+
+  // Función que maneja el clic en "Enviar"
+  handleSendClick(): void {
+    if (!this.isAccepted) {
+      this.showErrorMessage = true;  // Mostrar mensaje si no ha aceptado
+    } else {
+      this.showErrorMessage = false;  // Si aceptó, ocultar el mensaje de error
+      this.closeModal(true);  // Llamar al método para cerrar el modal con aceptación
+    }
   }
 }
