@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotasComponent } from './pages/notas/notas.component';
 import { RoleGuard } from '../guards/role.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ExamenesComponent } from './pages/examenes/examenes.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
         path:'dashboard-gestante', component:DashboardComponent,
         canActivate: [RoleGuard],
         data:{title: 'Dashboard', icon: 'fa-solid fa-chart-pie', expectedRoles:['usuario'], showInMenu:true}
+      },
+      {
+        path: 'examenes', component: ExamenesComponent,
+        canActivate: [RoleGuard],
+        data: { title: 'Exámenes', icon: 'fas fa-calendar-day', expectedRoles: ['usuario'], showInMenu: true }
       },
       {
         path: 'notas', component: NotasComponent,
