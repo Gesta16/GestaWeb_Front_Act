@@ -1,0 +1,36 @@
+/* Estilos para los botones */
+.bg-red-500 {
+    background-color: #EF4444;
+}
+
+.bg-red-600 {
+    background-color: #DC2626;
+}
+
+.bg-green-500 {
+    background-color: #10B981;
+}
+
+.bg-green-600 {
+    background-color: #059669;
+}
+
+.text-white {
+    color: white;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.hover\:bg-red-600:hover {
+    background-color: #DC2626;
+}
+
+.hover\:bg-green-600:hover {
+    background-color: #059669;
+}
