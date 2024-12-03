@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NotasComponent } from './pages/notas/notas.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-header-module.module';
+import { ModalComponent } from './pages/modal/modal.component';
 
 
 
@@ -13,6 +14,7 @@ import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-
   declarations: [
     NotasComponent,
     DashboardComponent,
+    ModalComponent,
   ],
   imports: [
     CommonModule,

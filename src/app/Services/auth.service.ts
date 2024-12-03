@@ -18,11 +18,16 @@ export class AuthService {
     const storedUser = JSON.parse(sessionStorage.getItem('currentUser') || 'null');
     this.currentUserSubject = new BehaviorSubject<any>(storedUser);
     this.currentUser = this.currentUserSubject.asObservable();
-
   }
 
   public get currentUserValue(): any {
     return this.currentUserSubject.value;
+  }
+
+  // Verifica si los términos y condiciones han sido aceptados
+  isTermsAccepted(): boolean {
+    const currentUser = this.currentUserSubject.value;
+    return currentUser && currentUser.userable.autorizacion !== 0;
   }
 
   login(credentials: { documento: string; password: string }): Observable<any> {
@@ -32,6 +37,13 @@ export class AuthService {
         sessionStorage.setItem('token', response.access_token);
         sessionStorage.setItem('currentUser', JSON.stringify(response.user));
         this.currentUserSubject.next(response.user);
+
+        // Verifica si el campo "autorizacion" dentro de "userable" es 0
+        const autorizacion = response.user.userable.autorizacion;
+        if (autorizacion === 0) {
+          //alert('Debes aceptar los términos y condiciones para continuar');
+        }
+
         this.menuService.setMenuState(true, true);
       })
     );

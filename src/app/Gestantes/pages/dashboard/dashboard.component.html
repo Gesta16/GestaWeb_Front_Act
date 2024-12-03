@@ -1,3 +1,5 @@
+<!-- dashboard.component.html -->
+
 <!-- Encabezado -->
 <app-header></app-header>
 
@@ -6,19 +8,16 @@
     'ml-20': !isExpanded && isVisible, 
     'ml-0': !isVisible}">
 
-    <!------ * Estilos de la primera fila  * ------>
+    <!-- Estilos de la primera fila -->
     <div class="flex flex-wrap gap-4 w-full mt-6">
-        <!-- Campo para el proceso por trimestres -->
         <div class="bg-white p-6 rounded-lg w-[33%] mb-6 border h-full">
             <h3 class="text-lg font-bold mb-4">Campo para el proceso por trimestres</h3>
         </div>
 
-        <!-- Calendario -->
         <div class="bg-white p-6 rounded-lg w-[33%] mb-6 border">
             <h3 class="text-lg font-bold mb-4">Calendario</h3>
         </div>
 
-        <!-- Contadores -->
         <div class="flex flex-col w-[30%] gap-4">
             <div class="bg-[#FFF0E6] p-4 rounded-lg text-center">
                 <p class="text-lg font-bold mb-1">Tu edad gestacional es </p>
@@ -40,15 +39,12 @@
         </div>
     </div>
 
-    <!------ * Estilos de la segunda fila * ------>
+    <!-- Estilos de la segunda fila -->
     <div class="flex flex-wrap gap-4 w-full mt-6">
-
-        <!-- Grafica peso -->
         <div class="bg-white p-6 rounded-lg shadow-lg w-[67%] mb-6">
             <h3 class="text-lg font-bold mb-4">Grafica peso</h3>
         </div>
 
-        <!-- Alertas -->
         <div class="bg-white p-6 rounded-lg shadow-md w-[31%] mb-6">
             <h3 class="text-lg font-bold mb-4">¡Importante!</h3>
             <div class="flex flex-col space-y-4">
@@ -76,12 +72,12 @@
         </div>
     </div>
 
-    <!------ * Grafica presión * ------>
+    <!-- Grafica presión -->
     <div class="bg-white p-6 rounded-lg shadow-lg w-[99%] mb-6">
         <h3 class="text-lg font-bold mb-4">Grafica presión</h3>
     </div>
 
-    <!------ * Datos de vacunación de la gestante y el bb * ------>
+    <!-- Datos de vacunación de la gestante y el bb -->
     <div class="flex flex-wrap gap-4 w-full">
         <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
             <p class="text-lg font-bold mb-4">Datos de vacunación de la gestante</p>
@@ -92,3 +88,6 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<app-modal *ngIf="isModalVisible" (closeModalEvent)="handleModalClose($event)"></app-modal>
