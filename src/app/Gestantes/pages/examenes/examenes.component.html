@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300 flex flex-wrap gap-4" [ngClass]="{ 
+    'ml-56': isExpanded && isVisible, 
+    'ml-20': !isExpanded && isVisible, 
+    'ml-0': !isVisible}">
+
+    <div class="flex flex-wrap gap-4 w-full mt-6">
+        <!-- Primer Trimestre -->
+        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border h-full">
+            <h3 class="text-lg font-bold mb-4">Primer Trimestre</h3>
+        </div>
+
+        <!-- Segundo Trimestre -->
+        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border">
+            <h3 class="text-lg font-bold mb-4">Segundo Trimestre</h3>
+        </div>
+
+        <!-- Tercer Trimestre -->
+        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border">
+            <h3 class="text-lg font-bold mb-4">Tercer Trimestre</h3>
+        </div>
+    </div>
+</div>
