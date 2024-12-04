@@ -10,9 +10,37 @@
 
     <!-- Estilos de la primera fila -->
     <div class="flex flex-wrap gap-4 w-full mt-6">
-        <div class="bg-white p-6 rounded-lg w-[33%] mb-6 border h-full">
-            <h3 class="text-lg font-bold mb-4">Campo para el proceso por trimestres</h3>
+
+        <!-- Campo para el proceso por trimestres -->
+        <div class="bg-white rounded-lg w-[33%] mb-6 border">
+            
+            <!-- Mostrar el trimestre con diferentes colores -->
+            <div class="p-6 rounded-lg w-[100%] h-[70%] border"
+                [ngClass]="{
+                'bg-green-200': colorBarra === 'bg-green-200',
+                'bg-yellow-200': colorBarra === 'bg-yellow-200',
+                'bg-red-200': colorBarra === 'bg-red-200',
+                'bg-gray-200': colorBarra === 'bg-gray-200'
+                }">
+
+                <p class="text-3xl font-bold mb-4">{{ trimestre }}</p>
+
+                <p class="text-right text-gray-600 mt-2 font-bold">Restantes: {{ semanasRestantes }} semanas</p>
+
+            </div>
+            
+            <!-- Barra de progreso -->
+
+            <div class="p-6 rounded-lg w-[100%] h-[30%]">
+
+                <div class="h-2.5 rounded-full mt-4" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100"></div>
+                <!-- Texto con las semanas gestacionales -->
+                <p class="text-center mt-2 font-bold">{{ edadGestacional }} semanas</p>
+            </div>
+
         </div>
+
+
 
         <div class="bg-white p-6 rounded-lg w-[33%] mb-6 border">
             <h3 class="text-lg font-bold mb-4">Calendario</h3>

@@ -1,0 +1,25 @@
+progress {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+  }
+  
+  progress::-webkit-progress-bar {
+    border-radius: 10px;
+  }
+  
+  progress::-webkit-progress-value {
+    background-color: #4CAF50; /* Verde para la parte completada */
+    border-radius: 10px;
+  }
+  
+  progress::-moz-progress-bar {
+    background-color: #4CAF50;
+    border-radius: 10px;
+  }
+
+.text-right{
+    margin-top: 25%;
+}
