@@ -8,6 +8,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-header-module.module';
 import { ModalComponent } from './pages/modal/modal.component';
 import { ExamenesComponent } from './pages/examenes/examenes.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
@@ -24,6 +25,7 @@ import { ExamenesComponent } from './pages/examenes/examenes.component';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    FullCalendarModule,
     SharedHeaderModuleModule
 
   ]

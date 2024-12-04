@@ -4,6 +4,11 @@ import { AuthService } from '../../../Services/auth.service';
 import { ControlPrenatalService } from '../../../Services/control-prenatal.service'; 
 import { UsuarioService } from '../../../Services/usuario.service';  // Importamos UsuarioService para manejar la autorización
 
+
+import { Consulta, DashboardService } from '../../../Services/dashboard.service';
+import { CalendarOptions } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,9 +23,24 @@ export class DashboardComponent implements OnInit {
   trimestre: string = '';  
   colorBarra: string = '';  // Para almacenar el color de la barra
 
+  consultas: Consulta[] = [];
+  loading: boolean = true;
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin],
+    locale: 'es',
+    events: [],
+    headerToolbar: {
+      left: 'title', // Puedes dejar solo los botones de "prev" y "next"
+      center: '',
+      right: 'prev,next' // No agregues el botón "today"
+    }
+  };
+
   constructor(
     private menuService: MenuService, 
     private authService: AuthService,
+    private dashboardService: DashboardService,
     private controlPrenatalService: ControlPrenatalService, 
     private usuarioService: UsuarioService  // Inyectamos UsuarioService
   ) { }
@@ -73,6 +93,9 @@ export class DashboardComponent implements OnInit {
         this.calcularSemanasRestantes();  // Recalculamos las semanas restantes
       }
     }, 7 * 24 * 60 * 60 * 1000);  // Cada 10 segundos para efectos de prueba 1000
+
+    this.loading = true;
+    this.cargarConsultas();
   }
 
   // Método para calcular el trimestre y el color de la barra
@@ -134,5 +157,57 @@ export class DashboardComponent implements OnInit {
     } else {
       console.log('Usuario no aceptó los términos');
     }
+  }
+
+  cargarConsultas() {
+    this.dashboardService.getCalendarioUsuario().subscribe(
+      (response) => {
+        if (response.estado === 'Ok') {
+          this.consultas = response.data;
+          this.calendarOptions.events = this.mapearConsultasAEventos(this.consultas); // Mapear las consultas a eventos
+          //console.log(this.calendarOptions.events);
+        } else {
+          this.calendarOptions.events = [];
+        }
+        
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Error al cargar las consultas:', error);
+        this.loading = false;
+      }
+    );
+  }
+
+  private mapearConsultasAEventos(consultas: Consulta[]): any[] {
+    const colorConsultas: { [key: string]: { background: string, text: string } } = {
+      "Control Prenatal": { background: "#A8E6CF", text: "#000000" },
+      "Primera Consulta": { background: "#DCEDC1", text: "#000000" },
+      "Laboratorios primer trimestre": { background: "#FFD3B6", text: "#000000" },
+      "Laboratorios segundo trimestre": { background: "#FFAAA5", text: "#000000" },
+      "Laboratorios tercer semestre": { background: "#D0E8FF", text: "#000000" },
+      "Consulta Mensual": { background: "#E8DFFF", text: "#000000" },
+      "Control Complementario": { background: "#A8E6CF", text: "#000000" },
+      "Finalizacion Gestación": { background: "#FFD3B6", text: "#000000" }
+    };
+
+    return consultas.map(consulta => {
+      const { background, text } = colorConsultas[consulta.nombre_consulta] || { background: "#D0E8FF", text: "#000000" };
+      return {
+        title: consulta.nombre_consulta,
+        start: consulta.fecha,
+        backgroundColor: background,
+        textColor: text,
+        eventContent: () => {
+          return {
+            html: `
+              <div class="scrollable-container" style="background-color: ${background}; color: ${text};">
+                <span class="scrollable-text">${consulta.nombre_consulta}</span>
+              </div>
+            `
+          };
+        }
+      };
+    });
   }
 }
