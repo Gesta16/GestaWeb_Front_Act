@@ -98,7 +98,9 @@ export class ImportExcelComponent {
           // si sale mal se hara:
           error: (error) => { 
             console.error('Error:', error);
+            this.limpiarInput(false);
             this.procesando = false;  // volvemos activar para que se pueda enviar otravez
+            this.enviandose = false;
             this.alertService.infoAlert('Error', 'Algo Salio Mal :('); 
           },
         });
