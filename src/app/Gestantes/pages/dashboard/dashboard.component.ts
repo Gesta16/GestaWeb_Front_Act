@@ -3,8 +3,6 @@ import { MenuService } from '../../../Services/menu.service';
 import { AuthService } from '../../../Services/auth.service';
 import { ControlPrenatalService } from '../../../Services/control-prenatal.service'; 
 import { UsuarioService } from '../../../Services/usuario.service';  // Importamos UsuarioService para manejar la autorización
-
-
 import { Consulta, DashboardService } from '../../../Services/dashboard.service';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -58,9 +56,9 @@ export class DashboardComponent implements OnInit {
     }
 
     // Intentamos recuperar el estado desde localStorage
-    const storedEdadGestacional = localStorage.getItem('edadGestacional');
-    const storedTrimestre = localStorage.getItem('trimestre');
-    const storedColorBarra = localStorage.getItem('colorBarra');
+    const storedEdadGestacional = localStorage.getItem('edadGestacional_' + currentUser.userable.id_usuario);
+    const storedTrimestre = localStorage.getItem('trimestre_' + currentUser.userable.id_usuario);
+    const storedColorBarra = localStorage.getItem('colorBarra_' + currentUser.userable.id_usuario);
 
     // Si existe en localStorage, usamos el valor de la edad gestacional almacenado
     if (storedEdadGestacional) {
@@ -68,14 +66,18 @@ export class DashboardComponent implements OnInit {
       this.trimestre = storedTrimestre ? storedTrimestre : ''; // Obtener el trimestre desde localStorage
       this.colorBarra = storedColorBarra ? storedColorBarra : ''; // Obtener el color de la barra desde localStorage
       this.calcularSemanasRestantes();  // Calculamos las semanas restantes
+      this.calcularTrimestre();  // Calculamos el trimestre
     } else {
       // Si no está en localStorage, obtenemos la edad gestacional de la base de datos
       const usuarioId = this.authService.currentUserValue.userable.id_usuario;
       this.controlPrenatalService.getControlById(usuarioId, 1).subscribe(response => {
-        const edadGestacionalDB = parseInt(response.Control.edad_gestacional, 10);
+        // Asegúrate de que la respuesta contiene la propiedad "Control" y "edad_gestacional"
+        const edadGestacionalDB = response.Control ? parseInt(response.Control.edad_gestacional, 10) : 0;
+        
         if (!isNaN(edadGestacionalDB)) {
           this.edadGestacional = edadGestacionalDB;
-          localStorage.setItem('edadGestacional', this.edadGestacional.toString());
+          // Almacenar en localStorage con el id de usuario único
+          localStorage.setItem('edadGestacional_' + usuarioId, this.edadGestacional.toString());
         } else {
           this.edadGestacional = 0;
         }
@@ -88,11 +90,11 @@ export class DashboardComponent implements OnInit {
     setInterval(() => {
       if (this.edadGestacional < 42) {
         this.edadGestacional += 1;
-        localStorage.setItem('edadGestacional', this.edadGestacional.toString());
+        localStorage.setItem('edadGestacional_' + currentUser.userable.id_usuario, this.edadGestacional.toString());
         this.calcularTrimestre();  // Recalculamos el trimestre y el color de la barra
         this.calcularSemanasRestantes();  // Recalculamos las semanas restantes
       }
-    }, 7 * 24 * 60 * 60 * 1000);  // Cada 10 segundos para efectos de prueba 1000
+    }, 7 * 24 * 60 * 60 * 1000);  // Cada 7 días para efectos de prueba
 
     this.loading = true;
     this.cargarConsultas();
@@ -115,13 +117,21 @@ export class DashboardComponent implements OnInit {
     }
 
     // Guardamos los valores actualizados en localStorage
-    localStorage.setItem('trimestre', this.trimestre);
-    localStorage.setItem('colorBarra', this.colorBarra);
+    const currentUser = this.authService.currentUserValue;
+    localStorage.setItem('trimestre_' + currentUser.userable.id_usuario, this.trimestre);
+    localStorage.setItem('colorBarra_' + currentUser.userable.id_usuario, this.colorBarra);
+
+    // Depuración
+    console.log("Edad gestacional: ", this.edadGestacional);
+    console.log("Trimestre calculado: ", this.trimestre);
+    console.log("Color de barra calculado: ", this.colorBarra);
   }
 
   // Método para calcular las semanas restantes
   calcularSemanasRestantes(): void {
     this.semanasRestantes = 42 - this.edadGestacional;
+    // Depuración
+    console.log("Semanas restantes: ", this.semanasRestantes);
   }
 
   // Método para manejar el cierre del modal
@@ -165,7 +175,6 @@ export class DashboardComponent implements OnInit {
         if (response.estado === 'Ok') {
           this.consultas = response.data;
           this.calendarOptions.events = this.mapearConsultasAEventos(this.consultas); // Mapear las consultas a eventos
-          //console.log(this.calendarOptions.events);
         } else {
           this.calendarOptions.events = [];
         }
