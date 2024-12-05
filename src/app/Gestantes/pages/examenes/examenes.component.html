@@ -6,19 +6,191 @@
     'ml-0': !isVisible}">
 
     <div class="flex flex-wrap gap-4 w-full mt-6">
-        <!-- Primer Trimestre -->
-        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border h-full">
-            <h3 class="text-lg font-bold mb-4">Primer Trimestre</h3>
+
+        <!----- * Primer Trimestre * ----->
+        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border border-[#45B7D1] h-full">
+            <h3 class="text-xl font-bold mb-4">Primer Trimestre</h3>
+            <div class="flex flex-wrap gap-4 w-full">
+
+                <!-- Exámenes Realizados Primer Trimestre -->
+                <div class="border rounded-lg w-full px-4 py-2">
+                    <div class="flex gap-2 text-[#15b283] mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                        <h3 class="font-bold">Realizados</h3>
+                    </div>
+                    <ul>
+                        <li *ngFor="let examen of trimestre1.realizados">
+                            <div *ngFor="let exam of examenesISemestre">
+                                <div class="flex items-center" *ngIf="examen[exam.campo]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-dot text-[#15b283]">
+                                        <circle cx="12.1" cy="12.1" r="1" />
+                                    </svg>
+                                    {{ exam.nombre }}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Exámenes No Realizados Primer Trimestre -->
+                <div class="border rounded-lg w-full px-4 py-2">
+                    <div class="flex gap-2 text-[#E11D48] mb-2 mt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m15 9-6 6" />
+                            <path d="m9 9 6 6" />
+                        </svg>
+                        <h3 class="font-bold">No Realizados</h3>
+                    </div>
+                    <ul>
+                        <li *ngFor="let examen of trimestre1.noRealizados">
+                            <div *ngFor="let exam of examenesISemestre">
+                                <div class="flex items-center" *ngIf="!examen[exam.campo]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-dot text-[#E11D48]">
+                                        <circle cx="12.1" cy="12.1" r="1" />
+                                    </svg>
+                                    {{ exam.nombre }}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- Segundo Trimestre -->
-        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border">
-            <h3 class="text-lg font-bold mb-4">Segundo Trimestre</h3>
+        <!----- * Segundo Trimestre * ----->
+        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border border-[#ff9595]">
+            <h3 class="text-xl font-bold mb-4">Segundo Trimestre</h3>
+            <div class="flex flex-wrap gap-4 w-full">
+
+                <!-- Exámenes Realizados Segundo Trimestre -->
+                <div class="border rounded-lg w-full px-4 py-2">
+                    <div class="flex gap-2 text-[#15b283] mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                        <h3 class="font-bold">Realizados</h3>
+                    </div>
+                    <ul>
+                        <li *ngFor="let examen of trimestre2.realizados">
+                            <div *ngFor="let exam of examenesIISemestre">
+                                <div class="flex items-center" *ngIf="examen[exam.campo]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-dot text-[#15b283]">
+                                        <circle cx="12.1" cy="12.1" r="1" />
+                                    </svg>
+                                    {{ exam.nombre }}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Exámenes No Realizados Segundo Trimestre -->
+                <div class="border rounded-lg w-full px-4 py-2">
+                    <div class="flex gap-2 text-[#E11D48] mb-2 mt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m15 9-6 6" />
+                            <path d="m9 9 6 6" />
+                        </svg>
+                        <h3 class="font-bold">No Realizados</h3>
+                    </div>
+                    <ul>
+                        <li *ngFor="let examen of trimestre2.noRealizados">
+                            <div *ngFor="let exam of examenesIISemestre">
+                                <div class="flex items-center" *ngIf="!examen[exam.campo]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-dot text-[#E11D48]">
+                                        <circle cx="12.1" cy="12.1" r="1" />
+                                    </svg>
+                                    {{ exam.nombre }}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- Tercer Trimestre -->
-        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border">
-            <h3 class="text-lg font-bold mb-4">Tercer Trimestre</h3>
+        <!----- * Tercer Trimestre * ----->
+        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border border-[#4ECDC4]">
+            <h3 class="text-xl font-bold mb-4">Tercer Trimestre</h3>
+            <div class="flex flex-wrap gap-4 w-full">
+
+                <!-- Exámenes Realizados Tercer Trimestre -->
+                <div class="border rounded-lg w-full px-4 py-2">
+                    <div class="flex gap-2 text-[#15b283] mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                        <h3 class="font-bold">Realizados</h3>
+                    </div>
+                    <ul>
+                        <li *ngFor="let examen of trimestre3.realizados">
+                            <div *ngFor="let exam of examenesIIISemestre">
+                                <div class="flex items-center" *ngIf="examen[exam.campo]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-dot text-[#15b283]">
+                                        <circle cx="12.1" cy="12.1" r="1" />
+                                    </svg>
+                                    {{ exam.nombre }}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Exámenes No Realizados Tercer Trimestre -->
+                <div class="border rounded-lg w-full px-4 py-2">
+                    <div class="flex gap-2 text-[#E11D48] mb-2 mt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m15 9-6 6" />
+                            <path d="m9 9 6 6" />
+                        </svg>
+                        <h3 class="font-bold">No Realizados</h3>
+                    </div>
+                    <ul>
+                        <li *ngFor="let examen of trimestre3.noRealizados">
+                            <div *ngFor="let exam of examenesIIISemestre">
+                                <div class="flex items-center" *ngIf="!examen[exam.campo]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-dot text-[#E11D48]">
+                                        <circle cx="12.1" cy="12.1" r="1" />
+                                    </svg>
+                                    {{ exam.nombre }}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
