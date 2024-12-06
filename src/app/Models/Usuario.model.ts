@@ -18,6 +18,7 @@ export class Usuario {
     dir_usuario: string;
     procesosCount?: number;
     showDropdown?: boolean;
+    autorizacion: boolean;
 
     constructor({
         id_usuario = 0,
@@ -37,6 +38,7 @@ export class Usuario {
         cod_departamento = 0,
         cod_municipio = 0,
         cod_poblacion = 0,
+        autorizacion = false,  // Cambiar aquí el valor predeterminado a `false`
     }: {
         id_usuario?: number,
         nom_usuario?: string,
@@ -55,6 +57,7 @@ export class Usuario {
         cod_ips?: number,
         cod_poblacion?: number,
         dir_usuario?: string,
+        autorizacion?: boolean, // También puede ser opcional en el tipo
     } = {}) {
         this.id_usuario = id_usuario;
         this.nom_usuario = nom_usuario;
@@ -73,7 +76,7 @@ export class Usuario {
         this.cod_ips = cod_ips;
         this.cod_poblacion = cod_poblacion;
         this.dir_usuario = dir_usuario;
-
+        this.autorizacion = autorizacion;
     }
 
 }

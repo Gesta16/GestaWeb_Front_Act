@@ -4,11 +4,10 @@ import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../../Services/alert.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   isSubmitting = false;
@@ -22,32 +21,47 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private alertService:AlertService,
-  ){}
+    private alertService: AlertService
+  ) {}
 
-  login(){
+  login() {
     if (this.isSubmitting) {
       return;
     }
 
     this.isSubmitting = true;
-    const credentials = {documento:this.loginForm.get('documento').value, password:this.loginForm.get('password').value}
+    const credentials = { 
+      documento: this.loginForm.get('documento').value, 
+      password: this.loginForm.get('password').value 
+    };
+
     this.authService.login(credentials).subscribe(
-      (response)=>{
-        //console.log(response);
-        this.router.navigate(['dashboard']);
-        this.alertService.successAlert('exito',response.message);
+      (response) => {
+        // Después de un login exitoso, obtenemos el rol y redirigimos
+        const userRole = this.authService.currentUserValue?.rol.nombre_rol;
+        
+        // Redirigir dependiendo del rol
+        if (userRole === 'usuario') {
+          // Si el rol es 'usuario', redirigir al dashboard de gestante
+          this.router.navigate(['dashboard-gestante']);
+        } else {
+          // Si el rol no es 'usuario', redirigir al dashboard general
+          this.router.navigate(['/dashboard']);
+        }
+
+        // Mostrar mensaje de éxito
+        this.alertService.successAlert('Éxito', response.message);
       },
-      (error)=>{
+      (error) => {
+        // Mostrar mensaje de error
         this.alertService.errorAlert('Error', error.error.message);
         console.log('Login fallido', error);
         this.isSubmitting = false;
       }
-    )
-    
+    );
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['home']);
   }
 }

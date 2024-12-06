@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 import { NotasComponent } from './pages/notas/notas.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-header-module.module';
+import { ModalComponent } from './pages/modal/modal.component';
+import { ExamenesComponent } from './pages/examenes/examenes.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
@@ -13,6 +16,8 @@ import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-
   declarations: [
     NotasComponent,
     DashboardComponent,
+    ModalComponent,
+    ExamenesComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +25,7 @@ import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    FullCalendarModule,
     SharedHeaderModuleModule
 
   ]

@@ -214,7 +214,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fac_asesoria" class="font-medium mb-1">Fecha asesoría IVE</label>
                                         <input type="date" id="fac_asesoria" [(ngModel)]="controlPrenatal.fac_asesoria"
-                                            [readonly]="isReadOnly || !mostrarCampos['asis_asesoria_ive']"
+                                            [readonly]="isReadOnly || !mostrarCampos['asis_asesoria_ive'] || !mostrarCampos['usu_solicito']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 

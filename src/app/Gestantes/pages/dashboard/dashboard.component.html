@@ -1,3 +1,5 @@
+<!-- dashboard.component.html -->
+
 <!-- Encabezado -->
 <app-header></app-header>
 
@@ -5,103 +7,122 @@
     'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 
     'ml-0': !isVisible}">
-    <!-- Team Strength Card -->
-    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4 mb-6">
-        <h3 class="text-lg font-bold mb-4">Teams Strength</h3>
-        <div class="flex flex-col space-y-4">
-            <div class="flex items-center justify-between">
-                <p class="font-bold text-blue-500">Marketing</p>
-                <p class="text-gray-500">1</p>
+
+    <!-- Estilos de la primera fila -->
+    <div class="flex flex-wrap gap-4 w-full mt-6">
+
+        <!-- Campo para el proceso por trimestres -->
+        <div class="bg-white rounded-lg w-[33%] mb-6 border">
+            
+            <!-- Mostrar el trimestre con diferentes colores -->
+            <div class="p-6 rounded-lg w-[100%] h-[70%] border"
+                [ngClass]="{
+                'bg-green-200': colorBarra === 'bg-green-200',
+                'bg-yellow-200': colorBarra === 'bg-yellow-200',
+                'bg-red-200': colorBarra === 'bg-red-200',
+                'bg-gray-200': colorBarra === 'bg-gray-200'
+                }">
+
+                <p class="text-3xl font-bold mb-4">{{ trimestre }}</p>
+
+                <p class="text-right text-gray-600 mt-2 font-bold">Restantes: {{ semanasRestantes }} semanas</p>
+
             </div>
-            <div class="flex items-center justify-between">
-                <p class="font-bold text-orange-500">HR</p>
-                <p class="text-gray-500">5</p>
+            
+            <!-- Barra de progreso -->
+
+            <div class="p-6 rounded-lg w-[100%] h-[30%]">
+
+                <div class="h-2.5 rounded-full mt-4" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100"></div>
+                <!-- Texto con las semanas gestacionales -->
+                <p class="text-center mt-2 font-bold">{{ edadGestacional }} semanas</p>
             </div>
-            <div class="flex items-center justify-between">
-                <p class="font-bold text-green-500">Developers</p>
-                <p class="text-gray-500">3</p>
+
+        </div>
+
+
+        <!-- Diseño del calendario -->
+        <div *ngIf="!loading;" class="bg-white p-6 rounded-lg w-[33%] mb-6 border">
+            <!-- <h3 class="text-lg font-bold mb-4">Calendario</h3> -->
+            <!-- <div *ngIf="!loading;" class="m-3 flex-[0_0_75%] h-[95%] full-calendar-container overflow-auto border border-blue-800"> -->
+            <!-- <div class="border border-gray-300 bg-white shadow-md rounded-lg p-3 h-full overflow-hidden"> -->
+            <!-- <div class="calendar-container border border-blue-800"> -->
+            <full-calendar [options]="calendarOptions" class="h-full"></full-calendar>
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- </div> -->
+        </div>
+
+        <div class="flex flex-col w-[30%] gap-4">
+            <div class="bg-[#FFF0E6] p-4 rounded-lg text-center">
+                <p class="text-lg font-bold mb-1">Tu edad gestacional es </p>
+                <p class="font-bold text-lg">#</p>
             </div>
-            <div class="flex items-center justify-between">
-                <p class="font-bold text-purple-500">Design</p>
-                <p class="text-gray-500">10</p>
+
+            <div class="bg-[#ECEAFE] p-4 rounded-lg text-center">
+                <p class="text-lg font-bold">Llevas # controles prenatales realizados</p>
+            </div>
+
+            <div class="bg-[#E5F7FF] p-6 rounded-lg text-center">
+                <p class="text-lg font-bold">Has realizado # sesiones del curso</p>
+            </div>
+
+            <div class="bg-[#bfdbfe] p-4 rounded-lg text-center">
+                <p class="text-lg font-bold mb-1">Tu fecha probable de parto es:</p>
+                <p class="font-bold">20 de diciembre del 2025</p>
             </div>
         </div>
     </div>
 
-    <!-- Employees Card -->
-    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4 mb-6">
-        <h3 class="text-lg font-bold mb-4">Employees</h3>
-        <div class="flex flex-col space-y-4">
-            <div class="flex items-center justify-between">
-                <p class="font-bold text-blue-500">Inactive</p>
-                <p class="text-gray-500">254</p>
-            </div>
-            <div class="flex items-center justify-between">
-                <p class="font-bold text-orange-500">Active</p>
-                <p class="text-gray-500">3000</p>
-            </div>
-            <div class="flex items-center justify-between">
-                <p class="font-bold text-green-500">Total</p>
-                <p class="text-gray-500">3254</p>
+    <!-- Estilos de la segunda fila -->
+    <div class="flex flex-wrap gap-4 w-full mt-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[67%] mb-6">
+            <h3 class="text-lg font-bold mb-4">Grafica peso</h3>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md w-[31%] mb-6">
+            <h3 class="text-lg font-bold mb-4">¡Importante!</h3>
+            <div class="flex flex-col space-y-4">
+                <div class="flex items-center">
+                    <p class="font-bold text-gray-700">Ellie joined team developers</p>
+                    <p class="text-gray-500 ml-auto">04 April, 2021 10:09 PM</p>
+                </div>
+                <div class="flex items-center">
+                    <p class="font-bold text-gray-700">Jenny joined team HR</p>
+                    <p class="text-gray-500 ml-auto">03 April, 2021 04:09 PM</p>
+                </div>
+                <div class="flex items-center">
+                    <p class="font-bold text-gray-700">Adam got employee of the month</p>
+                    <p class="text-gray-500 ml-auto">05 April, 2021 11:00 AM</p>
+                </div>
+                <div class="flex items-center">
+                    <p class="font-bold text-gray-700">Robert joined team design</p>
+                    <p class="text-gray-500 ml-auto">02 April, 2021 12:00 PM</p>
+                </div>
+                <div class="flex items-center">
+                    <p class="font-bold text-gray-700">Jack joined team design</p>
+                    <p class="text-gray-500 ml-auto">02 April, 2021 03:00 PM</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Project Deliveries Card -->
-    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/2 mb-6">
-        <h3 class="text-lg font-bold mb-4">Project Deliveries</h3>
-        <div class="flex items-center justify-between">
-            <p class="text-gray-500">Achieved</p>
-            <p class="font-bold text-red-500">7 Projects</p>
-        </div>
-        <div class="flex items-center justify-between">
-            <p class="text-gray-500">Target</p>
-            <p class="font-bold text-blue-500">5 Projects</p>
-        </div>
+    <!-- Grafica presión -->
+    <div class="bg-white p-6 rounded-lg shadow-lg w-[99%] mb-6">
+        <h3 class="text-lg font-bold mb-4">Grafica presión</h3>
     </div>
 
-    <!-- Top 10 Card (Separated into individual cards) -->
-    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4 mb-6">
-        <h3 class="text-lg font-bold mb-4">Top 10</h3>
-        <p class="font-bold text-blue-500">20% increase from last week</p>
-        <p class="text-gray-500">Position In Dribbble</p>
-    </div>
-    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4 mb-6">
-        <h3 class="text-lg font-bold mb-4">New Employees Onboarded</h3>
-        <p class="font-bold text-blue-500">26</p>
-        <p class="text-gray-500">15% increase from last month</p>
-    </div>
-    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4 mb-6">
-        <h3 class="text-lg font-bold mb-4">New Clients Approached</h3>
-        <p class="font-bold text-blue-500">500</p>
-        <p class="text-gray-500">5% increase from last week</p>
-    </div>
+    <!-- Datos de vacunación de la gestante y el bb -->
+    <div class="flex flex-wrap gap-4 w-full">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+            <p class="text-lg font-bold mb-4">Datos de vacunación de la gestante</p>
+        </div>
 
-    <!-- Notifications Card -->
-    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/4 mb-6">
-        <h3 class="text-lg font-bold mb-4">Notifications</h3>
-        <div class="flex flex-col space-y-4">
-            <div class="flex items-center">
-                <p class="font-bold text-gray-700">Ellie joined team developers</p>
-                <p class="text-gray-500 ml-auto">04 April, 2021 10:09 PM</p>
-            </div>
-            <div class="flex items-center">
-                <p class="font-bold text-gray-700">Jenny joined team HR</p>
-                <p class="text-gray-500 ml-auto">03 April, 2021 04:09 PM</p>
-            </div>
-            <div class="flex items-center">
-                <p class="font-bold text-gray-700">Adam got employee of the month</p>
-                <p class="text-gray-500 ml-auto">05 April, 2021 11:00 AM</p>
-            </div>
-            <div class="flex items-center">
-                <p class="font-bold text-gray-700">Robert joined team design</p>
-                <p class="text-gray-500 ml-auto">02 April, 2021 12:00 PM</p>
-            </div>
-            <div class="flex items-center">
-                <p class="font-bold text-gray-700">Jack joined team design</p>
-                <p class="text-gray-500 ml-auto">02 April, 2021 03:00 PM</p>
-            </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+            <p class="text-lg font-bold mb-4">Datos de vacunación del bb</p>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<app-modal *ngIf="isModalVisible" (closeModalEvent)="handleModalClose($event)"></app-modal>

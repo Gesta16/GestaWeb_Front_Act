@@ -1,67 +1,54 @@
-<!-- Diseño de modal que se visualiza en 'Ejercicio laboral' -->
+<!-- Diseño de la modal de manejo posparto -->
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto">
-    <div class="bg-white rounded-lg w-11/12 md:w-3/4 lg:w-2/3 flex flex-col md:flex-row relative max-h-full overflow-y-auto">
-      
-      <!-- Sección de la imagen -->
-      <div class="w-full md:w-1/2 bg-cover bg-center rounded-t-lg md:rounded-l-lg relative" style="background-image: url('assets/images/inicio/modal_ejercicio.jpg');">
-        
-        <!-- Capa oscura -->
-        <span class="absolute inset-0 bg-black opacity-45 z-10"></span>
-  
-        <!-- Texto encima de la imagen -->
-        <div class="relative z-20 text-white p-4 md:p-8 mt-auto md:mt-[66%] w-full">
-          <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-8 font-serif">Ejercicio regular</h2>
+  <div class="bg-white rounded-lg w-11/12 md:w-3/4 lg:w-2/3 flex flex-col md:flex-row relative max-h-full overflow-y-auto">
+
+    <!-- Sección de los ítems -->
+    <div class="w-full p-4 md:p-8 relative bg-[#fffae4] text-center">
+      <!-- Botón de cerrar -->
+      <button (click)="cerrar()" class="absolute top-2 right-4 text-gray-500 hover:text-gray-700 text-2xl md:text-3xl">
+        &times;
+      </button>
+      <p class="font-bold font-serif text-xl">Recomendaciones para la lactancia y el puerperio</p>
+      <!-- Ítems alineados -->
+      <div class="space-y-4 md:space-y-6 mt-4">
+        <div class="flex items-start shadow-lg bg-white rounded-xl p-4">
+          <span class="font-bold text-lg mr-4">01</span>
+          <p class="text-black text-sm md:text-base">La lactancia materna exclusiva tiene una probabilidad de
+            transmisión de VIH postparto de 9,3% a los 18 meses de seguimiento, por lo que deben darse indicaciones
+            sobre alimentación con fórmula láctea exclusiva hasta los 6 meses de vida del niño, sin olvidar el control
+            de la galactorrea.
+          </p>
         </div>
-      </div>
-      
-      <!-- Sección del contenido -->
-      <div class="w-full md:w-1/2 p-4 md:p-8 relative">
-        
-        <!-- Icono de cerrar -->
-        <button (click)="cerrar()" class="absolute top-2 right-4 text-gray-500 hover:text-gray-700 text-2xl md:text-3xl">
-          &times;
-        </button>
-        
-        <!-- Estilo del texto -->
-        <div class="space-y-4 md:space-y-6 mt-4 md:mt-[50px]">
-  
-          <div>
-            <p class="text-black text-left text-sm md:text-base">
-              Durante el embarazo, es esencial mantenerse bien hidratada y proteger tu bienestar. 
-              Beber suficiente agua y evitar ejercicios de alto impacto o actividades que puedan 
-              poner en riesgo tu salud son claves para un embarazo saludable.
-            </p>
-          </div>
-  
-          <div>
-            <h3 class="text-md md:text-lg font-bold text-red-400">1. Caminar:</h3>
-            <p class="text-black text-left text-sm md:text-base">
-              Una de las formas más sencillas y seguras de ejercicio. Ayuda a mantener el corazón fuerte y mejorar el estado de ánimo.
-            </p>
-          </div>
-  
-          <div>
-            <h3 class="text-md md:text-lg font-bold text-red-400">2. Ejercicio de Respiración y Relajación:</h3>
-            <p class="text-black text-left text-sm md:text-base">
-              Practicar técnicas de respiración profunda y relajación para reducir el estrés y prepararse para el parto.
-            </p>
-          </div>
-  
-          <div>
-            <h3 class="text-md md:text-lg font-bold text-red-400">3. Ejercicios de Estiramiento:</h3>
-            <p class="text-black text-left text-sm md:text-base">
-              Estiramientos suaves para mejorar la flexibilidad y aliviar la tensión muscular. Ejemplos incluyen estiramiento de cuello, espalda, caderas y piernas.
-            </p>
-          </div>
-  
-          <!-- Párrafo centrado debajo de la imagen -->
-           <div class="w-full flex flex-col items-center mt-6 md:mt-4">
-             <p class="text-black font-bold font-serif text-sm md:text-base">
-               ¡Muévete y vive un embarazo más feliz y saludable!
-             </p>
-           </div>
+        <div class="flex items-start shadow-lg bg-white rounded-xl p-4">
+          <span class="font-bold text-lg mr-4">02</span>
+          <p class="text-black text-sm md:text-base">Son factores de riesgo para la transmisión mediante la lactancia
+            materna: la carga viral en la leche matema, mastitis aguda o subclínica, abscesos en mama y sero-conversión
+            durante la lactancia.
+          </p>
+        </div>
+        <div class="flex items-start shadow-lg bg-white rounded-xl p-4">
+          <span class="font-bold text-lg mr-4">03</span>
+          <p class="text-black text-sm md:text-base">El suministro de leche de fórmula debe ser continuo y su
+            preparación debe tener las condiciones óptimas de higiene y limpieza para facilitar la práctica de la
+            alimentación.
+          </p>
+        </div>
+        <div class="flex items-start shadow-lg bg-white rounded-xl p-4">
+          <span class="font-bold text-lg mr-4">04</span>
+          <p class="text-black text-sm md:text-base">En el postparto inmediato la paciente debe continuar el tratamiento
+            ARV oral que venía recibiendo durante el embarazo, tener una adecuada evaluación virológica (carga viral),
+            inmunológica (CD4/CD8) y de su estado clínico, para definir la continuidad o no de este. Consultar al
+            experto.
+          </p>
+        </div>
+        <div class="flex items-start shadow-lg bg-white rounded-xl p-4">
+          <span class="font-bold text-lg mr-4">05</span>
+          <p class="text-black text-sm md:text-base">Si la madre no venía recibiendo ARV orales durante el embarazo debe
+            tener una adecuada evaluación virológica (carga viral), inmunológica (CD4/CD8) y de su estado clínico, para
+            definir el inicio de esta. Consultar al experto.
+          </p>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

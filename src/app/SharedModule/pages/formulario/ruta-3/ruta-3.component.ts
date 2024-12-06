@@ -538,7 +538,7 @@ export class Ruta3Component {
       this.laboratorioIISemestreservice.createLaboratorioSegundoSemestre(this.laboratorioIITrimestre).subscribe({
         next: (response) => {
           //console.log('Laboratorio del segundo semestre creado:', response);
-          this.alertService.successAlert('Exito',response.data).then(()=>{
+          this.alertService.successAlert('Exito',response.mensaje).then(()=>{
             this.id_laboratorioII = response.data.cod_doslaboratorio ?? null;
             this.isReadOnlyLaboratorioII = true;
             this.isEditing = false;

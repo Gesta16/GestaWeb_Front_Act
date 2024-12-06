@@ -30,6 +30,7 @@
                         <th scope="col" class="px-5 py-3">Nombre</th>
                         <th scope="col" class="px-5 py-3">Apellido</th>
                         <th scope="col" class="px-5 py-3">Edad</th>
+                        <th scope="col" class="px-5 py-3">Términos</th>
                         <th scope="col" class="px-5 py-3">Acciones</th>
                     </tr>
                 </thead>
@@ -40,6 +41,19 @@
                         <td>{{ usuario.nom_usuario }}</td>
                         <td>{{ usuario.ape_usuario }}</td>
                         <td>{{ usuario.edad_usuario }}</td>
+                        <td>
+                            <!-- Condicional para mostrar el botón según el valor de 'autorizacion' -->
+                            <button *ngIf="usuario.autorizacion === 0"
+                                class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 focus:outline-none">
+                                Por aceptar
+                            </button>
+
+                            <button *ngIf="usuario.autorizacion === 1"
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none">
+                                Aceptados
+                            </button>
+                        </td>
+
                         <td class="px-7 py-3 flex justify-center space-x-2">
                             <!-- Botón para abrir el modal de ver usuario -->
                             <!-- <button (click)="abrirModalVer(usuario)"
@@ -47,9 +61,10 @@
                             <span class="iconify fa-lg" data-icon="fluent:form-24-filled"></span>
                         </button> -->
 
-                            <!-- Botón para crear proceso si no hay ninguno -->
-                            <button (click)="crearProceso(usuario.id_usuario)"
-                                class="flex items-center h-8 border border-[#80BA27] bg-white text-black font-semibold px-2 rounded-xl hover:bg-[#EAF2DA] focus:outline-none">
+                            <!-- Botón para crear proceso si no hay ninguno, deshabilitado si 'autorizacion' es 0 -->
+                            <button (click)="crearProceso(usuario.id_usuario)" [disabled]="usuario.autorizacion === 0"
+                                class="flex items-center h-8 border border-[#80BA27] bg-white text-black font-semibold px-2 rounded-xl hover:bg-[#EAF2DA] focus:outline-none"
+                                [ngClass]="{ 'cursor-not-allowed': usuario.autorizacion === 0, 'opacity-50': usuario.autorizacion === 0 }">
                                 Nuevo proceso
                             </button>
 
@@ -60,7 +75,8 @@
                             </button>
 
                             <!-- menú que se muestra al hacer clic en 'Ver proceso' -->
-                            <div *ngIf="usuario.showDropdown" class="absolute right-0 mt-20 md:mt-10 mr-6 w-48 bg-white rounded-lg shadow-lg z-50 border border-[#CAD400]">
+                            <div *ngIf="usuario.showDropdown"
+                                class="absolute right-0 mt-20 md:mt-10 mr-6 w-48 bg-white rounded-lg shadow-lg z-50 border border-[#CAD400]">
                                 <ul>
                                     <li *ngFor="let num of generarRango(usuario.procesosCount)">
                                         <button (click)="verProceso(usuario.id_usuario, num)"
