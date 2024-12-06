@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { AlertService } from '../../../Services/alert.service';
 import { ImportExcelService } from '../../../Services/import-excel.service';
+import { Operador } from '../../../Models/Operador.model';
+import { OperadorService } from '../../../Services/operador.service';
+import { Opcode } from 'hardhat/internal/hardhat-network/stack-traces/opcodes';
 
 @Component({
   selector: 'app-import-excel',
@@ -13,12 +16,36 @@ export class ImportExcelComponent {
   nombreExcel!: string;
   procesando = false;
   enviandose = false;
+  listOperadores: Operador[] = [];
+  idOperador!: string;
 
 
   constructor(
     private alertService:AlertService,
     private importExcelService:ImportExcelService,
+    private operadorService:OperadorService
   ) {}
+
+  // funcion para iniciar metodos o funciones en el sistema
+  ngOnInit(): void {
+    this.getOperadores();
+  }
+
+  // funcion para llamar a todos los operadores
+  getOperadores(): void {
+    this.operadorService.getOperadores().subscribe(
+      (data: { estado: string; operador:Operador[]}) => {
+        if (data.estado === "Ok" && Array.isArray(data.operador)) {
+          this.listOperadores = data.operador;
+        } else {
+          console.error('Estructura de datos inesperada:', data);
+        }
+      },
+      (error: any) => {
+        console.error('Error al obtener los datos de OPERADOR:', error);
+      }
+    )
+  }
 
   // funcion para guardar la imagen y validarla
   onFileSelected(event: any) {
@@ -71,6 +98,7 @@ export class ImportExcelComponent {
     if (fileInput) {
       fileInput.value = ''; // Reinicia el valor del input file
     }
+    this.idOperador = null;
   }
 
   // funcion para enviar los datos del excel
@@ -78,7 +106,7 @@ export class ImportExcelComponent {
     // validamos si esta enviandose
     if(!this.procesando){
       // validamos que exista el archivo y sea valido
-      if (this.selectedFile && this.selectedFile != null) {
+      if (this.selectedFile && this.selectedFile != null && this.idOperador != null) {
         // evitamos que el usuario envie mas de una vez mientras se procesa
         this.procesando = true;
         // cambiamos el titulo del boton mientras se procesa
@@ -86,7 +114,7 @@ export class ImportExcelComponent {
         // mostramos una alerta mientras se manda y se recibe
         this.alertService.waitAlert('Espere', 'El Archivo se esta Procesado');
         // enviamos los datos a travez del servicio
-        this.importExcelService.importExcel(this.selectedFile).subscribe({
+        this.importExcelService.importExcel(this.selectedFile, this.idOperador).subscribe({
           // si sale bien se hara:
           next: (response) => {
             console.log(response);
@@ -105,7 +133,12 @@ export class ImportExcelComponent {
           },
         });
       } else {
-        this.alertService.infoAlert('Error', 'No selecciono Ningún Archivo');
+        if(this.idOperador != null){
+          this.alertService.infoAlert('Error', 'No selecciono Ningún Archivo'); 
+        } else {
+          this.alertService.infoAlert('Error', 'No selecciono Ningún Operador');
+        }
+        
       }
     }
   }
