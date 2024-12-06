@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { AlertService } from '../../../Services/alert.service';
 import { ImportExcelService } from '../../../Services/import-excel.service';
 import { Operador } from '../../../Models/Operador.model';
@@ -10,7 +10,7 @@ import { Opcode } from 'hardhat/internal/hardhat-network/stack-traces/opcodes';
   templateUrl: './import-excel.component.html',
   styleUrl: './import-excel.component.css'
 })
-export class ImportExcelComponent {
+export class ImportExcelComponent implements AfterViewInit {
 
   selectedFile!: File;
   nombreExcel!: string;
@@ -27,8 +27,8 @@ export class ImportExcelComponent {
   ) {}
 
   // funcion para iniciar metodos o funciones en el sistema
-  ngOnInit(): void {
-    this.getOperadores();
+  ngAfterViewInit(): void {
+    this.getOperadores(); // Llamada a la función después de cargar la vista
   }
 
   // funcion para llamar a todos los operadores
