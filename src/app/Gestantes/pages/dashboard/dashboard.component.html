@@ -56,20 +56,20 @@
         <div class="flex flex-col w-[30%] gap-4">
             <div class="bg-[#FFF0E6] p-4 rounded-lg text-center">
                 <p class="text-lg font-bold mb-1">Tu edad gestacional es </p>
-                <p class="font-bold text-lg">#</p>
+                <p class="font-bold text-lg">{{edadGestacional}}</p>
             </div>
 
             <div class="bg-[#ECEAFE] p-4 rounded-lg text-center">
-                <p class="text-lg font-bold">Llevas # controles prenatales realizados</p>
+                <p class="text-lg font-bold">Llevas {{controles}} controles prenatales realizados</p>
             </div>
 
             <div class="bg-[#E5F7FF] p-6 rounded-lg text-center">
-                <p class="text-lg font-bold">Has realizado # sesiones del curso</p>
+                <p class="text-lg font-bold">Has realizado {{sessiones}} sesiones del curso</p>
             </div>
 
             <div class="bg-[#bfdbfe] p-4 rounded-lg text-center">
                 <p class="text-lg font-bold mb-1">Tu fecha probable de parto es:</p>
-                <p class="font-bold">20 de diciembre del 2025</p>
+                <p class="font-bold">{{fechaParto}}</p>
             </div>
         </div>
     </div>
@@ -78,6 +78,7 @@
     <div class="flex flex-wrap gap-4 w-full mt-6">
         <div class="bg-white p-6 rounded-lg shadow-lg w-[67%] mb-6">
             <h3 class="text-lg font-bold mb-4">Grafica peso</h3>
+            <div id="pesoChart" style="width: 100%; height: 400px;"></div>
         </div>
 
         <div class="bg-white p-6 rounded-lg shadow-md w-[31%] mb-6">
@@ -110,6 +111,7 @@
     <!-- Grafica presión -->
     <div class="bg-white p-6 rounded-lg shadow-lg w-[99%] mb-6">
         <h3 class="text-lg font-bold mb-4">Grafica presión</h3>
+        <div id="presionChart" style="width: 100%; height: 400px;"></div>
     </div>
 
     <!-- Datos de vacunación de la gestante y el bb -->
