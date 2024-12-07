@@ -21,6 +21,7 @@ export class LaboratorioIIITrimestre {
     reali_prueb_igm_toxoplasma: boolean;
     reali_prueb_culti_rect_vagi: boolean;
     reali_prueb_perfil_biofisico: boolean;
+    reali_hemograma: boolean;
 
     constructor({
         id_operador = 0,
@@ -44,6 +45,7 @@ export class LaboratorioIIITrimestre {
         reali_prueb_igm_toxoplasma = false,
         reali_prueb_culti_rect_vagi = false,
         reali_prueb_perfil_biofisico = false,
+        reali_hemograma = false,
     }: {
         cod_treslaboratorio?: number,
         id_operador?: number,
@@ -67,6 +69,7 @@ export class LaboratorioIIITrimestre {
         reali_prueb_igm_toxoplasma?: boolean,
         reali_prueb_culti_rect_vagi?: boolean,
         reali_prueb_perfil_biofisico?: boolean,
+        reali_hemograma?: boolean,
     } = {}) {
         this.cod_treslaboratorio = this.cod_treslaboratorio;
         this.id_operador = id_operador;
@@ -90,5 +93,6 @@ export class LaboratorioIIITrimestre {
         this.reali_prueb_igm_toxoplasma = reali_prueb_igm_toxoplasma
         this.reali_prueb_culti_rect_vagi = reali_prueb_culti_rect_vagi
         this.reali_prueb_perfil_biofisico = reali_prueb_perfil_biofisico
+        this.reali_hemograma = reali_hemograma
     }
 }

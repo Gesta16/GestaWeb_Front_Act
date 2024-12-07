@@ -34,7 +34,10 @@ export class LaboratorioIITrimestre {
     reali_prueb_hemoparasito: boolean;
     reali_prueb_coombis_indi_cuanti: boolean;
     reali_eco_obste_detalle_anato: boolean;
-
+    real_igm_toxoplasma_2: boolean;
+    real_prueb_oral:boolean;
+    real_prueb_oral_1:boolean;
+    real_prueb_oral_2:boolean;
     constructor({
         cod_doslaboratorio = 0,
         id_operador = 0,
@@ -71,6 +74,10 @@ export class LaboratorioIITrimestre {
         reali_prueb_hemoparasito = false,
         reali_prueb_coombis_indi_cuanti = false,
         reali_eco_obste_detalle_anato = false,
+        real_igm_toxoplasma_2 = false,
+        real_prueb_oral = false,
+        real_prueb_oral_1 = false,
+        real_prueb_oral_2 = false,
     }: {
         cod_doslaboratorio?: number,
         id_operador?: number,
@@ -107,6 +114,10 @@ export class LaboratorioIITrimestre {
         reali_prueb_hemoparasito?: boolean,
         reali_prueb_coombis_indi_cuanti?: boolean,
         reali_eco_obste_detalle_anato?: boolean,
+        real_igm_toxoplasma_2?: boolean,
+        real_prueb_oral?: boolean,
+        real_prueb_oral_1?: boolean,
+        real_prueb_oral_2?: boolean,
     } = {}) {
         this.cod_doslaboratorio = cod_doslaboratorio;
         this.id_operador = id_operador;
@@ -143,6 +154,9 @@ export class LaboratorioIITrimestre {
         this.reali_prueb_hemoparasito = reali_prueb_hemoparasito
         this.reali_prueb_coombis_indi_cuanti = reali_prueb_coombis_indi_cuanti
         this.reali_eco_obste_detalle_anato = reali_eco_obste_detalle_anato
-
+        this.real_igm_toxoplasma_2 = reali_eco_obste_detalle_anato
+        this.real_prueb_oral = real_prueb_oral
+        this.real_prueb_oral_1 = real_prueb_oral_1
+        this.real_prueb_oral_2 = real_prueb_oral_2
     }
 }

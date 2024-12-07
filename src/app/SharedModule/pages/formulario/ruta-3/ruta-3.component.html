@@ -123,40 +123,74 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_hemograma" class="font-medium mb-1">Realizó hemograma</label>
+                                        <select id="real_hemograma" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_hemograma"
+                                            (change)="onLaboratoriosChange('real_hemograma')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="hemograma" class="font-medium mb-1">Hemograma</label>
-                                        <select id="hemograma" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="hemograma" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_hemograma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.hem_laboratorio" name="hem_laboratorio">
-                                            <option value="Normal">Normal</option>
-                                            <option value="Anormal">Anormal</option>
+                                            <option value="1">Normal</option>
+                                            <option value="0">Anormal</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_hemograma" class="font-medium mb-1">Fecha hemograma</label>
-                                        <input type="date" id="fec_hemograma" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fec_hemograma" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_hemograma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_hemograma" name="fec_hemograma">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_glicemia" class="font-medium mb-1">Realizó glicemia</label>
+                                        <select id="real_glicemia" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_glicemia"
+                                            (change)="onLaboratoriosChange('real_glicemia')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="glicemia" class="font-medium mb-1">Glicemia</label>
-                                        <input type="text" id="glicemia" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="text" id="glicemia" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_glicemia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.gli_laboratorio" name="gli_laboratorio">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_glicemia" class="font-medium mb-1">Fecha glicemia</label>
-                                        <input type="date" id="fec_glicemia" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fec_glicemia" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_glicemia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_glicemia" name="fec_glicemia">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_antigenos" class="font-medium mb-1">Realizó antígeno de superficie hepatitis
+                                            b</label>
+                                        <select id="real_antigenos" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_antigenos"
+                                            (change)="onLaboratoriosChange('real_antigenos')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="antigeno" class="font-medium mb-1">Antígeno de superficie hepatitis
                                             b</label>
-                                        <select id="antigeno" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="antigeno" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_antigenos']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.ant_laboratorio" name="ant_laboratorio">
                                             <option value="Positivo">Positivo</option>
@@ -167,7 +201,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_antigeno" class="font-medium mb-1">Fecha antígeno de superficie
                                             hepatitis b</label>
-                                        <input type="date" id="fec_antigeno" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fec_antigeno" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_antigenos']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_antigeno" name="fec_antigeno">
                                     </div>
@@ -309,55 +343,118 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_ig_rubeola" class="font-medium mb-1">Realizó IG-G rubéola</label>
+                                        <select id="real_ig_rubeola" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_ig_rubeola"
+                                            (change)="onLaboratoriosChange('real_ig_rubeola')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="igGRubeola" class="font-medium mb-1">IG-G rubéola</label>
-                                        <select id="igGRubeola" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="igGRubeola" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_ig_rubeola']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.ig_rubeola">
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fecIGGRubeola" class="font-medium mb-1">Fecha IG-G rubéola</label>
-                                        <input type="date" id="fecIGGRubeola" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fecIGGRubeola" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_ig_rubeola']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_rubeola">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_ig_toxoplasma" class="font-medium mb-1">Realizó IG-G toxoplasma</label>
+                                        <select id="real_ig_toxoplasma" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_ig_toxoplasma"
+                                            (change)="onLaboratoriosChange('real_ig_toxoplasma')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="igGToxoplasma" class="font-medium mb-1">IG-G toxoplasma</label>
-                                        <select id="igGToxoplasma" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="igGToxoplasma" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['IG-G toxoplasma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.ig_toxoplasma">
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fecIGGToxoplasma" class="font-medium mb-1">Fecha IG-G
                                             toxoplasma</label>
-                                        <input type="date" id="fecIGGToxoplasma" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fecIGGToxoplasma" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['IG-G toxoplasma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_toxoplasma">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_igm_toxoplasma" class="font-medium mb-1">Realizó IG-M toxoplasma</label>
+                                        <select id="real_igm_toxoplasma" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_igm_toxoplasma"
+                                            (change)="onLaboratoriosChange('real_igm_toxoplasma')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="igm_toxoplamas" class="font-medium mb-1">IG-M toxoplasma</label>
+                                        <select id="igm_toxoplamas" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_igm_toxoplasma']"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.ig_toxoplasma">
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_igmtoxoplasma" class="font-medium mb-1">Fecha IG-M
+                                            toxoplasma</label>
+                                        <input type="date" id="fec_igmtoxoplasma" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igm_toxoplasma']"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioITrimestre.fec_toxoplasma">
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_hemoparasito" class="font-medium mb-1">Realizó Hemoparásito - gota
+                                            gruesa</label>
+                                        <select id="real_hemoparasito" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_hemoparasito"
+                                            (change)="onLaboratoriosChange('real_hemoparasito')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="hemoparasito" class="font-medium mb-1">Hemoparásito - gota
                                             gruesa</label>
-                                        <select id="hemoparasito" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="hemoparasito" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_hemoparasito']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.hem_gruesa">
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                            <option value="1">Positivo</option>
+                                            <option value="0">Negativo</option>
                                         </select>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fecHemoparasito" class="font-medium mb-1">Fecha Hemoparásito - gota
                                             gruesa</label>
-                                        <input type="date" id="fecHemoparasito" [readonly]="isReadOnlyLaboratorioI"
+                                        <input type="date" id="fecHemoparasito" [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_hemoparasito']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioITrimestre.fec_hemoparasito">
                                     </div>
@@ -594,14 +691,38 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_prueb_oral" class="font-medium mb-1">Realizó la Prueba de tolerancia oral a la
+                                            glucosa (PTOG) basal</label>
+                                        <select id="real_prueb_oral" [disabled]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.real_prueb_oral"
+                                            (change)="onLaboratoriosChange('real_prueb_oral')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="pru_oral" class="font-medium mb-1">Prueba de tolerancia oral a la
                                             glucosa
                                             (PTOG) basal</label>
                                         <select id="pru_oral" [(ngModel)]="laboratorioIITrimestre.pru_oral"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['real_prueb_oral']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Menor de 92mg/dl">Menor de 92mg/dl</option>
                                             <option value="Mayor de 92mg/dl">Mayor de 92mg/dl</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_prueb_oral_1" class="font-medium mb-1">Realizó la Prueba de tolerancia oral a la
+                                            glucosa (PTOG) 1 hora</label>
+                                        <select id="real_prueb_oral_1" [disabled]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.real_prueb_oral_1"
+                                            (change)="onLaboratoriosChange('real_prueb_oral_1')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
                                         </select>
                                     </div>
 
@@ -610,10 +731,22 @@
                                             glucosa
                                             (PTOG) 1 hora</label>
                                         <select id="pru_uno" [(ngModel)]="laboratorioIITrimestre.pru_uno"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['real_prueb_oral_1']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Menor de 180mg/dl">Menor de 180mg/dl</option>
                                             <option value="Mayor de 180mg/dl">Mayor de 180mg/dl</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_prueb_oral_2" class="font-medium mb-1">Realizó la Prueba de tolerancia oral a la
+                                            glucosa (PTOG) 2 hora</label>
+                                        <select id="real_prueb_oral_2" [disabled]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.real_prueb_oral_2"
+                                            (change)="onLaboratoriosChange('real_prueb_oral_2')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
                                         </select>
                                     </div>
 
@@ -622,7 +755,7 @@
                                             glucosa
                                             (PTOG) 2 hora</label>
                                         <select id="pru_dos" [(ngModel)]="laboratorioIITrimestre.pru_dos"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['real_prueb_oral_2']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Menor de 153mg/dl">Menor de 153mg/dl</option>
                                             <option value="Mayor de 153mg/dl">Mayor de 153mg/dl</option>
@@ -679,9 +812,20 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="real_igm_toxoplasma_2" class="font-medium mb-1">Realizó el IG-M toxoplasma</label>
+                                        <select id="real_igm_toxoplasma_2" [disabled]="isReadOnlyLaboratorioII"
+                                            [(ngModel)]="laboratorioIITrimestre.real_igm_toxoplasma_2"
+                                            (change)="onLaboratoriosChange('real_igm_toxoplasma_2')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="ig_toxoplasma" class="font-medium mb-1">IG-M toxoplasma</label>
                                         <select id="ig_toxoplasma" [(ngModel)]="laboratorioIITrimestre.ig_toxoplasma"
-                                            [disabled]="isReadOnlyLaboratorioII"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['real_igm_toxoplasma_2']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
                                             <option value="Negativo">Negativo</option>
@@ -895,8 +1039,19 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                                     <div class="flex flex-col text-xs">
+                                        <label for="reali_hemograma" class="font-medium mb-1">Realizó Hemograma</label>
+                                        <select id="reali_hemograma" [disabled]="isReadOnlyLaboratorioIII"
+                                            [(ngModel)]="laboratorioIIITrimestre.reali_hemograma"
+                                            (change)="onLaboratoriosChange('reali_hemograma')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
                                         <label for="hemograma" class="font-medium mb-1">Hemograma</label>
-                                        <select id="hemograma" [disabled]="isReadOnlyLaboratorioIII"
+                                        <select id="hemograma" [disabled]="isReadOnlyLaboratorioIII || !mostrarCampos['reali_hemograma']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="laboratorioIIITrimestre.hemograma">
                                             <option value="Normal">Normal</option>

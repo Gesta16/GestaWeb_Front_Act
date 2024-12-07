@@ -1,3 +1,5 @@
+import { fakeAsync } from "@angular/core/testing";
+
 export class LaboratorioITrimestre {
     cod_laboratorio: number;
     id_operador: number;
@@ -22,6 +24,8 @@ export class LaboratorioITrimestre {
     fec_rubeola: string;
     ig_toxoplasma: string;
     fec_toxoplasma: string;
+    igm_toxoplamas: string;
+    fec_igmtoxoplasma?:string | null;
     hem_gruesa: string;
     fec_hemoparasito: string;
     pru_antigenos?: string | null;
@@ -42,6 +46,13 @@ export class LaboratorioITrimestre {
     real_prueb_eliza_anti_recomb: boolean;
     real_prueb_coombis_indi_cuanti: boolean;
     real_eco_obste_tamizaje: boolean;
+    real_hemograma: boolean;
+    real_glicemia:boolean;
+    real_antigenos:boolean;
+    real_ig_toxoplasma:boolean;
+    real_igm_toxoplasma:boolean;
+    real_ig_rubeola: boolean;
+    real_hemoparasito:boolean;
 
     constructor({
         cod_laboratorio = 0,
@@ -67,6 +78,8 @@ export class LaboratorioITrimestre {
         fec_rubeola = '',
         ig_toxoplasma = '',
         fec_toxoplasma = '',
+        igm_toxoplamas = '',
+        fec_igmtoxoplasma = '',
         hem_gruesa = '',
         fec_hemoparasito = '',
         pru_antigenos = '',
@@ -87,6 +100,13 @@ export class LaboratorioITrimestre {
         real_prueb_eliza_anti_recomb = false,
         real_prueb_coombis_indi_cuanti = false,
         real_eco_obste_tamizaje = false,
+        real_hemograma = false,
+        real_glicemia = false,
+        real_antigenos = false,
+        real_ig_toxoplasma= false,
+        real_igm_toxoplasma= false,
+        real_ig_rubeola= false,
+        real_hemoparasito= false,
     }: {
         cod_laboratorio?: number,
         id_operador?: number,
@@ -111,6 +131,8 @@ export class LaboratorioITrimestre {
         fec_rubeola?: string,
         ig_toxoplasma?: string,
         fec_toxoplasma?: string,
+        igm_toxoplamas?:string,
+        fec_igmtoxoplasma?:string,
         hem_gruesa?: string,
         fec_hemoparasito?: string,
         pru_antigenos?: string,
@@ -131,7 +153,13 @@ export class LaboratorioITrimestre {
         real_prueb_eliza_anti_recomb?: boolean,
         real_prueb_coombis_indi_cuanti?: boolean,
         real_eco_obste_tamizaje?: boolean,
-
+        real_hemograma?: boolean,
+        real_glicemia?: boolean,
+        real_antigenos?: boolean,
+        real_ig_toxoplasma?: boolean,
+        real_igm_toxoplasma?: boolean,
+        real_ig_rubeola?: boolean,
+        real_hemoparasito?: boolean,
     } = {}) {
         this.cod_laboratorio = cod_laboratorio;
         this.id_operador = id_operador;
@@ -156,6 +184,8 @@ export class LaboratorioITrimestre {
         this.fec_rubeola = fec_rubeola;
         this.ig_toxoplasma = ig_toxoplasma;
         this.fec_toxoplasma = fec_toxoplasma;
+        this.igm_toxoplamas = igm_toxoplamas;
+        this.fec_igmtoxoplasma = fec_igmtoxoplasma;
         this.hem_gruesa = hem_gruesa;
         this.fec_hemoparasito = fec_hemoparasito;
         this.pru_antigenos = pru_antigenos;
@@ -176,6 +206,12 @@ export class LaboratorioITrimestre {
         this.real_prueb_eliza_anti_recomb= real_prueb_eliza_anti_recomb;
         this.real_prueb_coombis_indi_cuanti= real_prueb_coombis_indi_cuanti;
         this.real_eco_obste_tamizaje= real_eco_obste_tamizaje;
-
+        this.real_hemograma= real_hemograma;
+        this.real_glicemia= real_glicemia;
+        this.real_antigenos= real_antigenos;
+        this.real_ig_toxoplasma= real_ig_toxoplasma;
+        this.real_igm_toxoplasma= real_igm_toxoplasma;
+        this.real_ig_rubeola= real_ig_rubeola;
+        this.real_hemoparasito= real_hemoparasito;
     }
 }
