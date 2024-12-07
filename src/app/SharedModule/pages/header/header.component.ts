@@ -14,7 +14,7 @@ export class HeaderComponent {
     private authService: AuthService,
     private router: Router,
     private menuService: MenuService,
-    
+
   ) { }
 
   showDropdown = false;
@@ -35,7 +35,9 @@ export class HeaderComponent {
 
   // Permite abrir el menú del perfil y cerrar sesión
   toggleDropdown() {
+    console.log('showDropdown antes:', this.showDropdown);
     this.showDropdown = !this.showDropdown;
+    console.log('showDropdown después:', this.showDropdown);
   }
 
   toggleSidebar() {
@@ -47,5 +49,9 @@ export class HeaderComponent {
     this.authService.logout();
     this.menuService.setMenuVisible(false);
     this.router.navigate(['/login'])
+  }
+
+  goToProfile(){
+    this.router.navigate(['/perfil'])
   }
 }

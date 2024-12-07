@@ -3,7 +3,7 @@ import { AlertService } from '../../../Services/alert.service';
 import { ImportExcelService } from '../../../Services/import-excel.service';
 import { Operador } from '../../../Models/Operador.model';
 import { OperadorService } from '../../../Services/operador.service';
-import { Opcode } from 'hardhat/internal/hardhat-network/stack-traces/opcodes';
+
 
 @Component({
   selector: 'app-import-excel',

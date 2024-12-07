@@ -12,11 +12,10 @@
     <div class="flex flex-wrap gap-4 w-full mt-6">
 
         <!-- Campo para el proceso por trimestres -->
-        <div class="bg-white rounded-lg w-[33%] mb-6 border">
-            
+        <div class="bg-white rounded-lg w-[33%] mb-6 border shadow-md">
+
             <!-- Mostrar el trimestre con diferentes colores -->
-            <div class="p-6 rounded-lg w-[100%] h-[70%] border"
-                [ngClass]="{
+            <div class="p-6 w-[100%] h-[70%] border-b" [ngClass]="{
                 'bg-green-200': colorBarra === 'bg-green-200',
                 'bg-yellow-200': colorBarra === 'bg-yellow-200',
                 'bg-red-200': colorBarra === 'bg-red-200',
@@ -28,60 +27,20 @@
                 <p class="text-right text-gray-600 mt-2 font-bold">Restantes: {{ semanasRestantes }} semanas</p>
 
             </div>
-            
+
             <!-- Barra de progreso -->
 
             <div class="p-6 rounded-lg w-[100%] h-[30%]">
 
-                <div class="h-2.5 rounded-full mt-4" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100"></div>
+                <div class="h-2.5 rounded-full mt-4" [ngClass]="colorBarra"
+                    [style.width.%]="(edadGestacional / 42) * 100"></div>
                 <!-- Texto con las semanas gestacionales -->
                 <p class="text-center mt-2 font-bold">{{ edadGestacional }} semanas</p>
             </div>
-
         </div>
 
-
-        <!-- Diseño del calendario -->
-        <div *ngIf="!loading;" class="bg-white p-6 rounded-lg w-[33%] mb-6 border">
-            <!-- <h3 class="text-lg font-bold mb-4">Calendario</h3> -->
-            <!-- <div *ngIf="!loading;" class="m-3 flex-[0_0_75%] h-[95%] full-calendar-container overflow-auto border border-blue-800"> -->
-            <!-- <div class="border border-gray-300 bg-white shadow-md rounded-lg p-3 h-full overflow-hidden"> -->
-            <!-- <div class="calendar-container border border-blue-800"> -->
-            <full-calendar [options]="calendarOptions" class="h-full"></full-calendar>
-            <!-- </div> -->
-            <!-- </div> -->
-            <!-- </div> -->
-        </div>
-
-        <div class="flex flex-col w-[30%] gap-4">
-            <div class="bg-[#FFF0E6] p-4 rounded-lg text-center">
-                <p class="text-lg font-bold mb-1">Tu edad gestacional es </p>
-                <p class="font-bold text-lg">{{edadGestacional}}</p>
-            </div>
-
-            <div class="bg-[#ECEAFE] p-4 rounded-lg text-center">
-                <p class="text-lg font-bold">Llevas {{controles}} controles prenatales realizados</p>
-            </div>
-
-            <div class="bg-[#E5F7FF] p-6 rounded-lg text-center">
-                <p class="text-lg font-bold">Has realizado {{sessiones}} sesiones del curso</p>
-            </div>
-
-            <div class="bg-[#bfdbfe] p-4 rounded-lg text-center">
-                <p class="text-lg font-bold mb-1">Tu fecha probable de parto es:</p>
-                <p class="font-bold">{{fechaParto}}</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Estilos de la segunda fila -->
-    <div class="flex flex-wrap gap-4 w-full mt-6">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-[67%] mb-6">
-            <h3 class="text-lg font-bold mb-4">Grafica peso</h3>
-            <div id="pesoChart" style="width: 100%; height: 400px;"></div>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md w-[31%] mb-6">
+        <!-- diseño de las alertas -->
+        <div class="bg-white p-6 rounded-lg border shadow-md w-[31%] mb-6">
             <h3 class="text-lg font-bold mb-4">¡Importante!</h3>
             <div class="flex flex-col space-y-4">
                 <div class="flex items-center">
@@ -106,25 +65,101 @@
                 </div>
             </div>
         </div>
+
+        <!-- Diseño de las tarjetas -->
+        <div class="flex flex-col w-[30%] gap-4">
+            <div class="border border-pink-300 px-4 py-3 rounded-lg hover:bg-pink-50 shadow-lg">
+                <div class="flex text-xl font-bold mb-1 text-pink-700 gap-2 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-baby">
+                        <path d="M9 12h.01" />
+                        <path d="M15 12h.01" />
+                        <path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5" />
+                        <path
+                            d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1" />
+                    </svg>
+                    <p>Tu edad gestacional</p>
+                </div>
+                <p class="font-bold text-xl text-pink-900 px-8">{{edadGestacional}} Semanas</p>
+            </div>
+
+            <div class="border border-purple-300 hover:bg-purple-50 shadow-lg px-4 py-3 rounded-lg">
+                <div class="flex text-xl font-bold mb-1 text-purple-700 gap-2 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-clipboard-check">
+                        <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                        <path d="m9 14 2 2 4-4" />
+                    </svg>
+                    <p>Controles prenatales</p>
+                </div>
+                <p class="font-bold text-xl text-purple-900 px-8">{{controles}} Realizados</p>
+            </div>
+
+            <div class="border border-blue-300 hover:bg-blue-50 shadow-lg px-4 py-3 rounded-lg">
+                <div class="flex text-xl font-bold mb-1 text-blue-700 gap-2 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-graduation-cap">
+                        <path
+                            d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                        <path d="M22 10v6" />
+                        <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+                    </svg>
+                    <p>Sesiones del curso</p>
+                </div>
+                <p class="font-bold text-xl text-blue-900 px-8">{{sessiones}} Completadas</p>
+            </div>
+
+            <div class="border border-cyan-300 hover:bg-cyan-50 shadow-lg px-4 py-3 rounded-lg">
+                <div class="flex text-xl font-bold mb-1 text-cyan-700 gap-2 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-calendar">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <path d="M3 10h18" />
+                    </svg>
+                    <p class="text-lg font-bold mb-1">Tu fecha probable de parto es</p>
+                </div>
+                <p class="font-bold text-cyan-900 px-8">{{fechaParto}}</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Grafica presión -->
-    <div class="bg-white p-6 rounded-lg shadow-lg w-[99%] mb-6">
-        <h3 class="text-lg font-bold mb-4">Grafica presión</h3>
-        <div id="presionChart" style="width: 100%; height: 400px;"></div>
+    <!-- Estilos de la segunda fila -->
+    <div class="flex flex-wrap gap-4 w-full mt-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+            <h3 class="text-lg font-bold mb-4">Gráfica peso</h3>
+            <div id="pesoChart" style="width: 100%; height: 400px;"></div>
+        </div>
+
+        <!-- Grafica presión -->
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+            <h3 class="text-lg font-bold mb-4">Gráfica presión</h3>
+            <div id="presionChart" style="width: 100%; height: 400px;"></div>
+        </div>
     </div>
 
     <!-- Datos de vacunación de la gestante y el bb -->
     <div class="flex flex-wrap gap-4 w-full">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
             <p class="text-lg font-bold mb-4">Datos de vacunación de la gestante</p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
             <p class="text-lg font-bold mb-4">Datos de vacunación del bb</p>
+        </div>
+
+        <!-- Diseño del calendario -->
+        <div *ngIf="!loading;" class="bg-white p-6 rounded-lg w-[32%] mb-6 shadow-lg">
+            <full-calendar [options]="calendarOptions" class="h-full"></full-calendar>
         </div>
     </div>
 </div>
 
 <!-- Modal -->
-<app-modal *ngIf="isModalVisible" (closeModalEvent)="handleModalClose($event)"></app-modal>
+<!-- <app-modal *ngIf="isModalVisible" (closeModalEvent)="handleModalClose($event)"></app-modal> -->
