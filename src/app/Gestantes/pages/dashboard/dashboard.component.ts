@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
 import { AuthService } from '../../../Services/auth.service';
-import { ControlPrenatalService } from '../../../Services/control-prenatal.service'; 
+import { ControlPrenatalService } from '../../../Services/control-prenatal.service';
 import { UsuarioService } from '../../../Services/usuario.service';  // Importamos UsuarioService para manejar la autorización
 import { Consulta, DashboardService } from '../../../Services/dashboard.service';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { DashboardGestanteService } from '../../../Services/dashboard-gestante.service';
+import * as echarts from 'echarts';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -18,8 +21,14 @@ export class DashboardComponent implements OnInit {
   isModalVisible = false;  // Controla la visibilidad del modal
   edadGestacional: number = 0;
   semanasRestantes: number = 0;  // Nueva variable para las semanas restantes
-  trimestre: string = '';  
+  trimestre: string = '';
   colorBarra: string = '';  // Para almacenar el color de la barra
+  controles: number = 0;
+  sessiones: number = 0;
+  fechaParto: string = '';
+  chartOptionPeso: echarts.EChartsOption;
+  chartOptionPresion: echarts.EChartsOption;
+  chartInstances: Record<string, any> = {};
 
   consultas: Consulta[] = [];
   loading: boolean = true;
@@ -35,12 +44,15 @@ export class DashboardComponent implements OnInit {
     }
   };
 
+
+
   constructor(
-    private menuService: MenuService, 
+    private menuService: MenuService,
     private authService: AuthService,
     private dashboardService: DashboardService,
-    private controlPrenatalService: ControlPrenatalService, 
-    private usuarioService: UsuarioService  // Inyectamos UsuarioService
+    private controlPrenatalService: ControlPrenatalService,
+    private usuarioService: UsuarioService, // Inyectamos UsuarioService
+    private dashboardGestanteService: DashboardGestanteService
   ) { }
 
   ngOnInit() {
@@ -51,6 +63,7 @@ export class DashboardComponent implements OnInit {
 
     // Verificamos si los términos han sido aceptados
     const currentUser = this.authService.currentUserValue;
+
     if (currentUser && currentUser.userable.autorizacion === 0) {
       this.isModalVisible = true;  // Mostrar el modal si el campo 'autorizacion' es 0
     }
@@ -73,7 +86,7 @@ export class DashboardComponent implements OnInit {
       this.controlPrenatalService.getControlById(usuarioId, 1).subscribe(response => {
         // Asegúrate de que la respuesta contiene la propiedad "Control" y "edad_gestacional"
         const edadGestacionalDB = response.Control ? parseInt(response.Control.edad_gestacional, 10) : 0;
-        
+
         if (!isNaN(edadGestacionalDB)) {
           this.edadGestacional = edadGestacionalDB;
           // Almacenar en localStorage con el id de usuario único
@@ -98,6 +111,11 @@ export class DashboardComponent implements OnInit {
 
     this.loading = true;
     this.cargarConsultas();
+    this.getConteoControles();
+    this.getSessionesCurso();
+    this.getFechaProbableParto();
+    this.getPeso();
+    this.getPresion();
   }
 
   // Método para calcular el trimestre y el color de la barra
@@ -122,29 +140,29 @@ export class DashboardComponent implements OnInit {
     localStorage.setItem('colorBarra_' + currentUser.userable.id_usuario, this.colorBarra);
 
     // Depuración
-    console.log("Edad gestacional: ", this.edadGestacional);
-    console.log("Trimestre calculado: ", this.trimestre);
-    console.log("Color de barra calculado: ", this.colorBarra);
+    // console.log("Edad gestacional: ", this.edadGestacional);
+    // console.log("Trimestre calculado: ", this.trimestre);
+    // console.log("Color de barra calculado: ", this.colorBarra);
   }
 
   // Método para calcular las semanas restantes
   calcularSemanasRestantes(): void {
     this.semanasRestantes = 42 - this.edadGestacional;
     // Depuración
-    console.log("Semanas restantes: ", this.semanasRestantes);
+    //console.log("Semanas restantes: ", this.semanasRestantes);
   }
 
   // Método para manejar el cierre del modal
   handleModalClose(isAccepted: boolean): void {
     if (isAccepted) {
       console.log('Usuario aceptó los términos');
-      
+
       // Obtener el currentUser
       const currentUser = this.authService.currentUserValue;
 
       if (currentUser && currentUser.userable && currentUser.userable.id_usuario) {
         const usuarioId = currentUser.userable.id_usuario;
-        
+
         console.log('ID del usuario:', usuarioId);
         console.log('currentUser.userable:', currentUser.userable);
 
@@ -178,7 +196,7 @@ export class DashboardComponent implements OnInit {
         } else {
           this.calendarOptions.events = [];
         }
-        
+
         this.loading = false;
       },
       (error) => {
@@ -219,4 +237,182 @@ export class DashboardComponent implements OnInit {
       };
     });
   }
+
+
+  getConteoControles() {
+    this.dashboardGestanteService.getConteoControles().subscribe(
+      data => {
+        //console.log(data);
+        this.controles = data;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  getSessionesCurso() {
+    this.dashboardGestanteService.getSessionesCurso().subscribe(
+      data => {
+        //console.log(data);
+        // Asumiendo que quieres el num_sesiones del primer elemento del array
+        if (data.sesiones && data.sesiones.length > 0) {
+          this.sessiones = data.sesiones[0].num_sesiones;
+        } else {
+          console.log('No se encontraron sesiones');
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+
+  getFechaProbableParto() {
+    this.dashboardGestanteService.getFechaProbableParto().subscribe(
+      data => {
+        //console.log('Fecha Probale', data);
+        this.fechaParto = data;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  getPeso() {
+    this.dashboardGestanteService.getPesoyPresionGestante().subscribe(
+      data => {
+        //console.log('Peso gestante', data);
+
+        // Extraer los valores de peso del array data o inicializar con ceros
+        let pesoData = data.length > 0 ? data.map(item => parseFloat(item.peso)) : Array(12).fill(0);
+
+        this.chartOptionPeso = {
+          xAxis: {
+            type: 'category',
+            data: ['Ene', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: 'Peso',
+              type: 'line',
+              data: pesoData
+            }
+          ]
+        };
+        this.initChart('pesoChart', this.chartOptionPeso);
+
+      },
+      err => {
+        console.log(err);
+        // Inicializar la gráfica con ceros en caso de error
+        this.chartOptionPeso = {
+          xAxis: {
+            type: 'category',
+            data: ['Ene', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: 'Peso',
+              type: 'line',
+              data: Array(12).fill(0)
+            }
+          ]
+        };
+        this.initChart('pesoChart', this.chartOptionPeso);
+      }
+    );
+  }
+
+  getPresion() {
+    this.dashboardGestanteService.getPesoyPresionGestante().subscribe(
+      data => {
+        //console.log('Presión gestante', data);
+
+        // Extraer los valores de tensión arterial del array data o inicializar con ceros
+        let tensionSisData = data.length > 0 ? data.map(item => parseFloat(item.tension_sis)) : Array(12).fill(0);
+        let tensionDiaData = data.length > 0 ? data.map(item => parseFloat(item.tension_dia)) : Array(12).fill(0);
+
+        this.chartOptionPresion = {
+          xAxis: {
+            type: 'category',
+            data: ['Ene', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: 'Tensión Sistólica',
+              type: 'line',
+              data: tensionSisData
+            },
+            {
+              name: 'Tensión Diastólica',
+              type: 'line',
+              data: tensionDiaData
+            }
+          ]
+        };
+        this.initChart('presionChart', this.chartOptionPresion);
+      },
+      err => {
+        console.log(err);
+        // Inicializar la gráfica con ceros en caso de error
+        this.chartOptionPresion = {
+          xAxis: {
+            type: 'category',
+            data: ['Ene', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: 'Tensión Sistólica',
+              type: 'line',
+              data: Array(12).fill(0)
+            },
+            {
+              name: 'Tensión Diastólica',
+              type: 'line',
+              data: Array(12).fill(0)
+            }
+          ]
+        };
+        this.initChart('presionChart', this.chartOptionPresion);
+      }
+    );
+  }
+
+
+  initChart(chartId: string, chartOptions: any): void {
+    const chartDom = document.getElementById(chartId) as HTMLElement;
+
+    if (!chartDom) {
+      console.error(`No se encontró el contenedor del gráfico con ID: ${chartId}`);
+      return;
+    }
+
+    const chartInstance = echarts.init(chartDom); // Inicializa el gráfico en el contenedor
+
+    if (chartOptions) {
+      chartInstance.setOption(chartOptions); // Aplica las opciones si están definidas
+    } else {
+      console.error(`No se encontraron opciones para el gráfico con ID: ${chartId}`);
+    }
+
+    // Si necesitas mantener la instancia para actualizaciones futuras
+    this.chartInstances = this.chartInstances || {}; // Asegúrate de inicializar el objeto si no existe
+    this.chartInstances[chartId] = chartInstance; // Guarda la instancia por ID del gráfico
+  }
+
 }

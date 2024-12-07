@@ -16,7 +16,8 @@ import { Ruta3Component } from './pages/formulario/ruta-3/ruta-3.component';
 import { Ruta4Component } from './pages/formulario/ruta-4/ruta-4.component';
 import { Ruta5Component } from './pages/formulario/ruta-5/ruta-5.component';
 import { Ruta6Component } from './pages/formulario/ruta-6/ruta-6.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/Dashboard/dashboard.component';
+import { ImportExcelComponent } from './pages/import-excel/import-excel.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,11 @@ const routes: Routes = [
         path: 'reportes', component: ReporteComponent,
         canActivate: [RoleGuard],
         data: { title: 'Reportes', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['superadmin'], showInMenu: true }
+      },
+      {
+        path: 'import-excel', component: ImportExcelComponent,
+        canActivate: [RoleGuard],
+        data: { title: 'Importar Excel', icon: 'fa-solid fa-file-excel', expectedRoles: ['superadmin'], showInMenu: true }
       },
       
       {
