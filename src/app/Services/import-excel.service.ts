@@ -26,9 +26,10 @@ export class ImportExcelService {
     });
   }
 
-  importExcel(excel: File){
+  importExcel(excel: File, operador: string){
     const impExcel = new FormData;
     impExcel.append('excel', excel);
+    impExcel.append('operador', operador);
     return this.http.post(this.apiUrl, impExcel);
   }
 }
