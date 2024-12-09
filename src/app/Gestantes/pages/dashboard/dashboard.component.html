@@ -3,7 +3,8 @@
 <!-- Encabezado -->
 <app-header></app-header>
 
-<div class="mx-auto px-4 mt-[8rem] max-w-[95%] transition-all duration-300 flex flex-wrap gap-4" [ngClass]="{ 
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] sm:max-w-full transition-all duration-300 flex flex-wrap gap-4"
+    [ngClass]="{ 
     'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 
     'ml-0': !isVisible}">
@@ -12,7 +13,7 @@
     <div class="flex flex-wrap gap-4 w-full mt-6">
 
         <!-- Campo para el proceso por trimestres -->
-        <div class="bg-white rounded-lg w-[33%] mb-6 border shadow-md">
+        <div class="bg-white rounded-lg w-[33%] mb-6 border shadow-md h-full">
 
             <!-- Mostrar el trimestre con diferentes colores -->
             <div class="p-6 w-[100%] h-[70%] border-b" [ngClass]="{
@@ -40,35 +41,28 @@
         </div>
 
         <!-- diseño de las alertas -->
-        <div class="bg-white p-6 rounded-lg border shadow-md w-[31%] mb-6">
-            <h3 class="text-lg font-bold mb-4">¡Importante!</h3>
-            <div class="flex flex-col space-y-4">
-                <div class="flex items-center">
-                    <p class="font-bold text-gray-700">Ellie joined team developers</p>
-                    <p class="text-gray-500 ml-auto">04 April, 2021 10:09 PM</p>
-                </div>
-                <div class="flex items-center">
-                    <p class="font-bold text-gray-700">Jenny joined team HR</p>
-                    <p class="text-gray-500 ml-auto">03 April, 2021 04:09 PM</p>
-                </div>
-                <div class="flex items-center">
-                    <p class="font-bold text-gray-700">Adam got employee of the month</p>
-                    <p class="text-gray-500 ml-auto">05 April, 2021 11:00 AM</p>
-                </div>
-                <div class="flex items-center">
-                    <p class="font-bold text-gray-700">Robert joined team design</p>
-                    <p class="text-gray-500 ml-auto">02 April, 2021 12:00 PM</p>
-                </div>
-                <div class="flex items-center">
-                    <p class="font-bold text-gray-700">Jack joined team design</p>
-                    <p class="text-gray-500 ml-auto">02 April, 2021 03:00 PM</p>
+        <div class="bg-white p-6 rounded-lg border shadow-md w-[31%] mb-6 h-full">
+            <div class="flex gap-2 text-[#ea1f1f]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-triangle-alert">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                    <path d="M12 9v4" />
+                    <path d="M12 17h.01" />
+                </svg>
+                <h3 class="text-xl font-bold mb-4">¡Importante!</h3>
+            </div>
+            <div class="flex flex-col">
+                <div class="border border-[#fe0000] bg-red-50 rounded-lg p-3 mb-4">
+                    <h3 class="font-bold text-lg">Alerta</h3>
+                    <p class="text-gray-500">Fecha: 2023-05-15</p>
                 </div>
             </div>
         </div>
 
         <!-- Diseño de las tarjetas -->
         <div class="flex flex-col w-[30%] gap-4">
-            <div class="border border-pink-300 px-4 py-3 rounded-lg hover:bg-pink-50 shadow-lg">
+            <div class="border border-pink-300 px-4 py-3 rounded-lg bg-pink-50 shadow-lg">
                 <div class="flex text-xl font-bold mb-1 text-pink-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -84,7 +78,7 @@
                 <p class="font-bold text-xl text-pink-900 px-8">{{edadGestacional}} Semanas</p>
             </div>
 
-            <div class="border border-purple-300 hover:bg-purple-50 shadow-lg px-4 py-3 rounded-lg">
+            <div class="border border-purple-300 bg-purple-50 shadow-lg px-4 py-3 rounded-lg">
                 <div class="flex text-xl font-bold mb-1 text-purple-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -98,7 +92,7 @@
                 <p class="font-bold text-xl text-purple-900 px-8">{{controles}} Realizados</p>
             </div>
 
-            <div class="border border-blue-300 hover:bg-blue-50 shadow-lg px-4 py-3 rounded-lg">
+            <div class="border border-blue-300 bg-blue-50 shadow-lg px-4 py-3 rounded-lg">
                 <div class="flex text-xl font-bold mb-1 text-blue-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -113,7 +107,7 @@
                 <p class="font-bold text-xl text-blue-900 px-8">{{sessiones}} Completadas</p>
             </div>
 
-            <div class="border border-cyan-300 hover:bg-cyan-50 shadow-lg px-4 py-3 rounded-lg">
+            <div class="border border-cyan-300 bg-cyan-50 shadow-lg px-4 py-3 rounded-lg">
                 <div class="flex text-xl font-bold mb-1 text-cyan-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -132,26 +126,56 @@
 
     <!-- Estilos de la segunda fila -->
     <div class="flex flex-wrap gap-4 w-full mt-6">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-[49%] max-w-full mb-6">
             <h3 class="text-lg font-bold mb-4">Gráfica peso</h3>
-            <div id="pesoChart" style="width: 100%; height: 400px;"></div>
+            <div id="pesoChart" class="w-full h-[200px] md:h-[400px]"></div>
         </div>
 
-        <!-- Grafica presión -->
-        <div class="bg-white p-6 rounded-lg shadow-lg w-[49%] mb-6">
+        <!-- Gráfica presión -->
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-[49%] max-w-full mb-6">
             <h3 class="text-lg font-bold mb-4">Gráfica presión</h3>
-            <div id="presionChart" style="width: 100%; height: 400px;"></div>
+            <div id="presionChart" class="w-full h-[200px] md:h-[400px]"></div>
         </div>
     </div>
 
     <!-- Datos de vacunación de la gestante y el bb -->
     <div class="flex flex-wrap gap-4 w-full">
         <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
-            <p class="text-lg font-bold mb-4">Datos de vacunación de la gestante</p>
+            <p class="text-lg font-bold mb-4">Estado de vacunación de gestante</p>
+            <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
+                <div>
+                    <h3 class="font-bold text-lg">Nombre vacuna</h3>
+                    <p class="text-gray-500">Fecha: 2023-05-15</p>
+                </div>
+                <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-circle-check-big">
+                        <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                        <path d="m9 11 3 3L22 4" />
+                    </svg>
+                    <span class="text-sm">Recibida</span>
+                </div>
+            </div>
         </div>
 
         <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
-            <p class="text-lg font-bold mb-4">Datos de vacunación del bb</p>
+            <p class="text-lg font-bold mb-4">Estado de vacunación del bebé</p>
+            <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
+                <div>
+                    <h3 class="font-bold text-lg">Nombre vacuna</h3>
+                    <p class="text-gray-500">Fecha: 2023-05-15</p>
+                </div>
+                <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-circle-check-big">
+                        <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                        <path d="m9 11 3 3L22 4" />
+                    </svg>
+                    <span class="text-sm">Recibida</span>
+                </div>
+            </div>
         </div>
 
         <!-- Diseño del calendario -->

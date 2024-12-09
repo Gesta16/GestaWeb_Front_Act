@@ -32,6 +32,8 @@ import { DashboardComponent } from './pages/Dashboard/dashboard.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-header-module.module';
 import { ImportExcelComponent } from './pages/import-excel/import-excel.component';
+import { AlertasComponent } from './pages/alertas/alertas.component';
+import { AddAlertasComponent } from './pages/add-alertas/add-alertas.component';
 
 
 
@@ -66,6 +68,8 @@ import { ImportExcelComponent } from './pages/import-excel/import-excel.componen
     Ruta6Component,
     DashboardComponent,
     ImportExcelComponent,
+    AlertasComponent,
+    AddAlertasComponent,
   ],
   imports: [
     CommonModule,

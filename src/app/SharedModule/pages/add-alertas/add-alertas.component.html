@@ -1,0 +1,33 @@
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg w-[90%] md:w-[70%] lg:w-[45%] p-6">
+        <h2 class="text-xl font-bold mb-4 text-center titulo">
+            Creación de alertas
+        </h2>
+
+        <!-- Título -->
+        <div class="mb-4">
+            <label for="" class="block text-sm font-medium text-gray-700">Título</label>
+            <input type="text" id="" name=""
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                required>
+        </div>
+
+        <!-- Descripción -->
+        <div class="mb-4">
+            <label for="" class="block text-sm font-medium text-gray-700">Descripción</label>
+            <input type="text" id="" name=""
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                required>
+        </div>
+
+        <!-- Botones -->
+        <div class="flex justify-end mt-6">
+            <button type="button" (click)="cerrar()"
+                class="bg-[#80BA27] hover:bg-[#7cb02d] text-white font-bold py-2 px-4 rounded mr-2">Cancelar
+            </button>
+            <button type="submit"
+                class="bg-[#00ACC9] hover:bg-[#0194ad] text-white font-bold py-2 px-4 rounded">Guardar
+            </button>
+        </div>
+    </div>
+</div>

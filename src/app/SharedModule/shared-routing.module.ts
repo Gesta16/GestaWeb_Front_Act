@@ -18,6 +18,8 @@ import { Ruta5Component } from './pages/formulario/ruta-5/ruta-5.component';
 import { Ruta6Component } from './pages/formulario/ruta-6/ruta-6.component';
 import { DashboardComponent } from './pages/Dashboard/dashboard.component';
 import { ImportExcelComponent } from './pages/import-excel/import-excel.component';
+import { AlertasComponent } from './pages/alertas/alertas.component';
+import { AddAlertasComponent } from './pages/add-alertas/add-alertas.component';
 
 const routes: Routes = [
   {
@@ -63,6 +65,15 @@ const routes: Routes = [
         path: 'import-excel', component: ImportExcelComponent,
         canActivate: [RoleGuard],
         data: { title: 'Importar Excel', icon: 'fa-solid fa-file-excel', expectedRoles: ['superadmin'], showInMenu: true }
+      },
+      {
+        path: 'alertas', component: AlertasComponent,
+        canActivate: [RoleGuard],
+        data: { title: 'Alertas', icon: 'fa-solid fa-triangle-exclamation', expectedRoles: ['superadmin'], showInMenu: true }
+      },
+      {
+        path: 'add-alertas', component: AddAlertasComponent,
+        data: { showInMenu: false }
       },
       
       {
