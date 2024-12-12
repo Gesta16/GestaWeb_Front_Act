@@ -21,6 +21,8 @@ import { ImportExcelComponent } from './pages/import-excel/import-excel.componen
 import { AlertasComponent } from './pages/alertas/alertas.component';
 import { AddAlertasComponent } from './pages/add-alertas/add-alertas.component';
 
+import { AlertComponent } from './pages/alert/alert.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -65,6 +67,10 @@ const routes: Routes = [
         path: 'import-excel', component: ImportExcelComponent,
         canActivate: [RoleGuard],
         data: { title: 'Importar Excel', icon: 'fa-solid fa-file-excel', expectedRoles: ['superadmin'], showInMenu: true }
+      },
+      {
+        path: 'alert', component: AlertComponent,
+        data: { showInMenu: false }
       },
       {
         path: 'alertas', component: AlertasComponent,

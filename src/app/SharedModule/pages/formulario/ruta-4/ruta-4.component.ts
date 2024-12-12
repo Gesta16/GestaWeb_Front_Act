@@ -52,8 +52,8 @@ export class Ruta4Component {
   isVisible = true;
   user: any;
   isRole4: any;
-  seguimientos:any;
-  isIngresar:any;
+  seguimientos: any;
+  isIngresar: any;
 
   mostrarCampos: { [key: string]: boolean } = {
     asistio_nutricionista: false,
@@ -85,6 +85,17 @@ export class Ruta4Component {
     this.micronutriente = new Micronutriente();
   }
 
+  // Permite abrir el menu de las alertas
+  isModalVisible = false;
+
+  abrirModal(): void {
+    this.isModalVisible = true;
+  }
+
+  cerrarModal(): void {
+    this.isModalVisible = false;
+  }
+
   ngOnInit() {
     this.user = this.authService.currentUserValue;
     this.isRole4 = this.user.rol_id === 4;
@@ -98,10 +109,10 @@ export class Ruta4Component {
       this.num_proceso = +params.get('num_proceso')!; // Obtiene el ID como número
       //console.log('num_proceso:', this.num_proceso);
       const action = params.get('action');
-      
-      if(action === 'nuevo'){
+
+      if (action === 'nuevo') {
         this.limpiarFormulario();
-      }else if(action === 'ingresar'){
+      } else if (action === 'ingresar') {
         if (this.id !== null && this.id > 0) {
           this.getSeguimientoConsulta();
           this.getSeguimientosMensualesGestantes();
@@ -111,7 +122,7 @@ export class Ruta4Component {
           console.log('No se proporcionó un ID válido.');
         }
       }
-  
+
     });
 
     this.getNumerosControl();
@@ -129,7 +140,7 @@ export class Ruta4Component {
     //console.log('Formulario limpiado para nuevo registro');
   }
 
-  getSeguimientosMensualesGestantes(){
+  getSeguimientosMensualesGestantes() {
     this.seguimientoConsultaMensualService.getSeguimientosMensuales(this.id, this.num_proceso).subscribe(
       (response) => {
         if (response.estado === 'Ok') {
@@ -143,7 +154,7 @@ export class Ruta4Component {
         console.error('Error al cargar las fechas de las consultas mensuales:', error);
       }
     );
-    
+
   }
 
   toggleTabs(tabNumber: number) {
@@ -179,10 +190,10 @@ export class Ruta4Component {
 
   onFechaSeleccionada(event: Event): void {
     const fechaSeleccionada = (event.target as HTMLSelectElement).value;
-    
+
     // Encuentra el seguimiento correspondiente en la lista
     const seguimiento = this.seguimientos.find(seg => seg.fec_consulta === fechaSeleccionada);
-    
+
     if (seguimiento) {
       // Actualiza seguimientoConsulta con los datos del seguimiento seleccionado
       this.seguimientoConsulta = { ...seguimiento };
@@ -192,7 +203,7 @@ export class Ruta4Component {
       this.seguimientoConsulta = new SeguimientoConsultaMensual();
     }
   }
-  
+
 
   // habilitar o dehabilitar los campos
   onSeguimientoChange(campo: string) {
