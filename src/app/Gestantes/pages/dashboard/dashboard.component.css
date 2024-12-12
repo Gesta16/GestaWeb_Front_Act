@@ -1,4 +1,4 @@
-progress {
+/* progress {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -11,7 +11,7 @@ progress {
   }
   
   progress::-webkit-progress-value {
-    background-color: #4CAF50; /* Verde para la parte completada */
+    background-color: #4CAF50;
     border-radius: 10px;
   }
   
@@ -22,4 +22,4 @@ progress {
 
 .text-right{
     margin-top: 25%;
-}
+} */

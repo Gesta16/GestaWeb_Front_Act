@@ -13,30 +13,36 @@
     <div class="flex flex-wrap gap-4 w-full mt-6">
 
         <!-- Campo para el proceso por trimestres -->
-        <div class="bg-white rounded-lg w-[33%] mb-6 border shadow-md h-full">
+        <div class="bg-white rounded-lg w-[33%] mb-6 shadow-md h-full">
 
             <!-- Mostrar el trimestre con diferentes colores -->
-            <div class="p-6 w-[100%] h-[70%] border-b" [ngClass]="{
-                'bg-green-200': colorBarra === 'bg-green-200',
-                'bg-yellow-200': colorBarra === 'bg-yellow-200',
-                'bg-red-200': colorBarra === 'bg-red-200',
+            <div class="p-6 w-[100%] h-[70%] border-b rounded-t-lg" [ngClass]="{
+                'bg-[#fce2e5]': colorBarra === 'bg-[#fce2e5]',
+                'bg-[#fbd8dc]': colorBarra === 'bg-[#fbd8dc]',
+                'bg-[#faccd2]': colorBarra === 'bg-[#faccd2]',
                 'bg-gray-200': colorBarra === 'bg-gray-200'
                 }">
-
-                <p class="text-3xl font-bold mb-4">{{ trimestre }}</p>
-
-                <p class="text-right text-gray-600 mt-2 font-bold">Restantes: {{ semanasRestantes }} semanas</p>
-
+                
+                <div class="relative">
+                    <div class="flex flex-col text-end text-lg">
+                        <p class="text-3xl font-bold mb-2">{{ trimestre }}</p>
+                        <!-- <p class="font-semibold">Te faltan</p> -->
+                        <p class="text-xl font-bold">Te faltan</p>                    
+                        <p class="text-xl font-bold">{{ semanasRestantes }} semanas</p>                    
+                    </div>
+                    <!-- Imagen por trimestre -->
+                    <img class="absolute top-5 w-[11rem]" *ngIf="imagenTrimestre" [src]="imagenTrimestre" alt="trimestre" />
+                </div>
             </div>
 
             <!-- Barra de progreso -->
-
             <div class="p-6 rounded-lg w-[100%] h-[30%]">
-
-                <div class="h-2.5 rounded-full mt-4" [ngClass]="colorBarra"
-                    [style.width.%]="(edadGestacional / 42) * 100"></div>
+                <div class="border border-[#f9b8c1] h-2.5 rounded-full">
+                    <div class="h-2 rounded-full" [ngClass]="colorBarra"
+                        [style.width.%]="(edadGestacional / 42) * 100"></div>
+                </div>
                 <!-- Texto con las semanas gestacionales -->
-                <p class="text-center mt-2 font-bold">{{ edadGestacional }} semanas</p>
+                <p class="text-center mt-2 font-bold text-lg">Tienes {{ edadGestacional }} semanas</p>
             </div>
         </div>
 
@@ -62,7 +68,7 @@
 
         <!-- Diseño de las tarjetas -->
         <div class="flex flex-col w-[30%] gap-4">
-            <div class="border border-pink-300 px-4 py-3 rounded-lg bg-pink-50 shadow-lg">
+            <div class="border border-pink-300 px-4 py-2 rounded-lg bg-pink-50 shadow-lg">
                 <div class="flex text-xl font-bold mb-1 text-pink-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -78,7 +84,7 @@
                 <p class="font-bold text-xl text-pink-900 px-8">{{edadGestacional}} Semanas</p>
             </div>
 
-            <div class="border border-purple-300 bg-purple-50 shadow-lg px-4 py-3 rounded-lg">
+            <div class="border border-purple-300 bg-purple-50 shadow-lg px-4 py-2 rounded-lg">
                 <div class="flex text-xl font-bold mb-1 text-purple-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -92,7 +98,7 @@
                 <p class="font-bold text-xl text-purple-900 px-8">{{controles}} Realizados</p>
             </div>
 
-            <div class="border border-blue-300 bg-blue-50 shadow-lg px-4 py-3 rounded-lg">
+            <div class="border border-blue-300 bg-blue-50 shadow-lg px-4 py-2 rounded-lg">
                 <div class="flex text-xl font-bold mb-1 text-blue-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -107,7 +113,7 @@
                 <p class="font-bold text-xl text-blue-900 px-8">{{sessiones}} Completadas</p>
             </div>
 
-            <div class="border border-cyan-300 bg-cyan-50 shadow-lg px-4 py-3 rounded-lg">
+            <div class="border border-cyan-300 bg-cyan-50 shadow-lg px-4 py-2 rounded-lg">
                 <div class="flex text-xl font-bold mb-1 text-cyan-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -117,9 +123,9 @@
                         <rect width="18" height="18" x="3" y="4" rx="2" />
                         <path d="M3 10h18" />
                     </svg>
-                    <p class="text-lg font-bold mb-1">Tu fecha probable de parto es</p>
+                    <p class="text-lg font-bold">Tu fecha probable de parto es</p>
                 </div>
-                <p class="font-bold text-cyan-900 px-8">{{fechaParto}}</p>
+                <p class="font-bold text-lg text-cyan-900 px-8">{{fechaParto}}</p>
             </div>
         </div>
     </div>
@@ -179,7 +185,7 @@
         </div>
 
         <!-- Diseño del calendario -->
-        <div *ngIf="!loading;" class="bg-white p-6 rounded-lg w-[32%] mb-6 shadow-lg">
+        <div *ngIf="!loading;" class="bg-white p-6 rounded-lg w-[31%] mb-6 shadow-lg">
             <full-calendar [options]="calendarOptions" class="h-full"></full-calendar>
         </div>
     </div>

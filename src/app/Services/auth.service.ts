@@ -81,7 +81,7 @@ export class AuthService {
     const isMobile = this.checkIfMobile();
     switch (role) {
       case 'superadmin':
-        return isMobile ? '40px' : '80px';
+        return isMobile ? '20px' : '30px';
       case 'admin':
         return isMobile ? '40px' : '90px';
       case 'operador':

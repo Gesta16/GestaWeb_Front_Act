@@ -2,3 +2,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos de los botones del calendario que se encuentra en el dashboard de la gestante */
+.fc-prev-button, .fc-next-button {
+    background-color: white !important;
+    padding: 2px 8px !important;  /* Reducir el espacio dentro del botón */
+    font-size: 14px !important;    /* Reducir el tamaño del texto y de la flecha */
+    outline: none !important;
+    color: #1cacc4 !important;
+    border: 1px solid #1cacc4 !important;
+}
+.fc-next-button:hover, .fc-prev-button:hover,
+.fc-prev-button:focus, .fc-next-button:focus {
+    background-color: #defaff !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.fc-toolbar-title{
+    text-transform: capitalize !important; /* Convierte solo la primera letra del nombre del mes en mayúscula */
+}

@@ -42,7 +42,7 @@
                         <label for="numeroDocumento" class="text-sm font-medium text-gray-700">N° documento</label>
                         <input type="text" id="numeroDocumento"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="formData.documento_superadmin || formData.documento_admin || formData.documento_operador || ''"
+                            [value]="formData.documento_superadmin || formData.documento_usuario || formData.documento_admin || formData.documento_operador || ''"
                             [disabled]="!isEditing" (input)="onInputChange($event, 'documento_superadmin')" />
                     </div>
 
@@ -51,7 +51,7 @@
                         <label for="nombre" class="text-sm font-medium text-gray-700">Nombre</label>
                         <input type="text" id="nombre"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="formData.nom_superadmin || formData.nom_admin || formData.nom_operador || ''"
+                            [value]="formData.nom_superadmin || formData.nom_usuario || formData.nom_admin || formData.nom_operador || ''"
                             [disabled]="!isEditing" (input)="onInputChange($event, 'nom_superadmin')" />
                     </div>
 
@@ -60,7 +60,7 @@
                         <label for="apellido" class="text-sm font-medium text-gray-700">Apellido</label>
                         <input type="text" id="apellido"
                             class="block w-full mt-2 px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-[#00ACC9]"
-                            [value]="formData.ape_superadmin || formData.ape_admin || formData.ape_operador || ''"
+                            [value]="formData.ape_superadmin|| formData.ape_usuario || formData.ape_admin || formData.ape_operador || ''"
                             [disabled]="!isEditing" (input)="onInputChange($event, 'ape_admin')" />
                     </div>
 
@@ -114,7 +114,7 @@
             </button>
 
             <!-- Mostrar los botones según el estado de edición -->
-            <button type="button" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            <button type="button" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                 *ngIf="isEditing" (click)="saveChanges()">
                 Guardar cambios
             </button>
