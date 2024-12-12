@@ -2,6 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddAlertasComponent } from '../add-alertas/add-alertas.component';
+import { SignosAlarmaService } from '../../../Services/signos-alarma.service';
+import { SignoAlarma } from '../../../Models/Signos-Alarma.model';
 
 
 @Component({
@@ -16,10 +18,12 @@ export class AlertasComponent {
   totalPages: number = 1;
   isExpanded = true;
   isVisible = true;
+  signosAlarma: SignoAlarma[] = [];
 
   constructor(
     private menuService: MenuService,
     private _matDialog: MatDialog,
+    private signosAlarmaService: SignosAlarmaService
   ) { }
 
   ngOnInit() {
@@ -29,6 +33,7 @@ export class AlertasComponent {
     this.menuService.menuVisible$.subscribe(isVisible => {
       this.isVisible = isVisible;
     });
+    this.getSignosAlarma();
   }
 
 
@@ -48,4 +53,17 @@ export class AlertasComponent {
       exitAnimationDuration: '0ms'
     });
   }
+
+  getSignosAlarma() {
+    this.signosAlarmaService.getSignosAlarma().subscribe(
+      (res: any) => {
+        this.signosAlarma = res;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  
 }

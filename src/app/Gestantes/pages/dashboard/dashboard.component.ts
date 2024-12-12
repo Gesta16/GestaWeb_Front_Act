@@ -8,8 +8,15 @@ import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { DashboardGestanteService } from '../../../Services/dashboard-gestante.service';
 import * as echarts from 'echarts';
+import { VacunacionService } from '../../../Services/vacunacion.service';
+import { RutaPymsService } from '../../../Services/ruta-pyms.service';
+import { LaboratorioisemestreService } from '../../../Services/laboratorioisemestre.service';
 
-
+// Agregar una interfaz para las vacunas
+interface VacunaInfo {
+  nombre: string;
+  fecha: string | null;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -31,6 +38,9 @@ export class DashboardComponent implements OnInit {
   chartOptionPeso: echarts.EChartsOption;
   chartOptionPresion: echarts.EChartsOption;
   chartInstances: Record<string, any> = {};
+  idUsuario: number = 0;
+  vacunasAplicadas: string[] = [];
+  vacunasInfo: { [key: string]: string } = {};  // Para almacenar las fechas
 
   consultas: Consulta[] = [];
   loading: boolean = true;
@@ -53,8 +63,10 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService,
     private dashboardService: DashboardService,
     private controlPrenatalService: ControlPrenatalService,
-    private usuarioService: UsuarioService, // Inyectamos UsuarioService
-    private dashboardGestanteService: DashboardGestanteService
+    private usuarioService: UsuarioService,
+    private dashboardGestanteService: DashboardGestanteService,
+    private vacunacionService: VacunacionService,
+    private rutaPymsService: RutaPymsService,
   ) { }
 
   ngOnInit() {
@@ -65,7 +77,8 @@ export class DashboardComponent implements OnInit {
 
     // Verificamos si los términos han sido aceptados
     const currentUser = this.authService.currentUserValue;
-
+    this.idUsuario = currentUser.userable.id_usuario;
+    console.log('currentUser', currentUser);
     if (currentUser && currentUser.userable.autorizacion === 0) {
       this.isModalVisible = true;  // Mostrar el modal si el campo 'autorizacion' es 0
     }
@@ -123,6 +136,8 @@ export class DashboardComponent implements OnInit {
     this.getFechaProbableParto();
     this.getPeso();
     this.getPresion();
+    this.getVacunaciones();
+    this.getRutas();
   }
 
   // Método para calcular el trimestre y el color de la barra
@@ -426,4 +441,53 @@ export class DashboardComponent implements OnInit {
     this.chartInstances[chartId] = chartInstance; // Guarda la instancia por ID del gráfico
   }
 
+  getVacunaciones() {
+    this.vacunacionService.getVacunacionById(this.idUsuario).subscribe(
+      data => {
+        this.vacunasAplicadas = [];
+        this.vacunasInfo = {};
+        
+        if (data.vacunacion.fec_doscovid) {
+          this.vacunasAplicadas.push('Segunda dosis COVID');
+          this.vacunasInfo['Segunda dosis COVID'] = new Date(data.vacunacion.fec_doscovid).toISOString();
+        }
+        if (data.vacunacion.fec_dpt) {
+          this.vacunasAplicadas.push('DPT');
+          this.vacunasInfo['DPT'] = new Date(data.vacunacion.fec_dpt).toISOString();
+        }
+        if (data.vacunacion.fec_influenza) {
+          this.vacunasAplicadas.push('Influenza');
+          this.vacunasInfo['Influenza'] = new Date(data.vacunacion.fec_influenza).toISOString();
+        }
+        if (data.vacunacion.fec_refuerzo) {
+          this.vacunasAplicadas.push('Refuerzo');
+          this.vacunasInfo['Refuerzo'] = new Date(data.vacunacion.fec_refuerzo).toISOString();
+        }
+        if (data.vacunacion.fec_tetanico) {
+          this.vacunasAplicadas.push('Tétanos');
+          this.vacunasInfo['Tétanos'] = new Date(data.vacunacion.fec_tetanico).toISOString();
+        }
+        if (data.vacunacion.fec_unocovid) {
+          this.vacunasAplicadas.push('Primera dosis COVID');
+          this.vacunasInfo['Primera dosis COVID'] = new Date(data.vacunacion.fec_unocovid).toISOString();
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  getRutas() {
+    this.rutaPymsService.getRutaPymsId(this.idUsuario,1).subscribe(
+      data => {
+        console.log('Rutas', data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  
 }

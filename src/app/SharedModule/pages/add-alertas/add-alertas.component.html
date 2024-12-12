@@ -7,7 +7,7 @@
         <!-- Título -->
         <div class="mb-4">
             <label for="" class="block text-sm font-medium text-gray-700">Título</label>
-            <input type="text" id="" name=""
+            <input type="text" id="" name="" [(ngModel)]="signosAlarma.nombre"
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 required>
         </div>
@@ -15,7 +15,7 @@
         <!-- Descripción -->
         <div class="mb-4">
             <label for="" class="block text-sm font-medium text-gray-700">Descripción</label>
-            <input type="text" id="" name=""
+            <input type="text" id="" name="" [(ngModel)]="signosAlarma.descripcion"
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 required>
         </div>
@@ -25,7 +25,7 @@
             <button type="button" (click)="cerrar()"
                 class="bg-[#80BA27] hover:bg-[#7cb02d] text-white font-bold py-2 px-4 rounded mr-2">Cancelar
             </button>
-            <button type="submit"
+            <button (click)="createSignoAlarma()"
                 class="bg-[#00ACC9] hover:bg-[#0194ad] text-white font-bold py-2 px-4 rounded">Guardar
             </button>
         </div>
