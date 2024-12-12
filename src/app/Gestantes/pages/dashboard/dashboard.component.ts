@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   semanasRestantes: number = 0;  // Nueva variable para las semanas restantes
   trimestre: string = '';
   colorBarra: string = '';  // Para almacenar el color de la barra
+  imagenTrimestre: string = '';
   controles: number = 0;
   sessiones: number = 0;
   fechaParto: string = '';
@@ -100,6 +101,11 @@ export class DashboardComponent implements OnInit {
       });
     }
 
+    const storedImagenTrimestre = localStorage.getItem('imagenTrimestre_' + currentUser.userable.id_usuario);
+    if (storedImagenTrimestre) {
+      this.imagenTrimestre = storedImagenTrimestre;
+    }
+
     // Simulamos el avance de la edad gestacional para efectos de prueba
     setInterval(() => {
       if (this.edadGestacional < 42) {
@@ -123,13 +129,16 @@ export class DashboardComponent implements OnInit {
   calcularTrimestre(): void {
     if (this.edadGestacional >= 1 && this.edadGestacional <= 13) {
       this.trimestre = 'Primer trimestre';
-      this.colorBarra = 'bg-green-200';
+      this.colorBarra = 'bg-[#fce2e5]';
+      this.imagenTrimestre = '../../../../assets/images/dashboard/itrimestre.png';
     } else if (this.edadGestacional >= 14 && this.edadGestacional <= 27) {
       this.trimestre = 'Segundo trimestre';
-      this.colorBarra = 'bg-yellow-200';
+      this.colorBarra = 'bg-[#fbd8dc]';
+      this.imagenTrimestre = '../../../../assets/images/dashboard/iitrimestre.png';
     } else if (this.edadGestacional >= 28 && this.edadGestacional <= 42) {
       this.trimestre = 'Tercer trimestre';
-      this.colorBarra = 'bg-red-200';
+      this.colorBarra = 'bg-[#faccd2]';
+      this.imagenTrimestre = '../../../../assets/images/dashboard/iiitrimestre.png';
     } else {
       this.trimestre = 'Desconocido';
       this.colorBarra = 'bg-gray-200';
@@ -139,6 +148,7 @@ export class DashboardComponent implements OnInit {
     const currentUser = this.authService.currentUserValue;
     localStorage.setItem('trimestre_' + currentUser.userable.id_usuario, this.trimestre);
     localStorage.setItem('colorBarra_' + currentUser.userable.id_usuario, this.colorBarra);
+    localStorage.setItem('imagenTrimestre_' + currentUser.userable.id_usuario, this.imagenTrimestre);
 
     // Depuración
     // console.log("Edad gestacional: ", this.edadGestacional);
