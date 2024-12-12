@@ -148,19 +148,47 @@
     <div class="flex flex-wrap gap-4 w-full">
         <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
             <p class="text-lg font-bold mb-4">Estado de vacunación de gestante</p>
-            <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
+            <!-- Iteramos sobre todas las posibles vacunas -->
+            <div *ngFor="let vacuna of ['Segunda dosis COVID', 'DPT', 'Influenza', 'Refuerzo', 'Tétanos', 'Primera dosis COVID']" 
+                 class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
                 <div>
-                    <h3 class="font-bold text-lg">Nombre vacuna</h3>
-                    <p class="text-gray-500">Fecha: 2023-05-15</p>
+                    <h3 class="font-bold text-lg">{{ vacuna }}</h3>
+                    <p class="text-gray-500" *ngIf="vacunasInfo[vacuna]">
+                        Fecha: {{vacunasInfo[vacuna] | date:'dd/MM/yyyy'}}
+                    </p>
                 </div>
-                <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-circle-check-big">
+                <div class="flex items-center gap-2 px-3 py-1 rounded-full"
+                     [ngClass]="vacunasAplicadas.includes(vacuna) ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
+                    <svg *ngIf="vacunasAplicadas.includes(vacuna)" 
+                         xmlns="http://www.w3.org/2000/svg" 
+                         width="20" 
+                         height="20" 
+                         viewBox="0 0 24 24" 
+                         fill="none"
+                         stroke="currentColor" 
+                         stroke-width="2" 
+                         stroke-linecap="round" 
+                         stroke-linejoin="round"
+                         class="lucide lucide-circle-check-big">
                         <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                         <path d="m9 11 3 3L22 4" />
                     </svg>
-                    <span class="text-sm">Recibida</span>
+                    <svg *ngIf="!vacunasAplicadas.includes(vacuna)" 
+                         xmlns="http://www.w3.org/2000/svg" 
+                         width="20" 
+                         height="20" 
+                         viewBox="0 0 24 24" 
+                         fill="none"
+                         stroke="currentColor" 
+                         stroke-width="2" 
+                         stroke-linecap="round" 
+                         stroke-linejoin="round"
+                         class="lucide lucide-x-circle">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="m15 9-6 6"/>
+                        <path d="m9 9 6 6"/>
+                    </svg>
+                    <span class="text-sm">{{ vacunasAplicadas.includes(vacuna) ? 'Recibida' : 'No recibida' }}</span>
                 </div>
             </div>
         </div>
@@ -189,6 +217,7 @@
             <full-calendar [options]="calendarOptions" class="h-full"></full-calendar>
         </div>
     </div>
+
 </div>
 
 <!-- Modal -->
