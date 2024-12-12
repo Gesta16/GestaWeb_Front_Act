@@ -26,10 +26,10 @@
                         <th scope="col" class="px-5 py-3">Editar</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let signoAlarma of signosAlarma">
                     <tr class="border-b hover:bg-gray-50">
-                        <td>Ejemplo</td>
-                        <td>dijfijsdjcncsidjsssss</td>
+                        <td>{{signoAlarma.nombre}}</td>
+                        <td>{{signoAlarma.descripcion}}</td>
                         <td class="px-5 py-2">
                             <button
                                 class="flex items-center ml-[34%] h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
