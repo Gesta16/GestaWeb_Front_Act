@@ -75,12 +75,23 @@ export class DashboardComponent implements OnInit {
       this.isExpanded = isExpanded;
     });
 
-    // Verificamos si los términos han sido aceptados
+    // Obtenemos el id del usuario actual
     const currentUser = this.authService.currentUserValue;
-    this.idUsuario = currentUser.userable.id_usuario;
-    console.log('currentUser', currentUser);
-    if (currentUser && currentUser.userable.autorizacion === 0) {
-      this.isModalVisible = true;  // Mostrar el modal si el campo 'autorizacion' es 0
+    const usuarioId = currentUser?.userable.id_usuario;
+
+    // Verificamos si el id_usuario existe y si los términos fueron aceptados
+    if (usuarioId) {
+      const termsAccepted = localStorage.getItem('termsAccepted_' + usuarioId);
+
+      // Si los términos ya fueron aceptados, no mostramos el modal
+      if (termsAccepted === 'true') {
+        this.isModalVisible = false;
+      } else {
+        // Si el usuario no ha aceptado los términos, mostramos el modal
+        if (currentUser && currentUser.userable.autorizacion === 0) {
+          this.isModalVisible = true;
+        }
+      }
     }
 
     // Intentamos recuperar el estado desde localStorage
@@ -180,34 +191,28 @@ export class DashboardComponent implements OnInit {
 
   // Método para manejar el cierre del modal
   handleModalClose(isAccepted: boolean): void {
-    if (isAccepted) {
+    const currentUser = this.authService.currentUserValue;
+    const usuarioId = currentUser?.userable.id_usuario;
+
+    if (isAccepted && usuarioId) {
       console.log('Usuario aceptó los términos');
-
+      
       // Obtener el currentUser
-      const currentUser = this.authService.currentUserValue;
+      currentUser.userable.autorizacion = 1;
 
-      if (currentUser && currentUser.userable && currentUser.userable.id_usuario) {
-        const usuarioId = currentUser.userable.id_usuario;
+      // Llamar al servicio para hacer la actualización en la base de datos
+      this.usuarioService.updateUsuario(usuarioId, currentUser.userable).subscribe({
+        next: (response) => {
+          console.log('Autorización actualizada correctamente', response);
+          this.isModalVisible = false;  // Ocultar el modal si la actualización fue exitosa
 
-        console.log('ID del usuario:', usuarioId);
-        console.log('currentUser.userable:', currentUser.userable);
-
-        // Actualizar la autorización
-        currentUser.userable.autorizacion = 1;
-
-        // Llamar al servicio para hacer la actualización en la base de datos
-        this.usuarioService.updateUsuario(usuarioId, currentUser.userable).subscribe({
-          next: (response) => {
-            console.log('Autorización actualizada correctamente', response);
-            this.isModalVisible = false;  // Ocultar el modal si la actualización fue exitosa
-          },
-          error: (err) => {
-            console.error('Error al actualizar autorización', err);
-          }
-        });
-      } else {
-        console.error('No se encontró el ID del usuario');
-      }
+          // Guardamos en localStorage que los términos fueron aceptados para este usuario específico
+          localStorage.setItem('termsAccepted_' + usuarioId, 'true');
+        },
+        error: (err) => {
+          console.error('Error al actualizar autorización', err);
+        }
+      });
     } else {
       console.log('Usuario no aceptó los términos');
     }
