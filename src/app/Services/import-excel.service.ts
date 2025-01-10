@@ -22,7 +22,6 @@ export class ImportExcelService {
 
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
     });
   }
 
@@ -30,6 +29,6 @@ export class ImportExcelService {
     const impExcel = new FormData;
     impExcel.append('excel', excel);
     impExcel.append('operador', operador);
-    return this.http.post(this.apiUrl, impExcel);
+    return this.http.post(this.apiUrl, impExcel, { headers: this.createHeaders() });
   }
 }

@@ -70,7 +70,6 @@ export class ImportExcelComponent implements AfterViewInit {
         }
       }
     }
-    //console.log(this.selectedFile);
   } 
 
   // Maneja el arrastre de un archivo
