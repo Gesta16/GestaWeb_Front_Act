@@ -11,6 +11,10 @@ import * as echarts from 'echarts';
 import { VacunacionService } from '../../../Services/vacunacion.service';
 import { RutaPymsService } from '../../../Services/ruta-pyms.service';
 import { LaboratorioisemestreService } from '../../../Services/laboratorioisemestre.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAlertaComponent } from '../modal-alerta/modal-alerta.component';
+import { SignosAlarmaService } from '../../../Services/signos-alarma.service';
+import { from } from 'rxjs';
 
 // Agregar una interfaz para las vacunas
 interface VacunaInfo {
@@ -41,6 +45,11 @@ export class DashboardComponent implements OnInit {
   idUsuario: number = 0;
   vacunasAplicadas: string[] = [];
   vacunasInfo: { [key: string]: string } = {};  // Para almacenar las fechas
+  tituloAlerta:string = 'Alerta';
+  descripcionAlerta?: string;
+  fechaAlerta: string = '2025-01-01'
+
+  signoAlarma: [] = [];
 
   consultas: Consulta[] = [];
   loading: boolean = true;
@@ -56,9 +65,8 @@ export class DashboardComponent implements OnInit {
     }
   };
 
-
-
   constructor(
+    private alarmaService: SignosAlarmaService,
     private menuService: MenuService,
     private authService: AuthService,
     private dashboardService: DashboardService,
@@ -67,6 +75,7 @@ export class DashboardComponent implements OnInit {
     private dashboardGestanteService: DashboardGestanteService,
     private vacunacionService: VacunacionService,
     private rutaPymsService: RutaPymsService,
+    private _matDialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -138,6 +147,19 @@ export class DashboardComponent implements OnInit {
     this.getPresion();
     this.getVacunaciones();
     this.getRutas();
+    this.getSignoAlarma(this.idUsuario);
+  }
+
+  abrirModal(alarma: any): void {
+    console.log(alarma);
+    this._matDialog.open(ModalAlertaComponent, {
+      enterAnimationDuration: '0ms',
+      exitAnimationDuration: '0ms',
+      data: { 
+        titulo: alarma.nombre, 
+        descripcion: alarma.descripcion 
+      }, // Pasar el usuario_id
+    });
   }
 
   // Método para calcular el trimestre y el color de la barra
@@ -489,5 +511,24 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  
+  formatearFecha(fecha){
+    const formatoF = new Date(fecha).toISOString().split('T')[0];
+    return formatoF;
+  }
+
+  getSignoAlarma(id: number) {
+    this.alarmaService.getSignosAlarmaByUser(id).subscribe(
+      (response: any) => {
+        console.log(response.signo_alarma);
+        if(response.signo_alarma){
+          this.signoAlarma = response.signo_alarma;
+        }
+      },
+      (error) => {
+        console.error('Error al obtener signo de alarma:', error);
+      }
+    );
+  }
+
+
 }

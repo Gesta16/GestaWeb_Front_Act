@@ -112,13 +112,11 @@ export class ListGestantesComponent {
   }
 
   generarRango(cantidad: number): number[] {
-    console.log(Array.from({ length: cantidad }, (_, i) => i + 1));
     return Array.from({ length: cantidad }, (_, i) => i + 1);
   }
 
   // Redirigir a la ruta de detalles del proceso
   verProceso(usuarioId: number, procesoId: number) {
-    console.log(procesoId);
     if (usuarioId !== null && procesoId !== null) {
       // Redirigir a la página donde se muestran los detalles del proceso
       this.router.navigate(['/ruta-gestante', usuarioId, procesoId]);
@@ -137,13 +135,10 @@ export class ListGestantesComponent {
     this.usuarioService.getUsuarios().subscribe(
       (response: any) => {
         this.usuarios = response.usuarios;
-        console.log(response);
         // Contar los procesos gestativos para cada usuario
         this.usuarios.forEach(usuario => {
           //this.contarProcesos(usuario.id_usuario);
         });
-        
-
         this.updatePagination();
       },
       (error: any) => {

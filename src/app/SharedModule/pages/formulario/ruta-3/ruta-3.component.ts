@@ -21,6 +21,8 @@ import { MenuService } from '../../../../Services/menu.service';
 import { iif } from 'rxjs';
 import { AuthService } from '../../../../Services/auth.service';
 import { threadId } from 'node:worker_threads';
+import { MatDialog } from '@angular/material/dialog';
+import { AlarmaGestanteComponent } from '../../alarma-gestante/alarma-gestante.component';
 
 @Component({
   selector: 'app-ruta-3',
@@ -110,7 +112,8 @@ export class Ruta3Component {
     private router: Router,
     private alertService: AlertService,
     private menuService: MenuService,
-    private authService: AuthService
+    private authService: AuthService,
+    private _matDialog: MatDialog
   ) { }
 
 
@@ -144,6 +147,13 @@ export class Ruta3Component {
     this.cargarVDRL();
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
+    });
+  }
+
+  abrirModal(): void {
+    this._matDialog.open(AlarmaGestanteComponent, {
+      enterAnimationDuration: '0ms',
+      exitAnimationDuration: '0ms'
     });
   }
 

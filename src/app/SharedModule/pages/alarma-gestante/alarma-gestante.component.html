@@ -1,0 +1,49 @@
+<div class="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl flex flex-col max-h-[90vh]">
+        <!-- Header -->
+        <div class="border-b p-4 ">
+            <h2 class="text-xl font-semibold text-center text-gray-800">
+                Alertas de la gestante
+            </h2>
+        </div>
+
+        <!-- Content Container with Scroll -->
+        <div class="flex-1 overflow-y-auto max-h-[60vh]">
+
+            <!-- Primera Alerta -->
+            <ng-container *ngFor="let sig of signoAlarma; let last = last">
+
+            
+                <div  class="p-6">
+                    <div class="bg-gray-100 rounded-lg p-4 mb-2">
+                        <div class="mb-3">
+                            <span class="text-gray-600 font-medium">Nombre: </span>
+                            <span class="text-gray-800">{{sig.nombre}}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 font-medium">Descripción: </span>
+                            <span class="text-gray-800">{{sig.descripcion}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linea divisora -->
+                <div *ngIf="!last" class="px-6">
+                    <div  class="border-b border-gray-200"></div>
+                </div>
+
+            </ng-container>
+        </div>
+
+        <!-- Footer con botón -->
+        <div class="border-t p-4 bg-gray-50 mt-auto">
+            <div class="flex justify-end">
+                <button 
+                    class="px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors font-medium"
+                    (click)="cerrar()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

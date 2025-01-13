@@ -16,6 +16,12 @@
                         {{ seguimiento.fec_consulta }}
                       </option>
                     </select>
+                    
+                    <button (click)="abrirModal()"
+                        class="bg-[#ec5353] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#ff4040] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
+                        Alarmas
+                    </button>
+                        
                     <button (click)="volver()"
                       class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none">
                       Volver

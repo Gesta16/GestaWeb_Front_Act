@@ -17,6 +17,8 @@ import { TipoDm } from '../../../../Models/Tipo-dm.model';
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
 import { AuthService } from '../../../../Services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AlarmaGestanteComponent } from '../../alarma-gestante/alarma-gestante.component';
 
 @Component({
   selector: 'app-ruta-2',
@@ -83,7 +85,8 @@ export class Ruta2Component {
     private controlPrenatalService: ControlPrenatalService,
     private alertService: AlertService,
     private menuService: MenuService,
-    private authService: AuthService
+    private authService: AuthService,
+    private _matDialog: MatDialog
   ) { }
 
 
@@ -117,6 +120,14 @@ export class Ruta2Component {
     this.cargarRiesgos();
     this.cargarTipoDm();
     this.cargarBiologicos();
+  }
+
+  abrirModal(): void {
+    this._matDialog.open(AlarmaGestanteComponent, {
+      enterAnimationDuration: '0ms',
+      exitAnimationDuration: '0ms',
+      data: { usuario_id: this.id }
+    });
   }
 
   cargarMetodosFracaso(): void {

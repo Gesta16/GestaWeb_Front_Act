@@ -19,6 +19,8 @@ import { MicronutrientesService } from '../../../../Services/micronutrientes.ser
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
 import { AuthService } from '../../../../Services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AlarmaGestanteComponent } from '../../alarma-gestante/alarma-gestante.component';
 
 @Component({
   selector: 'app-ruta-4',
@@ -76,7 +78,8 @@ export class Ruta4Component {
     private micronutrientesService: MicronutrientesService,
     private alertService: AlertService,
     private menuService: MenuService,
-    private authService: AuthService
+    private authService: AuthService,
+    private _matDialog: MatDialog
   ) {
     this.seguimientoConsulta = new SeguimientoConsultaMensual();
 
@@ -121,6 +124,13 @@ export class Ruta4Component {
     this.getNumSesionesCurso();
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
+    });
+  }
+
+  abrirModal(): void {
+    this._matDialog.open(AlarmaGestanteComponent, {
+      enterAnimationDuration: '0ms',
+      exitAnimationDuration: '0ms'
     });
   }
 

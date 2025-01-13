@@ -36,28 +36,26 @@ export class AlertasComponent {
     this.getSignosAlarma();
   }
 
-
-  changePage(page: number): void {
-    if (page < 1 || page > this.totalPages) return;
-    this.currentPage = page;
-    // this.updatePagination();
-  }
-
-  get totalPagesArray(): number[] {
-    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
-  }
-
   abrirModal(): void {
-    this._matDialog.open(AddAlertasComponent, {
+    const dialogRef = this._matDialog.open(AddAlertasComponent, {
       enterAnimationDuration: '0ms',
       exitAnimationDuration: '0ms'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.getSignosAlarma();
+      }
     });
   }
 
   getSignosAlarma() {
     this.signosAlarmaService.getSignosAlarma().subscribe(
       (res: any) => {
+        console.log(res);
         this.signosAlarma = res;
+        this.updatePagination();
       },
       (error: any) => {
         console.log(error);
@@ -65,5 +63,21 @@ export class AlertasComponent {
     );
   }
 
-  
+  changePage(page: number): void {
+    if (page < 1 || page > this.totalPages) return;
+    this.currentPage = page;
+    this.updatePagination();
+  }
+
+  get totalPagesArray(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+
+  private updatePagination(): void {
+    this.totalPages = Math.ceil(this.signosAlarma.length / this.itemsPerPage);
+    this.paginatedAlerta = this.signosAlarma.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage);
+
+    console.log(this.paginatedAlerta);
+  }
+
 }
