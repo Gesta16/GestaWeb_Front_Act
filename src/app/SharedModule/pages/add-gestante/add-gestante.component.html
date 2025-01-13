@@ -47,7 +47,7 @@
                                         <select id="cod_departamento" [disabled]="isReadOnly" name="cod_departamento"
                                             [(ngModel)]="usuario.cod_departamento"
                                             (change)="onDepartamentoChange($event)"
-                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            class="mx-auto mt-1 h-[34px] block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
                                             <option *ngFor="let departamento of listDepartamentos"
                                                 [value]="departamento.cod_departamento">
@@ -60,7 +60,7 @@
                                         <label for="municipio" class="font-medium mb-1">Municipio de residencia</label>
                                         <select id="cod_municipio" name="cod_municipio" [disabled]="isReadOnly"
                                             [(ngModel)]="usuario.cod_municipio"
-                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            class="mx-auto mt-1 h-[34px] block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
                                             <option *ngFor="let municipio of listMunicipios"
                                                 [value]="municipio.cod_municipio">
@@ -73,7 +73,7 @@
                                         <label for="ips" class="font-medium mb-1">IPS</label>
                                         <select id="cod_ips" name="cod_ips" [disabled]="isReadOnly"
                                             [(ngModel)]="usuario.cod_ips"
-                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            class="mx-auto mt-1 h-[34px] block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
                                             <option *ngFor="let ips of listIps" [value]="ips.cod_ips">
                                                 {{ips.nom_ips}}
@@ -85,21 +85,21 @@
                                         <label for="fec_diag" class="font-medium mb-1">Fecha de diagnóstico</label>
                                         <input type="date" id="fec_diag" [readonly]="isReadOnly"
                                             [(ngModel)]="usuario.fec_diag_usuario"
-                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                            class="p-2 mt-1 h-[34px] border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_ingreso" class="font-medium mb-1">Fecha de ingreso</label>
                                         <input type="date" id="fec_ingreso" [readonly]="isReadOnly"
                                             [(ngModel)]="usuario.fec_ingreso"
-                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                            class="p-2 mt-1 h-[34px] border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="poblacion" class="font-medium mb-1">Población diferencial</label>
                                         <select id="cod_poblacion" name="cod_poblacion" [disabled]="isReadOnly"
                                             [(ngModel)]="usuario.cod_poblacion"
-                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            class="mx-auto mt-1 h-[34px] block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
                                             <option *ngFor="let poblacion of listPoblacionDiferencial"
                                                 [value]="poblacion.cod_poblacion">
@@ -112,7 +112,7 @@
                                         <label for="tipo_doc" class="font-medium mb-1">Tipo de documento</label>
                                         <select id="tipoDocumento" name="tipoDocumento" [disabled]="isReadOnly"
                                             [(ngModel)]="usuario.cod_documento"
-                                            class="mx-auto mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            class="mx-auto mt-1 h-[34px] block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
                                             <option *ngFor="let tipoDocumento of listTipoDocumentos"
                                                 [value]="tipoDocumento.cod_documento">
@@ -125,7 +125,7 @@
                                         <label for="numero_doc" class="font-medium mb-1">Número de documento</label>
                                         <input type="text" id="numero_doc" [readonly]="isReadOnly"
                                             [(ngModel)]="usuario.documento_usuario"
-                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
+                                            class="p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase w-full">
                                     </div>
                                 </div>
                             </div>

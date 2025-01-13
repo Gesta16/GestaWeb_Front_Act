@@ -58,7 +58,21 @@ export class AddOperadoresComponent {
     
   }
 
-  onSubmit(): void {
+  onSubmit(operadorForm: any): void {
+    
+    console.log('Operador:', this.operador);
+
+    // validamos que el formulario esté completo
+    if (operadorForm.invalid) {
+      this.alertService.infoAlert('Error', 'Por favor, complete el formulario.');
+      // marcamos los campos como touched para que se muestren los errores
+      Object.keys(operadorForm.controls).forEach(field => {
+        const control = operadorForm.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      }); 
+      return;
+    }
+
     this.operadorService.createOperador(this.operador).subscribe(
       response => {
         this.alertService.successAlert('Exito',response.message)
@@ -67,7 +81,7 @@ export class AddOperadoresComponent {
         this.dialogRef.close(true);
       },
       error => {
-        this.alertService.errorAlert('Error',error.error.message);
+        this.alertService.errorAlert('Error',error.error.error);
         console.error('Error al crear Operador:', error);
       }
     );

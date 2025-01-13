@@ -26,6 +26,7 @@ export class AddAlertasComponent {
     this.signosAlarmaService.createSignoAlarma(this.signosAlarma).subscribe((res: any) => {
       console.log(res);
     });
+    this.cerrar();
   }
  
 }

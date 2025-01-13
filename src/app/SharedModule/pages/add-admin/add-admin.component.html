@@ -3,14 +3,16 @@
     <div class="bg-white rounded-lg shadow-lg w-[90%] md:w-[70%] lg:w-[45%] p-6">
       <h2 class="text-xl font-bold mb-4 text-center titulo">Formulario de Registro de Administrador</h2>
   
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit(adminForm)" #adminForm="ngForm">
         <div class="grid grid-cols-2 gap-4 mt-6">
   
           <!-- Tipo de documento -->
           <div class="mb-4">
             <label for="tipoDocumento" class="block text-sm font-medium text-gray-700">Tipo de documento</label>
-            <select id="tipoDocumento" name="tipoDocumento" [(ngModel)]="admin.cod_documento"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <select id="tipoDocumento" name="tipoDocumento" [(ngModel)]="admin.cod_documento" #tipodocumentoCtrl="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': (admin.cod_documento === 0) && tipodocumentoCtrl.touched}"
+              required>
               <option *ngFor="let tipoDocumento of listTipoDocumentos" [value]="tipoDocumento.cod_documento">
                 {{ tipoDocumento.nom_documento }}
               </option>
@@ -20,15 +22,20 @@
           <!-- Documento -->
           <div class="mb-4">
             <label for="documento" class="block text-sm font-medium text-gray-700">Documento</label>
-            <input type="text" id="documento" name="documento" [(ngModel)]="admin.documento_admin"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="documento" name="documento" [(ngModel)]="admin.documento_admin" #documentoCtrl="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': documentoCtrl.invalid && documentoCtrl.touched, 'border-gray-300': documentoCtrl.valid || !documentoCtrl.touched}"
+              required>
           </div>
   
           <!-- Departamento -->
           <div class="mb-4">
             <label for="cod_departamento" class="block text-sm font-medium text-gray-700">Departamento</label>
-            <select id="cod_departamento" name="cod_departamento" [(ngModel)]="admin.cod_departamento" (change)="onDepartamentoChange($event)"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <select id="cod_departamento" name="cod_departamento" [(ngModel)]="admin.cod_departamento" #departamentoCtrl="ngModel"
+              (change)="onDepartamentoChange($event)"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              [ngClass]="{'border-red-400': (admin.cod_departamento === 0) && departamentoCtrl.touched}"
+              required>
               <option *ngFor="let departamento of listDepartamentos" [value]="departamento.cod_departamento">
                 {{departamento.nom_departamento}}
               </option>
@@ -38,8 +45,10 @@
           <!-- Municipio -->
           <div class="mb-4">
             <label for="cod_municipio" class="block text-sm font-medium text-gray-700">Municipio</label>
-            <select id="cod_municipio" name="cod_municipio" [(ngModel)]="admin.cod_municipio"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <select id="cod_municipio" name="cod_municipio" [(ngModel)]="admin.cod_municipio" #municipio="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': (admin.cod_municipio === 0) && municipio.touched}"
+              required>
               <option *ngFor="let municipio of listMunicipios" [value]="municipio.cod_municipio">
                 {{municipio.nom_municipio}}
               </option>
@@ -49,36 +58,46 @@
           <!-- Nombre -->
           <div class="mb-4">
             <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
-            <input type="text" id="nombre" name="nombre" [(ngModel)]="admin.nom_admin"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="admin.nom_admin" #nombreCtrl="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': nombreCtrl.invalid && nombreCtrl.touched, 'border-gray-300': nombreCtrl.valid || !nombreCtrl.touched}"
+              required>
           </div>
   
           <!-- Apellido -->
           <div class="mb-4">
             <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido</label>
-            <input type="text" id="apellido" name="apellido" [(ngModel)]="admin.ape_admin"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="apellido" name="apellido" [(ngModel)]="admin.ape_admin" #apellidoCtrl="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': apellidoCtrl.invalid && apellidoCtrl.touched, 'border-gray-300': apellidoCtrl.valid || !apellidoCtrl.touched}"
+              required>
           </div>
   
           <!-- Teléfono -->
           <div class="mb-4">
             <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
-            <input type="text" id="telefono" name="telefono" [(ngModel)]="admin.tel_admin"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="telefono" name="telefono" [(ngModel)]="admin.tel_admin" #telefonoCtrl="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': telefonoCtrl.invalid && telefonoCtrl.touched, 'border-gray-300': telefonoCtrl.valid || !telefonoCtrl.touched}"
+              required>
           </div>
   
           <!-- Email -->
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="email" name="email" [(ngModel)]="admin.email_admin"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="email" id="email" name="email" [(ngModel)]="admin.email_admin" #emailCtrl="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': emailCtrl.invalid && emailCtrl.touched, 'border-gray-300': emailCtrl.valid || !emailCtrl.touched}"
+              required>
           </div>
   
           <!-- Código IPS -->
           <div class="mb-4">
             <label for="cod_ips" class="block text-sm font-medium text-gray-700">IPS</label>
-            <select id="cod_ips" name="cod_ips" [(ngModel)]="admin.cod_ips"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <select id="cod_ips" name="cod_ips" [(ngModel)]="admin.cod_ips" #ipsCtrl="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': (admin.cod_ips === 0) && ipsCtrl.touched}"
+              required>
               <option *ngFor="let ips of listIps" [value]="ips.cod_ips">
                 {{ips.nom_ips}}
               </option>

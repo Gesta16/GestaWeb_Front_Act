@@ -45,14 +45,26 @@ export class AddAdminComponent implements OnInit {
     this.getDepartamentos();
   }
 
-  onSubmit(): void {
+  onSubmit(adminForm: any): void {
+
+    // validamos que el formulario esté completo
+    if (adminForm.invalid) {
+      this.alertService.infoAlert('Error', 'Por favor, complete el formulario.');
+      // marcamos los campos como touched para que se muestren los errores
+      Object.keys(adminForm.controls).forEach(field => {
+        const control = adminForm.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      }); 
+      return;
+    }
+
     this.adminService.createAdmin(this.admin).subscribe(
       response => {
         this.alertService.successAlert('Exito', response.message);
         this._matDialogRef.close(true);
       },
       error => {
-        this.alertService.errorAlert('Error',error.error.message);
+        this.alertService.errorAlert('Error',error.error.error);
         console.error('Error al crear Admin:', error);
       }
     );

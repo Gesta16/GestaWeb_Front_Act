@@ -125,7 +125,7 @@ export class AddGestanteComponent {
         },
         error: (error) => {
           console.error('Error al actualizar el usuario:', error);
-          this.alertService.errorAlert('Error',error.error.message);
+          this.alertService.errorAlert('Error',error.error.error);
         }
       });
     } else {
@@ -139,7 +139,7 @@ export class AddGestanteComponent {
         },
         error: (error) => {
           console.error('Error al crear el usuario:', error);
-          this.alertService.errorAlert('Error', error.error.message);
+          this.alertService.errorAlert('Error', error.error.error);
         }
       });
     }
