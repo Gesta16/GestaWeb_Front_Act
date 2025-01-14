@@ -46,6 +46,11 @@ export class SignosAlarmaService {
     return this.http.post(`${this.apiUrl}signo-alarma`, signoAlarma, { headers });
   }
 
+  updateSignoAlarma(signoAlarma: SignoAlarma) {
+    const headers = this.createHeaders();
+    return this.http.put(`${this.apiUrl}signo-alarma/${signoAlarma.id}`, signoAlarma, { headers });
+  }
+
 
 
 }

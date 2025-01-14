@@ -33,7 +33,7 @@
                         <td>{{signoAlarma.descripcion}}</td>
                         <td>{{signoAlarma.documento}}</td>
                         <td class="px-5 py-2">
-                            <button
+                            <button (click)="abrirModalEdit(signoAlarma)"
                                 class="flex items-center ml-[34%] h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
                                 <i class="fa-solid fa-pencil fa-lg text-black"></i>
                             </button>

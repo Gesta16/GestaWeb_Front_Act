@@ -50,6 +50,22 @@ export class AlertasComponent {
     });
   }
 
+  abrirModalEdit(signoAlarma: SignoAlarma): void {
+    console.log(signoAlarma);
+    const dialogRef = this._matDialog.open(AddAlertasComponent, {
+      enterAnimationDuration: '0ms',
+      exitAnimationDuration: '0ms',
+      data: { alarma: signoAlarma }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.getSignosAlarma();
+      }
+    });
+  }
+
   getSignosAlarma() {
     this.signosAlarmaService.getSignosAlarma().subscribe(
       (res: any) => {
