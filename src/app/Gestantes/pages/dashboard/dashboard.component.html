@@ -10,7 +10,7 @@
     'ml-0': !isVisible}">
 
     <!-- Estilos de la primera fila -->
-    <div class="flex flex-wrap gap-4 w-full mt-6">
+    <div class="flex flex-wrap gap-4 w-full h-[332px] mt-6">
 
         <!-- Campo para el proceso por trimestres -->
         <div class="bg-white rounded-lg w-[33%] mb-6 shadow-md h-full">
@@ -47,7 +47,7 @@
         </div>
 
         <!-- diseño de las alertas -->
-        <div class="bg-white p-6 rounded-lg border shadow-md w-[31%] mb-6 h-full">
+        <div class="bg-white p-6 rounded-lg border shadow-md w-[31%] mb-6 h-full overflow-auto">
             <div class="flex gap-2 text-[#ea1f1f]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -59,9 +59,9 @@
                 <h3 class="text-xl font-bold mb-4">¡Importante!</h3>
             </div>
             <div class="flex flex-col">
-                <div class="border border-[#fe0000] bg-red-50 rounded-lg p-3 mb-4">
-                    <h3 class="font-bold text-lg">Alerta</h3>
-                    <p class="text-gray-500">Fecha: 2023-05-15</p>
+                <div *ngFor="let sig of signoAlarma" class="border border-[#fe0000] bg-red-50 rounded-lg p-3 mb-4 cursor-pointer" (click)="abrirModal(sig)">
+                    <h3 class="font-bold text-lg"> {{sig.nombre}} </h3>
+                    <p class="text-gray-500"> {{formatearFecha(sig.created_at)}} </p>
                 </div>
             </div>
         </div>

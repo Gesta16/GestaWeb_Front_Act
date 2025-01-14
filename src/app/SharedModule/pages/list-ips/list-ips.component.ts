@@ -77,7 +77,6 @@ export class ListIpsComponent {
       data: { ips: ips }
       
     });
-    console.log(ips);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadIps(); 

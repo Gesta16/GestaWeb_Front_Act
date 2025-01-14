@@ -31,7 +31,7 @@
                         <th scope="col" class="px-5 py-3">Apellido</th>
                         <th scope="col" class="px-5 py-3">Teléfono</th>
                         <th scope="col" class="px-5 py-3">Correo electrónico</th>
-                        <th scope="col" class="px-5 py-3">Desactivar</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -41,10 +41,8 @@
                         <td>{{ superAdmin.nom_superadmin }}</td>
                         <td>{{ superAdmin.ape_superadmin }}</td>
                         <td>{{ superAdmin.tel_superadmin }}</td>
-                        <td>{{ superAdmin.email_superadmin }}</td>
-                        <td class="px-12 py-4">
-                            <i class="fa-solid fa-toggle-off fa-xl" style="color: #000000;"></i>
-                        </td>
+                        <td class="px-12 py-4">{{ superAdmin.email_superadmin }}</td>
+                        
                     </tr>
                 </tbody>
             </table>

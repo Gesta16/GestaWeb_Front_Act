@@ -5,6 +5,7 @@ import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { SuperAdminService } from '../../../Services/super-admin.service';
 import { SuperAdmin } from '../../../Models/Super-admin.model';
 import { AlertService } from '../../../Services/alert.service';
+import { aD } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-add-super-admin',
@@ -28,7 +29,18 @@ export class AddSuperAdminComponent {
     this.getTipoDocumentos();
   }
 
-  onSubmit(): void {
+  onSubmit(superadmin: any): void {
+    // validamos que el formulario esté completo
+    if (superadmin.invalid) {
+      this.alertService.infoAlert('Error', 'Por favor, complete el formulario.');
+      // marcamos los campos como touched para que se muestren los errores
+      Object.keys(superadmin.controls).forEach(field => {
+        const control = superadmin.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      }); 
+      return;
+    }
+
     this.superAdminService.createSuperAdmin(this.superAdmin).subscribe(
       response => {
         this.alertService.successAlert('Exito', response.message).then(()=>{
@@ -36,7 +48,7 @@ export class AddSuperAdminComponent {
         });
       },
       error => {
-        this.alertService.errorAlert('Error',error.error.message);
+        this.alertService.errorAlert('Error',error.error.error);
         console.error('Error al crear SuperAdmin:', error);
       }
     );

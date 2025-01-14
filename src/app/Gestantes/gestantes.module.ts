@@ -9,6 +9,7 @@ import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-
 import { ModalComponent } from './pages/modal/modal.component';
 import { ExamenesComponent } from './pages/examenes/examenes.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ModalAlertaComponent } from './pages/modal-alerta/modal-alerta.component';
 
 
 
@@ -18,6 +19,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     DashboardComponent,
     ModalComponent,
     ExamenesComponent,
+    ModalAlertaComponent,
   ],
   imports: [
     CommonModule,

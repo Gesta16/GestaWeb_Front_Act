@@ -36,9 +36,19 @@ export class SignosAlarmaService {
     return this.http.get(`${this.apiUrl}signo-alarma/${id}`, { headers });
   }
 
+  getSignosAlarmaByUser(id: number) {
+    const headers = this.createHeaders();
+    return this.http.get(`${this.apiUrl}signo-alarma-user/${id}`, { headers });
+  }
+
   createSignoAlarma(signoAlarma: SignoAlarma) {
     const headers = this.createHeaders();
     return this.http.post(`${this.apiUrl}signo-alarma`, signoAlarma, { headers });
+  }
+
+  updateSignoAlarma(signoAlarma: SignoAlarma) {
+    const headers = this.createHeaders();
+    return this.http.put(`${this.apiUrl}signo-alarma/${signoAlarma.id}`, signoAlarma, { headers });
   }
 
 

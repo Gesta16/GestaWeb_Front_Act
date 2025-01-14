@@ -23,15 +23,17 @@
                     <tr>
                         <th scope="col" class="px-5 py-3">Nombre Alerta</th>
                         <th scope="col" class="px-5 py-3">Descripción</th>
+                        <th scope="col" class="px-5 py-3">Documento</th>
                         <th scope="col" class="px-5 py-3">Editar</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let signoAlarma of signosAlarma">
+                <tbody *ngFor="let signoAlarma of paginatedAlerta">
                     <tr class="border-b hover:bg-gray-50">
                         <td>{{signoAlarma.nombre}}</td>
                         <td>{{signoAlarma.descripcion}}</td>
+                        <td>{{signoAlarma.documento}}</td>
                         <td class="px-5 py-2">
-                            <button
+                            <button (click)="abrirModalEdit(signoAlarma)"
                                 class="flex items-center ml-[34%] h-10 bg-transparent text-black font-bold py-2 px-4 rounded-xl hover:bg-gray-100 focus:outline-none">
                                 <i class="fa-solid fa-pencil fa-lg text-black"></i>
                             </button>
@@ -42,7 +44,7 @@
         </div>
 
         <!-- Paginación -->
-        <!-- <nav class="flex items-center justify-center pt-4 mb-4" aria-label="Table navigation">
+        <nav class="flex items-center justify-center pt-4 mb-4" aria-label="Table navigation">
             <ul class="inline-flex -space-x-px text-sm h-8">
                 <li *ngIf="currentPage > 1">
                     <a (click)="changePage(currentPage - 1)"
@@ -60,6 +62,6 @@
                         class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-cyan-500">Siguiente</a>
                 </li>
             </ul>
-        </nav> -->
+        </nav>
     </div>
 </div>

@@ -96,17 +96,29 @@ export class AddIpsComponent {
     );
   }
 
-  onSubmit(): void {
+  onSubmit(ipsform: any): void {
     if (this.ips.cod_ips > 0) {
       // Si existe un código de IPS, significa que estamos editando
-      this.updateIps();
+      this.updateIps(ipsform);
     } else {
       // Si no existe código de IPS, estamos agregando una nueva
-      this.createIps();
+      this.createIps(ipsform);
     }
   }
 
-  createIps(): void {
+  createIps(ipsform: any): void {
+
+    // validamos que el formulario esté completo
+    if (ipsform.invalid) {
+      this.alertService.infoAlert('Error', 'Por favor, complete el formulario.');
+      // marcamos los campos como touched para que se muestren los errores
+      Object.keys(ipsform.controls).forEach(field => {
+        const control = ipsform.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      }); 
+      return;
+    }
+
     this.ipsService.createIps(this.ips).subscribe(
       response => {
         this.alertService.successAlert('Éxito', response.message).then(() => {
@@ -114,14 +126,26 @@ export class AddIpsComponent {
         });
       },
       error => {
-        this.alertService.errorAlert('Error', error.error.message);
+        this.alertService.errorAlert('Error', error.error.error);
         console.error('Error al crear IPS:', error);
       }
     );
   }
 
   // Método para actualizar una IPS existente
-  updateIps(): void {
+  updateIps(ipsform: any): void {
+
+    // validamos que el formulario esté completo
+    if (ipsform.invalid) {
+      this.alertService.infoAlert('Error', 'Por favor, complete el formulario.');
+      // marcamos los campos como touched para que se muestren los errores
+      Object.keys(ipsform.controls).forEach(field => {
+        const control = ipsform.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      }); 
+      return;
+    }
+
     this.ipsService.updateIps(this.ips).subscribe(
       response => {
         console.log('IPS actualizada correctamente', response);
@@ -129,7 +153,7 @@ export class AddIpsComponent {
       },
       error => {
         console.error('Error al actualizar IPS:', error);
-        this.alertService.errorAlert('Error', error.error.message);
+        this.alertService.errorAlert('Error', error.error.error);
       }
     );
   }

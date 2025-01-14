@@ -5,14 +5,17 @@
         {{ ips.cod_ips > 0 ? 'Editar IPS' : 'Formulario de Registro de IPS' }}
       </h2>
   
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit(ipsForm)" #ipsForm="ngForm">
         <div class="grid grid-cols-2 gap-4 mt-6">
   
           <!-- Departamento -->
           <div class="mb-4">
             <label for="cod_departamento" class="block text-sm font-medium text-gray-700">Departamento</label>
-            <select id="cod_departamento" name="cod_departamento" [(ngModel)]="ips.cod_departamento" (change)="onDepartamentoChange($event)"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <select id="cod_departamento" name="cod_departamento" [(ngModel)]="ips.cod_departamento" #departamento="ngModel"
+              (change)="onDepartamentoChange($event)"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': (ips.cod_departamento === 0) && departamento.touched}"
+              required>
               <option *ngFor="let departamento of listDepartamentos" [value]="departamento.cod_departamento">
                 {{departamento.nom_departamento}}
               </option>
@@ -22,8 +25,10 @@
           <!-- Municipio -->
           <div class="mb-4">
             <label for="cod_municipio" class="block text-sm font-medium text-gray-700">Municipio</label>
-            <select id="cod_municipio" name="cod_municipio" [(ngModel)]="ips.cod_municipio"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <select id="cod_municipio" name="cod_municipio" [(ngModel)]="ips.cod_municipio" #municipio="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              [ngClass]="{'border-red-400': (ips.cod_municipio === 0) && municipio.touched}"
+              required>
               <option *ngFor="let municipio of listMunicipios" [value]="municipio.cod_municipio">
                 {{municipio.nom_municipio}}
               </option>
@@ -33,8 +38,10 @@
           <!-- Régimen -->
           <div class="mb-4">
             <label for="cod_regimen" class="block text-sm font-medium text-gray-700">Régimen</label>
-            <select id="cod_regimen" name="cod_regimen" [(ngModel)]="ips.cod_regimen"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <select id="cod_regimen" name="cod_regimen" [(ngModel)]="ips.cod_regimen" #regimen="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': (ips.cod_regimen === 0) && regimen.touched}"
+              required>
               <option *ngFor="let regimen of listRegimenes" [value]="regimen.cod_regimen">
                 {{regimen.nom_regimen}}
               </option>
@@ -44,36 +51,46 @@
           <!-- Nombre IPS -->
           <div class="mb-4">
             <label for="nom_ips" class="block text-sm font-medium text-gray-700">Nombre IPS</label>
-            <input type="text" id="nom_ips" name="nom_ips" [(ngModel)]="ips.nom_ips"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="nom_ips" name="nom_ips" [(ngModel)]="ips.nom_ips" #nomips="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              [ngClass]="{'border-red-400': nomips.invalid && nomips.touched, 'border-gray-300': nomips.valid || !nomips.touched}"
+              required>
           </div>
   
           <!-- Dirección -->
           <div class="mb-4">
             <label for="dir_ips" class="block text-sm font-medium text-gray-700">Dirección</label>
-            <input type="text" id="dir_ips" name="dir_ips" [(ngModel)]="ips.dir_ips"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="dir_ips" name="dir_ips" [(ngModel)]="ips.dir_ips" #direccion="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': direccion.invalid && direccion.touched, 'border-gray-300': direccion.valid || !direccion.touched}"
+              required>
           </div>
   
           <!-- Teléfono -->
           <div class="mb-4">
             <label for="tel_ips" class="block text-sm font-medium text-gray-700">Teléfono</label>
-            <input type="text" id="tel_ips" name="tel_ips" [(ngModel)]="ips.tel_ips"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="tel_ips" name="tel_ips" [(ngModel)]="ips.tel_ips" #telefono="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': telefono.invalid && telefono.touched, 'border-gray-300': telefono.valid || !telefono.touched}"
+              required>
           </div>
   
           <!-- Email -->
           <div class="mb-4">
             <label for="email_ips" class="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="email_ips" name="email_ips" [(ngModel)]="ips.email_ips"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="email" id="email_ips" name="email_ips" [(ngModel)]="ips.email_ips" #email="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': email.invalid && email.touched, 'border-gray-300': email.valid || !email.touched}"
+              required>
           </div>
   
           <!-- NIT -->
           <div class="mb-4">
             <label for="nit_ips" class="block text-sm font-medium text-gray-700">NIT</label>
-            <input type="text" id="nit_ips" name="nit_ips" [(ngModel)]="ips.nit_ips"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" id="nit_ips" name="nit_ips" [(ngModel)]="ips.nit_ips" #nit="ngModel"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+              [ngClass]="{'border-red-400': nit.invalid && nit.touched, 'border-gray-300': nit.valid || !nit.touched}"
+              required>
           </div>
   
         </div>

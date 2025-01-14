@@ -1,0 +1,39 @@
+<div class="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl">
+    <!-- Header -->
+    <div class="border-b p-4">
+      <h2 class="text-xl font-semibold text-center">
+        Alerta: tener en cuenta
+      </h2>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6">
+      <!-- Grid para los dos inputs en la misma fila -->
+
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Nombre
+        </label>
+        <input type="text" readonly class="w-full p-2 bg-gray-100 border rounded-md" [value]="nombre">
+      </div>
+
+      <!-- Textarea grande -->
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Descripción
+        </label>
+        <textarea readonly class="w-full p-2 bg-gray-100 border rounded-md resize-none" rows="5" maxlength="500"
+          [value]="descripcion"></textarea>
+      </div>
+
+      <!-- Botón de cancelar -->
+      <div class="flex justify-end">
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors"
+          (click)="cerrar()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
