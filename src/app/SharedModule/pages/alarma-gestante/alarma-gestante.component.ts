@@ -28,7 +28,7 @@ export class AlarmaGestanteComponent {
   }
 
   getSignoAlarma(id: number) {
-    this.alarmaService.getSignosAlarmaByUser(id).subscribe(
+    this.alarmaService.getSignosAlarma().subscribe(
       (response: any) => {
         console.log(response.signo_alarma);
         if(response.signo_alarma){
