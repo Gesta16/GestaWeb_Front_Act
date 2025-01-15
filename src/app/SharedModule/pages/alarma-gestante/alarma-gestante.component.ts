@@ -10,6 +10,7 @@ import { SignosAlarmaService } from '../../../Services/signos-alarma.service';
 export class AlarmaGestanteComponent {
   
   signoAlarma: [] = [];
+  sinAlert: boolean = true;
 
   constructor(
     private alarmaService: SignosAlarmaService,
@@ -32,6 +33,7 @@ export class AlarmaGestanteComponent {
         console.log(response.signo_alarma);
         if(response.signo_alarma){
           this.signoAlarma = response.signo_alarma;
+          this.sinAlert = false;
         }
       },
       (error) => {

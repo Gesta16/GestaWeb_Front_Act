@@ -6,15 +6,15 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', redirectTo: 'home' },
   {
-    path:'',
+    path:'auth',
     loadChildren:()=>import('./AuthModule/auth.module').then(m => m.AuthModule)
   },
   {
-    path:'',
+    path:'shared',
     loadChildren:()=>import('./SharedModule/shared.module').then(m => m.SharedModule)
   },
   {
-    path:'',
+    path:'gestante',
     loadChildren:()=>import('./Gestantes/gestantes.module').then(m =>m.GestantesModule)
   },
 ];

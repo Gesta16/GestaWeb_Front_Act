@@ -153,7 +153,8 @@ export class Ruta3Component {
   abrirModal(): void {
     this._matDialog.open(AlarmaGestanteComponent, {
       enterAnimationDuration: '0ms',
-      exitAnimationDuration: '0ms'
+      exitAnimationDuration: '0ms',
+      data: { usuario_id: this.id }
     });
   }
 

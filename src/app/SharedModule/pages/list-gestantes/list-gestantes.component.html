@@ -62,14 +62,14 @@
                         </button> -->
 
                             <!-- Botón para crear proceso si no hay ninguno, deshabilitado si 'autorizacion' es 0 -->
-                            <button (click)="crearProceso(usuario.id_usuario)" [disabled]="usuario.autorizacion === 0"
+                            <button (click)="crearProceso(usuario.id_usuario)" [disabled]="usuario.autorizacion == 0"
                                 class="flex items-center h-8 border border-[#80BA27] bg-white text-black font-semibold px-2 rounded-xl hover:bg-[#EAF2DA] focus:outline-none"
                                 [ngClass]="{ 'cursor-not-allowed': usuario.autorizacion === 0, 'opacity-50': usuario.autorizacion === 0 }">
                                 Nuevo proceso
                             </button>
 
                             <!-- Botón para ver usuario si hay exactamente un proceso -->
-                            <button *ngIf="usuario.procesosCount != 0" (click)="toggleDropdown(usuario)"
+                            <button *ngIf="usuario.procesos_gestativos_count != 0" (click)="toggleDropdown(usuario)"
                                 class="flex items-center h-8 border border-[#CAD400] bg-white font-semibold text-black px-2 rounded-xl hover:bg-[#F5F6DB] focus:outline-none">
                                 Ver proceso
                             </button>

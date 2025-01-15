@@ -1,128 +1,130 @@
 <app-header></app-header>
 
-<div class="mx-auto px-4 mt-[8rem] max-w-[95%] sm:max-w-full transition-all duration-300"
-    [ngClass]="{ 
+<div class="mx-auto px-4 mt-[8rem] max-w-[95%] sm:max-w-full transition-all duration-300" [ngClass]="{ 
     'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 
     'ml-0': !isVisible}">
 
     <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-        <h2 class="text-xl font-bold mb-4">Exámenes del Primer Trimestre</h2>
-        
+        <h2 class="text-xl font-bold mb-4">Exámenes de los Trimestres</h2>
+
         <div class="grid gap-4">
-            <!-- Hemograma -->
-            <div class="border rounded-lg p-4 flex items-center justify-between">
-                <div>
-                    <h3 class="font-bold text-lg">Hemograma</h3>
-                    <p class="text-gray-500" *ngIf="laboratorioITrimestre?.fec_hemograma">
-    <div class="flex flex-wrap gap-4 w-full mt-6">
-
-        <!----- * Primer Trimestre * ----->
-        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border border-[#45B7D1] h-full">
-            <h3 class="text-xl font-bold mb-4">Primer Trimestre</h3>
-            <div class="flex flex-wrap gap-4 w-full">
-
-                <!-- Exámenes Realizados Primer Trimestre -->
-                <div class="border rounded-lg w-full px-4 py-2">
-                    <div class="flex gap-2 text-[#15b283] mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-check">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="m9 12 2 2 4-4" />
-                        </svg>
-                        <h3 class="font-bold">Realizados</h3>
+            <div class="w-full p-4 border border-slate-400 rounded-lg">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 w-full">
+                    <!-- Primer Trimestre -->
+                    <div class="border border-slate-300 rounded-lg p-4">
+                        <h3 class="text-xl font-bold mb-4">Primer Trimestre</h3>
+                        <table class="w-full">
+                            <tbody>
+                                <tr *ngFor="let exam of examenes1" class="border-b last:border-b-0">
+                                    <td class="py-2">{{ exam.nombre }} <p></p> </td>
+                                    <td class="py-2 pl-4 text-right">
+                                        <!-- Si exam.completado es false, muestra este icono HTML -->
+                                        <ng-container *ngIf="exam.completado; else notCompleted">
+                                            <span class="text-green-500 flex justify-end">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-check">
+                                                    <path d="M20 6 9 17l-5-5" />
+                                                </svg>
+                                            </span>
+                                        </ng-container>
+                                        <!-- Si exam.completado es false, muestra este icono HTML -->
+                                        <ng-template #notCompleted>
+                                            <span class="text-red-500 flex justify-end">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-x">
+                                                    <path d="M18 6 6 18" />
+                                                    <path d="m6 6 12 12" />
+                                                </svg>
+                                            </span>
+                                        </ng-template>
+                                    </td>
+                                </tr>
+                                <!-- Más exámenes... -->
+                            </tbody>
+                        </table>
                     </div>
-                    
-                </div>
 
-                <!-- Exámenes No Realizados Primer Trimestre -->
-                <div class="border rounded-lg w-full px-4 py-2">
-                    <div class="flex gap-2 text-[#E11D48] mb-2 mt-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-x">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="m15 9-6 6" />
-                            <path d="m9 9 6 6" />
-                        </svg>
-                        <h3 class="font-bold">No Realizados</h3>
+                    <!-- Segundo Trimestre -->
+                    <div class="border border-slate-300 rounded-lg p-4">
+                        <h3 class="text-xl font-bold mb-4">Segundo Trimestre</h3>
+                        <table class="w-full">
+                            <tbody>
+                                <tr *ngFor="let exam of examenes2" class="border-b last:border-b-0">
+                                    <td class="py-2">{{ exam.nombre }}</td>
+                                    <td class="py-2 pl-4 text-right">
+                                        <!-- Si exam.completado es false, muestra este icono HTML -->
+                                        <ng-container *ngIf="exam.completado; else notCompleted">
+                                            <span class="text-green-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-check">
+                                                    <path d="M20 6 9 17l-5-5" />
+                                                </svg>
+                                            </span>
+                                        </ng-container>
+                                        <!-- Si exam.completado es false, muestra otro icono HTML -->
+                                        <ng-template #notCompleted>
+                                            <span class="text-red-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-x">
+                                                    <path d="M18 6 6 18" />
+                                                    <path d="m6 6 12 12" />
+                                                </svg>
+                                            </span>
+                                        </ng-template>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    
+
+                    <!-- Tercer Trimestre -->
+                    <div class="border border-slate-300 rounded-lg p-4">
+                        <h3 class="text-xl font-bold mb-4">Tercer Trimestre</h3>
+                        <table class="w-full">
+                            <tbody>
+                                <tr *ngFor="let exam of examenes3" class="border-b last:border-b-0">
+                                    <td class="py-2">{{ exam.nombre }}</td>
+                                    <td class="py-2 pl-4 text-right">
+                                        <!-- Si exam.completado es false, muestra este icono HTML -->
+                                        <ng-container *ngIf="exam.completado; else notCompleted">
+                                            <span class="text-green-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-x">
+                                                    <path d="M18 6 6 18" />
+                                                    <path d="m6 6 12 12" />
+                                                </svg>
+                                            </span>
+                                        </ng-container>
+                                        <!-- Si exam.completado es false, muestra otro icono HTML -->
+                                        <ng-template #notCompleted>
+                                            <span class="text-red-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="lucide lucide-check">
+                                                    <path d="M20 6 9 17l-5-5" />
+                                                </svg>
+                                            </span>
+                                        </ng-template>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!----- * Segundo Trimestre * ----->
-        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border border-[#ff9595]">
-            <h3 class="text-xl font-bold mb-4">Segundo Trimestre</h3>
-            <div class="flex flex-wrap gap-4 w-full">
-
-                <!-- Exámenes Realizados Segundo Trimestre -->
-                <div class="border rounded-lg w-full px-4 py-2">
-                    <div class="flex gap-2 text-[#15b283] mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-check">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="m9 12 2 2 4-4" />
-                        </svg>
-                        <h3 class="font-bold">Realizados</h3>
-                    </div>
-                   
-                </div>
-
-                <!-- Exámenes No Realizados Segundo Trimestre -->
-                <div class="border rounded-lg w-full px-4 py-2">
-                    <div class="flex gap-2 text-[#E11D48] mb-2 mt-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-x">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="m15 9-6 6" />
-                            <path d="m9 9 6 6" />
-                        </svg>
-                        <h3 class="font-bold">No Realizados</h3>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <!----- * Tercer Trimestre * ----->
-        <div class="bg-white p-6 rounded-lg w-[32%] mb-6 border border-[#4ECDC4]">
-            <h3 class="text-xl font-bold mb-4">Tercer Trimestre</h3>
-            <div class="flex flex-wrap gap-4 w-full">
-
-                <!-- Exámenes Realizados Tercer Trimestre -->
-                <div class="border rounded-lg w-full px-4 py-2">
-                    <div class="flex gap-2 text-[#15b283] mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-check">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="m9 12 2 2 4-4" />
-                        </svg>
-                        <h3 class="font-bold">Realizados</h3>
-                    </div>
-                    
-                </div>
-
-                <!-- Exámenes No Realizados Tercer Trimestre -->
-                <div class="border rounded-lg w-full px-4 py-2">
-                    <div class="flex gap-2 text-[#E11D48] mb-2 mt-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-x">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="m15 9-6 6" />
-                            <path d="m9 9 6 6" />
-                        </svg>
-                        <h3 class="font-bold">No Realizados</h3>
-                    </div>
-                    
-                </div>
-            </div>
         </div>
     </div>
 </div>
