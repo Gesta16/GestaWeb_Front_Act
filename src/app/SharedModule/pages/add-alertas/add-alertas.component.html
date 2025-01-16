@@ -5,7 +5,7 @@
         </h2>
 
         <form (ngSubmit)="onSubmit(alertaForm)" #alertaForm="ngForm">
-            <div class="gap-4">
+            <div class="grid grid-cols-2 gap-4">
                 <!-- Título -->
                 <div class="mb-4">
                     <label for="" class="block text-sm font-medium text-gray-700">Título</label>
@@ -15,8 +15,17 @@
                         required>
                 </div>
 
-                
+                <!-- Documento -->
+                <div class="mb-4">
+                    <label for="" class="block text-sm font-medium text-gray-700">Documento</label>
+                    <input type="text" id="documento" name="documento" [(ngModel)]="signosAlarma.documento" #documentoCtrl="ngModel"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        [ngClass]="{'border-red-400':  documentoCtrl.invalid && documentoCtrl.touched, 'border-gray-300': documentoCtrl.valid || !documentoCtrl.touched}"
+                        [readonly]="readonly"
+                        required>
+                </div>
             </div>
+            
 
             <!-- Descripción -->
             <div class="mb-4">
