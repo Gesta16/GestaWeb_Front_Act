@@ -3,6 +3,7 @@ import { environment } from '../../environment/env';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { SignoAlarma } from '../Models/Signos-Alarma.model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -50,6 +51,13 @@ export class SignosAlarmaService {
     const headers = this.createHeaders();
     return this.http.put(`${this.apiUrl}signo-alarma/${signoAlarma.id}`, signoAlarma, { headers });
   }
+
+  asignarSignosAlarma(usuario_id: number, signos_alarma: number[]): Observable<any> {
+    const headers = this.createHeaders();
+    const body = { usuario_id, signos_alarma };
+    return this.http.post(`${this.apiUrl}asignar-signos-alarma`, body, { headers });
+  }
+
 
 
 
