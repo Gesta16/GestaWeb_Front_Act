@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
 import { LaboratorioisemestreService } from '../../../Services/laboratorioisemestre.service';
+import { LaboratorioiisemestreService } from '../../../Services/laboratorioiisemestre.service';
+import { LaboratorioiiisemestreService } from '../../../Services/laboratorioiiisemestre.service';
 import { AuthService } from '../../../Services/auth.service';
 import { LaboratorioITrimestre } from '../../../Models/Laboratorio-1-trimestre.model';
-
-
-interface Examenes {
-  nombre: string;
-  completado: boolean;
-}
+import { LaboratorioIITrimestre } from '../../../Models/Laboratorio-2-trimestre.model';
+import { LaboratorioIIITrimestre } from '../../../Models/Laboratorio-3-trimestre.model';
 
 
 @Component({
@@ -22,55 +20,58 @@ export class ExamenesComponent {
   isVisible = true;
   idUsuario: number;
   laboratorioITrimestre: LaboratorioITrimestre;
+  laboratorioIITrimestre: LaboratorioIITrimestre;
+  laboratorioIIITrimestre: LaboratorioIIITrimestre;
+  
 
-  examenes1: Examenes[] = [
-    { nombre: 'Hemoclasificacion',                      completado: true },
-    { nombre: 'Hemograma',                              completado: true },
-    { nombre: 'Glicemia',                               completado: false},
-    { nombre: 'Antigeno de Superficie Hepatitis B',     completado: false},
-    { nombre: 'VIH',                                    completado: true },
-    { nombre: 'Prueba Treponémica Rápida Para Sífilis', completado: false},
-    { nombre: 'Urocultivo',                             completado: false},
-    { nombre: 'Antibiograma',                           completado: false},
-    { nombre: 'IG-G Rubeola',                           completado: false},
-    { nombre: 'IG-G Toxoplasma',                        completado: false},
-    { nombre: 'IG-M Toxoplasma',                        completado: false},
-    { nombre: 'Hemoparasito - Gota Gruesa',             completado: false},
-    { nombre: 'Prueba De Elisa Antigenos Totales/Crudo En (Zonas Endémicas Chagas)', completado: false},
-    { nombre: 'Elisa Antigeno Recombinante',                  completado: false},
-    { nombre: 'Coombs Indirecto Cuantitativo',                completado: false},
-    { nombre: 'Elisa Antigeno Recombinante',                  completado: false},
-    { nombre: 'Ecografia Obstetrica Tamizaje de Aneuploidis', completado: false},
+  examenes1 = [
+    { nombre: 'Hemograma',                              key:'real_hemograma',  completado: false },
+    { nombre: 'Glicemia',                               key:'real_glicemia',  completado: false},
+    { nombre: 'Antigeno de Superficie Hepatitis B',     key:'real_antigenos',  completado: false},
+    { nombre: 'VIH',                                    key:'real_prueb_rapi_vih',          completado: false },
+    { nombre: 'Prueba Treponémica Rápida Para Sífilis', key:'reali_prueb_trepo_rapid_sifilis',      completado: false},
+    { nombre: 'Urocultivo',                             key:'realizo_urocultivo',  completado: false},
+    { nombre: 'Antibiograma',                           key:'realizo_antibiograma',    completado: false},
+    { nombre: 'IG-G Rubeola',                           key:'real_ig_rubeola',    completado: false},
+    { nombre: 'IG-G Toxoplasma',                        key:'real_ig_toxoplasma',    completado: false},
+    { nombre: 'IG-M Toxoplasma',                        key:'real_igm_toxoplasma',    completado: false},
+    { nombre: 'Hemoparasito - Gota Gruesa',             key:'real_hemoparasito',    completado: false},
+    { nombre: 'Prueba De Elisa Antigenos Totales/Crudo En (Zonas Endémicas Chagas)', key:'real_prueb_eliza_anti_total',  completado: false},
+    { nombre: 'Elisa Antigeno Recombinante',                  key:'real_prueb_eliza_anti_recomb', completado: false},
+    { nombre: 'Coombs Indirecto Cuantitativo',                key:'real_prueb_coombis_indi_cuanti', completado: false},
+    { nombre: 'Ecografia Obstetrica Tamizaje de Aneuploidis', key:'real_eco_obste_tamizaje', completado: false},
   ];
 
-  examenes2: Examenes[] = [
-    { nombre: 'VIH',                                    completado: true },
-    { nombre: 'Prueba Treponémica Rápida Para Sífilis', completado: false},
-    { nombre: 'Prueba De Tolerancia Oral A La Glucosa Basal', completado: false},
-    { nombre: 'Prueba De Tolerancia Oral A La Glucosa 1 Hora', completado: false},
-    { nombre: 'Prueba De Tolerancia Oral A La Glucosa 2 Horas', completado: false},
-    { nombre: 'Reporte De Citologia', completado: false},
-    { nombre: 'IG-M Toxoplasma',                        completado: false},
-    { nombre: 'Prueba De Avidez Ig G',                        completado: false},
-    { nombre: 'Toxoplasmosis IG-A ',                        completado: false},
-    { nombre: 'Hemoparasito - Gota Gruesa',             completado: false},
-    { nombre: 'Coombs Indirecto Cualitativo',                completado: false},
-    { nombre: 'Ecografia Obstetrica Detalle Anatomic',                completado: false},
+  examenes2 = [
+    { nombre: 'VIH',                                            key:'reali_prueb_rapi_vih', completado: false },
+    { nombre: 'Prueba Treponémica Rápida Para Sífilis',         key:'real_prueb_trep_rap_sifilis', completado: false},
+    { nombre: 'Prueba De Tolerancia Oral A La Glucosa Basal',   key:'real_prueb_oral', completado: false},
+    { nombre: 'Prueba De Tolerancia Oral A La Glucosa 1 Hora',  key:'real_prueb_oral_1', completado: false},
+    { nombre: 'Prueba De Tolerancia Oral A La Glucosa 2 Horas', key:'real_prueb_oral_2', completado: false},
+    { nombre: 'Reporte De Citologia',                           key:'reali_citologia', completado: false},
+    { nombre: 'IG-M Toxoplasma',                                key:'real_igm_toxoplasma_2', completado: false},
+    { nombre: 'Prueba De Avidez Ig G',                          key:'reali_prueb_avidez_ig_g', completado: false},
+    { nombre: 'Toxoplasmosis IG-A ',                            key:'reali_prueb_toxoplasmosis_ig_a', completado: false},
+    { nombre: 'Hemoparasito - Gota Gruesa',                     key:'reali_prueb_hemoparasito', completado: false},
+    { nombre: 'Coombs Indirecto Cualitativo',                   key:'reali_prueb_coombis_indi_cuanti', completado: false},
+    { nombre: 'Ecografia Obstetrica Detalle Anatomic',          key:'reali_eco_obste_detalle_anato', completado: false},
   ];
 
-  examenes3: Examenes[] = [
-    { nombre: 'Hemograma',                              completado: true },
-    { nombre: 'VIH',                                    completado: true },
-    { nombre: 'Prueba Treponémica Rápida Para Sífilis', completado: false},
-    { nombre: 'IG-M Toxoplasma',                        completado: false},
-    { nombre: 'Cultivo Rectal Y Vaginal',               completado: false},
-    { nombre: 'Perfil Biofisico',                       completado: false},
+  examenes3 = [
+    { nombre: 'Hemograma',                              key:'reali_hemograma',                completado: false},
+    { nombre: 'VIH',                                    key:'reali_prueb_rapi_vih_3',         completado: false},
+    { nombre: 'Prueba Treponémica Rápida Para Sífilis', key:'reali_prueb_trepo_rapi_sifilis', completado: false},
+    { nombre: 'IG-M Toxoplasma',                        key:'reali_prueb_igm_toxoplasma',     completado: false},
+    { nombre: 'Cultivo Rectal Y Vaginal',               key:'reali_prueb_culti_rect_vagi',    completado: false},
+    { nombre: 'Perfil Biofisico',                       key:'reali_prueb_perfil_biofisico',   completado: false},
   ];
 
   constructor(
     private menuService: MenuService,
     private authService: AuthService,
-    private laboratorioIService: LaboratorioisemestreService
+    private laboratorioIService: LaboratorioisemestreService,
+    private laboratorioIIService: LaboratorioiisemestreService,
+    private laboratorioIIIService: LaboratorioiiisemestreService 
 
   ) { }
 
@@ -81,6 +82,8 @@ export class ExamenesComponent {
     });
     this.idUsuario = this.authService.currentUserValue.userable.id_usuario;
     this.getLaboratorioI();
+    this.getLaboratorioII();
+    this.getLaboratorioIII();
   }
 
   getLaboratorioI() {
@@ -88,6 +91,47 @@ export class ExamenesComponent {
       data => {
         this.laboratorioITrimestre = data.data;
         console.log('Laboratorio I', this.laboratorioITrimestre);
+        this.examenes1.forEach(examen => {
+          console.log(this.laboratorioITrimestre?.[examen.key])
+          examen.completado = !!this.laboratorioITrimestre?.[examen.key]; // Convierte el valor a true/false
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    setTimeout(() => {
+      
+    }, 1000);
+    
+  }
+
+  getLaboratorioII() {
+    this.laboratorioIIService.getLaboratorioIISemestrebyId(this.idUsuario, 1).subscribe(
+      data => {
+        this.laboratorioIITrimestre = data.data;
+        console.log('Laboratorio II', this.laboratorioIITrimestre);
+        this.examenes2.forEach(examen => {
+          console.log(this.laboratorioIITrimestre?.[examen.key])
+          examen.completado = !!this.laboratorioIITrimestre?.[examen.key]; // Convierte el valor a true/false
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  getLaboratorioIII() {
+    this.laboratorioIIIService.getLaboratorioIIISemestrebyId(this.idUsuario, 1).subscribe(
+      data => {
+        this.laboratorioIIITrimestre = data.data;
+        console.log('Laboratorio III', this.laboratorioIIITrimestre);
+        this.examenes3.forEach(examen => {
+          console.log(this.laboratorioIIITrimestre?.[examen.key])
+          examen.completado = !!this.laboratorioIIITrimestre?.[examen.key]; // Convierte el valor a true/false
+        });
       },
       err => {
         console.log(err);
