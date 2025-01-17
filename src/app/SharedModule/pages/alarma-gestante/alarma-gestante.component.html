@@ -3,41 +3,39 @@
         <!-- Header -->
         <div class="border-b p-4 ">
             <h2 class="text-xl font-semibold text-center text-gray-800">
-                Alertas de la gestante
-            </h2>
-        </div>
-
-        <div *ngIf="sinAlert" class="border-b p-4 ">
-            <h2 class="text-xl font-semibold text-center text-gray-800">
-                La Gestante no tiene alertas
+                Alertas
             </h2>
         </div>
 
         <!-- Content Container with Scroll -->
         <div class="flex-1 overflow-y-auto max-h-[60vh]">
-
-            <!-- Primera Alerta -->
+            <!-- Lista de Alertas -->
             <ng-container *ngFor="let sig of signoAlarma; let last = last">
-
-            
-                <div  class="p-6">
+                <div class="p-6">
                     <div class="bg-gray-100 rounded-lg p-4 mb-2">
-                        <div class="mb-3">
-                            <span class="text-gray-600 font-medium">Nombre: </span>
-                            <span class="text-gray-800">{{sig.nombre}}</span>
-                        </div>
-                        <div>
-                            <span class="text-gray-600 font-medium">Descripción: </span>
-                            <span class="text-gray-800">{{sig.descripcion}}</span>
-                        </div>
+                        <!-- Checkbox para seleccionar la alerta -->
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" [checked]="signosSeleccionados.includes(sig.id)"
+                                (change)="toggleSeleccion(sig.id)"
+                                class="form-checkbox h-5 w-5 text-blue-600 rounded" />
+                            <div>
+                                <div class="mb-3">
+                                    <span class="text-gray-600 font-medium">Nombre: </span>
+                                    <span class="text-gray-800">{{ sig.nombre }}</span>
+                                </div>
+                                <!-- <div>
+                        <span class="text-gray-600 font-medium">Descripción: </span>
+                        <span class="text-gray-800">{{ sig.descripcion }}</span>
+                      </div> -->
+                            </div>
+                        </label>
                     </div>
                 </div>
 
-                <!-- Linea divisora -->
+                <!-- Línea divisora -->
                 <div *ngIf="!last" class="px-6">
-                    <div  class="border-b border-gray-200"></div>
+                    <div class="border-b border-gray-200"></div>
                 </div>
-
             </ng-container>
         </div>
 
