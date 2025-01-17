@@ -44,14 +44,13 @@ export class ReporteComponent {
       valor: 'parto_humanizado',
       subcategorias: [
         { nombre: 'Cesáreas', valor: 'Cesáreas' },
-        { nombre: 'Monitorización', valor: 'monitorizacion' },
       ],
     },
     {
       nombre: 'Puerperio Seguro',
       valor: 'puerperio_seguro',
       subcategorias: [
-        { nombre: 'Asesoría Anticonceptiva', valor: 'asesoria_anticonceptiva' },
+        { nombre: 'Asesoría Anticonceptiva', valor: 'Asesoría Anticonceptiva' },
         { nombre: 'Métodos Anticonceptivos', valor: 'Métodos Anticonceptivos' },
       ],
     },
@@ -59,7 +58,7 @@ export class ReporteComponent {
       nombre: 'Neonatos Saludables',
       valor: 'neonatos_saludables',
       subcategorias: [
-        { nombre: 'Alta oportuna', valor: 'alta_oportuna' },
+        { nombre: 'Alta oportuna', valor: 'Alta oportuna' },
       ],
     },
     {
@@ -81,9 +80,9 @@ export class ReporteComponent {
       nombre: 'Atención Neonatal',
       valor: 'atencion_neonatal',
       subcategorias: [
-        { nombre: 'Tamizaje Hipotiroidismo', valor: 'tamizaje_hipotiroidismo' },
-        { nombre: 'Vacunación', valor: 'vacunacion' },
-        { nombre: 'Cardiopatías', valor: 'cardiopatias' },
+        { nombre: 'Tamizaje Hipotiroidismo', valor: 'Tamizaje Hipotiroidismo' },
+        { nombre: 'Vacunación', valor: 'Vacunación' },
+        { nombre: 'Cardiopatías', valor: 'Cardiopatías' },
       ],
     },
   ];

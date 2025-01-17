@@ -60,7 +60,7 @@ export class AddOperadoresComponent {
 
   onSubmit(operadorForm: any): void {
     
-    console.log('Operador:', this.operador);
+    //console.log('Operador:', this.operador);
 
     // validamos que el formulario esté completo
     if (operadorForm.invalid) {
