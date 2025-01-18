@@ -36,7 +36,7 @@ export class AlarmaGestanteComponent {
   getSignoAlarma() {
     this.alarmaService.getSignosAlarma().subscribe(
       (response: any) => {
-        //console.log('signo de alarma',response);
+        console.log('signo de alarma',response);
         if (response) {
           this.signoAlarma = response;
           this.sinAlert = false;

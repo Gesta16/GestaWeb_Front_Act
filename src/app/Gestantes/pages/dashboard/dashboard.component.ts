@@ -165,8 +165,9 @@ export class DashboardComponent implements OnInit {
       enterAnimationDuration: '0ms',
       exitAnimationDuration: '0ms',
       data: { 
-        titulo: alarma.nombre, 
-        descripcion: alarma.descripcion 
+        titulo: alarma.nombre_alarma, 
+        descripcion: alarma.descripcion_alarma
+ 
       }, // Pasar el usuario_id
     });
   }
