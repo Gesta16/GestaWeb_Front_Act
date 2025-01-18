@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../../../Services/menu.service';
-import { AuthService } from '../../../Services/auth.service';
-import { ControlPrenatalService } from '../../../Services/control-prenatal.service';
-import { UsuarioService } from '../../../Services/usuario.service';  // Importamos UsuarioService para manejar la autorización
-import { Consulta, DashboardService } from '../../../Services/dashboard.service';
+import { from } from 'rxjs';
+
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { DashboardGestanteService } from '../../../Services/dashboard-gestante.service';
 import * as echarts from 'echarts';
-import { VacunacionService } from '../../../Services/vacunacion.service';
-import { RutaPymsService } from '../../../Services/ruta-pyms.service';
-import { LaboratorioisemestreService } from '../../../Services/laboratorioisemestre.service';
+
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAlertaComponent } from '../modal-alerta/modal-alerta.component';
+
+import { MenuService } from '../../../Services/menu.service';
+import { AuthService } from '../../../Services/auth.service';
+import { UsuarioService } from '../../../Services/usuario.service';  // Importamos UsuarioService para manejar la autorización
+import { RutaPymsService } from '../../../Services/ruta-pyms.service';
+import { VacunacionService } from '../../../Services/vacunacion.service';
 import { SignosAlarmaService } from '../../../Services/signos-alarma.service';
-import { from } from 'rxjs';
+import { ControlPrenatalService } from '../../../Services/control-prenatal.service';
+import { DashboardGestanteService } from '../../../Services/dashboard-gestante.service';
+import { Consulta, DashboardService } from '../../../Services/dashboard.service';
+import { LaboratorioisemestreService } from '../../../Services/laboratorioisemestre.service';
+
+
 
 // Agregar una interfaz para las vacunas
 interface VacunaInfo {
@@ -48,6 +53,10 @@ export class DashboardComponent implements OnInit {
   tituloAlerta:string = 'Alerta';
   descripcionAlerta?: string;
   fechaAlerta: string = '2025-01-01'
+  vacunasBebe = [
+    {bcgFec: '', completadoBcf: false},
+    {hepatiFec: '', completadoHepati: false}
+  ];
 
   signoAlarma: [] = [];
 
@@ -89,7 +98,7 @@ export class DashboardComponent implements OnInit {
     this.idUsuario = currentUser.userable.id_usuario;
     console.log('currentUser', currentUser);
     if (currentUser && currentUser.userable.autorizacion === 0) {
-      this.isModalVisible = true;  // Mostrar el modal si el campo 'autorizacion' es 0
+      //this.isModalVisible = true;  // Mostrar el modal si el campo 'autorizacion' es 0
     }
 
     // Intentamos recuperar el estado desde localStorage
@@ -332,11 +341,12 @@ export class DashboardComponent implements OnInit {
   getPeso() {
     this.dashboardGestanteService.getPesoyPresionGestante().subscribe(
       data => {
-        //console.log('Peso gestante', data);
+        console.log('Peso gestante', data);
 
         // Extraer los valores de peso del array data o inicializar con ceros
-        let pesoData = data.length > 0 ? data.map(item => parseFloat(item.peso)) : Array(12).fill(0);
-
+        
+        let pesoData = data.data.length > 0 ? data.data.map(item => parseFloat(item.peso) ) : Array(12).fill(0);
+        console.log('Peso gestante', pesoData);
         this.chartOptionPeso = {
           xAxis: {
             type: 'category',
@@ -503,7 +513,10 @@ export class DashboardComponent implements OnInit {
   getRutas() {
     this.rutaPymsService.getRutaPymsId(this.idUsuario,1).subscribe(
       data => {
-        console.log('Rutas', data);
+        this.vacunasBebe[0]['bcgFec'] = data.data.fec_bcg;
+        this.vacunasBebe[0]['completadoBcf'] = !!data.data.aplico_vacuna_bcg;
+        this.vacunasBebe[1]['hepatiFec'] = data.data.fec_hepatitis;
+        this.vacunasBebe[1]['completadoHepati'] = !!data.data.aplico_vacuna_hepatitis;
       },
       err => {
         console.log(err);
@@ -519,7 +532,6 @@ export class DashboardComponent implements OnInit {
   getSignoAlarma(id: number) {
     this.alarmaService.getSignosAlarmaByUser(id).subscribe(
       (response: any) => {
-        console.log(response.signo_alarma);
         if(response.signo_alarma){
           this.signoAlarma = response.signo_alarma;
         }

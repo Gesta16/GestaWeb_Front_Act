@@ -22,24 +22,25 @@
                 'bg-[#faccd2]': colorBarra === 'bg-[#faccd2]',
                 'bg-gray-200': colorBarra === 'bg-gray-200'
                 }">
-                
+
                 <div class="relative">
                     <div class="flex flex-col text-end text-lg">
                         <p class="text-3xl font-bold mb-2">{{ trimestre }}</p>
                         <!-- <p class="font-semibold">Te faltan</p> -->
-                        <p class="text-xl font-bold">Te faltan</p>                    
-                        <p class="text-xl font-bold">{{ semanasRestantes }} semanas</p>                    
+                        <p class="text-xl font-bold">Te faltan</p>
+                        <p class="text-xl font-bold">{{ semanasRestantes }} semanas</p>
                     </div>
                     <!-- Imagen por trimestre -->
-                    <img class="absolute top-5 w-[11rem]" *ngIf="imagenTrimestre" [src]="imagenTrimestre" alt="trimestre" />
+                    <img class="absolute top-5 w-[11rem]" *ngIf="imagenTrimestre" [src]="imagenTrimestre"
+                        alt="trimestre" />
                 </div>
             </div>
 
             <!-- Barra de progreso -->
             <div class="p-6 rounded-lg w-[100%] h-[30%]">
                 <div class="border border-[#f9b8c1] h-2.5 rounded-full">
-                    <div class="h-2 rounded-full" [ngClass]="colorBarra"
-                        [style.width.%]="(edadGestacional / 42) * 100"></div>
+                    <div class="h-2 rounded-full" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100">
+                    </div>
                 </div>
                 <!-- Texto con las semanas gestacionales -->
                 <p class="text-center mt-2 font-bold text-lg">Tienes {{ edadGestacional }} semanas</p>
@@ -59,7 +60,9 @@
                 <h3 class="text-xl font-bold mb-4">¡Importante!</h3>
             </div>
             <div class="flex flex-col">
-                <div *ngFor="let sig of signoAlarma" class="border border-[#fe0000] bg-red-50 rounded-lg p-3 mb-4 cursor-pointer" (click)="abrirModal(sig)">
+                <div *ngFor="let sig of signoAlarma"
+                    class="border border-[#fe0000] bg-red-50 rounded-lg p-3 mb-4 cursor-pointer"
+                    (click)="abrirModal(sig)">
                     <h3 class="font-bold text-lg"> {{sig.nombre}} </h3>
                     <p class="text-gray-500"> {{formatearFecha(sig.created_at)}} </p>
                 </div>
@@ -149,8 +152,8 @@
         <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
             <p class="text-lg font-bold mb-4">Estado de vacunación de gestante</p>
             <!-- Iteramos sobre todas las posibles vacunas -->
-            <div *ngFor="let vacuna of ['Segunda dosis COVID', 'DPT', 'Influenza', 'Refuerzo', 'Tétanos', 'Primera dosis COVID']" 
-                 class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
+            <div *ngFor="let vacuna of ['Segunda dosis COVID', 'DPT', 'Influenza', 'Refuerzo', 'Tétanos', 'Primera dosis COVID']"
+                class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
                 <div>
                     <h3 class="font-bold text-lg">{{ vacuna }}</h3>
                     <p class="text-gray-500" *ngIf="vacunasInfo[vacuna]">
@@ -158,35 +161,19 @@
                     </p>
                 </div>
                 <div class="flex items-center gap-2 px-3 py-1 rounded-full"
-                     [ngClass]="vacunasAplicadas.includes(vacuna) ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
-                    <svg *ngIf="vacunasAplicadas.includes(vacuna)" 
-                         xmlns="http://www.w3.org/2000/svg" 
-                         width="20" 
-                         height="20" 
-                         viewBox="0 0 24 24" 
-                         fill="none"
-                         stroke="currentColor" 
-                         stroke-width="2" 
-                         stroke-linecap="round" 
-                         stroke-linejoin="round"
-                         class="lucide lucide-circle-check-big">
+                    [ngClass]="vacunasAplicadas.includes(vacuna) ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
+                    <svg *ngIf="vacunasAplicadas.includes(vacuna)" xmlns="http://www.w3.org/2000/svg" width="20"
+                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big">
                         <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                         <path d="m9 11 3 3L22 4" />
                     </svg>
-                    <svg *ngIf="!vacunasAplicadas.includes(vacuna)" 
-                         xmlns="http://www.w3.org/2000/svg" 
-                         width="20" 
-                         height="20" 
-                         viewBox="0 0 24 24" 
-                         fill="none"
-                         stroke="currentColor" 
-                         stroke-width="2" 
-                         stroke-linecap="round" 
-                         stroke-linejoin="round"
-                         class="lucide lucide-x-circle">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="m15 9-6 6"/>
-                        <path d="m9 9 6 6"/>
+                    <svg *ngIf="!vacunasAplicadas.includes(vacuna)" xmlns="http://www.w3.org/2000/svg" width="20"
+                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-circle">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="m15 9-6 6" />
+                        <path d="m9 9 6 6" />
                     </svg>
                     <span class="text-sm">{{ vacunasAplicadas.includes(vacuna) ? 'Recibida' : 'No recibida' }}</span>
                 </div>
@@ -195,21 +182,68 @@
 
         <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
             <p class="text-lg font-bold mb-4">Estado de vacunación del bebé</p>
+
             <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
                 <div>
-                    <h3 class="font-bold text-lg">Nombre vacuna</h3>
-                    <p class="text-gray-500">Fecha: 2023-05-15</p>
+                    <h3 class="font-bold text-lg">Vacuna contra la Tuberculosis (BCG)</h3>
+                    <p class="text-gray-500">Fecha: {{ vacunasBebe[0]['bcgFec'] }}</p>
                 </div>
                 <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-circle-check-big">
-                        <path d="M21.801 10A10 10 0 1 1 17 3.335" />
-                        <path d="m9 11 3 3L22 4" />
-                    </svg>
-                    <span class="text-sm">Recibida</span>
+                    <ng-container *ngIf="vacunasBebe[0]['completadoBcf']; else notCompleted">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-big">
+                            <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                            <path d="m9 11 3 3L22 4" />
+                        </svg>
+                        <span class="text-sm">Recibida</span>
+                    </ng-container>
+                    <!-- Si exam.completado es false, muestra otro icono HTML -->
+                    <ng-template #notCompleted>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m15 9-6 6" />
+                            <path d="m9 9 6 6" />
+                        </svg>
+                        <span class="text-xs">No Recibida</span>
+                    </ng-template>
+                    
                 </div>
             </div>
+
+            <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
+                <div>
+                    <h3 class="font-bold text-lg">Vacuna contra la Hepatitis</h3>
+                    <p class="text-gray-500">Fecha: {{ vacunasBebe[1]['hepatiFec'] }}</p>
+                </div>
+                <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+
+                    <ng-container *ngIf="!vacunasBebe[1]['completadoHepati']; else notCompleted1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-big">
+                            <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                            <path d="m9 11 3 3L22 4" />
+                        </svg>
+                        <span class="text-sm">Recibida</span>
+                    </ng-container>
+                    <!-- Si exam.completado es false, muestra otro icono HTML -->
+                    <ng-template #notCompleted1>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m15 9-6 6" />
+                            <path d="m9 9 6 6" />
+                        </svg>
+                        <span class="text-xs">No Recibida</span>
+                    </ng-template>
+
+                </div>
+            </div>
+
         </div>
 
         <!-- Diseño del calendario -->

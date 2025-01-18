@@ -99,12 +99,7 @@ export class ExamenesComponent {
       err => {
         console.log(err);
       }
-    );
-
-    setTimeout(() => {
-      
-    }, 1000);
-    
+    ); 
   }
 
   getLaboratorioII() {
