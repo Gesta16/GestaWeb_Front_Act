@@ -64,7 +64,7 @@ export class AddAlertasComponent {
       },
       error => {
         this.alertService.errorAlert('Error', error.error.error);
-        console.error('Error al crear IPS:', error);
+        console.error('Error al crear Signo de alarma:', error);
       }
     );
   }
