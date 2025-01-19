@@ -13,10 +13,18 @@
         <div class="border-b border-gray-300 mb-4 h-auto">
             <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
                 <h1 class="font-bold text-2xl sm:text-3xl ml-2">Gestantes</h1>
-                <button [routerLink]="['/add-gestante']"
-                    class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
-                    Crear
-                </button>
+                <div class="flex items-center mt-4 sm:mt-0">
+                    <!-- Campo de búsqueda -->
+                    <input type="text" [(ngModel)]="documentoBusqueda" (keyup)="buscarPorDocumento()"
+                        placeholder="Buscar por documento"
+                        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] mr-2" />
+
+                    <!-- Botón Crear -->
+                    <button [routerLink]="['/add-gestante']"
+                        class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none ml-2">
+                        Crear
+                    </button>
+                </div>
             </div>
         </div>
 

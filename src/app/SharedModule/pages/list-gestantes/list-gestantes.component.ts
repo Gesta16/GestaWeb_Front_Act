@@ -30,6 +30,7 @@ export class ListGestantesComponent {
 
   showDropdown = false;
   selectedProcess: number | null = null;
+  documentoBusqueda: string = ''; // Variable para almacenar el documento a buscar
 
   constructor(
     private usuarioService: UsuarioService,
@@ -178,5 +179,18 @@ export class ListGestantesComponent {
   get totalPagesArray(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
+
+  buscarPorDocumento() {
+    const term = this.documentoBusqueda.trim().toLowerCase();
+    if (term) {
+      this.paginatedUsuarios = this.usuarios.filter(usuario =>
+        usuario.documento_usuario.toLowerCase().includes(term)
+      );
+    } else {
+      this.updatePagination();
+    }
+    this.currentPage = 1; // Reinicia a la primera página tras buscar
+  }
+   
 
 }
