@@ -34,6 +34,7 @@ import { SharedHeaderModuleModule } from '../shared/shared-header-module/shared-
 import { ImportExcelComponent } from './pages/import-excel/import-excel.component';
 import { AlertasComponent } from './pages/alertas/alertas.component';
 import { AddAlertasComponent } from './pages/add-alertas/add-alertas.component';
+import { AlertComponent } from './pages/alert/alert.component';
 import { AlarmaGestanteComponent } from './pages/alarma-gestante/alarma-gestante.component';
 
 
@@ -71,6 +72,7 @@ import { AlarmaGestanteComponent } from './pages/alarma-gestante/alarma-gestante
     ImportExcelComponent,
     AlertasComponent,
     AddAlertasComponent,
+    AlertComponent,
     AlarmaGestanteComponent,
   ],
   imports: [

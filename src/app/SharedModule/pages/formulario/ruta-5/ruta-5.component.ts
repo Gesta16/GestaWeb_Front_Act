@@ -85,6 +85,17 @@ export class Ruta5Component {
     this.mortalidadPreparto = new MortalidadPreparto();
   }
 
+  // Permite abrir el menu de las alertas
+  isModalVisible = false;
+
+  abrirModal(): void {
+    this.isModalVisible = true;
+  }
+
+  cerrarModal(): void {
+    this.isModalVisible = false;
+  }
+
   ngOnInit() {
     this.user = this.authService.currentUserValue;
     this.isRole4 = this.user.rol_id === 4;

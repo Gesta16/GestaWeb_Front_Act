@@ -89,6 +89,16 @@ export class Ruta2Component {
     private _matDialog: MatDialog
   ) { }
 
+  // Permite abrir el menu de las alertas
+  isModalVisible = false;
+
+  abrirModal(): void {
+    this.isModalVisible = true;
+  }
+
+  cerrarModal(): void {
+    this.isModalVisible = false;
+  }
 
   ngOnInit(): void {
     this.user = this.authService.currentUserValue;
