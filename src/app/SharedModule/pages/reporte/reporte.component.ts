@@ -3,6 +3,7 @@ import { MenuService } from '../../../Services/menu.service';
 import { ReportesService } from '../../../Services/reportes.service';
 import { PoblacionDiferencialService } from '../../../Services/poblacion-diferencial.service';
 import { DepartamentoService } from '../../../Services/departamento.service';
+import { AlertService } from '../../../Services/alert.service';
 
 @Component({
   selector: 'app-reporte',
@@ -95,7 +96,8 @@ export class ReporteComponent {
     private menuService: MenuService,
     private reporteService: ReportesService,
     private poblacionDifeService: PoblacionDiferencialService,
-    private departamentoService: DepartamentoService
+    private departamentoService: DepartamentoService,
+    private alertService: AlertService
   ) { }
 
 
@@ -119,6 +121,13 @@ export class ReporteComponent {
   aplicarFiltros() {
     console.log('Aplicando filtros...', this.filtros);
 
+    // Verificar si la subcategoría está seleccionada
+    if (!this.filtros.subcategoria) {
+      console.error('Error: La subcategoría es requerida.');
+      this.alertService.errorAlert('Error', 'Por favor, selecciona una subcategoría.');
+      return; // Detener la ejecución si no hay subcategoría
+    }
+
     // Llamar al servicio para descargar el Excel
     this.reporteService.filtrarReportes(this.filtros).subscribe(
       (response) => {
@@ -135,30 +144,31 @@ export class ReporteComponent {
       },
       (error) => {
         console.error('Error al descargar el archivo:', error);
+        this.alertService.errorAlert('Error','Ocurrió un error al generar el reporte. Por favor, inténtalo de nuevo.')
       }
     );
   }
 
 
-  getPoblacionDiferencial(){
+  getPoblacionDiferencial() {
     this.poblacionDifeService.getPoblacionDiferencial().subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
         this.poblaciones = response.poblacion;
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     )
   }
 
-  getDepartamentos(){
+  getDepartamentos() {
     this.departamentoService.getDepartamentos().subscribe(
-      (response)=>{
+      (response) => {
         console.log(response);
         this.departamentos = response.departamento;
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
     )
