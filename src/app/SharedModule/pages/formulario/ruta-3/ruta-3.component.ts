@@ -599,7 +599,7 @@ export class Ruta3Component {
       }
       this.laboratorioITrimestre.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
 
-      //console.log(this.laboratorioITrimestre);
+      console.log(this.laboratorioITrimestre);
       this.laboratorioISemestreservice.createLaboratorioPrimerSemestre(this.laboratorioITrimestre).subscribe({
         next: (response) => {
           console.log('Laboratorio del primer semestre creado:', response);

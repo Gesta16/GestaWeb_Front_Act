@@ -78,11 +78,11 @@ const routes: Routes = [
         canActivate: [RoleGuard],
         data: { title: 'Alertas', icon: 'fa-solid fa-triangle-exclamation', expectedRoles: ['superadmin'], showInMenu: true }
       },
-      {
-        path:'reporteRutaGestante', component:ReportesRutaGestacionalComponent,
-        canActivate: [RoleGuard],
-        data: {title:'Reporte Gestante', icon:'fa-solid fa-clipboard-check', expectedRoles:['operador', 'usuario'], showInMenu:true}
-      },
+      // {
+      //   path:'reporteRutaGestante', component:ReportesRutaGestacionalComponent,
+      //   canActivate: [RoleGuard],
+      //   data: {title:'Reporte Gestante', icon:'fa-solid fa-clipboard-check', expectedRoles:['operador', 'usuario'], showInMenu:true}
+      // },
       {
         path: 'add-alertas', component: AddAlertasComponent,
         data: { showInMenu: false }

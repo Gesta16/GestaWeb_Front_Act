@@ -34,5 +34,11 @@ export class ReportesService {
       responseType: 'blob', // Indicar que la respuesta es un archivo binario
     });
   }
+
+  generarReporteUnificado(idUsuario: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}generar-reporte-unificado/${idUsuario}`, {
+      responseType: 'blob', // Indicar que la respuesta es un archivo binario
+    });
+  }
   
 }
