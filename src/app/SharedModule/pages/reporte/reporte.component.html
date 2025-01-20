@@ -147,8 +147,11 @@
 
             <!-- Botón -->
             <div class="px-6 py-4 flex justify-end">
-                <button class="w-32 py-2 rounded-lg shadow border border-[#80ba27] hover:bg-[#F5F6DB]" (click)="aplicarFiltros()">
-                    Aplicar Filtros
+                <button class="w-32 py-2 rounded-lg shadow border border-[#80ba27] hover:bg-[#F5F6DB]" (click)="aplicarFiltros('excel')">
+                    Excel
+                </button>
+                <button class="w-32 py-2 rounded-lg shadow border border-red-500 hover:bg-red-100 ml-2" (click)="aplicarFiltros('pdf')">
+                    PDF
                 </button>
             </div>
         </div>

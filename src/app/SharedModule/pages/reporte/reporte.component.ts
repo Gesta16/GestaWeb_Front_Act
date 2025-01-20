@@ -23,6 +23,7 @@ export class ReporteComponent {
     cod_departamento: null,
     cod_municipio: null,
     cod_poblacion: null,
+    formato: '',
   };
 
   resultados: any[] = [];
@@ -118,8 +119,12 @@ export class ReporteComponent {
   }
 
   // Método para enviar los filtros y obtener los reportes
-  aplicarFiltros() {
+  aplicarFiltros(formato: string) {
     console.log('Aplicando filtros...', this.filtros);
+
+    if(formato){
+      this.filtros.formato = formato;
+    }
 
     // Verificar si la subcategoría está seleccionada
     if (!this.filtros.subcategoria) {
@@ -132,19 +137,31 @@ export class ReporteComponent {
     this.reporteService.filtrarReportes(this.filtros).subscribe(
       (response) => {
         console.log('Descarga iniciada');
-        const blob = new Blob([response], {
-          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        });
+  
+        // Determinar el tipo de archivo según el formato
+        const mimeType =
+          formato === 'pdf'
+            ? 'application/pdf'
+            : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        const fileExtension = formato === 'pdf' ? 'pdf' : 'xlsx';
+        const blob = new Blob([response], { type: mimeType });
+  
+        // Crear enlace de descarga
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'reporte.xlsx'; // Nombre del archivo
+        a.download = `reporte.${fileExtension}`; // Nombre del archivo con extensión dinámica
         a.click();
+  
+        // Liberar el URL
         window.URL.revokeObjectURL(url);
       },
       (error) => {
         console.error('Error al descargar el archivo:', error);
-        this.alertService.errorAlert('Error','Ocurrió un error al generar el reporte. Por favor, inténtalo de nuevo.')
+        this.alertService.errorAlert(
+          'Error',
+          'Ocurrió un error al generar el reporte. Por favor, inténtalo de nuevo.'
+        );
       }
     );
   }
