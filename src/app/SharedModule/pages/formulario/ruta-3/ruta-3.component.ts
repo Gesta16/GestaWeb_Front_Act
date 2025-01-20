@@ -100,6 +100,141 @@ export class Ruta3Component {
     reali_hemograma: false,
   }
 
+  inputsStatus = {
+    // lab 1
+    hemoclasificacion: false, // select
+    fec_hemoclasificacion: false,
+    real_hemograma: false, // select
+    hemograma: false,
+    fec_hemograma: false,
+    real_glicemia: false,
+    glicemia: false,
+    fec_glicemia: false,
+    real_antigenos: false,
+    antigeno: false,
+    fec_antigeno: false,
+    
+    // seccion 1
+    real_prueb_rapi_vih: false,
+    pru_vih: false,
+    fecVih: false,
+    reali_prueb_trepo_rapid_sifilis: false,
+    pruSifilis: false,
+    fecSifilis: false,
+    realizo_urocultivo: false,
+    urocultivo: false,
+    fecUrocultivo: false,
+    realizo_antibiograma: false,
+    codAntibiograma: false,
+    fecAntibiograma: false,
+
+    // seccion 3
+    real_ig_rubeola: false,
+    igGRubeola: false,
+    fecIGGRubeola: false,
+    real_ig_toxoplasma: false,
+    igGToxoplasma: false,
+    fecIGGToxoplasma: false,
+    real_igm_toxoplasma: false,
+    igm_toxoplamas: false,
+    fec_igmtoxoplasma: false,
+    real_hemoparasito: false,
+    hemoparasito: false,
+    fecHemoparasito: false,
+
+    // seccion 4
+    real_prueb_eliza_anti_total: false,
+    elisaAntigenos: false,
+    fechaElisaAntigenos: false,
+    real_prueb_eliza_anti_recomb: false,
+    elisaAntigenosRecombinante: false,
+    fechaElisaRecombinante: false,
+    real_prueb_coombis_indi_cuanti: false,
+    coombisIndirecto: false,
+    fechaCoombisIndirecto: false,
+    real_eco_obste_tamizaje: false,
+    fechaEcografia: false,
+    edadGestacional: false,
+    riesgoBiopsicosocial: false,
+
+    // lab 2
+    reali_prueb_rapi_vih: false,
+    pru_vih2: false,
+    fec_vih: false,
+    real_prueb_trep_rap_sifilis: false,
+    pru_sifilis: false,
+    fec_sifilis: false,
+    real_prueb_oral: false,
+    pru_oral: false,
+    real_prueb_oral_1: false,
+    pru_uno: false,
+    real_prueb_oral_2: false,
+    pru_dos: false,
+    fec_prueba: false,
+
+    // seccion 2
+    reali_citologia: false,
+    rep_citologia: false,
+    fec_citologia: false,
+    real_igm_toxoplasma_2: false,
+    ig_toxoplasma: false,
+    fec_toxoplasma: false,
+    reali_prueb_avidez_ig_g: false,
+    pru_avidez: false,
+    fec_avidez: false,
+    reali_prueb_toxoplasmosis_ig_a: false,
+    tox_laboratorio: false,
+    fec_tox_laboratorio: false,
+
+    // seccion 3
+    reali_prueb_hemoparasito: false,
+    hemoparasito2: false,
+    fechaHemoparasito: false,
+    reali_prueb_coombis_indi_cuanti: false,
+    coombisIndirecto2: false,
+    fechaCoombis: false,
+    reali_eco_obste_detalle_anato: false,
+    fechaEcografia2: false,
+    edadGestacional2: false,
+    riesgoBiopsicosocial2: false,
+
+    // lab 3
+    reali_hemograma: false,
+    hemograma2: false,
+    fec_hemograma2: false,
+    reali_prueb_rapi_vih2: false,
+    pru_vih3: false,
+    fec_vih2: false,
+    reali_prueb_trepo_rapi_sifilis: false,
+    pru_sifilis2: false,
+    fec_sifilis2: false,
+    reali_prueb_igm_toxoplasma: false,
+    ig_toxoplasma2: false,
+    fec_toxoplasma2: false,
+
+    // seccion 2
+    reali_prueb_culti_rect_vagi: false,
+    cul_rectal: false,
+    fec_rectal: false,
+    reali_prueb_perfil_biofisico: false,
+    fec_biofisico: false,
+    edad_gestacional: false,
+    rie_biopsicosocial: false,
+
+    // its
+    reali_prueb_elisa_vih: false,
+    eliVih: false,
+    fecVih2: false,
+    reali_prueb_no_trepo_vdrl_sifilis: false,
+    codVdrl: false,
+    fecVdrl: false,
+    reali_prueb_no_trepo_rpr_sifilis: false,
+    codRpr: false,
+    fecRpr: false,
+    recTratamiento: false,
+    recPareja: false,
+  };
+
   constructor(private itsService: ItsService,
     private vdrlService: PruebaVdrlService,
     private rprService: PruebaRprService,
@@ -158,6 +293,19 @@ export class Ruta3Component {
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
+
+    setTimeout(() => {
+      console.log('entro al coso');
+      Object.keys(this.inputsStatus).forEach((id) => {
+        
+        const inputElement = document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+        if (inputElement) {
+          this.inputsStatus[id] = inputElement.value.trim() !== '';
+        }
+      });
+    }, 8000);
+    
+
   }
 
   // abrirModal(): void {
@@ -826,4 +974,17 @@ export class Ruta3Component {
   volver() {
     this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]); // Navegar a la ruta con el ID
   }
+
+  get totalInputs(): number {
+    return Object.keys(this.inputsStatus).length; // Total de inputs
+  }
+
+  get answeredInputs(): number {
+    return Object.values(this.inputsStatus).filter(status => status).length; // Inputs respondidos
+  }
+
+  onInputChange(id: string, value: string): void {
+    this.inputsStatus[id] = value.trim() !== ''; // Marca como respondido si tiene contenido
+  }
+
 }
