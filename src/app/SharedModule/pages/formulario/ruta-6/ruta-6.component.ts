@@ -55,6 +55,48 @@ export class Ruta6Component {
     reali_entrega_carnet: false
   }
 
+  inputsStatus = {
+    // datos recien nacido
+    tip_embarazo: false,
+    num_nacido: false,
+    sexo: false,
+    peso: false,
+    talla: false,
+    pla_canguro: false,
+    ips_canguro: false,
+
+    // tamizacion neonatal
+    cod_hemoclasifi: false,
+    resul_tsh: false,
+    fec_tsh: false,
+    reali_prueb_trepo_recien_nacido: false,
+    pruetreponemica: false,
+    fec_pruetrepo: false,
+    reali_tami_auditivo: false,
+    tamiza_aud: false,
+    reali_tami_cardiopatia_congenita: false,
+    tamiza_cardi: false,
+    reali_tami_visual: false,
+    tamiza_visual: false,
+
+    // estudio hipotiroidismo congenito
+    tsh: false,
+    fec_resultado: false,
+    t4_libre: false,
+    fec_resultadot4: false,
+    eve_confirmado: false,
+    fec_primera: false,
+
+    // ruta pyms
+    aplico_vacuna_bcg: false,
+    fec_bcg: false,
+    aplico_vacuna_hepatitis: false,
+    fec_hepatitis: false,
+    fec_seguimiento: false,
+    reali_entrega_carnet: false,
+    fec_entrega: false,
+  };
+
   constructor(
     private route: ActivatedRoute,
     private datosRecienNacidoService: DatosRecienNacidoService,
@@ -113,6 +155,17 @@ export class Ruta6Component {
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
+
+    setTimeout(() => {
+      Object.keys(this.inputsStatus).forEach((id) => {
+        
+        const inputElement = document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+        if (inputElement) {
+          this.inputsStatus[id] = inputElement.value.trim() !== '';
+        }
+      });
+    }, 8000);
+
   }
 
 
@@ -454,10 +507,20 @@ export class Ruta6Component {
     }
   }
 
-
-
   volver() {
     this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]);
+  }
+
+  get totalInputs(): number {
+    return Object.keys(this.inputsStatus).length; // Total de inputs
+  }
+
+  get answeredInputs(): number {
+    return Object.values(this.inputsStatus).filter(status => status).length; // Inputs respondidos
+  }
+
+  onInputChange(id: string, value: string): void {
+    this.inputsStatus[id] = value.trim() !== ''; // Marca como respondido si tiene contenido
   }
 
 }

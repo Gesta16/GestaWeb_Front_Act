@@ -38,8 +38,12 @@
 
             </div>
 
-
         </div>
+
+        <app-formulario-porcentaje
+            [totalInputs]="totalInputs"
+            [answeredInputs]="answeredInputs">
+        </app-formulario-porcentaje>
 
         <!-- Diseño del formulario -->
         <div class="flex flex-wrap mt-5 uppercase">
@@ -86,6 +90,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fecConsulta" class="font-medium mb-1">Fecha de consulta</label>
                                         <input type="date" id="fecConsulta"
+                                            (input)="onInputChange('fecConsulta', $event.target.value)"
                                             [(ngModel)]="seguimientoConsulta.fec_consulta"
                                             [readonly]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -95,6 +100,7 @@
                                         <label for="codControles" class="font-medium mb-1">Número acumulado de controles
                                             prenatales</label>
                                         <select id="codControles" [(ngModel)]="seguimientoConsulta.cod_controles"
+                                            (input)="onInputChange('codControles', $event.target.value)"
                                             [disabled]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let numero of numerosControl"
@@ -109,6 +115,7 @@
                                             momento de
                                             la consulta</label>
                                         <input type="text" id="edadGestacional" [readonly]="ReadonlySeguimientoConsulta"
+                                            (input)="onInputChange('edadGestacional', $event.target.value)"
                                             [(ngModel)]="seguimientoConsulta.edad_gestacional"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -116,6 +123,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="altUterina" class="font-medium mb-1">Altura uterina (cms)</label>
                                         <input type="text" id="altUterina" [(ngModel)]="seguimientoConsulta.alt_uterina"
+                                            (input)="onInputChange('altUterina', $event.target.value)"
                                             [readonly]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -124,6 +132,7 @@
                                         <label for="trimGestacional" class="font-medium mb-1">Trimestre gestacional
                                             actual</label>
                                         <select id="trimGestacional" [(ngModel)]="seguimientoConsulta.trim_gestacional"
+                                            (input)="onInputChange('trimGestacional', $event.target.value)"
                                             [disabled]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="1">Trimestre I: 1 a 13 sem</option>
@@ -136,6 +145,7 @@
                                         <label for="codRiesgo" class="font-medium mb-1">Clasificación del riesgo según
                                             escala</label>
                                         <select id="codRiesgo" [(ngModel)]="seguimientoConsulta.cod_riesgo"
+                                            (input)="onInputChange('codRiesgo', $event.target.value)"
                                             [disabled]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let riesgo of riesgo" [value]="riesgo.cod_riesgo">
@@ -147,6 +157,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="peso" class="font-medium mb-1">Peso [KG]</label>
                                         <input type="text" id="peso" [(ngModel)]="seguimientoConsulta.peso"
+                                            (input)="onInputChange('peso', $event.target.value)"
                                             [readonly]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -154,6 +165,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="talla" class="font-medium mb-1">Talla metros</label>
                                         <input type="text" id="talla" [(ngModel)]="seguimientoConsulta.talla"
+                                            (input)="onInputChange('talla', $event.target.value)"
                                             [readonly]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -167,6 +179,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="imc" class="font-medium mb-1">IMC</label>
                                         <input type="text" id="imc" [(ngModel)]="seguimientoConsulta.imc"
+                                            (input)="onInputChange('imc', $event.target.value)"
                                             [readonly]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -175,6 +188,7 @@
                                         <label for="codDiagnostico" class="font-medium mb-1">Diagnóstico nutricional
                                             consulta del mes</label>
                                         <select id="codDiagnostico" [(ngModel)]="seguimientoConsulta.cod_diagnostico"
+                                            (input)="onInputChange('codDiagnostico', $event.target.value)"
                                             [disabled]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let diagnostico of diagnostico"
@@ -187,6 +201,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="tenArts" class="font-medium mb-1">Tensión arterial sistólica</label>
                                         <input type="text" id="tenArts" [(ngModel)]="seguimientoConsulta.ten_arts"
+                                            (input)="onInputChange('tenArts', $event.target.value)"
                                             [readonly]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -195,6 +210,7 @@
                                         <label for="tenArtd" class="font-medium mb-1">Tensión arterial
                                             diastólica</label>
                                         <input type="text" id="tenArtd" [(ngModel)]="seguimientoConsulta.ten_artd"
+                                            (input)="onInputChange('tenArtd', $event.target.value)"
                                             [readonly]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -203,6 +219,7 @@
                                         <label for="codMedicion" class="font-medium mb-1">Forma de medición de edad
                                             gestacional</label>
                                         <select id="codMedicion" [(ngModel)]="seguimientoConsulta.cod_medicion"
+                                            (input)="onInputChange('codMedicion', $event.target.value)"
                                             [disabled]="ReadonlySeguimientoConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let forma of formaMedicion" [value]="forma.cod_medicion">
@@ -237,6 +254,7 @@
                                         <label for="asistio_nutricionista" class="font-medium mb-1">Asistió a
                                             nutrición</label>
                                         <select id="asistio_nutricionista"
+                                            (input)="onInputChange('asistio_nutricionista', $event.target.value)"
                                             [disabled]="ReadonlySeguimientoComplementario"
                                             [(ngModel)]="seguimientoComplementario.asistio_nutricionista"
                                             (change)="onSeguimientoChange('asistio_nutricionista')"
@@ -250,6 +268,7 @@
                                         <label for="fecNutricion" class="font-medium mb-1">Fecha de valoración de
                                             nutrición</label>
                                         <input type="date" id="fecNutricion"
+                                            (input)="onInputChange('fecNutricion', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.fec_nutricion"
                                             [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_nutricionista']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -259,6 +278,7 @@
                                         <label for="asistio_ginecologia" class="font-medium mb-1">Asistió a
                                             ginecología</label>
                                         <select id="asistio_ginecologia" [disabled]="ReadonlySeguimientoComplementario"
+                                            (input)="onInputChange('asistio_ginecologia', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.asistio_ginecologia"
                                             (change)="onSeguimientoChange('asistio_ginecologia')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -271,6 +291,7 @@
                                         <label for="fecGinecologia" class="font-medium mb-1">Fecha de valoración de
                                             ginecología</label>
                                         <input type="date" id="fecGinecologia"
+                                            (input)="onInputChange('fecGinecologia', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.fec_ginecologia"
                                             [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_ginecologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -280,6 +301,7 @@
                                         <label for="asistio_psicologia" class="font-medium mb-1">Asistió a
                                             psicología</label>
                                         <select id="asistio_psicologia" [disabled]="ReadonlySeguimientoComplementario"
+                                            (input)="onInputChange('asistio_psicologia', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.asistio_psicologia"
                                             (change)="onSeguimientoChange('asistio_psicologia')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -292,6 +314,7 @@
                                         <label for="fecPsicologia" class="font-medium mb-1">Fecha de valoración de
                                             psicología</label>
                                         <input type="date" id="fecPsicologia"
+                                            (input)="onInputChange('fecPsicologia', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.fec_psicologia"
                                             [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_psicologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -301,6 +324,7 @@
                                         <label for="asistio_odontologia" class="font-medium mb-1">Asistió a
                                             odontología</label>
                                         <select id="asistio_odontologia" [disabled]="ReadonlySeguimientoComplementario"
+                                            (input)="onInputChange('asistio_odontologia', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.asistio_odontologia"
                                             (change)="onSeguimientoChange('asistio_odontologia')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -313,6 +337,7 @@
                                         <label for="fecOdontologia" class="font-medium mb-1">Fecha de valoración de
                                             odontología</label>
                                         <input type="date" id="fecOdontologia"
+                                            (input)="onInputChange('fecOdontologia', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.fec_odontologia"
                                             [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['asistio_odontologia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -321,6 +346,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="inaSeguimiento" class="font-medium mb-1">Inasistencia</label>
                                         <select id="inaSeguimiento"
+                                            (input)="onInputChange('inaSeguimiento', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.ina_seguimiento"
                                             (change)="onSeguimientoChange('ina_seguimiento')"
                                             [disabled]="ReadonlySeguimientoComplementario"
@@ -334,6 +360,7 @@
                                         <label for="causalInasistencia" class="font-medium mb-1">Causal de
                                             inasistencia</label>
                                         <input type="text" id="causalInasistencia"
+                                            (input)="onInputChange('causalInasistencia', $event.target.value)"
                                             [(ngModel)]="seguimientoComplementario.cau_inasistencia"
                                             [readonly]="ReadonlySeguimientoComplementario || !mostrarCampos['ina_seguimiento']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -343,6 +370,7 @@
                                         <label for="codSesiones" class="font-medium mb-1">N° de sesiones curso de
                                             preparación</label>
                                         <select id="codSesiones" [(ngModel)]="seguimientoComplementario.cod_sesiones"
+                                            (input)="onInputChange('codSesiones', $event.target.value)"
                                             [disabled]="ReadonlySeguimientoComplementario"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let sesiones of numSesiones"
@@ -375,6 +403,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="aciFolico" class="font-medium mb-1">Ácido fólico</label>
                                         <select id="aciFolico" [(ngModel)]="micronutriente.aci_folico"
+                                            (input)="onInputChange('aciFolico', $event.target.value)"
                                             [disabled]="ReadonlyMicronutriente"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Si">Si</option>
@@ -385,6 +414,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="sulFerroso" class="font-medium mb-1">Sulfato ferroso</label>
                                         <select id="sulFerroso" [(ngModel)]="micronutriente.sul_ferroso"
+                                            (input)="onInputChange('sulFerroso', $event.target.value)"
                                             [disabled]="ReadonlyMicronutriente"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Si">Si</option>
@@ -395,6 +425,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="carCalcio" class="font-medium mb-1">Carbonato de calcio</label>
                                         <select id="carCalcio" [(ngModel)]="micronutriente.car_calcio"
+                                            (input)="onInputChange('carCalcio', $event.target.value)"
                                             [disabled]="ReadonlyMicronutriente"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Si">Si</option>
@@ -405,6 +436,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="desparasitacion" class="font-medium mb-1">Desparacitación</label>
                                         <select id="desparasitacion" [(ngModel)]="micronutriente.desparasitacion"
+                                            (input)="onInputChange('desparasitacion', $event.target.value)"
                                             [disabled]="ReadonlyMicronutriente"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Si">Si</option>

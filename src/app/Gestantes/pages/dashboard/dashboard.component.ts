@@ -96,6 +96,7 @@ export class DashboardComponent implements OnInit {
     // Obtenemos el id del usuario actual
     const currentUser = this.authService.currentUserValue;
     const usuarioId = currentUser?.userable.id_usuario;
+    this.idUsuario = currentUser?.userable.id_usuario;
 
     // Verificamos si el id_usuario existe y si los términos fueron aceptados
     if (usuarioId) {
@@ -347,12 +348,8 @@ export class DashboardComponent implements OnInit {
   getPeso() {
     this.dashboardGestanteService.getPesoyPresionGestante().subscribe(
       data => {
-        console.log('Peso gestante', data);
-
         // Extraer los valores de peso del array data o inicializar con ceros
-        
         let pesoData = data.data.length > 0 ? data.data.map(item => parseFloat(item.peso) ) : Array(12).fill(0);
-        console.log('Peso gestante', pesoData);
         this.chartOptionPeso = {
           xAxis: {
             type: 'category',
@@ -399,11 +396,11 @@ export class DashboardComponent implements OnInit {
   getPresion() {
     this.dashboardGestanteService.getPesoyPresionGestante().subscribe(
       data => {
-        //console.log('Presión gestante', data);
+        console.log('Presión gestante', data);
 
         // Extraer los valores de tensión arterial del array data o inicializar con ceros
-        let tensionSisData = data.length > 0 ? data.map(item => parseFloat(item.tension_sis)) : Array(12).fill(0);
-        let tensionDiaData = data.length > 0 ? data.map(item => parseFloat(item.tension_dia)) : Array(12).fill(0);
+        let tensionSisData = data.data.length > 0 ? data.data.map(item => parseFloat(item.tension_sis)) : Array(12).fill(0);
+        let tensionDiaData = data.data.length > 0 ? data.data.map(item => parseFloat(item.tension_dia)) : Array(12).fill(0);
 
         this.chartOptionPresion = {
           xAxis: {
@@ -519,9 +516,9 @@ export class DashboardComponent implements OnInit {
   getRutas() {
     this.rutaPymsService.getRutaPymsId(this.idUsuario,1).subscribe(
       data => {
-        this.vacunasBebe[0]['bcgFec'] = data.data.fec_bcg;
+        this.vacunasBebe[0]['bcgFec'] = data.data.fec_bcg ? null : 'N/A';
         this.vacunasBebe[0]['completadoBcf'] = !!data.data.aplico_vacuna_bcg;
-        this.vacunasBebe[1]['hepatiFec'] = data.data.fec_hepatitis;
+        this.vacunasBebe[1]['hepatiFec'] = data.data.fec_hepatitis ? null : 'N/A';
         this.vacunasBebe[1]['completadoHepati'] = !!data.data.aplico_vacuna_hepatitis;
       },
       err => {

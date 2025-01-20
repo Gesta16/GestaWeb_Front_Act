@@ -64,6 +64,35 @@ export class Ruta5Component {
     reali_prueb_rapi_vih: false
   }
 
+  inputsStatus = {
+    // final gestacion
+    terminacion: false,
+    fec_evento: false,
+
+    // lab intraparto
+    reali_prueb_trepo_rapi_sifilis_intra: false,
+    pru_sifilis: false,
+    fec_sifilis: false,
+    reali_prueb_no_trepo_vdrl_sifilis_intra: false,
+    pruebaVDRL: false,
+    fec_vdrl: false,
+    rec_sifilis: false,
+    fec_tratamiento: false,
+    reali_prueb_rapi_vih: false,
+    pru_vih: false,
+    fec_vih: false,
+
+    // seguimiento post obstetrico
+    condicionEgreso: false,
+    fechaPlanificacion: false,
+    recib_aseso_anticonceptiva: false,
+    metodoAnticonceptivo: false,
+
+    // mortalidad preparto
+    fec_defuncion: false,
+    cod_mortalidad: false,
+  };
+
   constructor(
     private route: ActivatedRoute,
     private terminacionGestacionService: TerminacionGestacionService,
@@ -128,6 +157,17 @@ export class Ruta5Component {
     this.menuService.isExpanded$.subscribe(isExpanded =>{
       this.isExpanded = isExpanded;
     });
+
+    setTimeout(() => {
+      Object.keys(this.inputsStatus).forEach((id) => {
+        
+        const inputElement = document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+        if (inputElement) {
+          this.inputsStatus[id] = inputElement.value.trim() !== '';
+        }
+      });
+    }, 8000);
+
   }
 
   toggleTabs(tabNumber: number) {
@@ -486,9 +526,19 @@ export class Ruta5Component {
     }
   }
 
-
-
   volver() {
     this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]);
+  }
+
+  get totalInputs(): number {
+    return Object.keys(this.inputsStatus).length; // Total de inputs
+  }
+
+  get answeredInputs(): number {
+    return Object.values(this.inputsStatus).filter(status => status).length; // Inputs respondidos
+  }
+
+  onInputChange(id: string, value: string): void {
+    this.inputsStatus[id] = value.trim() !== ''; // Marca como respondido si tiene contenido
   }
 }

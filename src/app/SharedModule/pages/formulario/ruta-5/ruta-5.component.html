@@ -24,6 +24,11 @@
             </div>
         </div>
 
+        <app-formulario-porcentaje
+            [totalInputs]="totalInputs"
+            [answeredInputs]="answeredInputs">
+        </app-formulario-porcentaje>
+
         <!-- Diseño del formulario -->
         <div class="flex flex-wrap mt-5 uppercase ">
             <div class="w-[70%] justify-center mx-auto">
@@ -70,6 +75,7 @@
                                         <label for="terminacion" class="font-medium mb-1">Terminación de la
                                             gestación</label>
                                         <select id="terminacion"
+                                            (input)="onInputChange('terminacion', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="finalizacionGestacion.cod_terminacion"
                                             [disabled]="ReadonlyFinalizacionGestacion">
@@ -84,6 +90,7 @@
                                         <label for="fec_evento" class="font-medium mb-1 ">Fecha del evento
                                             obstétrico</label>
                                         <input type="date" id="fec_evento"
+                                            (input)="onInputChange('fec_evento', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="finalizacionGestacion.fec_evento"
                                             [readonly]="ReadonlyFinalizacionGestacion">
@@ -114,6 +121,7 @@
                                             treponémica rápida para
                                             sífilis intraparto</label>
                                         <select id="reali_prueb_trepo_rapi_sifilis_intra" [disabled]="ReadonlyLaboratorioIntraparto"
+                                            (input)="onInputChange('reali_prueb_trepo_rapi_sifilis_intra', $event.target.value)"
                                             [(ngModel)]="laboratorioIntraparto.reali_prueb_trepo_rapi_sifilis_intra"
                                             (change)="onPrepartoChange('reali_prueb_trepo_rapi_sifilis_intra')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -126,6 +134,7 @@
                                         <label for="pru_sifilis" class="font-medium mb-1">Prueba treponémica rápida para
                                             sífilis intraparto</label>
                                         <select id="pru_sifilis" [(ngModel)]="laboratorioIntraparto.pru_sifilis"
+                                            (input)="onInputChange('pru_sifilis', $event.target.value)"
                                             [disabled]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_trepo_rapi_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
@@ -137,6 +146,7 @@
                                         <label for="fec_sifilis" class="font-medium mb-1">Fecha prueba treponémica
                                             rápida para sífilis intraparto</label>
                                         <input type="date" id="fec_sifilis"
+                                            (input)="onInputChange('fec_sifilis', $event.target.value)"
                                             [(ngModel)]="laboratorioIntraparto.fec_sifilis"
                                             [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_trepo_rapi_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -147,6 +157,7 @@
                                             treponémica (VDRL)
                                             para sífilis intraparto </label>
                                         <select id="reali_prueb_no_trepo_vdrl_sifilis_intra" [disabled]="ReadonlyLaboratorioIntraparto"
+                                            (input)="onInputChange('reali_prueb_no_trepo_vdrl_sifilis_intra', $event.target.value)"
                                             [(ngModel)]="laboratorioIntraparto.reali_prueb_no_trepo_vdrl_sifilis_intra"
                                             (change)="onPrepartoChange('reali_prueb_no_trepo_vdrl_sifilis_intra')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -160,6 +171,7 @@
                                         <label for="pruebaVDRL" class="font-medium mb-1">Prueba no treponémica (VDRL)
                                             para sífilis intraparto</label>
                                         <select id="pruebaVDRL" [(ngModel)]="laboratorioIntraparto.cod_vdrl"
+                                            (input)="onInputChange('pruebaVDRL', $event.target.value)"
                                             [disabled]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let prueba of pruebaVDRL" [value]="prueba.cod_vdrl">
@@ -172,6 +184,7 @@
                                         <label for="fec_vdrl" class="font-medium mb-1">Fecha prueba no treponémica
                                             (VDRL) para sífilis intraparto</label>
                                         <input type="date" id="fec_vdrl" [(ngModel)]="laboratorioIntraparto.fec_vdrl"
+                                            (input)="onInputChange('fec_vdrl', $event.target.value)"
                                             [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_no_trepo_vdrl_sifilis_intra']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -180,6 +193,7 @@
                                         <label for="rec_sifilis" class="font-medium mb-1">Recibió tratamiento para
                                             sífilis</label>
                                         <select id="rec_sifilis" [(ngModel)]="laboratorioIntraparto.rec_sifilis"
+                                            (input)="onInputChange('rec_sifilis', $event.target.value)"
                                             [disabled]="ReadonlyLaboratorioIntraparto"
                                             (change)="onPrepartoChange('rec_sifilis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -192,6 +206,7 @@
                                         <label for="fec_tratamiento" class="font-medium mb-1">Fecha de inicio de
                                             tratamiento para sífilis intraparto</label>
                                         <input type="date" id="fec_tratamiento"
+                                            (input)="onInputChange('fec_tratamiento', $event.target.value)"
                                             [(ngModel)]="laboratorioIntraparto.fec_tratamiento"
                                             [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['rec_sifilis']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -201,6 +216,7 @@
                                         <label for="reali_prueb_rapi_vih" class="font-medium mb-1">Realizó la Prueba rápida
                                             VIH</label>
                                         <select id="reali_prueb_rapi_vih" [disabled]="ReadonlyLaboratorioIntraparto"
+                                            (input)="onInputChange('reali_prueb_rapi_vih', $event.target.value)"
                                             [(ngModel)]="laboratorioIntraparto.reali_prueb_rapi_vih"
                                             (change)="onPrepartoChange('reali_prueb_rapi_vih')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -212,6 +228,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="pru_vih" class="font-medium mb-1">Prueba rápida VIH</label>
                                         <select id="pru_vih" [(ngModel)]="laboratorioIntraparto.pru_vih"
+                                            (input)="onInputChange('pru_vih', $event.target.value)"
                                             [disabled]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
@@ -222,6 +239,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_vih" class="font-medium mb-1">Fecha prueba rápida VIH</label>
                                         <input type="date" id="fec_vih" [(ngModel)]="laboratorioIntraparto.fec_vih"
+                                            (input)="onInputChange('fec_vih', $event.target.value)"
                                             [readonly]="ReadonlyLaboratorioIntraparto || !mostrarCampos['reali_prueb_rapi_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -253,6 +271,7 @@
                                             parto
                                             o aborto</label>
                                         <select id="condicionEgreso" [(ngModel)]="seguimiento.con_egreso"
+                                            (input)="onInputChange('condicionEgreso', $event.target.value)"
                                             [disabled]="ReadonlySeguimiento"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Vivo">Vivo</option>
@@ -272,13 +291,15 @@
                                         <label for="fechaPlanificacion" class="font-medium mb-1 ">Fecha de atención
                                             planificación familiar posparto</label>
                                         <input type="date" id="fechaPlanificacion"
+                                            (input)="onInputChange('fechaPlanificacion', $event.target.value)"
                                             [(ngModel)]="seguimiento.fec_planificacion" [readonly]="ReadonlySeguimiento"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs ">
                                         <label for="condicionEgreso" class="font-medium mb-1">Recibio asesoria anticonceptiva</label>
-                                        <select id="condicionEgreso" [(ngModel)]="seguimiento.recib_aseso_anticonceptiva"
+                                        <select id="recib_aseso_anticonceptiva" [(ngModel)]="seguimiento.recib_aseso_anticonceptiva"
+                                            (input)="onInputChange('recib_aseso_anticonceptiva', $event.target.value)"
                                             [disabled]="ReadonlySeguimiento"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
@@ -293,6 +314,7 @@
                                             pos
                                             evento obstétrico</label>
                                         <select id="metodoAnticonceptivo" [(ngModel)]="seguimiento.cod_metodo"
+                                            (input)="onInputChange('metodoAnticonceptivo', $event.target.value)"
                                             [disabled]="ReadonlySeguimiento"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let metodo of metodos" [value]="metodo.cod_metodo">
@@ -327,6 +349,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_defuncion" class="font-medium mb-1">Fecha de defunción</label>
                                         <input type="date" id="fec_defuncion"
+                                            (input)="onInputChange('fec_defuncion', $event.target.value)"
                                             [(ngModel)]="mortalidadPreparto.fec_defuncion"
                                             [readonly]="ReadonlyMortalidadPreparto"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -337,6 +360,7 @@
                                             de
                                             muerte</label>
                                         <select id="cod_mortalidad" [(ngModel)]="mortalidadPreparto.cod_mortalidad"
+                                            (input)="onInputChange('cod_mortalidad', $event.target.value)"
                                             [disabled]="ReadonlyMortalidadPreparto"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let mortalidad of mortalidadPerinatal"

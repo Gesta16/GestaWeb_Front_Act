@@ -24,6 +24,11 @@
             </div>
         </div>
 
+        <app-formulario-porcentaje
+            [totalInputs]="totalInputs"
+            [answeredInputs]="answeredInputs">
+        </app-formulario-porcentaje>
+
         <!-- Diseño del formulario -->
         <div class="flex flex-wrap mt-5 uppercase">
             <div class="w-[70%] justify-center mx-auto">
@@ -68,7 +73,8 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Tipo de embarazo</label>
-                                        <select [(ngModel)]="datosRecienNacido.tip_embarazo"
+                                        <select id="tip_embarazo" [(ngModel)]="datosRecienNacido.tip_embarazo"
+                                            (input)="onInputChange('tip_embarazo', $event.target.value)"
                                             [disabled]="ReadonlyDatosRecienNacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Único">Único</option>
@@ -78,14 +84,16 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">N° recién nacido</label>
-                                        <input type="number" [(ngModel)]="datosRecienNacido.num_nacido"
+                                        <input id="num_nacido" type="number" [(ngModel)]="datosRecienNacido.num_nacido"
+                                            (input)="onInputChange('num_nacido', $event.target.value)"
                                             [readonly]="ReadonlyDatosRecienNacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Sexo</label>
-                                        <select [(ngModel)]="datosRecienNacido.sexo"
+                                        <select id="sexo" [(ngModel)]="datosRecienNacido.sexo"
+                                            (input)="onInputChange('sexo', $event.target.value)"
                                             [disabled]="ReadonlyDatosRecienNacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Masculino">Masculino</option>
@@ -95,21 +103,24 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Peso al nacer</label>
-                                        <input type="number" [(ngModel)]="datosRecienNacido.peso"
+                                        <input id="peso" type="number" [(ngModel)]="datosRecienNacido.peso"
+                                            (input)="onInputChange('peso', $event.target.value)"
                                             [readonly]="ReadonlyDatosRecienNacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Talla al nacer en cm</label>
-                                        <input type="number" [(ngModel)]="datosRecienNacido.talla"
+                                        <input id="talla" type="number" [(ngModel)]="datosRecienNacido.talla"
+                                            (input)="onInputChange('talla', $event.target.value)"
                                             [readonly]="ReadonlyDatosRecienNacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">¿Está en plan canguro?</label>
-                                        <select [(ngModel)]="datosRecienNacido.pla_canguro"
+                                        <select id="pla_canguro" [(ngModel)]="datosRecienNacido.pla_canguro"
+                                            (input)="onInputChange('pla_canguro', $event.target.value)"
                                             [disabled]="ReadonlyDatosRecienNacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Sí">Sí</option>
@@ -119,7 +130,8 @@
 
                                     <div class="flex flex-col text-xs" *ngIf="datosRecienNacido.pla_canguro === 'Sí'">
                                         <label for="" class="font-medium mb-1">IPS atención plan canguro</label>
-                                        <input type="text" [(ngModel)]="datosRecienNacido.ips_canguro"
+                                        <input id="ips_canguro" type="text" [(ngModel)]="datosRecienNacido.ips_canguro"
+                                            (input)="onInputChange('ips_canguro', $event.target.value)"
                                             [readonly]="ReadonlyDatosRecienNacido"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -145,7 +157,8 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Hemoclasificación (grupo / Rh)</label>
-                                        <select [(ngModel)]="nuevaTamizacion.cod_hemoclasifi"
+                                        <select id="cod_hemoclasifi" [(ngModel)]="nuevaTamizacion.cod_hemoclasifi"
+                                            (input)="onInputChange('cod_hemoclasifi', $event.target.value)"
                                             [disabled]="ReadonlyTamizacionNeonatal"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let hemocla of hemoclasificacion"
@@ -157,14 +170,16 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Resultado TSH</label>
-                                        <input type="text" [(ngModel)]="nuevaTamizacion.resul_tsh"
+                                        <input id="resul_tsh" type="text" [(ngModel)]="nuevaTamizacion.resul_tsh"
+                                            (input)="onInputChange('resul_tsh', $event.target.value)"
                                             [readonly]="ReadonlyTamizacionNeonatal"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha TSH</label>
-                                        <input type="date" [(ngModel)]="nuevaTamizacion.fec_tsh"
+                                        <input id="fec_tsh" type="date" [(ngModel)]="nuevaTamizacion.fec_tsh"
+                                            (input)="onInputChange('fec_tsh', $event.target.value)"
                                             [readonly]="ReadonlyTamizacionNeonatal"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -174,6 +189,7 @@
                                         <label for="reali_prueb_trepo_recien_nacido" class="font-medium mb-1">Se realizó la Prueba no
                                             treponémica recién nacido</label>
                                         <select id="reali_prueb_trepo_recien_nacido" [disabled]="ReadonlyTamizacionNeonatal"
+                                            (input)="onInputChange('reali_prueb_trepo_recien_nacido', $event.target.value)"
                                             [(ngModel)]="nuevaTamizacion.reali_prueb_trepo_recien_nacido"
                                             (change)="onPospartoChange('reali_prueb_trepo_recien_nacido')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -185,7 +201,8 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="pruetreponemica" class="font-medium mb-1">Prueba no treponémica recién
                                             nacido</label>
-                                        <select [(ngModel)]="nuevaTamizacion.pruetreponemica"
+                                        <select id="pruetreponemica" [(ngModel)]="nuevaTamizacion.pruetreponemica"
+                                            (input)="onInputChange('pruetreponemica', $event.target.value)"
                                             [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_prueb_trepo_recien_nacido']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Positivo">Positivo</option>
@@ -196,7 +213,8 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_pruetrepo" class="font-medium mb-1">Fecha prueba no treponémica recién
                                             nacido</label>
-                                        <input type="date" [(ngModel)]="nuevaTamizacion.fec_pruetrepo"
+                                        <input id="fec_pruetrepo" type="date" [(ngModel)]="nuevaTamizacion.fec_pruetrepo"
+                                            (input)="onInputChange('fec_pruetrepo', $event.target.value)"
                                             [readonly]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_prueb_trepo_recien_nacido']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -205,6 +223,7 @@
                                         <label for="reali_tami_auditivo" class="font-medium mb-1">Se realizó el Tamizaje
                                             auditivo</label>
                                         <select id="reali_tami_auditivo" [disabled]="ReadonlyTamizacionNeonatal"
+                                            (input)="onInputChange('reali_tami_auditivo', $event.target.value)"
                                             [(ngModel)]="nuevaTamizacion.reali_tami_auditivo"
                                             (change)="onPospartoChange('reali_tami_auditivo')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -215,7 +234,8 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="tamiza_aud" class="font-medium mb-1">Tamizaje auditivo</label>
-                                        <select [(ngModel)]="nuevaTamizacion.tamiza_aud"
+                                        <select id="tamiza_aud" [(ngModel)]="nuevaTamizacion.tamiza_aud"
+                                            (input)="onInputChange('tamiza_aud', $event.target.value)"
                                             [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_tami_auditivo']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="1">Positivo</option>
@@ -227,6 +247,7 @@
                                         <label for="reali_tami_cardiopatia_congenita" class="font-medium mb-1">Se realizó el Tamizaje
                                             cardiopatías congénitas</label>
                                         <select id="reali_tami_cardiopatia_congenita" [disabled]="ReadonlyTamizacionNeonatal"
+                                            (input)="onInputChange('reali_tami_cardiopatia_congenita', $event.target.value)"
                                             [(ngModel)]="nuevaTamizacion.reali_tami_cardiopatia_congenita"
                                             (change)="onPospartoChange('reali_tami_cardiopatia_congenita')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -237,7 +258,8 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="tamiza_cardi" class="font-medium mb-1">Tamizaje cardiopatías congénitas</label>
-                                        <select [(ngModel)]="nuevaTamizacion.tamiza_cardi"
+                                        <select id="tamiza_cardi" [(ngModel)]="nuevaTamizacion.tamiza_cardi"
+                                            (input)="onInputChange('tamiza_cardi', $event.target.value)"
                                             [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_tami_cardiopatia_congenita']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="1">Positivo</option>
@@ -249,6 +271,7 @@
                                         <label for="reali_tami_visual" class="font-medium mb-1">Se realizó el Tamizaje
                                             visual</label>
                                         <select id="reali_tami_visual" [disabled]="ReadonlyTamizacionNeonatal"
+                                            (input)="onInputChange('reali_tami_visual', $event.target.value)"
                                             [(ngModel)]="nuevaTamizacion.reali_tami_visual"
                                             (change)="onPospartoChange('reali_tami_visual')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -259,7 +282,8 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Tamizaje visual</label>
-                                        <select [(ngModel)]="nuevaTamizacion.tamiza_visual"
+                                        <select id="tamiza_visual" [(ngModel)]="nuevaTamizacion.tamiza_visual"
+                                            (input)="onInputChange('tamiza_visual', $event.target.value)"
                                             [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_tami_visual']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="1">Positivo</option>
@@ -291,7 +315,8 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">TSH de seguimiento</label>
-                                        <input type="text" [(ngModel)]="estudioHipotiroidismo.tsh"
+                                        <input id="tsh" type="text" [(ngModel)]="estudioHipotiroidismo.tsh"
+                                            (input)="onInputChange('tsh', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -299,28 +324,32 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha resultado TSH de
                                             seguimiento</label>
-                                        <input type="date" [(ngModel)]="estudioHipotiroidismo.fec_resultado"
+                                        <input id="fec_resultado" type="date" [(ngModel)]="estudioHipotiroidismo.fec_resultado"
+                                            (input)="onInputChange('fec_resultado', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">T4 libre</label>
-                                        <input type="text" [(ngModel)]="estudioHipotiroidismo.t4_libre"
+                                        <input id="t4_libre" type="text" [(ngModel)]="estudioHipotiroidismo.t4_libre"
+                                            (input)="onInputChange('t4_libre', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha resultado T4 libre</label>
-                                        <input type="date" [(ngModel)]="estudioHipotiroidismo.fec_resultadot4"
+                                        <input id="fec_resultadot4" type="date" [(ngModel)]="estudioHipotiroidismo.fec_resultadot4"
+                                            (input)="onInputChange('fec_resultadot4', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Evento confirmado</label>
-                                        <select [(ngModel)]="estudioHipotiroidismo.eve_confirmado"
+                                        <select id="eve_confirmado" [(ngModel)]="estudioHipotiroidismo.eve_confirmado"
+                                            (input)="onInputChange('eve_confirmado', $event.target.value)"
                                             [disabled]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="Sí">Sí</option>
@@ -330,7 +359,8 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha primera consulta pediatría</label>
-                                        <input type="date" [(ngModel)]="estudioHipotiroidismo.fec_primera"
+                                        <input id="fec_primera" type="date" [(ngModel)]="estudioHipotiroidismo.fec_primera"
+                                            (input)="onInputChange('fec_primera', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -358,6 +388,7 @@
                                         <label for="aplico_vacuna_bcg" class="font-medium mb-1">Se aplicó la vacuna
                                             BCG</label>
                                         <select id="aplico_vacuna_bcg" [disabled]="ReadonlyRutaPYMS"
+                                            (input)="onInputChange('aplico_vacuna_bcg', $event.target.value)"
                                             [(ngModel)]="nuevaRuta.aplico_vacuna_bcg"
                                             (change)="onPospartoChange('aplico_vacuna_bcg')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -370,13 +401,16 @@
                                         <label for="fec_bcg" class="font-medium mb-1">Fecha vacunación BCG</label>
                                         <input type="date" id="fec_bcg"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_bcg" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_bcg']" required>
+                                            [(ngModel)]="nuevaRuta.fec_bcg" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_bcg']" 
+                                            (input)="onInputChange('fec_bcg', $event.target.value)"
+                                            required>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="aplico_vacuna_hepatitis" class="font-medium mb-1">Se aplicó la vacuna de
                                             hepatitis</label>
                                         <select id="aplico_vacuna_hepatitis" [disabled]="ReadonlyRutaPYMS"
+                                            (input)="onInputChange('aplico_vacuna_hepatitis', $event.target.value)"
                                             [(ngModel)]="nuevaRuta.aplico_vacuna_hepatitis"
                                             (change)="onPospartoChange('aplico_vacuna_hepatitis')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -390,7 +424,9 @@
                                             hepatitis</label>
                                         <input type="date" id="fec_hepatitis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_hepatitis" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_hepatitis']"
+                                            [(ngModel)]="nuevaRuta.fec_hepatitis" 
+                                            (input)="onInputChange('fec_hepatitis', $event.target.value)"
+                                            [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_hepatitis']"
                                             required>
                                     </div>
 
@@ -399,7 +435,9 @@
                                             seguimiento a recién nacido</label>
                                         <input type="date" id="fec_seguimiento"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_seguimiento" [readonly]="ReadonlyRutaPYMS"
+                                            [(ngModel)]="nuevaRuta.fec_seguimiento" 
+                                            (input)="onInputChange('fec_seguimiento', $event.target.value)"
+                                            [readonly]="ReadonlyRutaPYMS"
                                             required>
                                     </div>
 
@@ -408,6 +446,7 @@
                                             carnet</label>
                                         <select id="reali_entrega_carnet" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.reali_entrega_carnet"
+                                            (input)="onInputChange('reali_entrega_carnet', $event.target.value)"
                                             (change)="onPospartoChange('reali_entrega_carnet')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
@@ -420,7 +459,9 @@
                                             carnet</label>
                                         <input type="date" id="fec_entrega"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_entrega" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['reali_entrega_carnet']" required>
+                                            [(ngModel)]="nuevaRuta.fec_entrega" 
+                                            (input)="onInputChange('fec_entrega', $event.target.value)"
+                                            [readonly]="ReadonlyRutaPYMS || !mostrarCampos['reali_entrega_carnet']" required>
                                     </div>
                                 </div>
                                 <div class="mt-8 flex justify-center space-x-4">

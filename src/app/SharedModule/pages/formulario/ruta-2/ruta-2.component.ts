@@ -74,6 +74,67 @@ export class Ruta2Component {
     recib_dosis_dpt_a_celular: false
   }
 
+  inputsStatus = {
+    // control prenatal
+    edad_gestacional: false,
+    trim_ingreso: false,
+    fec_mestruacion: false,
+    fec_parto: false,
+    emb_planeado: false,
+    fec_anticonceptivo: false,
+    metodoFracaso: false,
+    recibio_atencion_preconcep: false,
+    fec_consulta: false,
+    asis_consul_control_precon: false,
+    fec_control: false,
+    ries_reproductivo: false,
+    usu_solicito: false,
+    asis_asesoria_ive: false,
+    fac_asesoria: false,
+    tuvo_embarazos_antes: false,
+    fec_terminacion: false,
+    per_intergenesico: false,
+
+    // primera consulta
+    peso_previo: false,
+    tal_consulta: false,
+    imc_consulta: false,
+    diag_nutricional: false,
+    hta: false,
+    dm: false,
+    tipoDm: false,
+    riesgo: false,
+    fact_riesgo: false,
+    expo_violencia: false,
+    ries_depresion: false,
+    for_gestacion: false,
+    for_parto: false,
+    for_cesarea: false,
+    for_aborto: false,
+    asis_conse_lactancia: false,
+    fec_lactancia: false,
+    asis_conse_pre_vih: false,
+    fec_consejeria: false,
+
+
+    //vacunas
+    recib_prim_dosis_covid19: false,
+    fec_unocovid: false,
+    recib_segu_dosis_covid19: false,
+    fec_doscovid: false,
+    recib_refu_covid19: false,
+    fec_refuerzo: false,
+    biologico: false,
+    recib_dosis_influenza: false,
+    fec_influenza: false,
+    recib_dosis_tox_tetanico: false,
+    fec_tetanico: false,
+    recib_dosis_dpt_a_celular: false,
+    fec_dpt: false,
+
+
+  };
+
   constructor(private route: ActivatedRoute,
     private vacunacionService: VacunacionService,
     private biologicoService: BiologicoService,
@@ -130,6 +191,16 @@ export class Ruta2Component {
     this.cargarRiesgos();
     this.cargarTipoDm();
     this.cargarBiologicos();
+
+    setTimeout(() => {
+      Object.keys(this.inputsStatus).forEach((id) => {
+        
+        const inputElement = document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+        if (inputElement) {
+          this.inputsStatus[id] = inputElement.value.trim() !== '';
+        }
+      });
+    }, 8000);
   }
 
   // abrirModal(): void {
@@ -521,6 +592,18 @@ export class Ruta2Component {
 
   volver() {
     this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]); // Navegar a la ruta con el ID
+  }
+
+  get totalInputs(): number {
+    return Object.keys(this.inputsStatus).length; // Total de inputs
+  }
+
+  get answeredInputs(): number {
+    return Object.values(this.inputsStatus).filter(status => status).length; // Inputs respondidos
+  }
+
+  onInputChange(id: string, value: string): void {
+    this.inputsStatus[id] = value.trim() !== ''; // Marca como respondido si tiene contenido
   }
 
 }

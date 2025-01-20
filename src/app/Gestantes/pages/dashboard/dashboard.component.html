@@ -164,7 +164,20 @@
                 </div>
                 <div class="flex items-center gap-2 px-2 sm:px-3 py-1 mt-2 sm:mt-0 rounded-full"
                     [ngClass]="vacunasAplicadas.includes(vacuna) ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
-                    <!-- Íconos de estado... -->
+                    <svg *ngIf="vacunasAplicadas.includes(vacuna)" xmlns="http://www.w3.org/2000/svg" width="20"
+                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big">
+                        <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                        <path d="m9 11 3 3L22 4" />
+                    </svg>
+                    <svg *ngIf="!vacunasAplicadas.includes(vacuna)" xmlns="http://www.w3.org/2000/svg" width="20"
+                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-circle">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="m15 9-6 6" />
+                        <path d="m9 9 6 6" />
+                    </svg>
+                    <span class="text-sm">{{ vacunasAplicadas.includes(vacuna) ? 'Recibida' : 'No recibida' }}</span>
                 </div>
             </div>
         </div>
@@ -210,7 +223,7 @@
                 </div>
                 <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
 
-                    <ng-container *ngIf="!vacunasBebe[1]['completadoHepati']; else notCompleted1">
+                    <ng-container *ngIf="vacunasBebe[1]['completadoHepati']; else notCompleted1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-circle-check-big">

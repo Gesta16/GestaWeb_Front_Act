@@ -30,6 +30,11 @@
             </div>
         </div>
 
+        <app-formulario-porcentaje
+            [totalInputs]="totalInputs"
+            [answeredInputs]="answeredInputs">
+        </app-formulario-porcentaje>
+
         <!-- Diseño del formulario -->
         <div class="flex flex-wrap mt-5 uppercase">
             <div class="w-[70%] justify-center mx-auto">
@@ -84,6 +89,7 @@
                                         <label for="" class="font-medium mb-1">Edad gestacional de inicio del control
                                             prenatal</label>
                                         <input type="number" id="edad_gestacional" [readonly]="isReadOnly"
+                                            (input)="onInputChange('edad_gestacional', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.edad_gestacional"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -92,6 +98,7 @@
                                         <label for="" class="font-medium mb-1">Trimestre de ingreso al control
                                             prenatal</label>
                                         <select id="trim_ingreso" [disabled]="isReadOnly"
+                                            (input)="onInputChange('trim_ingreso', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.trim_ingreso"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="1">Trimestre I: 1 a 13 sem</option>
@@ -104,6 +111,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha última menstruación</label>
                                         <input type="date" id="fec_mestruacion" [readonly]="isReadOnly"
+                                            (input)="onInputChange('fec_mestruacion', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.fec_mestruacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -111,6 +119,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha probable de parto</label>
                                         <input type="date" id="fec_parto" [readonly]="isReadOnly"
+                                            (input)="onInputChange('fec_parto', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.fec_parto"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -118,6 +127,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Embarazo planeado</label>
                                         <select id="emb_planeado" [disabled]="isReadOnly"
+                                            (input)="onInputChange('emb_planeado', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.emb_planeado"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
@@ -129,6 +139,7 @@
                                         <label for="fec_anticonceptivo" class="font-medium mb-1">Fracaso
                                             anticonceptivo</label>
                                         <select id="fec_anticonceptivo" [disabled]="isReadOnly"
+                                            (input)="onInputChange('fec_anticonceptivo', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.fec_anticonceptivo"
                                             (change)="onControlPrenatalChange('fec_anticonceptivo')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -140,6 +151,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="metodoFracaso" class="font-medium mb-1">Método fracaso</label>
                                         <select id="metodoFracaso" [disabled]="isReadOnly || !mostrarCampos['fec_anticonceptivo']"
+                                            (input)="onInputChange('metodoFracaso', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.cod_fracaso"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option *ngFor="let metodo of metodosFracaso" [value]="metodo.cod_fracaso">
@@ -151,6 +163,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="recibio_atencion_preconcep" class="font-medium mb-1">Recibió atención preconcepcional</label>
                                         <select id="recibio_atencion_preconcep" [disabled]="isReadOnly"
+                                            (input)="onInputChange('recibio_atencion_preconcep', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.recibio_atencion_preconcep"
                                             (change)="onControlPrenatalChange('recibio_atencion_preconcep')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -163,6 +176,7 @@
                                         <label for="" class="font-medium mb-1">Fecha consulta atención
                                             preconcepcional</label>
                                         <input type="date" id="fec_consulta" [readonly]="isReadOnly || !mostrarCampos['recibio_atencion_preconcep']"
+                                            (input)="onInputChange('fec_consulta', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.fec_consulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -177,6 +191,7 @@
                                         <label for="asis_consul_control_precon" class="font-medium mb-1">Asistió a la consulta de control atención
                                             preconcepcional</label>
                                         <select id="asis_consul_control_precon" [disabled]="isReadOnly"
+                                            (input)="onInputChange('asis_consul_control_precon', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.asis_consul_control_precon"
                                             (change)="onControlPrenatalChange('asis_consul_control_precon')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -189,13 +204,15 @@
                                         <label for="" class="font-medium mb-1">Fecha consulta de control atención
                                             preconcepcional</label>
                                         <input type="date" id="fec_control" [readonly]="isReadOnly || !mostrarCampos['asis_consul_control_precon']"
+                                            (input)="onInputChange('fec_control', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.fec_control"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Riesgo reproductivo indentificado</label>
-                                        <select id="" [(ngModel)]="controlPrenatal.ries_reproductivo"
+                                        <select id="ries_reproductivo" [(ngModel)]="controlPrenatal.ries_reproductivo"
+                                            (input)="onInputChange('ries_reproductivo', $event.target.value)"
                                             [disabled]="isReadOnly"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="alto">Alto</option>
@@ -207,6 +224,7 @@
                                         <label for="usu_solicito" class="font-medium mb-1">Usuario solicitó
                                             IVE</label>
                                         <select id="usu_solicito" [(ngModel)]="controlPrenatal.usu_solicito"
+                                            (input)="onInputChange('usu_solicito', $event.target.value)"
                                             [disabled]="isReadOnly"
                                             (change)="onControlPrenatalChange('usu_solicito')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -219,6 +237,7 @@
                                         <label for="asis_asesoria_ive" class="font-medium mb-1">Asistió a la asesoría
                                             IVE</label>
                                         <select id="asis_asesoria_ive" [disabled]="isReadOnly || !mostrarCampos['usu_solicito']"
+                                            (input)="onInputChange('asis_asesoria_ive', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.asis_asesoria_ive"
                                             (change)="onControlPrenatalChange('asis_asesoria_ive')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -229,7 +248,9 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="fac_asesoria" class="font-medium mb-1">Fecha asesoría IVE</label>
-                                        <input type="date" id="fac_asesoria" [(ngModel)]="controlPrenatal.fac_asesoria"
+                                        <input type="date" id="fac_asesoria" 
+                                            (input)="onInputChange('fac_asesoria', $event.target.value)"
+                                            [(ngModel)]="controlPrenatal.fac_asesoria"
                                             [readonly]="isReadOnly || !mostrarCampos['asis_asesoria_ive'] || !mostrarCampos['usu_solicito']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
@@ -238,6 +259,7 @@
                                         <label for="tuvo_embarazos_antes" class="font-medium mb-1">Ha tenido algún embarazo
                                             anterior</label>
                                         <select id="tuvo_embarazos_antes" [disabled]="isReadOnly"
+                                            (input)="onInputChange('tuvo_embarazos_antes', $event.target.value)"
                                             [(ngModel)]="controlPrenatal.tuvo_embarazos_antes"
                                             (change)="onControlPrenatalChange('tuvo_embarazos_antes')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -250,13 +272,17 @@
                                         <label for="fec_terminacion" class="font-medium mb-1">Fecha terminación de último
                                             embarazo</label>
                                         <input type="date" id="fec_terminacion"
-                                            [(ngModel)]="controlPrenatal.fec_terminacion" [readonly]="isReadOnly || !mostrarCampos['tuvo_embarazos_antes']"
+                                            (input)="onInputChange('fec_terminacion', $event.target.value)"
+                                            [(ngModel)]="controlPrenatal.fec_terminacion"
+                                            [readonly]="isReadOnly || !mostrarCampos['tuvo_embarazos_antes']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Periodo intergenésico 12 meses</label>
-                                        <select id="per_intergenesico" [(ngModel)]="controlPrenatal.per_intergenesico"
+                                        <select id="per_intergenesico" 
+                                            (input)="onInputChange('per_intergenesico', $event.target.value)"
+                                            [(ngModel)]="controlPrenatal.per_intergenesico"
                                             [disabled]="isReadOnly"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
@@ -286,6 +312,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="peso_previo" class="font-medium mb-1">Peso previo (kg)</label>
                                         <input type="text" id="peso_previo" [(ngModel)]="primeraConsulta.peso_previo"
+                                            (input)="onInputChange('peso_previo', $event.target.value)"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -294,6 +321,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="tal_consulta" class="font-medium mb-1">Talla (metros)</label>
                                         <input type="text" id="tal_consulta" [(ngModel)]="primeraConsulta.tal_consulta"
+                                            (input)="onInputChange('tal_consulta', $event.target.value)"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -302,6 +330,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="imc_consulta" class="font-medium mb-1">I.M.C</label>
                                         <input type="text" id="imc_consulta" [(ngModel)]="primeraConsulta.imc_consulta"
+                                            (input)="onInputChange('imc_consulta', $event.target.value)"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -312,6 +341,7 @@
                                             de
                                             ingreso</label>
                                         <input type="text" id="diag_nutricional"
+                                            (input)="onInputChange('diag_nutricional', $event.target.value)"
                                             [(ngModel)]="primeraConsulta.diag_nutricional"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
@@ -321,6 +351,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="hta" class="font-medium mb-1">HTA</label>
                                         <select id="hta" [(ngModel)]="primeraConsulta.hta"
+                                            (input)="onInputChange('hta', $event.target.value)"
                                             [disabled]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -332,6 +363,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="dm" class="font-medium mb-1">DM</label>
                                         <select id="dm" [(ngModel)]="primeraConsulta.dm"
+                                            (input)="onInputChange('dm', $event.target.value)"
                                             [disabled]="isReadOnlyPrimeraConsulta"
                                             (change)="onControlPrenatalChange('dm')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
@@ -344,6 +376,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="tipoDm" class="font-medium mb-1">Tipo de DM</label>
                                         <select id="tipoDm" [(ngModel)]="primeraConsulta.cod_dm"
+                                            (input)="onInputChange('tipoDm', $event.target.value)"
                                             [disabled]="isReadOnlyPrimeraConsulta || !mostrarCampos['dm']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -355,6 +388,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="riesgo" class="font-medium mb-1">Clasificación del riesgo</label>
                                         <select id="riesgo" [(ngModel)]="primeraConsulta.cod_riesgo"
+                                            (input)="onInputChange('riesgo', $event.target.value)"
                                             [disabled]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -367,6 +401,7 @@
                                         <label for="fact_riesgo" class="font-medium mb-1">Factor de riesgo
                                             identificado</label>
                                         <input type="text" id="fact_riesgo" [(ngModel)]="primeraConsulta.fact_riesgo"
+                                            (input)="onInputChange('fact_riesgo', $event.target.value)"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -376,6 +411,7 @@
                                         <label for="expo_violencia" class="font-medium mb-1">Exposición a
                                             violencias</label>
                                         <select id="expo_violencia" [(ngModel)]="primeraConsulta.expo_violencia"
+                                            (input)="onInputChange('expo_violencia', $event.target.value)"
                                             [disabled]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="1">Si</option>
@@ -394,6 +430,7 @@
                                         <label for="ries_depresion" class="font-medium mb-1">Riesgo de depresión
                                             posparto</label>
                                         <select id="ries_depresion" [(ngModel)]="primeraConsulta.ries_depresion"
+                                            (input)="onInputChange('ries_depresion', $event.target.value)"
                                             [disabled]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value="1">Si</option>
@@ -405,6 +442,7 @@
                                         <label for="for_gestacion" class="font-medium mb-1">Fórmula obstétrica
                                             gestaciones</label>
                                         <input type="text" id="for_gestacion"
+                                            (input)="onInputChange('for_gestacion', $event.target.value)"
                                             [(ngModel)]="primeraConsulta.for_gestacion"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
@@ -415,6 +453,7 @@
                                         <label for="for_parto" class="font-medium mb-1">Fórmula obstétrica partos
                                             vaginales</label>
                                         <input type="text" id="for_parto" [(ngModel)]="primeraConsulta.for_parto"
+                                            (input)="onInputChange('for_parto', $event.target.value)"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -424,6 +463,7 @@
                                         <label for="for_cesarea" class="font-medium mb-1">Fórmula obstétrica
                                             cesáreas</label>
                                         <input type="text" id="for_cesarea" [(ngModel)]="primeraConsulta.for_cesarea"
+                                            (input)="onInputChange('for_cesarea', $event.target.value)"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -433,6 +473,7 @@
                                         <label for="for_aborto" class="font-medium mb-1">Fórmula obstétrica
                                             abortos</label>
                                         <input type="text" id="for_aborto" [(ngModel)]="primeraConsulta.for_aborto"
+                                            (input)="onInputChange('for_aborto', $event.target.value)"
                                             [readonly]="isReadOnlyPrimeraConsulta"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             required>
@@ -443,6 +484,7 @@
                                             lactancia materna</label>
                                         <select id="asis_conse_lactancia" [(ngModel)]="primeraConsulta.asis_conse_lactancia"
                                             (change)="onControlPrenatalChange('asis_conse_lactancia')"
+                                            (input)="onInputChange('asis_conse_lactancia', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
                                             <option value=0>No</option>
@@ -453,6 +495,7 @@
                                         <label for="fec_lactancia" class="font-medium mb-1">Fecha consejería
                                             lactancia materna</label>
                                         <input type="date" id="fec_lactancia"
+                                            (input)="onInputChange('fec_lactancia', $event.target.value)"
                                             [(ngModel)]="primeraConsulta.fec_lactancia"
                                             [readonly]="isReadOnlyPrimeraConsulta || !mostrarCampos['asis_conse_lactancia']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -462,6 +505,7 @@
                                         <label for="asis_conse_pre_vih" class="font-medium mb-1">Asistió a la consejería
                                             pretest VIH</label>
                                         <select id="asis_conse_pre_vih" [(ngModel)]="primeraConsulta.asis_conse_pre_vih"
+                                            (input)="onInputChange('asis_conse_pre_vih', $event.target.value)"
                                             (change)="onControlPrenatalChange('asis_conse_pre_vih')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                             <option value=1>Sí</option>
@@ -473,6 +517,7 @@
                                         <label for="fec_consejeria" class="font-medium mb-1">Fecha consejería pretest
                                             VIH</label>
                                         <input type="date" id="fec_consejeria"
+                                            (input)="onInputChange('fec_consejeria', $event.target.value)"
                                             [(ngModel)]="primeraConsulta.fec_consejeria"
                                             [readonly]="isReadOnlyPrimeraConsulta || !mostrarCampos['asis_conse_pre_vih']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -506,6 +551,7 @@
                                         <label for="recib_prim_dosis_covid19" class="font-medium mb-1">Recibió la primera dosis
                                             covid 19</label>
                                         <select id="recib_prim_dosis_covid19" [(ngModel)]="vacunacion.recib_prim_dosis_covid19"
+                                            (input)="onInputChange('recib_prim_dosis_covid19', $event.target.value)"
                                             (change)="onControlPrenatalChange('recib_prim_dosis_covid19')"
                                             [disabled]="isReadOnlyVacunacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -518,6 +564,7 @@
                                         <label for="fec_unocovid" class="font-medium mb-1">Fecha primera dosis covid
                                             19</label>
                                         <input type="date" id="fec_unocovid" [readonly]="isReadOnlyVacunacion || !mostrarCampos['recib_prim_dosis_covid19']"
+                                            (input)="onInputChange('fec_unocovid', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_unocovid">
                                     </div>
@@ -526,6 +573,7 @@
                                         <label for="recib_segu_dosis_covid19" class="font-medium mb-1">Recibió la segunda dosis
                                             covid 19</label>
                                         <select id="recib_segu_dosis_covid19" [(ngModel)]="vacunacion.recib_segu_dosis_covid19"
+                                            (input)="onInputChange('recib_segu_dosis_covid19', $event.target.value)"
                                             (change)="onControlPrenatalChange('recib_segu_dosis_covid19')"
                                             [disabled]="isReadOnlyVacunacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -538,6 +586,7 @@
                                         <label for="fec_doscovid" class="font-medium mb-1">Fecha segunda dosis covid
                                             19</label>
                                         <input type="date" id="fec_doscovid" [readonly]="isReadOnlyVacunacion || !mostrarCampos['recib_segu_dosis_covid19']"
+                                            (input)="onInputChange('fec_doscovid', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_doscovid">
                                     </div>
@@ -546,6 +595,7 @@
                                         <label for="recib_refu_covid19" class="font-medium mb-1">Recibió el refuerzo covid
                                             19</label>
                                         <select id="recib_refu_covid19" [(ngModel)]="vacunacion.recib_refu_covid19"
+                                            (input)="onInputChange('recib_refu_covid19', $event.target.value)"
                                             (change)="onControlPrenatalChange('recib_refu_covid19')"
                                             [disabled]="isReadOnlyVacunacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -558,6 +608,7 @@
                                         <label for="fec_refuerzo" class="font-medium mb-1">Fecha refuerzo covid
                                             19</label>
                                         <input type="date" id="fec_refuerzo" [readonly]="isReadOnlyVacunacion || !mostrarCampos['recib_refu_covid19']"
+                                            (input)="onInputChange('fec_refuerzo', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_refuerzo">
                                     </div>
@@ -565,6 +616,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="biologico" class="font-medium mb-1">Biológico COVID-19</label>
                                         <select id="biologico"
+                                            (input)="onInputChange('biologico', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.cod_biologico" [disabled]="isReadOnlyVacunacion">
                                             <option value="" disabled selected>Seleccionar</option>
@@ -579,6 +631,7 @@
                                         <label for="recib_dosis_influenza" class="font-medium mb-1">Recibió la dosis
                                             influenza</label>
                                         <select id="recib_dosis_influenza" [(ngModel)]="vacunacion.recib_dosis_influenza"
+                                            (input)="onInputChange('recib_dosis_influenza', $event.target.value)"
                                             (change)="onControlPrenatalChange('recib_dosis_influenza')"
                                             [disabled]="isReadOnlyVacunacion"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -591,6 +644,7 @@
                                         <label for="fec_influenza" class="font-medium mb-1">Fecha dosis
                                             influenza</label>
                                         <input type="date" id="fec_influenza" [readonly]="isReadOnlyVacunacion || !mostrarCampos['recib_dosis_influenza']"
+                                            (input)="onInputChange('fec_influenza', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_influenza">
                                     </div>
@@ -599,6 +653,7 @@
                                         <label for="recib_dosis_tox_tetanico" class="font-medium mb-1">Recibió la dosis toxoide
                                             tetánico</label>
                                         <select id="recib_dosis_tox_tetanico" [disabled]="isReadOnlyVacunacion"
+                                            (input)="onInputChange('recib_dosis_tox_tetanico', $event.target.value)"
                                             [(ngModel)]="vacunacion.recib_dosis_tox_tetanico"
                                             (change)="onControlPrenatalChange('recib_dosis_tox_tetanico')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -611,6 +666,7 @@
                                         <label for="fec_tetanico" class="font-medium mb-1">Fecha dosis toxoide
                                             tetánico</label>
                                         <input type="date" id="fec_tetanico" [readonly]="isReadOnlyVacunacion || !mostrarCampos['recib_dosis_tox_tetanico']"
+                                            (input)="onInputChange('fec_tetanico', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_tetanico">
                                     </div>
@@ -619,6 +675,7 @@
                                         <label for="recib_dosis_dpt_a_celular" class="font-medium mb-1">Recibió la dosis DPT
                                             a-celular</label>
                                         <select id="recib_dosis_dpt_a_celular" [disabled]="isReadOnlyVacunacion"
+                                            (input)="onInputChange('recib_dosis_dpt_a_celular', $event.target.value)"
                                             [(ngModel)]="vacunacion.recib_dosis_dpt_a_celular"
                                             (change)="onControlPrenatalChange('recib_dosis_dpt_a_celular')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -630,6 +687,7 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_dpt" class="font-medium mb-1">Fecha dosis DPT a-celular</label>
                                         <input type="date" id="fec_dpt" [readonly]="isReadOnlyVacunacion || !mostrarCampos['recib_dosis_dpt_a_celular']"
+                                            (input)="onInputChange('fec_dpt', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
                                             [(ngModel)]="vacunacion.fec_dpt">
                                     </div>

@@ -295,7 +295,6 @@ export class Ruta3Component {
     });
 
     setTimeout(() => {
-      console.log('entro al coso');
       Object.keys(this.inputsStatus).forEach((id) => {
         
         const inputElement = document.getElementById(id) as HTMLInputElement | HTMLSelectElement;

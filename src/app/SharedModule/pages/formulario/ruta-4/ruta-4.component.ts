@@ -65,6 +65,42 @@ export class Ruta4Component {
     ina_seguimiento: false
   }
 
+  inputsStatus = {
+    // seguimiento consulta mensual
+    fecConsulta: false,
+    codControles: false,
+    edadGestacional: false,
+    altUterina: false,
+    trimGestacional: false,
+    codRiesgo: false,
+    peso: false,
+    talla: false,
+    imc: false,
+    codDiagnostico: false,
+    tenArts: false,
+    tenArtd: false,
+    codMedicion: false,
+
+    // seguimiento complementario
+    asistio_nutricionista: false,
+    fecNutricion: false,
+    asistio_ginecologia: false,
+    fecGinecologia: false,
+    asistio_psicologia: false,
+    fecPsicologia: false,
+    asistio_odontologia: false,
+    fecOdontologia: false,
+    inaSeguimiento: false,
+    causalInasistencia: false,
+    codSesiones: false,
+
+    // micronutriente
+    aciFolico: false,
+    sulFerroso: false,
+    carCalcio: false,
+    desparasitacion: false,
+  };
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -136,6 +172,17 @@ export class Ruta4Component {
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
+
+    setTimeout(() => {
+      Object.keys(this.inputsStatus).forEach((id) => {
+        
+        const inputElement = document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+        if (inputElement) {
+          this.inputsStatus[id] = inputElement.value.trim() !== '';
+        }
+      });
+    }, 8000);
+
   }
 
   // abrirModal(): void {
@@ -485,10 +532,19 @@ export class Ruta4Component {
     }
   }
 
-
-
-
   volver() {
     this.router.navigate(['/ruta-gestante', this.id, this.num_proceso]); // Navegar a la ruta con el ID
+  }
+
+  get totalInputs(): number {
+    return Object.keys(this.inputsStatus).length; // Total de inputs
+  }
+
+  get answeredInputs(): number {
+    return Object.values(this.inputsStatus).filter(status => status).length; // Inputs respondidos
+  }
+
+  onInputChange(id: string, value: string): void {
+    this.inputsStatus[id] = value.trim() !== ''; // Marca como respondido si tiene contenido
   }
 }
