@@ -40,7 +40,7 @@
         </div>
 
         <!-- Alertas -->
-        <div class="bg-white p-4 sm:p-6 rounded-lg border shadow-md w-full h-[300px] sm:h-[360px] overflow-auto">
+        <div class="bg-white p-4 sm:p-6 rounded-lg border shadow-md w-full max-h-[360px] overflow-y-auto">
             <div class="flex gap-2 text-[#ea1f1f]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -49,15 +49,26 @@
                     <path d="M12 9v4" />
                     <path d="M12 17h.01" />
                 </svg>
-                <h3 class="text-lg sm:text-xl font-bold mb-4">¡Importante!</h3>
+                <h3 class="text-lg sm:text-xl font-bold mb-4">Signos de Alarma ¡Importante!</h3>
             </div>
-            <div class="flex flex-col">
-                <div *ngFor="let sig of signoAlarma" 
-                     class="border border-[#fe0000] bg-red-50 rounded-lg p-2 sm:p-3 mb-4 cursor-pointer" 
-                     (click)="abrirModal(sig)">
-                    <h3 class="font-bold text-base sm:text-lg">{{sig.nombre_alarma}}</h3>
+        
+            <!-- Verifica si hay signos de alarma -->
+            <div *ngIf="signoAlarma && signoAlarma.length > 0; else noSignos">
+                <div class="flex flex-col">
+                    <div *ngFor="let sig of signoAlarma" 
+                         class="border border-[#fe0000] bg-red-50 rounded-lg p-2 sm:p-3 mb-4 cursor-pointer" 
+                         (click)="abrirModal(sig)">
+                        <h3 class="font-bold text-base sm:text-lg">{{sig.nombre_alarma}}</h3>
+                    </div>
                 </div>
             </div>
+        
+            <!-- Mensaje cuando no hay signos de alarma -->
+            <ng-template #noSignos>
+                <div class="flex items-center justify-center py-4">
+                    <p class="text-gray-500 text-lg">Sin signos de alarma</p>
+                </div>
+            </ng-template>
         </div>
 
         <!-- Tarjetas de información -->
