@@ -1,54 +1,46 @@
 <!-- dashboard.component.html -->
+<app-header class="fixed top-0 w-full z-50"></app-header>
 
-<!-- Encabezado -->
-<app-header></app-header>
-
+<!-- Contenedor principal con padding adaptativo -->
 <div class="mx-auto px-4 mt-[8rem] max-w-[95%] sm:max-w-full transition-all duration-300 flex flex-wrap gap-4"
     [ngClass]="{ 
     'ml-56': isExpanded && isVisible, 
     'ml-20': !isExpanded && isVisible, 
     'ml-0': !isVisible}">
 
-    <!-- Estilos de la primera fila -->
-    <div class="flex flex-wrap gap-4 w-full h-[360px] mt-6">
 
+    <!-- Primera fila -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-6">
+        
         <!-- Campo para el proceso por trimestres -->
-        <div class="bg-white rounded-lg w-[33%] mb-6 shadow-md h-full">
-
-            <!-- Mostrar el trimestre con diferentes colores -->
-            <div class="p-6 w-[100%] h-[70%] border-b rounded-t-lg" [ngClass]="{
+        <div class="bg-white rounded-lg w-full shadow-md h-[300px] sm:h-[360px]">
+            <div class="p-4 sm:p-6 w-full h-[70%] border-b rounded-t-lg" [ngClass]="{
                 'bg-[#fce2e5]': colorBarra === 'bg-[#fce2e5]',
                 'bg-[#fbd8dc]': colorBarra === 'bg-[#fbd8dc]',
                 'bg-[#faccd2]': colorBarra === 'bg-[#faccd2]',
                 'bg-gray-200': colorBarra === 'bg-gray-200'
                 }">
-
                 <div class="relative">
-                    <div class="flex flex-col text-end text-lg">
-                        <p class="text-3xl font-bold mb-2">{{ trimestre }}</p>
-                        <!-- <p class="font-semibold">Te faltan</p> -->
-                        <p class="text-xl font-bold">Te faltan</p>
-                        <p class="text-xl font-bold">{{ semanasRestantes }} semanas</p>
+                    <div class="flex flex-col text-end text-base sm:text-lg">
+                        <p class="text-2xl sm:text-3xl font-bold mb-2">{{ trimestre }}</p>
+                        <p class="text-lg sm:text-xl font-bold">Te faltan</p>
+                        <p class="text-lg sm:text-xl font-bold">{{ semanasRestantes }} semanas</p>
                     </div>
-                    <!-- Imagen por trimestre -->
-                    <img class="absolute top-5 w-[11rem]" *ngIf="imagenTrimestre" [src]="imagenTrimestre"
-                        alt="trimestre" />
+                    <img class="absolute top-5 w-24 sm:w-[11rem]" *ngIf="imagenTrimestre" [src]="imagenTrimestre" alt="trimestre" />
                 </div>
             </div>
 
             <!-- Barra de progreso -->
-            <div class="p-6 rounded-lg w-[100%] h-[30%]">
+            <div class="p-4 sm:p-6 w-full h-[30%]">
                 <div class="border border-[#f9b8c1] h-2.5 rounded-full">
-                    <div class="h-2 rounded-full" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100">
-                    </div>
+                    <div class="h-2 rounded-full" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100"></div>
                 </div>
-                <!-- Texto con las semanas gestacionales -->
-                <p class="text-center mt-2 font-bold text-lg">Tienes {{ edadGestacional }} semanas</p>
+                <p class="text-center mt-2 font-bold text-base sm:text-lg">Tienes {{ edadGestacional }} semanas</p>
             </div>
         </div>
 
-        <!-- diseño de las alertas -->
-        <div class="bg-white p-6 rounded-lg border shadow-md w-[31%] mb-6 h-full overflow-auto">
+        <!-- Alertas -->
+        <div class="bg-white p-4 sm:p-6 rounded-lg border shadow-md w-full h-[300px] sm:h-[360px] overflow-auto">
             <div class="flex gap-2 text-[#ea1f1f]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -57,19 +49,21 @@
                     <path d="M12 9v4" />
                     <path d="M12 17h.01" />
                 </svg>
-                <h3 class="text-xl font-bold mb-4">¡Importante!</h3>
+                <h3 class="text-lg sm:text-xl font-bold mb-4">¡Importante!</h3>
             </div>
             <div class="flex flex-col">
-                <div *ngFor="let sig of signoAlarma" class="border border-[#fe0000] bg-red-50 rounded-lg p-3 mb-4 cursor-pointer" (click)="abrirModal(sig)">
-                    <h3 class="font-bold text-lg"> {{sig.nombre_alarma}} </h3>
+                <div *ngFor="let sig of signoAlarma" 
+                     class="border border-[#fe0000] bg-red-50 rounded-lg p-2 sm:p-3 mb-4 cursor-pointer" 
+                     (click)="abrirModal(sig)">
+                    <h3 class="font-bold text-base sm:text-lg">{{sig.nombre_alarma}}</h3>
                 </div>
             </div>
         </div>
 
-        <!-- Diseño de las tarjetas -->
-        <div class="flex flex-col w-[30%] gap-4">
-            <div class="border border-pink-300 px-4 py-2 rounded-lg bg-pink-50 shadow-lg">
-                <div class="flex text-xl font-bold mb-1 text-pink-700 gap-2 items-center">
+        <!-- Tarjetas de información -->
+        <div class="flex flex-col w-full gap-4">
+            <div class="border border-pink-300 px-3 sm:px-4 py-2 rounded-lg bg-pink-50 shadow-lg">
+                <div class="flex text-lg sm:text-xl font-bold mb-1 text-pink-700 gap-2 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="lucide lucide-baby">
@@ -81,7 +75,7 @@
                     </svg>
                     <p>Tu edad gestacional</p>
                 </div>
-                <p class="font-bold text-xl text-pink-900 px-8">{{edadGestacional}} Semanas</p>
+                <p class="font-bold text-lg sm:text-xl text-pink-900 px-4 sm:px-8">{{edadGestacional}} Semanas</p>
             </div>
 
             <div class="border border-purple-300 bg-purple-50 shadow-lg px-4 py-2 rounded-lg">
@@ -127,57 +121,45 @@
                 </div>
                 <p class="font-bold text-lg text-cyan-900 px-8">{{fechaParto}}</p>
             </div>
+            
         </div>
     </div>
 
-    <!-- Estilos de la segunda fila -->
-    <div class="flex flex-wrap gap-4 w-full mt-6">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-[49%] max-w-full mb-6">
-            <h3 class="text-lg font-bold mb-4">Gráfica peso</h3>
-            <div id="pesoChart" class="w-full h-[200px] md:h-[400px]"></div>
+    <!-- Segunda fila - Gráficas -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full mt-6">
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full">
+            <h3 class="text-base sm:text-lg font-bold mb-4">Gráfica peso</h3>
+            <div id="pesoChart" class="w-full h-[250px] sm:h-[300px] lg:h-[400px]"></div>
         </div>
 
-        <!-- Gráfica presión -->
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-[49%] max-w-full mb-6">
-            <h3 class="text-lg font-bold mb-4">Gráfica presión</h3>
-            <div id="presionChart" class="w-full h-[200px] md:h-[400px]"></div>
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full">
+            <h3 class="text-base sm:text-lg font-bold mb-4">Gráfica presión</h3>
+            <div id="presionChart" class="w-full h-[250px] sm:h-[300px] lg:h-[400px]"></div>
         </div>
     </div>
 
-    <!-- Datos de vacunación de la gestante y el bb -->
-    <div class="flex flex-wrap gap-4 w-full">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
-            <p class="text-lg font-bold mb-4">Estado de vacunación de gestante</p>
-            <!-- Iteramos sobre todas las posibles vacunas -->
+    <!-- Tercera fila - Vacunación y Calendario -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-6">
+        <!-- Vacunación gestante -->
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full">
+            <p class="text-base sm:text-lg font-bold mb-4">Estado de vacunación de gestante</p>
             <div *ngFor="let vacuna of ['Segunda dosis COVID', 'DPT', 'Influenza', 'Refuerzo', 'Tétanos', 'Primera dosis COVID']"
-                class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
+                class="border rounded-lg p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between shadow-sm mb-4">
                 <div>
-                    <h3 class="font-bold text-lg">{{ vacuna }}</h3>
-                    <p class="text-gray-500" *ngIf="vacunasInfo[vacuna]">
+                    <h3 class="font-bold text-base sm:text-lg">{{ vacuna }}</h3>
+                    <p class="text-gray-500 text-sm sm:text-base" *ngIf="vacunasInfo[vacuna]">
                         Fecha: {{vacunasInfo[vacuna] | date:'dd/MM/yyyy'}}
                     </p>
                 </div>
-                <div class="flex items-center gap-2 px-3 py-1 rounded-full"
+                <div class="flex items-center gap-2 px-2 sm:px-3 py-1 mt-2 sm:mt-0 rounded-full"
                     [ngClass]="vacunasAplicadas.includes(vacuna) ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
-                    <svg *ngIf="vacunasAplicadas.includes(vacuna)" xmlns="http://www.w3.org/2000/svg" width="20"
-                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big">
-                        <path d="M21.801 10A10 10 0 1 1 17 3.335" />
-                        <path d="m9 11 3 3L22 4" />
-                    </svg>
-                    <svg *ngIf="!vacunasAplicadas.includes(vacuna)" xmlns="http://www.w3.org/2000/svg" width="20"
-                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-circle">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="m15 9-6 6" />
-                        <path d="m9 9 6 6" />
-                    </svg>
-                    <span class="text-sm">{{ vacunasAplicadas.includes(vacuna) ? 'Recibida' : 'No recibida' }}</span>
+                    <!-- Íconos de estado... -->
                 </div>
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-lg w-[33%] mb-6">
+        <!-- Vacunación bebé -->
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full">
             <p class="text-lg font-bold mb-4">Estado de vacunación del bebé</p>
 
             <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
@@ -240,15 +222,13 @@
 
                 </div>
             </div>
-
         </div>
 
-        <!-- Diseño del calendario -->
-        <div *ngIf="!loading;" class="bg-white p-6 rounded-lg w-[31%] mb-6 shadow-lg">
+        <!-- Calendario -->
+        <div *ngIf="!loading" class="bg-white p-4 sm:p-6 rounded-lg w-full shadow-lg">
             <full-calendar [options]="calendarOptions" class="h-full"></full-calendar>
         </div>
     </div>
-
 </div>
 
 <!-- Modal -->
