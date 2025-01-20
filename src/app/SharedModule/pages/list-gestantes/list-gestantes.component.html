@@ -70,14 +70,14 @@
                         </button> -->
 
                             <!-- Botón para crear proceso si no hay ninguno, deshabilitado si 'autorizacion' es 0 -->
-                            <button (click)="crearProceso(usuario.id_usuario)" [disabled]="usuario.autorizacion == 0"
+                            <button (click)="crearProceso(usuario.id_usuario)" [disabled]="usuario.autorizacion === 0"
                                 class="flex items-center h-8 border border-[#80BA27] bg-white text-black font-semibold px-2 rounded-xl hover:bg-[#EAF2DA] focus:outline-none"
                                 [ngClass]="{ 'cursor-not-allowed': usuario.autorizacion === 0, 'opacity-50': usuario.autorizacion === 0 }">
                                 Nuevo proceso
                             </button>
 
                             <!-- Botón para ver usuario si hay exactamente un proceso -->
-                            <button *ngIf="usuario.procesos_gestativos_count != 0" (click)="toggleDropdown(usuario)"
+                            <button *ngIf="usuario.procesosCount != 0" (click)="toggleDropdown(usuario)"
                                 class="flex items-center h-8 border border-[#CAD400] bg-white font-semibold text-black px-2 rounded-xl hover:bg-[#F5F6DB] focus:outline-none">
                                 Ver proceso
                             </button>
@@ -86,7 +86,7 @@
                             <div *ngIf="usuario.showDropdown"
                                 class="absolute right-0 mt-20 md:mt-10 mr-6 w-48 bg-white rounded-lg shadow-lg z-50 border border-[#CAD400]">
                                 <ul>
-                                    <li *ngFor="let num of generarRango(usuario.procesos_gestativos_count)">
+                                    <li *ngFor="let num of generarRango(usuario.procesosCount)">
                                         <button (click)="verProceso(usuario.id_usuario, num)"
                                             class="block w-full px-4 py-2 text-sm text-black hover:bg-[#F5F6DB] focus:outline-none rounded-lg">
                                             Proceso #{{ num }}

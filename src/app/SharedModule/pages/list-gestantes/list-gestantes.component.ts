@@ -86,7 +86,7 @@ export class ListGestantesComponent {
       const usuario = this.usuarios.find(u => u.id_usuario === usuarioId); // Busca el usuario por id
       if (usuario) {
         usuario.procesosCount = response.numero_de_procesos_gestativos; // Almacena el conteo en el objeto usuario
-        console.log(`Número de procesos gestativos para ${usuarioId}: ${response.numero_de_procesos_gestativos}`);
+        //console.log(`Número de procesos gestativos para ${usuarioId}: ${response.numero_de_procesos_gestativos}`);
       }
     }, error => {
       console.error('Error al contar los procesos gestativos:', error);
