@@ -11,7 +11,7 @@
 
     <!-- Primera fila -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-6">
-        
+
         <!-- Campo para el proceso por trimestres -->
         <div class="bg-white rounded-lg w-full shadow-md h-[300px] sm:h-[360px]">
             <div class="p-4 sm:p-6 w-full h-[70%] border-b rounded-t-lg" [ngClass]="{
@@ -26,14 +26,16 @@
                         <p class="text-lg sm:text-xl font-bold">Te faltan</p>
                         <p class="text-lg sm:text-xl font-bold">{{ semanasRestantes }} semanas</p>
                     </div>
-                    <img class="absolute top-5 w-24 sm:w-[11rem]" *ngIf="imagenTrimestre" [src]="imagenTrimestre" alt="trimestre" />
+                    <img class="absolute top-5 w-24 sm:w-[11rem]" *ngIf="imagenTrimestre" [src]="imagenTrimestre"
+                        alt="trimestre" />
                 </div>
             </div>
 
             <!-- Barra de progreso -->
             <div class="p-4 sm:p-6 w-full h-[30%]">
                 <div class="border border-[#f9b8c1] h-2.5 rounded-full">
-                    <div class="h-2 rounded-full" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100"></div>
+                    <div class="h-2 rounded-full" [ngClass]="colorBarra" [style.width.%]="(edadGestacional / 42) * 100">
+                    </div>
                 </div>
                 <p class="text-center mt-2 font-bold text-base sm:text-lg">Tienes {{ edadGestacional }} semanas</p>
             </div>
@@ -51,18 +53,18 @@
                 </svg>
                 <h3 class="text-lg sm:text-xl font-bold mb-4">Signos de Alarma ¡Importante!</h3>
             </div>
-        
+
             <!-- Verifica si hay signos de alarma -->
             <div *ngIf="signoAlarma && signoAlarma.length > 0; else noSignos">
                 <div class="flex flex-col">
-                    <div *ngFor="let sig of signoAlarma" 
-                         class="border border-[#fe0000] bg-red-50 rounded-lg p-2 sm:p-3 mb-4 cursor-pointer" 
-                         (click)="abrirModal(sig)">
+                    <div *ngFor="let sig of signoAlarma"
+                        class="border border-[#fe0000] bg-red-50 rounded-lg p-2 sm:p-3 mb-4 cursor-pointer"
+                        (click)="abrirModal(sig)">
                         <h3 class="font-bold text-base sm:text-lg">{{sig.nombre_alarma}}</h3>
                     </div>
                 </div>
             </div>
-        
+
             <!-- Mensaje cuando no hay signos de alarma -->
             <ng-template #noSignos>
                 <div class="flex items-center justify-center py-4">
@@ -132,7 +134,7 @@
                 </div>
                 <p class="font-bold text-lg text-cyan-900 px-8">{{fechaParto}}</p>
             </div>
-            
+
         </div>
     </div>
 
@@ -212,7 +214,7 @@
                         </svg>
                         <span class="text-xs">No Recibida</span>
                     </ng-template>
-                    
+
                 </div>
             </div>
 

@@ -127,13 +127,13 @@ export class Ruta4Component {
   // Permite abrir el menu de las alertas
   isModalVisible = false;
 
-  abrirModal(): void {
-    this.isModalVisible = true;
-  }
+  // abrirModal(): void {
+  //   this.isModalVisible = true;
+  // }
 
-  cerrarModal(): void {
-    this.isModalVisible = false;
-  }
+  // cerrarModal(): void {
+  //   this.isModalVisible = false;
+  // }
 
   ngOnInit() {
     this.user = this.authService.currentUserValue;
@@ -185,13 +185,13 @@ export class Ruta4Component {
 
   }
 
-  // abrirModal(): void {
-  //   this._matDialog.open(AlarmaGestanteComponent, {
-  //     enterAnimationDuration: '0ms',
-  //     exitAnimationDuration: '0ms',
-  //     data: { usuario_id: this.id }
-  //   });
-  // }
+  abrirModal(): void {
+    this._matDialog.open(AlarmaGestanteComponent, {
+      enterAnimationDuration: '0ms',
+      exitAnimationDuration: '0ms',
+      data: { usuario_id: this.id }
+    });
+  }
 
   limpiarFormulario(): void {
     this.seguimientoConsulta = new SeguimientoConsultaMensual;

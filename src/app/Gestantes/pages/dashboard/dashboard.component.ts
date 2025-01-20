@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit {
     // Obtenemos el id del usuario actual
     const currentUser = this.authService.currentUserValue;
     const usuarioId = currentUser?.userable.id_usuario;
-    this.idUsuario = currentUser?.userable.id_usuario;
+    this.idUsuario= currentUser?.userable.id_usuario;
 
     // Verificamos si el id_usuario existe y si los términos fueron aceptados
     if (usuarioId) {
@@ -533,10 +533,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getSignoAlarma(id: number) {
+    
     this.alarmaService.getSignosAlarmaByUser(id).subscribe(
       (response: any) => {
         if(response.signo_alarma){
           this.signoAlarma = response.signo_alarma;
+          console.log('signo alarma',response)
         }
       },
       (error) => {
