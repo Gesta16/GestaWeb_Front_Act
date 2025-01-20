@@ -138,13 +138,13 @@ export class Ruta4Component {
     });
   }
 
-  abrirModal(): void {
-    this._matDialog.open(AlarmaGestanteComponent, {
-      enterAnimationDuration: '0ms',
-      exitAnimationDuration: '0ms',
-      data: { usuario_id: this.id }
-    });
-  }
+  // abrirModal(): void {
+  //   this._matDialog.open(AlarmaGestanteComponent, {
+  //     enterAnimationDuration: '0ms',
+  //     exitAnimationDuration: '0ms',
+  //     data: { usuario_id: this.id }
+  //   });
+  // }
 
   limpiarFormulario(): void {
     this.seguimientoConsulta = new SeguimientoConsultaMensual;

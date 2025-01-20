@@ -132,13 +132,13 @@ export class Ruta2Component {
     this.cargarBiologicos();
   }
 
-  abrirModal(): void {
-    this._matDialog.open(AlarmaGestanteComponent, {
-      enterAnimationDuration: '0ms',
-      exitAnimationDuration: '0ms',
-      data: { usuario_id: this.id }
-    });
-  }
+  // abrirModal(): void {
+  //   this._matDialog.open(AlarmaGestanteComponent, {
+  //     enterAnimationDuration: '0ms',
+  //     exitAnimationDuration: '0ms',
+  //     data: { usuario_id: this.id }
+  //   });
+  // }
 
   cargarMetodosFracaso(): void {
     this.metodoFracasoService.getMetodos().subscribe(response => {

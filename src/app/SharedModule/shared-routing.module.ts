@@ -22,6 +22,7 @@ import { AlertasComponent } from './pages/alertas/alertas.component';
 import { AddAlertasComponent } from './pages/add-alertas/add-alertas.component';
 
 import { AlertComponent } from './pages/alert/alert.component';
+import { ReportesRutaGestacionalComponent } from './pages/reportes-ruta-gestacional/reportes-ruta-gestacional.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,11 @@ const routes: Routes = [
         path: 'alertas', component: AlertasComponent,
         canActivate: [RoleGuard],
         data: { title: 'Alertas', icon: 'fa-solid fa-triangle-exclamation', expectedRoles: ['superadmin'], showInMenu: true }
+      },
+      {
+        path:'reporteRutaGestante', component:ReportesRutaGestacionalComponent,
+        canActivate: [RoleGuard],
+        data: {title:'Reporte Gestante', icon:'fa-solid fa-clipboard-check', expectedRoles:['operador', 'usuario'], showInMenu:true}
       },
       {
         path: 'add-alertas', component: AddAlertasComponent,
@@ -144,7 +150,8 @@ const routes: Routes = [
       {
         path: 'ruta-6/:id/:num_proceso', component: Ruta6Component,
         data: { showInMenu: false }
-      }
+      },
+      
     ]
   }
 ];

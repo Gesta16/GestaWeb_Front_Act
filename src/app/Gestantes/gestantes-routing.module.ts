@@ -5,6 +5,7 @@ import { NotasComponent } from './pages/notas/notas.component';
 import { RoleGuard } from '../guards/role.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ExamenesComponent } from './pages/examenes/examenes.component';
+import { ReportesRutaGestacionalComponent } from '../SharedModule/pages/reportes-ruta-gestacional/reportes-ruta-gestacional.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
         path: 'notas', component: NotasComponent,
         canActivate: [RoleGuard],
         data: { title: 'Notas', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu: true }
+      },
+      {
+        path:'reporteRutaGestante', component:ReportesRutaGestacionalComponent,
+        canActivate: [RoleGuard],
+        data: {title:'Reporte Gestante', icon:'fa-solid fa-clipboard-check', expectedRoles:['operador', 'usuario'], showInMenu:true}
       },
     ]
   }

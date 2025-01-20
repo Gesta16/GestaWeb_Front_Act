@@ -36,6 +36,7 @@ import { AlertasComponent } from './pages/alertas/alertas.component';
 import { AddAlertasComponent } from './pages/add-alertas/add-alertas.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { AlarmaGestanteComponent } from './pages/alarma-gestante/alarma-gestante.component';
+import { ReportesRutaGestacionalComponent } from './pages/reportes-ruta-gestacional/reportes-ruta-gestacional.component';
 
 
 
@@ -74,6 +75,7 @@ import { AlarmaGestanteComponent } from './pages/alarma-gestante/alarma-gestante
     AddAlertasComponent,
     AlertComponent,
     AlarmaGestanteComponent,
+    ReportesRutaGestacionalComponent,
   ],
   imports: [
     CommonModule,
