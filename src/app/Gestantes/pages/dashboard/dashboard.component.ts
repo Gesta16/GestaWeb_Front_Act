@@ -540,6 +540,7 @@ export class DashboardComponent implements OnInit {
       (response: any) => {
         if(response.signo_alarma){
           this.signoAlarma = response.signo_alarma;
+          console.log('signo alarma',response)
         }
       },
       (error) => {
