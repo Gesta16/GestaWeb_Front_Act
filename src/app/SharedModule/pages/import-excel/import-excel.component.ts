@@ -3,6 +3,7 @@ import { AlertService } from '../../../Services/alert.service';
 import { ImportExcelService } from '../../../Services/import-excel.service';
 import { Operador } from '../../../Models/Operador.model';
 import { OperadorService } from '../../../Services/operador.service';
+import { MenuService } from '../../../Services/menu.service';
 
 
 @Component({
@@ -18,13 +19,24 @@ export class ImportExcelComponent implements AfterViewInit {
   enviandose = false;
   listOperadores: Operador[] = [];
   idOperador!: string;
-
+  isExpanded = true;
+  isVisible = true;
 
   constructor(
     private alertService:AlertService,
     private importExcelService:ImportExcelService,
-    private operadorService:OperadorService
+    private operadorService:OperadorService,
+    private menuService:MenuService
   ) {}
+
+  ngOnInit():void{
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
+    this.menuService.menuVisible$.subscribe(isVisible => {
+      this.isVisible = isVisible;
+    });
+  }
 
   // funcion para iniciar metodos o funciones en el sistema
   ngAfterViewInit(): void {

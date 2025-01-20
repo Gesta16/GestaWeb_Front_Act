@@ -4,6 +4,7 @@ import { AdminService } from '../../../Services/admin.service';
 import { TipoDocumentoService } from '../../../Services/tipo-documento.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddAdminComponent } from '../add-admin/add-admin.component';
+import { MenuService } from '../../../Services/menu.service';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class ListAdminComponent implements OnInit {
     private adminService: AdminService,
     private tipoDocumentoService: TipoDocumentoService,
     private _matDialog: MatDialog,
+    private menuService: MenuService
     
   ) {}
 
@@ -36,6 +38,12 @@ export class ListAdminComponent implements OnInit {
     this.checkScreenSize();
     this.loadTiposDocumento();
     this.loadAdmins();
+    this.menuService.isExpanded$.subscribe(isExpanded => {
+      this.isExpanded = isExpanded;
+    });
+    this.menuService.menuVisible$.subscribe(isVisible => {
+      this.isVisible = isVisible;
+    });
   }
 
   private checkScreenSize() {

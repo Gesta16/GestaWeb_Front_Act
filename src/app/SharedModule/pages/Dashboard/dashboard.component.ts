@@ -52,7 +52,7 @@ export class DashboardComponent {
   ngOnInit() {
     this.user = this.authService.currentUserValue;
     //console.log(this.user);
-    //console.log(this.user.rol_id);
+    console.log(this.user.rol_id);
     //console.log(this.user.userable.cod_ips);
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
