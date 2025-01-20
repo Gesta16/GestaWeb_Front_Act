@@ -2,8 +2,8 @@
 
 <div class="flex min-h-screen justify-center items-center px-4">
 
-    <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 px-4 ml-56 mt-24" > <!-- [ngClass]="{ 'ml-56': isExpanded && isVisible, 
-        'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}" -->
+    <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 px-4 ml-56 mt-24" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
+        'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}"> 
 
         <div class="bg-white rounded-lg shadow-lg p-6 w-full mb-4">
 
