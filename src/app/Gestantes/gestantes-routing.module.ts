@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NotasComponent } from './pages/notas/notas.component';
 import { RoleGuard } from '../guards/role.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ExamenesComponent } from './pages/examenes/examenes.component';
 import { ReportesRutaGestacionalComponent } from '../SharedModule/pages/reportes-ruta-gestacional/reportes-ruta-gestacional.component';
+import { EducacionComponent } from './pages/educacion/educacion.component';
 
 const routes: Routes = [
   {
@@ -29,7 +29,12 @@ const routes: Routes = [
       {
         path:'reporteRutaGestante', component:ReportesRutaGestacionalComponent,
         canActivate: [RoleGuard],
-        data: {title:'Reporte Gestante', icon:'fa-solid fa-clipboard-check', expectedRoles:['operador', 'usuario'], showInMenu:true}
+        data: {title:'Reporte Gestante', icon:'fa-solid fa-file-arrow-down', expectedRoles:['operador', 'usuario'], showInMenu:true}
+      },
+      {
+        path:'educacion', component:EducacionComponent,
+        canActivate: [RoleGuard],
+        data: {title:'Educación Gestante', icon:'fa-solid fa-laptop-file', expectedRoles:['operador', 'usuario'], showInMenu:true}
       },
     ]
   }
