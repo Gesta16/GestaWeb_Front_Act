@@ -39,6 +39,8 @@ export class ReporteComponent {
         { nombre: 'Salud Bucal', valor: 'Salud Bucal' },
         { nombre: 'Psicología', valor: 'Psicología' },
         { nombre: 'Ginecología', valor: 'Ginecología' },
+        { nombre: 'Lactancia Materna', valor: 'Lactancia' }, // nuevo
+        { nombre: 'Elisa para VIH', valor: 'Elisa VIH' }, // nuevo
       ],
     },
     {
@@ -83,6 +85,7 @@ export class ReporteComponent {
       valor: 'atencion_neonatal',
       subcategorias: [
         { nombre: 'Tamizaje Hipotiroidismo', valor: 'Tamizaje Hipotiroidismo' },
+        { nombre: 'Tamizaje Auditivo', valor: 'Tamizaje Auditivo' }, // nuevo
         { nombre: 'Vacunación', valor: 'Vacunación' },
         { nombre: 'Cardiopatías', valor: 'Cardiopatías' },
       ],

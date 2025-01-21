@@ -191,7 +191,7 @@
             <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
                 <div>
                     <h3 class="font-bold text-lg">Vacuna contra la Tuberculosis (BCG)</h3>
-                    <p class="text-gray-500">Fecha: {{ vacunasBebe[0]['bcgFec'] }}</p>
+                    <p *ngIf="vacunasBebe[0]['completadoBcf']" class="text-gray-500">Fecha: {{ vacunasBebe[0]['bcgFec'] }}</p>
                 </div>
                 <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
                     <ng-container *ngIf="vacunasBebe[0]['completadoBcf']; else notCompleted">
@@ -221,7 +221,7 @@
             <div class="border rounded-lg p-4 flex items-center justify-between shadow-sm mb-4">
                 <div>
                     <h3 class="font-bold text-lg">Vacuna contra la Hepatitis</h3>
-                    <p class="text-gray-500">Fecha: {{ vacunasBebe[1]['hepatiFec'] }}</p>
+                    <p *ngIf="vacunasBebe[1]['completadoHepati']" class="text-gray-500">Fecha: {{ vacunasBebe[1]['hepatiFec'] }}</p>
                 </div>
                 <div class="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
 

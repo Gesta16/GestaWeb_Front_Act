@@ -24,6 +24,7 @@ export class DashboardComponent {
   chartOptionsSeguimientos: echarts.EChartsOption;
   chartOptionsMortalidad: echarts.EChartsOption;
   chartOptionsConsultasIve: echarts.EChartsOption;
+  ChartOptionspesoBajoBebe: echarts.EChartsOption;
   user: any;
   chartInstances: Record<string, any> = {};
   consultas: Consulta[] = [];
@@ -52,24 +53,25 @@ export class DashboardComponent {
   ngOnInit() {
     this.user = this.authService.currentUserValue;
     //console.log(this.user);
-    console.log(this.user.rol_id);
+    //console.log(this.user.rol_id);
     //console.log(this.user.userable.cod_ips);
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
-    if(this.user.rol_id !== 4){
+    if (this.user.rol_id !== 4) {
       this.getConteos();
       this.getTamizajeSifilis();
       this.getSeguimientosComplementarios();
       this.getMortalidadNeonatal();
       this.getConsultasIve();
+      this.getMortalidadPerinatal();
+      this.getPesoBajoBebe();
       this.loading = true;
-    }else {
+    } else {
       // Solo carga el calendario si el rol es gestante (4)
       this.cargarConsultas();
       this.loading = false;
-    } 
-   
+    }
   }
 
   getConteos() {
@@ -257,6 +259,131 @@ export class DashboardComponent {
     );
   }
 
+  // grafica de mortalidad perinatal
+  getMortalidadPerinatal() {
+    this.dashboardService.getPerinatalMortalityRate(this.user.rol_id, this.user.userable.cod_ips).subscribe(
+      (response) => {
+        //console.log(response);
+        this.chartOptionsMortalidad = {
+          title: {
+            text: 'Mortalidad Perinatal',
+            left: 'center'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross'
+            }
+          },
+          xAxis: {
+            type: 'category',
+            data: response.map(item => item.mes)
+          },
+          yAxis: [
+            {
+              type: 'value',
+              name: 'Casos',
+              position: 'left'
+            },
+            {
+              type: 'value',
+              name: 'Tendencia',
+              position: 'right'
+            }
+          ],
+          series: [
+            {
+              name: 'Mortalidad Perinatal',
+              type: 'bar',
+              data: response.map(item => item.total_neonatal_temprana),
+              itemStyle: {
+                color: (params: any) => {
+                  const colors = ['#91CC75', '#FAC858', '#EE6666', '#73C0DE'];
+                  return colors[params.dataIndex % colors.length];
+                }
+              },
+            },
+            {
+              name: 'Tendencia',
+              type: 'line',
+              yAxisIndex: 1,
+              data: response.map(item => item.total_neonatal_temprana),
+              smooth: true,
+              itemStyle: {
+                color: '#EE6666'
+              }
+            }
+          ]
+        };
+        this.initChart('mortalidadPerChart', this.chartOptionsMortalidad);
+      },
+      (err) => {
+        console.log('Error al obtener los datos:', err);
+      }
+    );
+  }
+
+  // grafica para bebes
+  getPesoBajoBebe() {
+    this.dashboardService.getPesoBajoBebeRate(this.user.rol_id, this.user.userable.cod_ips).subscribe(
+      (response) => {
+        console.log(response);
+
+        // Configuración del gráfico
+        const categorias = ['Peso Bajo', 'Peso Normal', 'Peso Alto']; // Ajusta según los datos
+        const datosMasculinos = response.masculino; //   Ejemplo: [30, 50, 20]
+        const datosFemeninos = response.femenino;  //    Ejemplo: [25, 60, 15]
+
+        this.ChartOptionspesoBajoBebe = {
+          title: {
+            text: 'Porcentaje de Peso en Bebés recien nacidos'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
+          legend: {
+            data: ['Masculino', 'Femenino']
+          },
+          xAxis: {
+            type: 'category',
+            data: categorias
+          },
+          yAxis: {
+            type: 'value',
+            axisLabel: {
+              formatter: '{value} %'
+            }
+          },
+          series: [
+            {
+              name: 'Masculino',
+              type: 'bar',
+              data: datosMasculinos,
+              itemStyle: {
+                color: '#4caf50'
+              }
+            },
+            {
+              name: 'Femenino',
+              type: 'bar',
+              data: datosFemeninos,
+              itemStyle: {
+                color: '#2196f3'
+              }
+            }
+          ]
+        };
+        this.initChart('pesoBajoBebeChart', this.ChartOptionspesoBajoBebe);
+      },
+      (err) => {
+        console.log('Error al obtener los datos:', err);
+      }
+    );
+  }
+
 
   getConsultasIve() {
     this.dashboardService.getIveProportion(this.user.rol_id, this.user.userable.cod_ips).subscribe(
@@ -355,7 +482,7 @@ export class DashboardComponent {
           this.errorMessage = response.mensaje;
           this.calendarOptions.events = [];
         }
-        
+
         this.loading = false;
       },
       (error) => {

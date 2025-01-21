@@ -53,6 +53,16 @@ export class DashboardService {
     return this.http.get(`${this.apiUrl}mortalidad-neonatalTemp`, { headers: this.createHeaders(), params })
   }
 
+  getPerinatalMortalityRate(role: string, cod_ips: number): Observable<any> {
+    const params = { role: role, cod_ips: cod_ips };
+    return this.http.get(`${this.apiUrl}mortalidad-perinatalTemp`, { headers: this.createHeaders(), params })
+  }
+
+  getPesoBajoBebeRate(role: string, cod_ips: number): Observable<any> {
+    const params = { role: role, cod_ips: cod_ips };
+    return this.http.get(`${this.apiUrl}peso-bajoTemp`, { headers: this.createHeaders(), params })
+  }
+
   getIveProportion(role: string, cod_ips: number): Observable<any> {
     const params = { role: role, cod_ips: cod_ips };
     return this.http.get(`${this.apiUrl}consultas-ive`, { headers: this.createHeaders(), params })

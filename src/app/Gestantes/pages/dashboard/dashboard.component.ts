@@ -516,9 +516,10 @@ export class DashboardComponent implements OnInit {
   getRutas() {
     this.rutaPymsService.getRutaPymsId(this.idUsuario,1).subscribe(
       data => {
-        this.vacunasBebe[0]['bcgFec'] = data.data.fec_bcg ? null : 'N/A';
+        console.log(data);
+        this.vacunasBebe[0]['bcgFec'] = data.data.fec_bcg;
         this.vacunasBebe[0]['completadoBcf'] = !!data.data.aplico_vacuna_bcg;
-        this.vacunasBebe[1]['hepatiFec'] = data.data.fec_hepatitis ? null : 'N/A';
+        this.vacunasBebe[1]['hepatiFec'] = data.data.fec_hepatitis;
         this.vacunasBebe[1]['completadoHepati'] = !!data.data.aplico_vacuna_hepatitis;
       },
       err => {
