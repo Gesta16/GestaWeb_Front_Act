@@ -11,8 +11,7 @@ import { ExamenesComponent } from './pages/examenes/examenes.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ModalAlertaComponent } from './pages/modal-alerta/modal-alerta.component';
 import { EducacionComponent } from './pages/educacion/educacion.component';
-
-
+import { PipesModule } from '../Pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,8 @@ import { EducacionComponent } from './pages/educacion/educacion.component';
     ReactiveFormsModule,
     FormsModule,
     FullCalendarModule,
-    SharedHeaderModuleModule
-
+    SharedHeaderModuleModule,
+    PipesModule
   ]
 })
 export class GestantesModule { }

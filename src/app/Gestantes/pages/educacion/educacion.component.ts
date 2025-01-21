@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
 
 
+
 interface Resource {
   title: string;
   link: string;
