@@ -7,6 +7,8 @@
         <div class="border-b border-gray-300mb-4 h-auto">
             <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
                 <h1 class="font-bold text-2xl sm:text-3xl ml-2">Salud Integral</h1>
+                <app-formulario-porcentaje [totalInputs]="totalInputs" [answeredInputs]="answeredInputs">
+                </app-formulario-porcentaje>
 
                 <div class="flex items-center space-x-2">
                     <label for="fechas" class="text-sm font-medium text-gray-700">Fechas consultas:</label>
@@ -24,12 +26,12 @@
                     <!-- Menú que aparece con las alertas -->
                     <!-- <app-alert *ngIf="isModalVisible" [cerrar]="cerrarModal()"></app-alert> -->
 
-                    
+
                     <button (click)="abrirModal()"
                         class="bg-[#ec5353] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#ff4040] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
                         Alarmas
                     </button>
-                        
+
                     <button (click)="volver()"
                         class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none">
                         Volver
@@ -40,10 +42,7 @@
 
         </div>
 
-        <app-formulario-porcentaje
-            [totalInputs]="totalInputs"
-            [answeredInputs]="answeredInputs">
-        </app-formulario-porcentaje>
+
 
         <!-- Diseño del formulario -->
         <div class="flex flex-wrap mt-5 uppercase">
