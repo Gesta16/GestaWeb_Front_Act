@@ -7,15 +7,21 @@
         <div class="border-b border-gray-300mb-4 h-auto">
             <div class="flex flex-col sm:flex-row justify-between items-center h-full p-4">
                 <h1 class="font-bold text-2xl sm:text-3xl ml-2">Posparto</h1>
+                <app-formulario-porcentaje [totalInputs]="totalInputs" [answeredInputs]="answeredInputs">
+                </app-formulario-porcentaje>
 
                 <div class="flex items-center space-x-2">
-                    <button (click)="abrirModal()"
+                    <!-- <button (click)="abrirModal()"
                         class="border border-[#FF0000] text-[#ea1f1f] hover:bg-red-50 font-bold py-2 px-3 rounded-xl focus:outline-none flex gap-2">
                         Asignar Alerta
-                    </button>
+                    </button> -->
 
                     <!-- Menú que aparece con las alertas -->
-                    <app-alert *ngIf="isModalVisible" [cerrar]="cerrarModal()"></app-alert>
+                    <!-- <app-alert *ngIf="isModalVisible" [cerrar]="cerrarModal()"></app-alert> -->
+                    <button (click)="abrirModal()"
+                        class="bg-[#ec5353] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#ff4040] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
+                        Alarmas
+                    </button>
                     <button (click)="volver()"
                         class="bg-[#80BA27] text-white font-bold py-2 px-4 rounded-xl hover:bg-[#66a800] focus:outline-none mt-4 sm:mt-0 mr-[30px]">
                         Volver
@@ -24,10 +30,7 @@
             </div>
         </div>
 
-        <app-formulario-porcentaje
-            [totalInputs]="totalInputs"
-            [answeredInputs]="answeredInputs">
-        </app-formulario-porcentaje>
+
 
         <!-- Diseño del formulario -->
         <div class="flex flex-wrap mt-5 uppercase">
@@ -186,9 +189,11 @@
 
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="reali_prueb_trepo_recien_nacido" class="font-medium mb-1">Se realizó la Prueba no
+                                        <label for="reali_prueb_trepo_recien_nacido" class="font-medium mb-1">Se realizó
+                                            la Prueba no
                                             treponémica recién nacido</label>
-                                        <select id="reali_prueb_trepo_recien_nacido" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="reali_prueb_trepo_recien_nacido"
+                                            [disabled]="ReadonlyTamizacionNeonatal"
                                             (input)="onInputChange('reali_prueb_trepo_recien_nacido', $event.target.value)"
                                             [(ngModel)]="nuevaTamizacion.reali_prueb_trepo_recien_nacido"
                                             (change)="onPospartoChange('reali_prueb_trepo_recien_nacido')"
@@ -199,7 +204,8 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="pruetreponemica" class="font-medium mb-1">Prueba no treponémica recién
+                                        <label for="pruetreponemica" class="font-medium mb-1">Prueba no treponémica
+                                            recién
                                             nacido</label>
                                         <select id="pruetreponemica" [(ngModel)]="nuevaTamizacion.pruetreponemica"
                                             (input)="onInputChange('pruetreponemica', $event.target.value)"
@@ -211,9 +217,11 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="fec_pruetrepo" class="font-medium mb-1">Fecha prueba no treponémica recién
+                                        <label for="fec_pruetrepo" class="font-medium mb-1">Fecha prueba no treponémica
+                                            recién
                                             nacido</label>
-                                        <input id="fec_pruetrepo" type="date" [(ngModel)]="nuevaTamizacion.fec_pruetrepo"
+                                        <input id="fec_pruetrepo" type="date"
+                                            [(ngModel)]="nuevaTamizacion.fec_pruetrepo"
                                             (input)="onInputChange('fec_pruetrepo', $event.target.value)"
                                             [readonly]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_prueb_trepo_recien_nacido']"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -244,9 +252,11 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="reali_tami_cardiopatia_congenita" class="font-medium mb-1">Se realizó el Tamizaje
+                                        <label for="reali_tami_cardiopatia_congenita" class="font-medium mb-1">Se
+                                            realizó el Tamizaje
                                             cardiopatías congénitas</label>
-                                        <select id="reali_tami_cardiopatia_congenita" [disabled]="ReadonlyTamizacionNeonatal"
+                                        <select id="reali_tami_cardiopatia_congenita"
+                                            [disabled]="ReadonlyTamizacionNeonatal"
                                             (input)="onInputChange('reali_tami_cardiopatia_congenita', $event.target.value)"
                                             [(ngModel)]="nuevaTamizacion.reali_tami_cardiopatia_congenita"
                                             (change)="onPospartoChange('reali_tami_cardiopatia_congenita')"
@@ -257,7 +267,8 @@
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="tamiza_cardi" class="font-medium mb-1">Tamizaje cardiopatías congénitas</label>
+                                        <label for="tamiza_cardi" class="font-medium mb-1">Tamizaje cardiopatías
+                                            congénitas</label>
                                         <select id="tamiza_cardi" [(ngModel)]="nuevaTamizacion.tamiza_cardi"
                                             (input)="onInputChange('tamiza_cardi', $event.target.value)"
                                             [disabled]="ReadonlyTamizacionNeonatal || !mostrarCampos['reali_tami_cardiopatia_congenita']"
@@ -324,7 +335,8 @@
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha resultado TSH de
                                             seguimiento</label>
-                                        <input id="fec_resultado" type="date" [(ngModel)]="estudioHipotiroidismo.fec_resultado"
+                                        <input id="fec_resultado" type="date"
+                                            [(ngModel)]="estudioHipotiroidismo.fec_resultado"
                                             (input)="onInputChange('fec_resultado', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -340,7 +352,8 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha resultado T4 libre</label>
-                                        <input id="fec_resultadot4" type="date" [(ngModel)]="estudioHipotiroidismo.fec_resultadot4"
+                                        <input id="fec_resultadot4" type="date"
+                                            [(ngModel)]="estudioHipotiroidismo.fec_resultadot4"
                                             (input)="onInputChange('fec_resultadot4', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -359,7 +372,8 @@
 
                                     <div class="flex flex-col text-xs">
                                         <label for="" class="font-medium mb-1">Fecha primera consulta pediatría</label>
-                                        <input id="fec_primera" type="date" [(ngModel)]="estudioHipotiroidismo.fec_primera"
+                                        <input id="fec_primera" type="date"
+                                            [(ngModel)]="estudioHipotiroidismo.fec_primera"
                                             (input)="onInputChange('fec_primera', $event.target.value)"
                                             [readonly]="ReadonlyEstudioHipotiroidismo"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
@@ -401,13 +415,14 @@
                                         <label for="fec_bcg" class="font-medium mb-1">Fecha vacunación BCG</label>
                                         <input type="date" id="fec_bcg"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_bcg" [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_bcg']" 
-                                            (input)="onInputChange('fec_bcg', $event.target.value)"
-                                            required>
+                                            [(ngModel)]="nuevaRuta.fec_bcg"
+                                            [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_bcg']"
+                                            (input)="onInputChange('fec_bcg', $event.target.value)" required>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="aplico_vacuna_hepatitis" class="font-medium mb-1">Se aplicó la vacuna de
+                                        <label for="aplico_vacuna_hepatitis" class="font-medium mb-1">Se aplicó la
+                                            vacuna de
                                             hepatitis</label>
                                         <select id="aplico_vacuna_hepatitis" [disabled]="ReadonlyRutaPYMS"
                                             (input)="onInputChange('aplico_vacuna_hepatitis', $event.target.value)"
@@ -424,7 +439,7 @@
                                             hepatitis</label>
                                         <input type="date" id="fec_hepatitis"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_hepatitis" 
+                                            [(ngModel)]="nuevaRuta.fec_hepatitis"
                                             (input)="onInputChange('fec_hepatitis', $event.target.value)"
                                             [readonly]="ReadonlyRutaPYMS || !mostrarCampos['aplico_vacuna_hepatitis']"
                                             required>
@@ -435,14 +450,14 @@
                                             seguimiento a recién nacido</label>
                                         <input type="date" id="fec_seguimiento"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_seguimiento" 
+                                            [(ngModel)]="nuevaRuta.fec_seguimiento"
                                             (input)="onInputChange('fec_seguimiento', $event.target.value)"
-                                            [readonly]="ReadonlyRutaPYMS"
-                                            required>
+                                            [readonly]="ReadonlyRutaPYMS" required>
                                     </div>
 
                                     <div class="flex flex-col text-xs">
-                                        <label for="reali_entrega_carnet" class="font-medium mb-1">Se realizó la entrega de
+                                        <label for="reali_entrega_carnet" class="font-medium mb-1">Se realizó la entrega
+                                            de
                                             carnet</label>
                                         <select id="reali_entrega_carnet" [disabled]="ReadonlyRutaPYMS"
                                             [(ngModel)]="nuevaRuta.reali_entrega_carnet"
@@ -459,18 +474,21 @@
                                             carnet</label>
                                         <input type="date" id="fec_entrega"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
-                                            [(ngModel)]="nuevaRuta.fec_entrega" 
+                                            [(ngModel)]="nuevaRuta.fec_entrega"
                                             (input)="onInputChange('fec_entrega', $event.target.value)"
-                                            [readonly]="ReadonlyRutaPYMS || !mostrarCampos['reali_entrega_carnet']" required>
+                                            [readonly]="ReadonlyRutaPYMS || !mostrarCampos['reali_entrega_carnet']"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="mt-8 flex justify-center space-x-4">
-                                    <button type="button" (click)="toggleEditRutaPYMS()" [disabled]="!ReadonlyRutaPYMS || isRole4"
+                                    <button type="button" (click)="toggleEditRutaPYMS()"
+                                        [disabled]="!ReadonlyRutaPYMS || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Editar
                                     </button>
 
-                                    <button (click)="guardarRutaPYMS()" [disabled]="(ReadonlyRutaPYMS && !isEditing) || isRole4"
+                                    <button (click)="guardarRutaPYMS()"
+                                        [disabled]="(ReadonlyRutaPYMS && !isEditing) || isRole4"
                                         class="px-6 py-1 text-sm font-medium rounded-md bg-[#00acc9] text-white hover:bg-[#009DCC] transition-colors duration-300 uppercase">
                                         Guardar
                                     </button>

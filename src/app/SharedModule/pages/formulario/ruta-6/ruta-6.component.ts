@@ -13,6 +13,8 @@ import { TamizacionNeonatalService } from '../../../../Services/tamizacion-neona
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
 import { AuthService } from '../../../../Services/auth.service';
+import { AlarmaGestanteComponent } from '../../alarma-gestante/alarma-gestante.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-ruta-6',
   templateUrl: './ruta-6.component.html',
@@ -107,7 +109,8 @@ export class Ruta6Component {
     private router: Router,
     private alertService:AlertService,
     private menuService:MenuService,
-    private authService:AuthService
+    private authService:AuthService,
+    private _matDialog: MatDialog
   ) {
     this.datosRecienNacido = new DatosRecienNacido();
     this.estudioHipotiroidismo = new EstudioHipotiroidismo();
@@ -118,13 +121,13 @@ export class Ruta6Component {
   // Permite abrir el menu de las alertas
   isModalVisible = false;
 
-  abrirModal(): void {
-    this.isModalVisible = true;
-  }
+  // abrirModal(): void {
+  //   this.isModalVisible = true;
+  // }
 
-  cerrarModal(): void {
-    this.isModalVisible = false;
-  }
+  // cerrarModal(): void {
+  //   this.isModalVisible = false;
+  // }
 
   ngOnInit() {
     this.user = this.authService.currentUserValue;
@@ -166,6 +169,14 @@ export class Ruta6Component {
       });
     }, 8000);
 
+  }
+
+  abrirModal(): void {
+    this._matDialog.open(AlarmaGestanteComponent, {
+      enterAnimationDuration: '0ms',
+      exitAnimationDuration: '0ms',
+      data: { usuario_id: this.id }
+    });
   }
 
 

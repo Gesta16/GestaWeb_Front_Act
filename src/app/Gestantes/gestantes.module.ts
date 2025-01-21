@@ -10,8 +10,8 @@ import { ModalComponent } from './pages/modal/modal.component';
 import { ExamenesComponent } from './pages/examenes/examenes.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ModalAlertaComponent } from './pages/modal-alerta/modal-alerta.component';
-
-
+import { EducacionComponent } from './pages/educacion/educacion.component';
+import { PipesModule } from '../Pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { ModalAlertaComponent } from './pages/modal-alerta/modal-alerta.componen
     ModalComponent,
     ExamenesComponent,
     ModalAlertaComponent,
+    EducacionComponent,
   ],
   imports: [
     CommonModule,
@@ -28,8 +29,8 @@ import { ModalAlertaComponent } from './pages/modal-alerta/modal-alerta.componen
     ReactiveFormsModule,
     FormsModule,
     FullCalendarModule,
-    SharedHeaderModuleModule
-
+    SharedHeaderModuleModule,
+    PipesModule
   ]
 })
 export class GestantesModule { }
