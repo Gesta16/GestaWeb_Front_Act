@@ -19,12 +19,12 @@ const routes: Routes = [
       {
         path: 'examenes', component: ExamenesComponent,
         canActivate: [RoleGuard],
-        data: { title: 'Exámenes', icon: 'fas fa-calendar-day', expectedRoles: ['usuario'], showInMenu: true }
+        data: { title: 'Control de Exámenes', icon: 'fas fa-calendar-day', expectedRoles: ['usuario'], showInMenu: true }
       },
       {
         path: 'notas', component: NotasComponent,
         canActivate: [RoleGuard],
-        data: { title: 'Notas', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu: true }
+        data: { title: 'Diario del paciente', icon: 'fa-solid fa-clipboard-check', expectedRoles: ['usuario'], showInMenu: true }
       },
       {
         path:'reporteRutaGestante', component:ReportesRutaGestacionalComponent,

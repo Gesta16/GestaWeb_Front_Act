@@ -57,7 +57,7 @@ const routes: Routes = [
       {
         path: 'list-gestantes', component: ListGestantesComponent,
         canActivate: [RoleGuard],
-        data: { title: 'Gestantes', icon: 'fa-solid fa-users', expectedRoles: ['superadmin', 'admin', 'operador'], showInMenu: true }
+        data: { title: 'Pacientes', icon: 'fa-solid fa-users', expectedRoles: ['superadmin', 'admin', 'operador'], showInMenu: true }
       },
       {
         path: 'reportes', component: ReporteComponent,
