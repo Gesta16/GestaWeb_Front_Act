@@ -67,7 +67,7 @@ const routes: Routes = [
       {
         path: 'import-excel', component: ImportExcelComponent,
         canActivate: [RoleGuard],
-        data: { title: 'Importar Excel', icon: 'fa-solid fa-file-excel', expectedRoles: ['superadmin'], showInMenu: true }
+        data: { title: 'Importar Cohorte', icon: 'fa-solid fa-file-excel', expectedRoles: ['superadmin'], showInMenu: true }
       },
       {
         path: 'alert', component: AlertComponent,
@@ -76,7 +76,7 @@ const routes: Routes = [
       {
         path: 'alertas', component: AlertasComponent,
         canActivate: [RoleGuard],
-        data: { title: 'Alertas', icon: 'fa-solid fa-triangle-exclamation', expectedRoles: ['superadmin'], showInMenu: true }
+        data: { title: 'Signos de alarma', icon: 'fa-solid fa-triangle-exclamation', expectedRoles: ['superadmin'], showInMenu: true }
       },
       // {
       //   path:'reporteRutaGestante', component:ReportesRutaGestacionalComponent,
