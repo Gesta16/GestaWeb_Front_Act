@@ -26,7 +26,21 @@ export class ReporteComponent implements OnInit {
     { key: 'control_prenatal', nombre: 'Control Prenatal' },
     { key: 'primera_consulta', nombre: 'Primera Consulta' },
     { key: 'vacunacion', nombre: 'Vacunación' },
-    { key: 'laboratorio_i_trimestre', nombre: 'Laboratorio I Trimestre' }
+    { key: 'laboratorio_i_trimestre', nombre: 'Laboratorio I Trimestre' },
+    { key: 'laboratorio_ii_trimestre', nombre: 'Laboratorio II Trimestre' },
+    { key: 'laboratorio_iii_trimestre', nombre: 'Laboratorio III Trimestre' },
+    { key: 'its', nombre: 'Its' },
+    { key: 'seguimiento_consulta_mensual', nombre: 'Seguimiento Consulta Mensual' },
+    { key: 'seguimientos_complementarios', nombre: 'Seguimientos Complementarios' },
+    { key: 'micronutrientes', nombre: 'Micronutrientes' },
+    { key: 'finalizacion_gestacion', nombre: 'Finalizacion Gestacion' },
+    { key: 'laboratorios_intraparto_gestante', nombre: 'Laboratorios Intraparto de la Gestante' },
+    { key: 'seguimiento_gestante_post_obstetrico', nombre: 'Seguimiento Gestante Post Obstetrico' },
+    { key: 'mortalidad_preparto', nombre: 'Mortalidad Preparto' },
+    { key: 'datos_recien_nacido', nombre: 'Datos Recien Nacido' },
+    { key: 'tamizacion_neonatal', nombre: 'Tamizacion Neonatal' },
+    { key: 'estudio_hipotiroidismo_congenito', nombre: 'Estudio Hipotiroidismo Congenito' },
+    { key: '_ruta__p_y_m_s', nombre: 'Ruta PYMS' },
   ];
 
   camposPorTabla: { [key: string]: string[] } = {};
