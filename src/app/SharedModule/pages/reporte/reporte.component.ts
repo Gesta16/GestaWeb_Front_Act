@@ -78,6 +78,34 @@ export class ReporteComponent implements OnInit {
     }
   }
 
+  // Método para agregar/quitar tablas del array
+  toggleTablaSeleccionada(tablaKey: string, event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.filtros.tablasSeleccionadas.push(tablaKey);
+      this.cargarCamposTabla(tablaKey); // Cargar campos al seleccionar
+    } else {
+      const index = this.filtros.tablasSeleccionadas.indexOf(tablaKey);
+      if (index > -1) {
+        this.filtros.tablasSeleccionadas.splice(index, 1);
+        delete this.camposPorTabla[tablaKey]; // Eliminar campos al deseleccionar
+      }
+    }
+  }
+
+  // Cargar campos de una tabla
+  cargarCamposTabla(tablaKey: string) {
+    const tablaNormalizada = tablaKey.toLowerCase().replace(/ /g, '_');
+
+    this.reporteService.getSubcategorias(tablaNormalizada).subscribe({
+      next: (response) => {
+        this.camposPorTabla[tablaKey] = Object.values(response);
+      },
+      error: (err) => console.error('Error cargando campos:', err)
+    });
+  }
+
   // Cuando cambian las tablas seleccionadas
   onTablasSeleccionadasChange() {
     // Asegurar que sigue siendo un array
