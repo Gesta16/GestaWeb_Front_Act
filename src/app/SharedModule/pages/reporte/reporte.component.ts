@@ -1,196 +1,148 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
 import { ReportesService } from '../../../Services/reportes.service';
-import { PoblacionDiferencialService } from '../../../Services/poblacion-diferencial.service';
-import { DepartamentoService } from '../../../Services/departamento.service';
 import { AlertService } from '../../../Services/alert.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
-  styleUrl: './reporte.component.css'
+  styleUrls: ['./reporte.component.css']
 })
-export class ReporteComponent {
-
+export class ReporteComponent implements OnInit {
   isExpanded = true;
   isVisible = true;
 
+  // Estructura de filtros
   filtros = {
-    categoria: '',
-    subcategoria: '',
+    tablasSeleccionadas: [] as string[],
+    camposSeleccionados: [] as string[],
     fecha_inicio: '',
     fecha_fin: '',
-    cod_departamento: null,
-    cod_municipio: null,
-    cod_poblacion: null,
-    formato: '',
+    formato: ''
   };
 
-  resultados: any[] = [];
-
-  categorias = [
-    {
-      nombre: 'Gestación Saludable',
-      valor: 'gestacion_saludable',
-      subcategorias: [
-        { nombre: 'Micronutrientes', valor: 'Micronutrientes' },
-        { nombre: 'Curso Prenatal', valor: 'Curso Prenatal' },
-        { nombre: 'Nutrición', valor: 'Nutrición' },
-        { nombre: 'Salud Bucal', valor: 'Salud Bucal' },
-        { nombre: 'Psicología', valor: 'Psicología' },
-        { nombre: 'Ginecología', valor: 'Ginecología' },
-        { nombre: 'Lactancia Materna', valor: 'Lactancia' }, // nuevo
-        { nombre: 'Elisa para VIH', valor: 'Elisa VIH' }, // nuevo
-      ],
-    },
-    {
-      nombre: 'Parto Humanizado',
-      valor: 'parto_humanizado',
-      subcategorias: [
-        { nombre: 'Cesáreas', valor: 'Cesáreas' },
-      ],
-    },
-    {
-      nombre: 'Puerperio Seguro',
-      valor: 'puerperio_seguro',
-      subcategorias: [
-        { nombre: 'Asesoría Anticonceptiva', valor: 'Asesoría Anticonceptiva' },
-        { nombre: 'Métodos Anticonceptivos', valor: 'Métodos Anticonceptivos' },
-      ],
-    },
-    {
-      nombre: 'Neonatos Saludables',
-      valor: 'neonatos_saludables',
-      subcategorias: [
-        { nombre: 'Alta oportuna', valor: 'Alta oportuna' },
-      ],
-    },
-    {
-      nombre: 'Planeación Familiar',
-      valor: 'planeacion_familiar',
-      subcategorias: [
-        { nombre: 'Intención Reproductiva', valor: 'Intención Reproductiva' },
-        { nombre: 'Consulta IVE', valor: 'Consulta IVE' },
-      ],
-    },
-    {
-      nombre: 'Gestantes Sin Riesgo',
-      valor: 'gestantes_sin_riesgo',
-      subcategorias: [
-        { nombre: 'Tratamiento de Sífilis', valor: 'Tratamiento de Sífilis' },
-      ],
-    },
-    {
-      nombre: 'Atención Neonatal',
-      valor: 'atencion_neonatal',
-      subcategorias: [
-        { nombre: 'Tamizaje Hipotiroidismo', valor: 'Tamizaje Hipotiroidismo' },
-        { nombre: 'Tamizaje Auditivo', valor: 'Tamizaje Auditivo' }, // nuevo
-        { nombre: 'Vacunación', valor: 'Vacunación' },
-        { nombre: 'Cardiopatías', valor: 'Cardiopatías' },
-      ],
-    },
+  // Datos dinámicos
+  tablasDisponibles = [
+    { key: 'control_prenatal', nombre: 'Control Prenatal' },
+    { key: 'primera_consulta', nombre: 'Primera Consulta' },
+    { key: 'vacunacion', nombre: 'Vacunación' },
+    { key: 'laboratorio_i_trimestre', nombre: 'Laboratorio I Trimestre' }
   ];
 
-  subcategorias = [];
-  poblaciones = [];
-  departamentos = [];
+  camposPorTabla: { [key: string]: string[] } = {};
 
   constructor(
     private menuService: MenuService,
     private reporteService: ReportesService,
-    private poblacionDifeService: PoblacionDiferencialService,
-    private departamentoService: DepartamentoService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private http: HttpClient
   ) { }
-
 
   ngOnInit(): void {
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
     });
+
     this.menuService.menuVisible$.subscribe(isVisible => {
       this.isVisible = isVisible;
     });
-    this.getPoblacionDiferencial();
-    this.getDepartamentos();
   }
 
-  onCategoriaChange() {
-    const categoriaSeleccionada = this.categorias.find(cat => cat.valor === this.filtros.categoria);
-    this.subcategorias = categoriaSeleccionada ? categoriaSeleccionada.subcategorias : [];
+  compareTablas(a: any, b: any): boolean {
+    return a === b; // Comparación simple para strings
   }
 
-  // Método para enviar los filtros y obtener los reportes
+  cargarCategorias() {
+    this.reporteService.getCategorias().subscribe({
+      next: (response) => {
+        this.tablasDisponibles = response.map((cat: any) => ({
+          key: cat.id.toString(), // Ajusta según la estructura de tu respuesta
+          nombre: cat.nombre
+        }));
+      },
+      error: (err) => console.error('Error cargando categorías:', err)
+    });
+  }
+
+  actualizarSeleccion(event: Event, valor: string) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.filtros.camposSeleccionados.push(valor);
+    } else {
+      const index = this.filtros.camposSeleccionados.indexOf(valor);
+      if (index > -1) {
+        this.filtros.camposSeleccionados.splice(index, 1);
+      }
+    }
+  }
+
+  // Cuando cambian las tablas seleccionadas
+  onTablasSeleccionadasChange() {
+    // Asegurar que sigue siendo un array
+    this.filtros.tablasSeleccionadas = [...new Set(this.filtros.tablasSeleccionadas)];
+
+    this.filtros.tablasSeleccionadas.forEach(tablaKey => {
+      const tablaNormalizada = tablaKey.toLowerCase().replace(/ /g, '_');
+
+      // Evitar recargar si ya tiene datos
+      if (!this.camposPorTabla[tablaKey]) {
+        this.reporteService.getSubcategorias(tablaNormalizada).subscribe({
+          next: (response) => {
+            this.camposPorTabla[tablaKey] = Object.values(response);
+          },
+          error: (err) => console.error('Error:', err)
+        });
+      }
+    });
+  }
+
+
+  // Validar y enviar filtros
   aplicarFiltros(formato: string) {
-    console.log('Aplicando filtros...', this.filtros);
-
-    if(formato){
-      this.filtros.formato = formato;
+    console.log('Tablas seleccionadas:', this.filtros.tablasSeleccionadas);
+    // Validar antes de enviar
+    if (this.filtros.tablasSeleccionadas.length === 0 || this.filtros.camposSeleccionados.length === 0) {
+      this.alertService.errorAlert('Error', 'Selecciona al menos una tabla y un campo');
+      return;
     }
 
-    // Verificar si la subcategoría está seleccionada
-    if (!this.filtros.subcategoria) {
-      console.error('Error: La subcategoría es requerida.');
-      this.alertService.errorAlert('Error', 'Por favor, selecciona una subcategoría.');
-      return; // Detener la ejecución si no hay subcategoría
-    }
+    const payload = {
+      tablas: this.filtros.tablasSeleccionadas,
+      campos: this.filtros.camposSeleccionados,
+      formato: formato
+    };
+    console.log('Payload definitivo:', payload);
 
-    // Llamar al servicio para descargar el Excel
-    this.reporteService.filtrarReportes(this.filtros).subscribe(
-      (response) => {
-        console.log('Descarga iniciada');
-  
-        // Determinar el tipo de archivo según el formato
-        const mimeType =
-          formato === 'pdf'
-            ? 'application/pdf'
-            : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-        const fileExtension = formato === 'pdf' ? 'pdf' : 'xlsx';
-        const blob = new Blob([response], { type: mimeType });
-  
-        // Crear enlace de descarga
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `reporte.${fileExtension}`; // Nombre del archivo con extensión dinámica
-        a.click();
-  
-        // Liberar el URL
-        window.URL.revokeObjectURL(url);
-      },
-      (error) => {
-        console.error('Error al descargar el archivo:', error);
-        this.alertService.errorAlert(
-          'Error',
-          'Ocurrió un error al generar el reporte. Por favor, inténtalo de nuevo.'
-        );
+    this.reporteService.generarReporteDinamico(payload).subscribe({
+      next: (response) => this.descargarArchivo(response, formato),
+      error: (err) => {
+        // Convertir el Blob de error a texto
+        err.error.text().then((errorMessage: string) => {
+          const error = JSON.parse(errorMessage);
+          this.alertService.errorAlert('Error', error.message || 'Error desconocido');
+        });
       }
-    );
+    });
   }
 
-
-  getPoblacionDiferencial() {
-    this.poblacionDifeService.getPoblacionDiferencial().subscribe(
-      (response) => {
-        console.log(response);
-        this.poblaciones = response.poblacion;
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
+  obtenerNombreTabla(key: string): string {
+    const tabla = this.tablasDisponibles.find(t => t.key === key);
+    return tabla ? tabla.nombre : key; // Devuelve el nombre o la clave si no se encuentra
   }
 
-  getDepartamentos() {
-    this.departamentoService.getDepartamentos().subscribe(
-      (response) => {
-        console.log(response);
-        this.departamentos = response.departamento;
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
+  // Manejar descarga de archivo
+  private descargarArchivo(response: Blob, formato: string): void {
+    const extension = formato === 'pdf' ? 'pdf' : 'xlsx';
+    const blob = new Blob([response], { type: response.type });
+    const url = window.URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `reporte_${new Date().toISOString().slice(0, 10)}.${extension}`;
+    link.click();
+
+    window.URL.revokeObjectURL(url);
   }
 }

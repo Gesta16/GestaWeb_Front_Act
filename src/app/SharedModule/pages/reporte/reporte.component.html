@@ -1,159 +1,143 @@
 <app-header></app-header>
 
 <div class="flex min-h-screen justify-center items-center px-4">
-    <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 px-4 ml-56 mt-24" [ngClass]="{ 'ml-56': isExpanded && isVisible, 
-    'ml-20': !isExpanded && isVisible, 'ml-0': !isVisible}">
-        <div class="bg-white rounded-lg shadow-lg p-6 w-full mb-4">
+  <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 px-4 ml-56 mt-24" [ngClass]="{
+        'ml-56': isExpanded && isVisible,
+        'ml-20': !isExpanded && isVisible,
+        'ml-0': !isVisible
+    }">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full mb-4">
 
-            <!-- Contenedor del título -->
-            <div class="border border-[#80ba27] px-6 py-4 flex items-center space-x-3 hover:bg-[#F5F6DB]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-sliders-horizontal">
-                    <line x1="21" x2="14" y1="4" y2="4" />
-                    <line x1="10" x2="3" y1="4" y2="4" />
-                    <line x1="21" x2="12" y1="12" y2="12" />
-                    <line x1="8" x2="3" y1="12" y2="12" />
-                    <line x1="21" x2="16" y1="20" y2="20" />
-                    <line x1="12" x2="3" y1="20" y2="20" />
-                    <line x1="14" x2="14" y1="2" y2="6" />
-                    <line x1="8" x2="8" y1="10" y2="14" />
-                    <line x1="16" x2="16" y1="18" y2="22" />
-                </svg>
-                <h2 class="text-lg font-bold">Filtrar Indicadores</h2>
-            </div>
+      <!-- Título -->
+      <div class="border border-[#80ba27] px-6 py-4 flex items-center space-x-3 hover:bg-[#F5F6DB]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-sliders-horizontal">
+          <line x1="21" x2="14" y1="4" y2="4" />
+          <line x1="10" x2="3" y1="4" y2="4" />
+          <line x1="21" x2="12" y1="12" y2="12" />
+          <line x1="8" x2="3" y1="12" y2="12" />
+          <line x1="21" x2="16" y1="20" y2="20" />
+          <line x1="12" x2="3" y1="20" y2="20" />
+          <line x1="14" x2="14" y1="2" y2="6" />
+          <line x1="8" x2="8" y1="10" y2="14" />
+          <line x1="16" x2="16" y1="18" y2="22" />
+        </svg>
+        <h2 class="text-lg font-bold">Generar Reporte Dinámico</h2>
+      </div>
 
-            <div class="p-6 space-y-6">
-                <!-- Categoría y Subcategoría -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-chart-line">
-                                <path d="M3 3v16a2 2 0 0 0 2 2h16" />
-                                <path d="m19 9-5 5-4-4-3 3" />
-                            </svg>
-                            <span>Categoría de Indicadores</span>
-                        </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.categoria" (change)="onCategoriaChange()">
-                            <option>Selecciona una categoría</option>
-                            <option *ngFor="let cat of categorias" [value]="cat.valor">{{ cat.nombre }}</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-activity">
-                                <path
-                                    d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
-                            </svg>
-                            <span>Subcategoría de Indicadores</span>
-                        </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.subcategoria">
-                            <option >Selecciona una subcategoría</option>
-                            <option *ngFor="let sub of subcategorias" [value]="sub.valor">{{ sub.nombre }}</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Línea -->
-                <hr class="border-gray-200" />
-
-                <!-- Fechas -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3" >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-calendar-range">
-                                <rect width="18" height="18" x="3" y="4" rx="2" />
-                                <path d="M16 2v4" />
-                                <path d="M3 10h18" />
-                                <path d="M8 2v4" />
-                                <path d="M17 14h-6" />
-                                <path d="M13 18H7" />
-                                <path d="M7 14h.01" />
-                                <path d="M17 18h.01" />
-                            </svg>
-                            <span>Fecha de inicio</span>
-                        </label>
-                        <input type="date"
-                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.fecha_fin" />
-                    </div>
-                    <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3" >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-calendar-range">
-                                <rect width="18" height="18" x="3" y="4" rx="2" />
-                                <path d="M16 2v4" />
-                                <path d="M3 10h18" />
-                                <path d="M8 2v4" />
-                                <path d="M17 14h-6" />
-                                <path d="M13 18H7" />
-                                <path d="M7 14h.01" />
-                                <path d="M17 18h.01" />
-                            </svg>
-                            <span>Fecha de fin</span>
-                        </label>
-                        <input type="date"
-                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.fecha_inicio"/>
-                    </div>
-                </div>
-
-                <!-- Línea -->
-                <hr class="border-gray-200" />
-
-                <!-- Ubicación y Segmento -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-map-pin">
-                                <path
-                                    d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span>Ubicación</span>
-                        </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.cod_departamento">
-                            <option>Selecciona una ubicación</option>
-                            <option *ngFor="let dep of departamentos"[value]="dep.cod_departamento">{{dep.nom_departamento}}</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col text-xs">
-                        <label class="flex items-center space-x-2 text-sm font-medium mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-users">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
-                            <span>Segmento de Población</span>
-                        </label>
-                        <select class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]" [(ngModel)]="filtros.cod_poblacion">
-                            <option >Selecciona una población</option>
-                            <option *ngFor="let poblacion of poblaciones" [value]="poblacion.cod_poblacion">{{poblacion.nom_poblacion}}</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Botón -->
-            <div class="px-6 py-4 flex justify-end">
-                <button class="w-32 py-2 rounded-lg shadow border border-[#80ba27] hover:bg-[#F5F6DB]" (click)="aplicarFiltros('excel')">
-                    Excel
-                </button>
-                <button class="w-32 py-2 rounded-lg shadow border border-red-500 hover:bg-red-100 ml-2" (click)="aplicarFiltros('pdf')">
-                    PDF
-                </button>
-            </div>
+      <!-- Contenido principal -->
+      <div class="p-6 space-y-6">
+        <!-- Selección de tablas -->
+        <div class="flex flex-col text-xs">
+          <label class="flex items-center space-x-2 text-sm font-medium mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-database">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
+            <span>Seleccionar Tablas (Categorías)</span>
+          </label>
+          <select multiple class="p-2 border border-gray-300 rounded-md h-32 focus:outline-none focus:border-[#00acc9]"
+            [(ngModel)]="filtros.tablasSeleccionadas" (change)="onTablasSeleccionadasChange()">
+            <option *ngFor="let tabla of tablasDisponibles" [value]="tabla.key">
+              {{ tabla.nombre }}
+            </option>
+          </select>
         </div>
+
+        <!-- Campos por tabla -->
+        <div *ngFor="let tablaKey of filtros.tablasSeleccionadas" class="mb-6">
+          <h3 class="font-bold text-[#80ba27] mb-3">{{ obtenerNombreTabla(tablaKey) }}</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Columna Izquierda -->
+            <div class="space-y-2">
+              <div
+                *ngFor="let campo of camposPorTabla[tablaKey] | slice:0:(camposPorTabla[tablaKey].length / 2); let i = index">
+                <input type="checkbox" [id]="'campo' + tablaKey + '' + i" [value]="tablaKey + '.' + campo"
+                  [checked]="filtros.camposSeleccionados.includes(tablaKey + '.' + campo)"
+                  (change)="actualizarSeleccion($event, tablaKey + '.' + campo)"
+                  class="h-4 w-4 text-[#80ba27] focus:ring-[#80ba27]">
+                <label [for]="'campo' + tablaKey + '' + i" class="text-sm">
+                  {{ campo | titlecase }}
+                </label>
+              </div>
+            </div>
+
+            <!-- Columna Derecha -->
+            <div class="space-y-2">
+              <div
+                *ngFor="let campo of camposPorTabla[tablaKey] | slice:(camposPorTabla[tablaKey].length / 2); let j = index">
+                <input type="checkbox" [id]="'campo' + tablaKey + '' + (j + camposPorTabla[tablaKey].length / 2)"
+                  [value]="tablaKey + '.' + campo"
+                  [checked]="filtros.camposSeleccionados.includes(tablaKey + '.' + campo)"
+                  (change)="actualizarSeleccion($event, tablaKey + '.' + campo)"
+                  class="h-4 w-4 text-[#80ba27] focus:ring-[#80ba27]">
+                <label [for]="'campo' + tablaKey + '' + (j + camposPorTabla[tablaKey].length / 2)" class="text-sm">
+                  {{ campo | titlecase }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Fechas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex flex-col text-xs">
+          <label class="flex items-center space-x-2 text-sm font-medium mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-calendar-range">
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M16 2v4" />
+              <path d="M3 10h18" />
+              <path d="M8 2v4" />
+              <path d="M17 14h-6" />
+              <path d="M13 18H7" />
+              <path d="M7 14h.01" />
+              <path d="M17 18h.01" />
+            </svg>
+            <span>Fecha de inicio</span>
+          </label>
+          <input type="date" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]"
+            [(ngModel)]="filtros.fecha_inicio">
+        </div>
+        <div class="flex flex-col text-xs">
+          <label class="flex items-center space-x-2 text-sm font-medium mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-calendar-range">
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M16 2v4" />
+              <path d="M3 10h18" />
+              <path d="M8 2v4" />
+              <path d="M17 14h-6" />
+              <path d="M13 18H7" />
+              <path d="M7 14h.01" />
+              <path d="M17 18h.01" />
+            </svg>
+            <span>Fecha de fin</span>
+          </label>
+          <input type="date" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9]"
+            [(ngModel)]="filtros.fecha_fin">
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="flex justify-end space-x-3 mt-8">
+        <button class="px-4 py-2 bg-[#80ba27] text-white rounded-md hover:bg-[#6da123] transition-colors"
+          (click)="aplicarFiltros('excel')">
+          Generar Excel
+        </button>
+        <button class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+          (click)="aplicarFiltros('pdf')">
+          Generar PDF
+        </button>
+      </div>
     </div>
+  </div>
+</div>
 </div>
