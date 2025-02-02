@@ -81,15 +81,16 @@ export class ReporteComponent implements OnInit {
   // Método para agregar/quitar tablas del array
   toggleTablaSeleccionada(tablaKey: string, event: Event) {
     const isChecked = (event.target as HTMLInputElement).checked;
-
     if (isChecked) {
       this.filtros.tablasSeleccionadas.push(tablaKey);
-      this.cargarCamposTabla(tablaKey); // Cargar campos al seleccionar
+      this.camposPorTabla[tablaKey] = []; // Inicializa como array vacío
+      console.log(tablaKey);
+      this.cargarCamposTabla(tablaKey);
     } else {
       const index = this.filtros.tablasSeleccionadas.indexOf(tablaKey);
       if (index > -1) {
         this.filtros.tablasSeleccionadas.splice(index, 1);
-        delete this.camposPorTabla[tablaKey]; // Eliminar campos al deseleccionar
+        delete this.camposPorTabla[tablaKey];
       }
     }
   }
@@ -97,7 +98,7 @@ export class ReporteComponent implements OnInit {
   // Cargar campos de una tabla
   cargarCamposTabla(tablaKey: string) {
     const tablaNormalizada = tablaKey.toLowerCase().replace(/ /g, '_');
-
+    console.log('tabla normalizada', tablaNormalizada);
     this.reporteService.getSubcategorias(tablaNormalizada).subscribe({
       next: (response) => {
         this.camposPorTabla[tablaKey] = Object.values(response);
@@ -172,5 +173,30 @@ export class ReporteComponent implements OnInit {
     link.click();
 
     window.URL.revokeObjectURL(url);
+  }
+
+  // Seleccionar todos los campos de una tabla
+  seleccionarTodosCampos(tablaKey: string) {
+    const camposTabla = this.camposPorTabla[tablaKey] || [];
+    const camposCompletos = camposTabla.map(campo => `${tablaKey}.${campo}`);
+
+    // Eliminar duplicados y campos ya existentes
+    const nuevosCampos = [...new Set([...this.filtros.camposSeleccionados, ...camposCompletos])];
+    this.filtros.camposSeleccionados = nuevosCampos;
+  }
+
+  // Deseleccionar todos los campos de una tabla
+  deseleccionarTodosCampos(tablaKey: string) {
+    const prefijo = `${tablaKey}.`;
+    this.filtros.camposSeleccionados = this.filtros.camposSeleccionados
+      .filter(campo => !campo.startsWith(prefijo));
+  }
+
+  // Verificar si todos los campos están seleccionados (Opcional para estilo)
+  todosSeleccionados(tablaKey: string): boolean {
+    const camposTabla = this.camposPorTabla[tablaKey] || [];
+    return camposTabla.every(campo =>
+      this.filtros.camposSeleccionados.includes(`${tablaKey}.${campo}`)
+    );
   }
 }

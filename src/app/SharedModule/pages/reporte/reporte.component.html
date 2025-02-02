@@ -56,12 +56,24 @@
 
         <!-- Campos por tabla -->
         <div *ngFor="let tablaKey of filtros.tablasSeleccionadas" class="mb-6">
-          <h3 class="font-bold text-[#80ba27] mb-3">{{ obtenerNombreTabla(tablaKey) }}</h3>
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-[#80ba27]">{{ obtenerNombreTabla(tablaKey) }}</h3>
+            <div class="space-x-2">
+              <button (click)="seleccionarTodosCampos(tablaKey)"
+                      class="text-xs px-2 py-1 bg-[#80ba27] text-white rounded hover:bg-[#6da123]">
+                Seleccionar todo
+              </button>
+              <button (click)="deseleccionarTodosCampos(tablaKey)"
+                      class="text-xs px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600">
+                Desmarcar todo
+              </button>
+            </div>
+          </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Columna Izquierda -->
             <div class="space-y-2">
-              <div *ngFor="let campo of camposPorTabla[tablaKey] | slice:0:(camposPorTabla[tablaKey].length / 2)">
+              <div *ngFor="let campo of camposPorTabla[tablaKey] | slice:0:(camposPorTabla[tablaKey]?.length / 2)">
                 <label class="flex items-center space-x-2">
                   <input type="checkbox" [value]="tablaKey + '.' + campo"
                     [checked]="filtros.camposSeleccionados.includes(tablaKey + '.' + campo)"
@@ -74,7 +86,7 @@
 
             <!-- Columna Derecha -->
             <div class="space-y-2">
-              <div *ngFor="let campo of camposPorTabla[tablaKey] | slice:(camposPorTabla[tablaKey].length / 2)">
+              <div *ngFor="let campo of camposPorTabla[tablaKey] | slice:(camposPorTabla[tablaKey]?.length / 2)">
                 <label class="flex items-center space-x-2">
                   <input type="checkbox" [value]="tablaKey + '.' + campo"
                     [checked]="filtros.camposSeleccionados.includes(tablaKey + '.' + campo)"
