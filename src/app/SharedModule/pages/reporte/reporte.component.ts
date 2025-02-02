@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../../Services/menu.service';
 import { ReportesService } from '../../../Services/reportes.service';
 import { AlertService } from '../../../Services/alert.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reporte',
@@ -36,7 +35,6 @@ export class ReporteComponent implements OnInit {
     private menuService: MenuService,
     private reporteService: ReportesService,
     private alertService: AlertService,
-    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -137,8 +135,12 @@ export class ReporteComponent implements OnInit {
     const payload = {
       tablas: this.filtros.tablasSeleccionadas,
       campos: this.filtros.camposSeleccionados,
+      fecha_inicio:this.filtros.fecha_inicio,
+      fecha_fin: this.filtros.fecha_fin,
       formato: formato
     };
+
+    console.log(payload);
 
     this.reporteService.generarReporteDinamico(payload).subscribe({
       next: (response) => this.descargarArchivo(response, formato),

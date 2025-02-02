@@ -56,6 +56,8 @@ export class ReportesService {
     const payload = {
       tablas: filtros.tablas,
       campos: filtros.campos,
+      fecha_inicio: filtros.fecha_inicio,
+      fecha_fin: filtros.fecha_fin,
       formato: filtros.formato
     };
 
