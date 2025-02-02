@@ -84,7 +84,6 @@ export class ReporteComponent implements OnInit {
     if (isChecked) {
       this.filtros.tablasSeleccionadas.push(tablaKey);
       this.camposPorTabla[tablaKey] = []; // Inicializa como array vacío
-      console.log(tablaKey);
       this.cargarCamposTabla(tablaKey);
     } else {
       const index = this.filtros.tablasSeleccionadas.indexOf(tablaKey);
@@ -98,7 +97,6 @@ export class ReporteComponent implements OnInit {
   // Cargar campos de una tabla
   cargarCamposTabla(tablaKey: string) {
     const tablaNormalizada = tablaKey.toLowerCase().replace(/ /g, '_');
-    console.log('tabla normalizada', tablaNormalizada);
     this.reporteService.getSubcategorias(tablaNormalizada).subscribe({
       next: (response) => {
         this.camposPorTabla[tablaKey] = Object.values(response);
@@ -130,7 +128,6 @@ export class ReporteComponent implements OnInit {
 
   // Validar y enviar filtros
   aplicarFiltros(formato: string) {
-    console.log('Tablas seleccionadas:', this.filtros.tablasSeleccionadas);
     // Validar antes de enviar
     if (this.filtros.tablasSeleccionadas.length === 0 || this.filtros.camposSeleccionados.length === 0) {
       this.alertService.errorAlert('Error', 'Selecciona al menos una tabla y un campo');
@@ -142,7 +139,6 @@ export class ReporteComponent implements OnInit {
       campos: this.filtros.camposSeleccionados,
       formato: formato
     };
-    console.log('Payload definitivo:', payload);
 
     this.reporteService.generarReporteDinamico(payload).subscribe({
       next: (response) => this.descargarArchivo(response, formato),
