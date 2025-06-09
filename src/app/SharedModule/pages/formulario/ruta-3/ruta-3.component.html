@@ -243,6 +243,73 @@
                                             [(ngModel)]="laboratorioITrimestre.fec_antigeno" name="fec_antigeno">
                                     </div>
 
+                                    <!-- IgG Citomegalovirus -->
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_igg_citomegalovirus" class="font-medium mb-1">¿Realizó IgG
+                                            Citomegalovirus?</label>
+                                        <select id="real_igg_citomegalovirus" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_igg_citomegalovirus"
+                                            (change)="onLaboratoriosChange('real_igg_citomegalovirus')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="1">Sí</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Resultado IgG
+                                            Citomegalovirus</label>
+                                        <input type="text" id="res_igg_citomegalovirus"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                            [(ngModel)]="laboratorioITrimestre.igg_citomegalovirus"
+                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_igg_citomegalovirus" class="font-medium mb-1">Fecha IgG
+                                            Citomegalovirus</label>
+                                        <input type="date" id="fec_igg_citomegalovirus"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                            [(ngModel)]="laboratorioITrimestre.fec_igg_citomegalovirus"
+                                            (input)="onInputChange('fec_igg_citomegalovirus', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <!-- IgM Citomegalovirus -->
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_igm_citomegalovirus" class="font-medium mb-1">¿Realizó IgM
+                                            Citomegalovirus?</label>
+                                        <select id="real_igm_citomegalovirus" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_igm_citomegalovirus"
+                                            (change)="onLaboratoriosChange('real_igm_citomegalovirus')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="1">Sí</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Resultado IgM
+                                            Citomegalovirus</label>
+                                        <input type="text" id="res_igg_citomegalovirus"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                            [(ngModel)]="laboratorioITrimestre.igm_citomegalovirus"
+                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_igm_citomegalovirus" class="font-medium mb-1">Fecha IgM
+                                            Citomegalovirus</label>
+                                        <input type="date" id="fec_igm_citomegalovirus"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igm_citomegalovirus']"
+                                            [(ngModel)]="laboratorioITrimestre.fec_igm_citomegalovirus"
+                                            (input)="onInputChange('fec_igm_citomegalovirus', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    
+
+                                    
+
+
                                 </div>
                             </div>
 
@@ -393,6 +460,66 @@
                                             [(ngModel)]="laboratorioITrimestre.fec_antibiograma">
                                     </div>
 
+                                    <!-- IgM Rubeola -->
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_igm_rubeola" class="font-medium mb-1">¿Realizó IgM
+                                            Rubeola?</label>
+                                        <select id="real_igm_rubeola" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_igm_rubeola"
+                                            (change)="onLaboratoriosChange('real_igm_rubeola')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="1">Sí</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Resultado IgM
+                                            Rubeola</label>
+                                        <input type="text" id="res_igg_citomegalovirus"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                            [(ngModel)]="laboratorioITrimestre.igm_rubeola"
+                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_igm_rubeola" class="font-medium mb-1">Fecha IgM Rubeola</label>
+                                        <input type="date" id="fec_igm_rubeola"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igm_rubeola']"
+                                            [(ngModel)]="laboratorioITrimestre.fec_igm_rubeola"
+                                            (input)="onInputChange('fec_igm_rubeola', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+
+                                    <!-- Doppler de arterias uterinas antes de semana 15 -->
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_doppler_uterinas" class="font-medium mb-1">¿Realizó Doppler de
+                                            arterias uterinas antes de semana 15?</label>
+                                        <select id="real_doppler_uterinas" [disabled]="isReadOnlyLaboratorioI"
+                                            [(ngModel)]="laboratorioITrimestre.real_doppler_art_uterina_sem_15"
+                                            (change)="onLaboratoriosChange('real_doppler_uterinas')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="1">Sí</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Doppler de
+                                            arterias uterinas antes de semana 15</label>
+                                        <input type="text" id="res_igg_citomegalovirus"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                            [(ngModel)]="laboratorioITrimestre.doppler_art_uterina_sem_15"
+                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_doppler_uterinas" class="font-medium mb-1">Fecha Doppler de
+                                            arterias uterinas</label>
+                                        <input type="date" id="fec_doppler_uterinas"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_doppler_uterinas']"
+                                            [(ngModel)]="laboratorioITrimestre.fec_doppler_art_uterina_sem_15"
+                                            (input)="onInputChange('fec_doppler_uterinas', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                    </div>
 
                                 </div>
                             </div>

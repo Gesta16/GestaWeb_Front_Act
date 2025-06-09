@@ -18,9 +18,7 @@ import { HemoclasificacionService } from '../../../../Services/hemoclasificacion
 import { AntibiogramaService } from '../../../../Services/antibiograma.service';
 import { AlertService } from '../../../../Services/alert.service';
 import { MenuService } from '../../../../Services/menu.service';
-import { iif } from 'rxjs';
 import { AuthService } from '../../../../Services/auth.service';
-import { threadId } from 'node:worker_threads';
 import { MatDialog } from '@angular/material/dialog';
 import { AlarmaGestanteComponent } from '../../alarma-gestante/alarma-gestante.component';
 
@@ -70,6 +68,10 @@ export class Ruta3Component {
     real_prueb_eliza_anti_recomb: false,
     real_prueb_coombis_indi_cuanti: false,
     real_eco_obste_tamizaje: false,
+    real_igg_citomegalovirus: false,
+    real_igm_citomegalovirus: false,
+    real_igm_rubeola: false,
+    real_doppler_art_uterina_sem_15: false,
     reali_prueb_rapi_vih: false,
     real_prueb_trep_rap_sifilis: false,
     reali_citologia: false,
@@ -98,6 +100,7 @@ export class Ruta3Component {
     real_prueb_oral_1: false,
     real_prueb_oral_2: false,
     reali_hemograma: false,
+
   }
 
   inputsStatus = {
@@ -113,6 +116,8 @@ export class Ruta3Component {
     real_antigenos: false,
     antigeno: false,
     fec_antigeno: false,
+    real_igg_citomegalovirus: false,
+    fec_igg_citomegalovirus: false,
     
     // seccion 1
     real_prueb_rapi_vih: false,

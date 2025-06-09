@@ -25,7 +25,7 @@ export class LaboratorioITrimestre {
     ig_toxoplasma: string;
     fec_toxoplasma: string;
     igm_toxoplamas: string;
-    fec_igmtoxoplasma?:string | null;
+    fec_igmtoxoplasma?: string | null;
     hem_gruesa: string;
     fec_hemoparasito: string;
     pru_antigenos?: string | null;
@@ -38,6 +38,18 @@ export class LaboratorioITrimestre {
     eda_gestacional?: string | null;
     rie_biopsicosocial: string;
     num_proceso: number;
+    igg_citomegalovirus?: string | null;
+    real_igg_citomegalovirus?: string | null;
+    fec_igg_citomegalovirus?: string | null;
+    igm_citomegalovirus?: string | null;
+    real_igm_citomegalovirus?: string | null;
+    fec_igm_citomegalovirus?: string | null;
+    igm_rubeola?: string | null;
+    real_igm_rubeola?: string | null;
+    fec_igm_rubeola?: string | null;
+    doppler_art_uterina_sem_15?: string | null;
+    real_doppler_art_uterina_sem_15?: string | null;
+    fec_doppler_art_uterina_sem_15?: string | null;
     real_prueb_rapi_vih: boolean;
     reali_prueb_trepo_rapid_sifilis: boolean;
     realizo_urocultivo: boolean;
@@ -47,12 +59,12 @@ export class LaboratorioITrimestre {
     real_prueb_coombis_indi_cuanti: boolean;
     real_eco_obste_tamizaje: boolean;
     real_hemograma: boolean;
-    real_glicemia:boolean;
-    real_antigenos:boolean;
-    real_ig_toxoplasma:boolean;
-    real_igm_toxoplasma:boolean;
+    real_glicemia: boolean;
+    real_antigenos: boolean;
+    real_ig_toxoplasma: boolean;
+    real_igm_toxoplasma: boolean;
     real_ig_rubeola: boolean;
-    real_hemoparasito:boolean;
+    real_hemoparasito: boolean;
 
     constructor({
         cod_laboratorio = 0,
@@ -92,6 +104,18 @@ export class LaboratorioITrimestre {
         eda_gestacional = '',
         rie_biopsicosocial = '',
         num_proceso = 0,
+        igg_citomegalovirus = '',
+        real_igg_citomegalovirus = '',
+        fec_igg_citomegalovirus = '',
+        igm_citomegalovirus = '',
+        real_igm_citomegalovirus = '',
+        fec_igm_citomegalovirus = '',
+        igm_rubeola = '',
+        real_igm_rubeola = '',
+        fec_igm_rubeola = '',
+        doppler_art_uterina_sem_15 = '',
+        real_doppler_art_uterina_sem_15 = '',
+        fec_doppler_art_uterina_sem_15 = '',
         real_prueb_rapi_vih = false,
         reali_prueb_trepo_rapid_sifilis = false,
         realizo_urocultivo = false,
@@ -103,10 +127,10 @@ export class LaboratorioITrimestre {
         real_hemograma = false,
         real_glicemia = false,
         real_antigenos = false,
-        real_ig_toxoplasma= false,
-        real_igm_toxoplasma= false,
-        real_ig_rubeola= false,
-        real_hemoparasito= false,
+        real_ig_toxoplasma = false,
+        real_igm_toxoplasma = false,
+        real_ig_rubeola = false,
+        real_hemoparasito = false,
     }: {
         cod_laboratorio?: number,
         id_operador?: number,
@@ -131,8 +155,8 @@ export class LaboratorioITrimestre {
         fec_rubeola?: string,
         ig_toxoplasma?: string,
         fec_toxoplasma?: string,
-        igm_toxoplamas?:string,
-        fec_igmtoxoplasma?:string,
+        igm_toxoplamas?: string,
+        fec_igmtoxoplasma?: string,
         hem_gruesa?: string,
         fec_hemoparasito?: string,
         pru_antigenos?: string,
@@ -145,6 +169,18 @@ export class LaboratorioITrimestre {
         eda_gestacional?: string,
         rie_biopsicosocial?: string,
         num_proceso?: number,
+        igg_citomegalovirus?: string;
+        real_igg_citomegalovirus?: string;
+        fec_igg_citomegalovirus?: string;
+        igm_citomegalovirus?: string;
+        real_igm_citomegalovirus?: string;
+        fec_igm_citomegalovirus?: string;
+        igm_rubeola?: string;
+        real_igm_rubeola?: string;
+        fec_igm_rubeola?: string;
+        doppler_art_uterina_sem_15?: string;
+        real_doppler_art_uterina_sem_15?: string;
+        fec_doppler_art_uterina_sem_15?: string;
         real_prueb_rapi_vih?: boolean,
         reali_prueb_trepo_rapid_sifilis?: boolean,
         realizo_urocultivo?: boolean,
@@ -199,19 +235,31 @@ export class LaboratorioITrimestre {
         this.rie_biopsicosocial = rie_biopsicosocial;
         this.num_proceso = num_proceso;
         this.real_prueb_rapi_vih = real_prueb_rapi_vih;
-        reali_prueb_trepo_rapid_sifilis
-        this.realizo_urocultivo= realizo_urocultivo;
-        this.realizo_antibiograma= realizo_antibiograma;
-        this.real_prueb_eliza_anti_total= real_prueb_eliza_anti_total;
-        this.real_prueb_eliza_anti_recomb= real_prueb_eliza_anti_recomb;
-        this.real_prueb_coombis_indi_cuanti= real_prueb_coombis_indi_cuanti;
-        this.real_eco_obste_tamizaje= real_eco_obste_tamizaje;
-        this.real_hemograma= real_hemograma;
-        this.real_glicemia= real_glicemia;
-        this.real_antigenos= real_antigenos;
-        this.real_ig_toxoplasma= real_ig_toxoplasma;
-        this.real_igm_toxoplasma= real_igm_toxoplasma;
-        this.real_ig_rubeola= real_ig_rubeola;
-        this.real_hemoparasito= real_hemoparasito;
+        this.reali_prueb_trepo_rapid_sifilis = reali_prueb_trepo_rapid_sifilis;
+        this.igg_citomegalovirus = igg_citomegalovirus;
+        this.real_igg_citomegalovirus = real_igg_citomegalovirus;
+        this.fec_igg_citomegalovirus = fec_igg_citomegalovirus;
+        this.igm_citomegalovirus = igm_citomegalovirus;
+        this.real_igm_citomegalovirus = real_igm_citomegalovirus;
+        this.fec_igm_citomegalovirus = fec_igm_citomegalovirus;
+        this.igm_rubeola = igm_rubeola;
+        this.real_igm_rubeola = real_igm_rubeola;
+        this.fec_igm_rubeola = fec_igm_rubeola;
+        this.doppler_art_uterina_sem_15 = doppler_art_uterina_sem_15;
+        this.real_doppler_art_uterina_sem_15 = real_doppler_art_uterina_sem_15;
+        this.fec_doppler_art_uterina_sem_15 = fec_doppler_art_uterina_sem_15;
+        this.realizo_urocultivo = realizo_urocultivo;
+        this.realizo_antibiograma = realizo_antibiograma;
+        this.real_prueb_eliza_anti_total = real_prueb_eliza_anti_total;
+        this.real_prueb_eliza_anti_recomb = real_prueb_eliza_anti_recomb;
+        this.real_prueb_coombis_indi_cuanti = real_prueb_coombis_indi_cuanti;
+        this.real_eco_obste_tamizaje = real_eco_obste_tamizaje;
+        this.real_hemograma = real_hemograma;
+        this.real_glicemia = real_glicemia;
+        this.real_antigenos = real_antigenos;
+        this.real_ig_toxoplasma = real_ig_toxoplasma;
+        this.real_igm_toxoplasma = real_igm_toxoplasma;
+        this.real_ig_rubeola = real_ig_rubeola;
+        this.real_hemoparasito = real_hemoparasito;
     }
 }
