@@ -251,18 +251,20 @@
                                             [(ngModel)]="laboratorioITrimestre.real_igg_citomegalovirus"
                                             (change)="onLaboratoriosChange('real_igg_citomegalovirus')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="1">Sí</option>
-                                            <option value="0">No</option>
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
                                         </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
-                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Resultado IgG
+                                        <label for="igg_citomegalovirus" class="font-medium mb-1">Resultado IgG
                                             Citomegalovirus</label>
-                                        <input type="text" id="res_igg_citomegalovirus"
-                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                        <select id="igg_citomegalovirus" [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
                                             [(ngModel)]="laboratorioITrimestre.igg_citomegalovirus"
-                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            (change)="onInputChange('igg_citomegalovirus', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_igg_citomegalovirus" class="font-medium mb-1">Fecha IgG
@@ -282,18 +284,21 @@
                                             [(ngModel)]="laboratorioITrimestre.real_igm_citomegalovirus"
                                             (change)="onLaboratoriosChange('real_igm_citomegalovirus')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="1">Sí</option>
-                                            <option value="0">No</option>
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
                                         </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
-                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Resultado IgM
+                                        <label for="igm_citomegalovirus" class="font-medium mb-1">Resultado IgM
                                             Citomegalovirus</label>
-                                        <input type="text" id="res_igg_citomegalovirus"
-                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                        <select id="igm_citomegalovirus"
+                                            [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_igm_citomegalovirus']"
                                             [(ngModel)]="laboratorioITrimestre.igm_citomegalovirus"
-                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            (change)="onInputChange('igm_citomegalovirus', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_igm_citomegalovirus" class="font-medium mb-1">Fecha IgM
@@ -468,18 +473,21 @@
                                             [(ngModel)]="laboratorioITrimestre.real_igm_rubeola"
                                             (change)="onLaboratoriosChange('real_igm_rubeola')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="1">Sí</option>
-                                            <option value="0">No</option>
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
                                         </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
-                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Resultado IgM
+                                        <label for="igm_rubeola" class="font-medium mb-1">Resultado IgM
                                             Rubeola</label>
-                                        <input type="text" id="res_igg_citomegalovirus"
-                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                        <select id="igm_rubeola"
+                                            [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_igm_rubeola']"
                                             [(ngModel)]="laboratorioITrimestre.igm_rubeola"
-                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            ((change))="onInputChange('igm_rubeola', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
                                         <label for="fec_igm_rubeola" class="font-medium mb-1">Fecha IgM Rubeola</label>
@@ -492,32 +500,35 @@
 
                                     <!-- Doppler de arterias uterinas antes de semana 15 -->
                                     <div class="flex flex-col text-xs">
-                                        <label for="real_doppler_uterinas" class="font-medium mb-1">¿Realizó Doppler de
+                                        <label for="real_doppler_art_uterina_sem_15" class="font-medium mb-1">¿Realizó Doppler de
                                             arterias uterinas antes de semana 15?</label>
-                                        <select id="real_doppler_uterinas" [disabled]="isReadOnlyLaboratorioI"
+                                        <select id="real_doppler_art_uterina_sem_15" [disabled]="isReadOnlyLaboratorioI"
                                             [(ngModel)]="laboratorioITrimestre.real_doppler_art_uterina_sem_15"
-                                            (change)="onLaboratoriosChange('real_doppler_uterinas')"
+                                            (change)="onLaboratoriosChange('real_doppler_art_uterina_sem_15')"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
-                                            <option value="1">Sí</option>
-                                            <option value="0">No</option>
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
                                         </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
-                                        <label for="res_igg_citomegalovirus" class="font-medium mb-1">Doppler de
+                                        <label for="doppler_art_uterina_sem_15" class="font-medium mb-1">Doppler de
                                             arterias uterinas antes de semana 15</label>
-                                        <input type="text" id="res_igg_citomegalovirus"
-                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_igg_citomegalovirus']"
+                                        <select id="doppler_art_uterina_sem_15"
+                                            [disabled]="isReadOnlyLaboratorioI || !mostrarCampos['real_doppler_art_uterina_sem_15']"
                                             [(ngModel)]="laboratorioITrimestre.doppler_art_uterina_sem_15"
-                                            (input)="onInputChange('res_igg_citomegalovirus', $event.target.value)"
+                                            ((change))="onInputChange('doppler_art_uterina_sem_15', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
                                     </div>
                                     <div class="flex flex-col text-xs">
-                                        <label for="fec_doppler_uterinas" class="font-medium mb-1">Fecha Doppler de
+                                        <label for="fec_doppler_art_uterina_sem_15" class="font-medium mb-1">Fecha Doppler de
                                             arterias uterinas</label>
-                                        <input type="date" id="fec_doppler_uterinas"
-                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_doppler_uterinas']"
+                                        <input type="date" id="fec_doppler_art_uterina_sem_15"
+                                            [readonly]="isReadOnlyLaboratorioI || !mostrarCampos['real_doppler_art_uterina_sem_15']"
                                             [(ngModel)]="laboratorioITrimestre.fec_doppler_art_uterina_sem_15"
-                                            (input)="onInputChange('fec_doppler_uterinas', $event.target.value)"
+                                            (input)="onInputChange('fec_doppler_art_uterina_sem_15', $event.target.value)"
                                             class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
                                     </div>
 
@@ -1176,6 +1187,41 @@
                             <div [ngClass]="{'hidden': openTab !== 7, 'block': openTab === 7}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
+                                    <!-- Urocultivo segundo trimestre -->
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_urocultivo_2" class="font-medium mb-1">Realizó el
+                                            urocultivo</label>
+                                        <select id="real_urocultivo_2" [disabled]="isReadOnlyLaboratorioII"
+                                            (change)="onInputChange('real_urocultivo_2', $event.target.value)"
+                                            [(ngModel)]="laboratorioIITrimestre.real_urocultivo_2"
+                                            (change)="onLaboratoriosChange('real_urocultivo_2')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="uro_laboratorio_2" class="font-medium mb-1">Urocultivo</label>
+                                        <select id="uro_laboratorio_2"
+                                            [disabled]="isReadOnlyLaboratorioII || !mostrarCampos['real_urocultivo_2']"
+                                            (change)="onInputChange('uro_laboratorio_2', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIITrimestre.uro_laboratorio_2">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_urocultivo_2" class="font-medium mb-1">Fecha urocultivo</label>
+                                        <input type="date" id="fec_urocultivo_2"
+                                            [readonly]="isReadOnlyLaboratorioII || !mostrarCampos['real_urocultivo_2']"
+                                            (input)="onInputChange('fec_urocultivo_2', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIITrimestre.fec_urocultivo_2">
+                                    </div>
+
                                     <div class="flex flex-col text-xs">
                                         <label for="reali_prueb_hemoparasito" class="font-medium mb-1">Realizó la prueba
                                             Hemoparásito - gota gruesa</label>
@@ -1471,6 +1517,41 @@
                             <!-- Seccion 2-->
                             <div [ngClass]="{'hidden': openTab !== 9, 'block': openTab === 9}">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                    <!-- Urocultivo tercer trimestre -->
+                                    <div class="flex flex-col text-xs">
+                                        <label for="real_urocultivo_3" class="font-medium mb-1">Realizó el
+                                            urocultivo</label>
+                                        <select id="real_urocultivo_3" [disabled]="isReadOnlyLaboratorioIII"
+                                            (change)="onInputChange('real_urocultivo_3', $event.target.value)"
+                                            [(ngModel)]="laboratorioIIITrimestre.real_urocultivo_3"
+                                            (change)="onLaboratoriosChange('real_urocultivo_3')"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase">
+                                            <option value=1>Sí</option>
+                                            <option value=0>No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="uro_laboratorio_3" class="font-medium mb-1">Urocultivo</label>
+                                        <select id="uro_laboratorio_3"
+                                            [disabled]="isReadOnlyLaboratorioIII || !mostrarCampos['real_urocultivo_3']"
+                                            (change)="onInputChange('uro_laboratorio_3', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.uro_laboratorio_3">
+                                            <option value="Positivo">Positivo</option>
+                                            <option value="Negativo">Negativo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex flex-col text-xs">
+                                        <label for="fec_urocultivo_3" class="font-medium mb-1">Fecha urocultivo</label>
+                                        <input type="date" id="fec_urocultivo_3"
+                                            [readonly]="isReadOnlyLaboratorioIII || !mostrarCampos['real_urocultivo_3']"
+                                            (input)="onInputChange('fec_urocultivo_3', $event.target.value)"
+                                            class="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#00acc9] uppercase"
+                                            [(ngModel)]="laboratorioIIITrimestre.fec_urocultivo_3">
+                                    </div>
 
                                     <div class="flex flex-col text-xs">
                                         <label for="reali_prueb_culti_rect_vagi" class="font-medium mb-1">Realizó la

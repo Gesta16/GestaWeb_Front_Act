@@ -25,6 +25,9 @@ export class LaboratorioIITrimestre {
     fec_ecografia?: string | null;
     eda_gestacional?: string | null;
     rie_biopsicosocial: string;
+    uro_laboratorio_2: string | null;
+    fec_urocultivo_2?: string | null;
+    real_urocultivo_2: boolean;
     num_proceso: number;
     reali_prueb_rapi_vih: boolean;
     real_prueb_trep_rap_sifilis: boolean;
@@ -46,6 +49,8 @@ export class LaboratorioIITrimestre {
         fec_vih = '',
         pru_sifilis = '',
         fec_sifilis = '',
+        uro_laboratorio_2 = '',
+        fec_urocultivo_2 = '',
         pru_oral = '',
         pru_uno = '',
         pru_dos = '',
@@ -66,6 +71,7 @@ export class LaboratorioIITrimestre {
         eda_gestacional = '',
         rie_biopsicosocial = '',
         num_proceso = 0,
+        real_urocultivo_2 = false,
         reali_prueb_rapi_vih = false,
         real_prueb_trep_rap_sifilis = false,
         reali_citologia = false,
@@ -86,6 +92,8 @@ export class LaboratorioIITrimestre {
         fec_vih?: string,
         pru_sifilis?: string,
         fec_sifilis?: string,
+        uro_laboratorio_2?: string,
+        fec_urocultivo_2?: string,
         pru_oral?: string,
         pru_uno?: string,
         pru_dos?: string,
@@ -106,6 +114,7 @@ export class LaboratorioIITrimestre {
         eda_gestacional?: string,
         rie_biopsicosocial?: string,
         num_proceso?: number,
+        real_urocultivo_2?: boolean,
         reali_prueb_rapi_vih?: boolean,
         real_prueb_trep_rap_sifilis?: boolean,
         reali_citologia?: boolean,
@@ -126,6 +135,8 @@ export class LaboratorioIITrimestre {
         this.fec_vih = fec_vih;
         this.pru_sifilis = pru_sifilis;
         this.fec_sifilis = fec_sifilis;
+        this.uro_laboratorio_2 = uro_laboratorio_2;
+        this.fec_urocultivo_2 = fec_urocultivo_2;
         this.pru_oral = pru_oral;
         this.pru_uno = pru_uno;
         this.pru_dos = pru_dos;
@@ -146,6 +157,7 @@ export class LaboratorioIITrimestre {
         this.eda_gestacional = eda_gestacional;
         this.rie_biopsicosocial = rie_biopsicosocial;
         this.num_proceso = num_proceso;
+        this.real_urocultivo_2 = real_urocultivo_2;
         this.reali_prueb_rapi_vih = reali_prueb_rapi_vih
         this.real_prueb_trep_rap_sifilis = real_prueb_trep_rap_sifilis
         this.reali_citologia = reali_citologia

@@ -8,6 +8,8 @@ export class LaboratorioIIITrimestre {
     fec_vih?: string | null;
     pru_sifilis?: string | null;
     fec_sifilis?: string | null;
+    uro_laboratorio_3?: string | null;
+    fec_urocultivo_3?: string | null;
     ig_toxoplasma: string;
     fec_toxoplasma?: string | null;
     cul_rectal?: string | null;
@@ -16,6 +18,7 @@ export class LaboratorioIIITrimestre {
     edad_gestacional?: string | null;
     rie_biopsicosocial: string;
     num_proceso: number;
+    real_urocultivo_3: boolean;
     reali_prueb_rapi_vih_3: boolean;
     reali_prueb_trepo_rapi_sifilis: boolean;
     reali_prueb_igm_toxoplasma: boolean;
@@ -32,6 +35,8 @@ export class LaboratorioIIITrimestre {
         fec_vih = '',
         pru_sifilis = '',
         fec_sifilis = '',
+        uro_laboratorio_3 = '',
+        fec_urocultivo_3 = '',
         ig_toxoplasma = '',
         fec_toxoplasma = '',
         cul_rectal = '',
@@ -40,6 +45,7 @@ export class LaboratorioIIITrimestre {
         edad_gestacional = '',
         rie_biopsicosocial = '',
         num_proceso = 0,
+        real_urocultivo_3 = false,
         reali_prueb_rapi_vih_3 = false,
         reali_prueb_trepo_rapi_sifilis = false,
         reali_prueb_igm_toxoplasma = false,
@@ -56,6 +62,8 @@ export class LaboratorioIIITrimestre {
         fec_vih?: string,
         pru_sifilis?: string,
         fec_sifilis?: string,
+        uro_laboratorio_3?: string,
+        fec_urocultivo_3?: string,
         ig_toxoplasma?: string,
         fec_toxoplasma?: string,
         cul_rectal?: string,
@@ -64,6 +72,7 @@ export class LaboratorioIIITrimestre {
         edad_gestacional?: string,
         rie_biopsicosocial?: string,
         num_proceso?: number,
+        real_urocultivo_3?: boolean,
         reali_prueb_rapi_vih_3?: boolean,
         reali_prueb_trepo_rapi_sifilis?: boolean,
         reali_prueb_igm_toxoplasma?: boolean,
@@ -80,6 +89,8 @@ export class LaboratorioIIITrimestre {
         this.fec_vih = fec_vih;
         this.pru_sifilis = pru_sifilis;
         this.fec_sifilis = fec_sifilis;
+        this.uro_laboratorio_3 = uro_laboratorio_3;
+        this.fec_urocultivo_3 = fec_urocultivo_3;
         this.ig_toxoplasma = ig_toxoplasma;
         this.fec_toxoplasma = fec_toxoplasma;
         this.cul_rectal = cul_rectal;
@@ -88,6 +99,7 @@ export class LaboratorioIIITrimestre {
         this.edad_gestacional = edad_gestacional;
         this.rie_biopsicosocial = rie_biopsicosocial;
         this.num_proceso = num_proceso;
+        this.real_urocultivo_3 = real_urocultivo_3;
         this.reali_prueb_rapi_vih_3 = reali_prueb_rapi_vih_3;
         this.reali_prueb_trepo_rapi_sifilis = reali_prueb_trepo_rapi_sifilis
         this.reali_prueb_igm_toxoplasma = reali_prueb_igm_toxoplasma
