@@ -67,6 +67,53 @@ export class ExamenesComponent {
     { nombre: 'Perfil Biofisico', key: 'reali_prueb_perfil_biofisico', completado: false },
   ];
 
+  examenesRiesgoObstetrico = [
+    {
+      nombre: 'Coombs indirecto',
+      // Claves posibles para Coombs en los 3 trimestres:
+      keys: ['real_prueb_coombis_indi_cuanti', 'reali_prueb_coombis_indi_cuanti'],
+      realizado: false
+    },
+    {
+      nombre: 'Toxoplasma IgA',
+      keys: ['reali_prueb_toxoplasmosis_ig_a'],
+      realizado: false
+    },
+    {
+      nombre: 'Prueba de Avidez IgG para toxoplasma',
+      keys: ['reali_prueb_avidez_ig_g'],
+      realizado: false
+    },
+    // {
+    //   nombre: 'TSH',
+    //   keys: ['tsh'], // Ajusta si tienes el nombre en tu modelo
+    //   realizado: false
+    // },
+    {
+      nombre: 'VDRL (prueba no treponémica para sífilis)',
+      keys: ['real_prueb_trepo_rapid_sifilis', 'real_prueb_trep_rap_sifilis', 'reali_prueb_trepo_rapid_sifilis', 'reali_prueb_trepo_rapi_sifilis'],
+      realizado: false
+    },
+    // {
+    //   nombre: 'Hemoglobina Glicosilada',
+    //   keys: ['hemoglobina_glicosilada'], // Ajusta si tienes el nombre en tu modelo
+    //   realizado: false
+    // },
+    // {
+    //   nombre: 'Creatinina',
+    //   keys: ['creatinina'], // Ajusta si tienes el nombre en tu modelo
+    //   realizado: false
+    // }
+  ];
+
+
+
+
+
+
+
+
+
   constructor(
     private menuService: MenuService,
     private authService: AuthService,
@@ -85,7 +132,17 @@ export class ExamenesComponent {
     this.getLaboratorioI();
     this.getLaboratorioII();
     this.getLaboratorioIII();
+    this.marcarExamenesRiesgoObstetrico();
   }
+
+  marcarExamenesRiesgoObstetrico() {
+  this.examenesRiesgoObstetrico.forEach(examen => {
+    examen.realizado =
+      examen.keys.some(key => !!this.laboratorioITrimestre?.[key]) ||
+      examen.keys.some(key => !!this.laboratorioIITrimestre?.[key]) ||
+      examen.keys.some(key => !!this.laboratorioIIITrimestre?.[key]);
+  });
+}
 
   getLaboratorioI() {
     this.laboratorioIService.getLaboratorioISemestrebyId(this.idUsuario, 1).subscribe(

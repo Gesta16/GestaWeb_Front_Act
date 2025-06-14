@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <!-- Container principal con padding responsivo -->
-<div class="mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20 lg:mt-24 w-full max-w-7xl transition-all duration-300" 
+<div class="mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20 lg:mt-24 w-full max-w-7xl transition-all duration-300"
     [ngClass]="{ 
       'ml-56': isExpanded && isVisible, 
       'ml-20': !isExpanded && isVisible, 
@@ -18,25 +18,20 @@
             <div class="w-full p-3 sm:p-4 border border-slate-400 rounded-lg">
                 <!-- Grid responsiva de trimestres -->
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
-                    
+
                     <!-- Primer Trimestre -->
                     <div class="border border-slate-300 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow">
                         <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-3 text-gray-700">Primer Trimestre</h3>
                         <div class="space-y-2">
-                            <div *ngFor="let exam of examenes1" 
+                            <div *ngFor="let exam of examenes1"
                                 class="flex justify-between items-center py-2 border-b last:border-b-0 hover:bg-gray-50 transition-colors">
                                 <span class="text-sm sm:text-base text-gray-600">{{ exam.nombre }}</span>
                                 <div class="flex items-center">
                                     <ng-container *ngIf="exam.completado; else notCompleted">
                                         <span class="text-green-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" 
-                                                class="h-5 w-5 sm:h-6 sm:w-6" 
-                                                viewBox="0 0 24 24" 
-                                                fill="none" 
-                                                stroke="currentColor" 
-                                                stroke-width="2" 
-                                                stroke-linecap="round" 
-                                                stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M20 6 9 17l-5-5" />
                                             </svg>
                                         </span>
@@ -50,20 +45,15 @@
                     <div class="border border-slate-300 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow">
                         <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-3 text-gray-700">Segundo Trimestre</h3>
                         <div class="space-y-2">
-                            <div *ngFor="let exam of examenes2" 
+                            <div *ngFor="let exam of examenes2"
                                 class="flex justify-between items-center py-2 border-b last:border-b-0 hover:bg-gray-50 transition-colors">
                                 <span class="text-sm sm:text-base text-gray-600">{{ exam.nombre }}</span>
                                 <div class="flex items-center">
                                     <ng-container *ngIf="exam.completado; else notCompleted">
                                         <span class="text-green-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" 
-                                                class="h-5 w-5 sm:h-6 sm:w-6" 
-                                                viewBox="0 0 24 24" 
-                                                fill="none" 
-                                                stroke="currentColor" 
-                                                stroke-width="2" 
-                                                stroke-linecap="round" 
-                                                stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M20 6 9 17l-5-5" />
                                             </svg>
                                         </span>
@@ -77,20 +67,15 @@
                     <div class="border border-slate-300 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow">
                         <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-3 text-gray-700">Tercer Trimestre</h3>
                         <div class="space-y-2">
-                            <div *ngFor="let exam of examenes3" 
+                            <div *ngFor="let exam of examenes3"
                                 class="flex justify-between items-center py-2 border-b last:border-b-0 hover:bg-gray-50 transition-colors">
                                 <span class="text-sm sm:text-base text-gray-600">{{ exam.nombre }}</span>
                                 <div class="flex items-center">
                                     <ng-container *ngIf="exam.completado; else notCompleted">
                                         <span class="text-green-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" 
-                                                class="h-5 w-5 sm:h-6 sm:w-6" 
-                                                viewBox="0 0 24 24" 
-                                                fill="none" 
-                                                stroke="currentColor" 
-                                                stroke-width="2" 
-                                                stroke-linecap="round" 
-                                                stroke-linejoin="round">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M20 6 9 17l-5-5" />
                                             </svg>
                                         </span>
@@ -103,20 +88,52 @@
                 </div>
             </div>
         </div>
+        <div class="mt-6 max-w-2xl mx-auto">
+            <div class="border border-yellow-400 bg-yellow-50 rounded-lg p-4">
+                <div class="mb-2 flex items-center">
+                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path d="M13 16h-1v-4h-1m1-4h.01"></path>
+                        <circle cx="12" cy="12" r="10"></circle>
+                    </svg>
+                    <span class="text-base font-semibold text-yellow-700">Exámenes realizados según riesgo
+                        obstétrico</span>
+                </div>
+                <div class="divide-y divide-yellow-200">
+                    <div *ngFor="let exam of examenesRiesgoObstetrico" class="flex justify-between items-center py-2">
+                        <span class="text-sm text-gray-700">{{ exam.nombre }}</span>
+                        <ng-container *ngIf="exam.realizado; else notDone">
+                            <span class="text-green-600 font-bold flex items-center">
+                                Realizado
+                                <svg class="h-5 w-5 ml-1" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                            </span>
+                        </ng-container>
+                        <ng-template #notDone>
+                            <span class="text-red-500 font-bold flex items-center">
+                                No realizado
+                                <svg class="h-5 w-5 ml-1" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M18 6 6 18M6 6l12 12" />
+                                </svg>
+                            </span>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
 
 <!-- Template para ícono de no completado -->
 <ng-template #notCompleted>
     <span class="text-red-500">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-            class="h-5 w-5 sm:h-6 sm:w-6" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            stroke-width="2" 
-            stroke-linecap="round" 
-            stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 6 6 18" />
             <path d="m6 6 12 12" />
         </svg>
