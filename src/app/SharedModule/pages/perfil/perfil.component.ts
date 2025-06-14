@@ -37,7 +37,7 @@ export class PerfilComponent {
     this.user = this.authService.getUser();
     this.loadTiposDocumento();
     this.formData = { ...this.user.userable };
-    console.log(this.formData)
+    //console.log(this.formData)
   }
 
   toggleEdit() {

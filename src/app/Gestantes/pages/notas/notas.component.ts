@@ -93,14 +93,14 @@ export class NotasComponent implements OnInit {
         },
         (error) => {
           // Comentado para evitar impresión en consola
-          // console.error('Error al crear la nota:', error);
+          console.error('Error al crear la nota:', error);
           this.mensaje = 'Error al crear la nota';
         }
       );
     } else {
       this.mensaje = 'No tienes permisos para crear notas o no estás autenticado correctamente.';
       // Comentado para evitar impresión en consola
-      // console.error('Usuario no autenticado o no tiene el rol adecuado');
+      console.error('Usuario no autenticado o no tiene el rol adecuado');
     }
   }
 
@@ -114,7 +114,7 @@ export class NotasComponent implements OnInit {
       },
       (error) => {
         // Comentado para evitar impresión en consola
-        // console.error('Error al eliminar la nota:', error);
+        console.error('Error al eliminar la nota:', error);
         this.mensaje = 'Error al eliminar la nota.';
       }
     );
@@ -141,7 +141,7 @@ export class NotasComponent implements OnInit {
         },
         (error) => {
           // Comentado para evitar impresión en consola
-          // console.error('Error al actualizar la nota:', error);
+          console.error('Error al actualizar la nota:', error);
           this.mensaje = 'Error al actualizar la nota.';
         }
       );

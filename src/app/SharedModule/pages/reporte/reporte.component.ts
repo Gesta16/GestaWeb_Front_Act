@@ -154,7 +154,7 @@ export class ReporteComponent implements OnInit {
       formato: formato
     };
 
-    console.log(payload);
+    //console.log(payload);
 
     this.reporteService.generarReporteDinamico(payload).subscribe({
       next: (response) => this.descargarArchivo(response, formato),

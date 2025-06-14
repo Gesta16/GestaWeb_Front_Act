@@ -157,7 +157,7 @@ export class Ruta5Component {
       this.getMortalidadPreparto();
 
     } else {
-      console.log('No se proporcionó un ID válido.');
+      console.error('No se proporcionó un ID válido.');
     }
 
     this.getTerminaciones();
@@ -382,8 +382,8 @@ export class Ruta5Component {
             this.id_LaboratorioIntraparto = response.cod_intraparto ?? null;
             this.ReadonlyLaboratorioIntraparto = true;
             this.isEditing = false;
-            console.log(response);
-            console.log(this.id_LaboratorioIntraparto);
+            //console.log(response);
+            //console.log(this.id_LaboratorioIntraparto);
           });
         },
         error: (error) => {
@@ -410,7 +410,7 @@ export class Ruta5Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a ingresar nuevos datos del laboratorio intraparto.');
+      console.error('No se proporcionó ID, se asume que se va a ingresar nuevos datos del laboratorio intraparto.');
     }
   }
 
@@ -472,7 +472,7 @@ export class Ruta5Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a ingresar nuevos datos del seguimiento.');
+      console.error('No se proporcionó ID, se asume que se va a ingresar nuevos datos del seguimiento.');
     }
   }
 
@@ -532,7 +532,7 @@ export class Ruta5Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a ingresar nuevos datos de mortalidad preparto.');
+      console.error('No se proporcionó ID, se asume que se va a ingresar nuevos datos de mortalidad preparto.');
     }
   }
 

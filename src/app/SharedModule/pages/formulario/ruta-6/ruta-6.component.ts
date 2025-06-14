@@ -151,7 +151,7 @@ export class Ruta6Component {
       this.getRutaPYMS();
 
     } else {
-      console.log('No se proporcionó un ID válido.');
+      console.error('No se proporcionó un ID válido.');
     }
 
     this.getHemoclasificaciones();
@@ -335,7 +335,7 @@ export class Ruta6Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a ingresar nuevos datos del recién nacido.');
+      console.error('No se proporcionó ID, se asume que se va a ingresar nuevos datos del recién nacido.');
     }
   }
 
@@ -394,7 +394,7 @@ export class Ruta6Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a ingresar nuevos datos del estudio de hipotiroidismo.');
+      console.error('No se proporcionó ID, se asume que se va a ingresar nuevos datos del estudio de hipotiroidismo.');
     }
   }
 

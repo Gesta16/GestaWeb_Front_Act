@@ -158,7 +158,7 @@ export class Ruta4Component {
           this.getSeguimientoComplementario();
           this.getMicronutientes();
         } else {
-          console.log('No se proporcionó un ID válido.');
+          console.error('No se proporcionó un ID válido.');
         }
       }
 
@@ -203,7 +203,7 @@ export class Ruta4Component {
       (response) => {
         if (response.estado === 'Ok') {
           this.seguimientos = response.data; // Accede directamente al arreglo en 'data'
-          console.log('Fechas de consultas mensuales:', this.seguimientos);
+          //console.log('Fechas de consultas mensuales:', this.seguimientos);
         } else {
           console.error('Error en la respuesta del servidor:', response.message);
         }
@@ -255,7 +255,7 @@ export class Ruta4Component {
     if (seguimiento) {
       // Actualiza seguimientoConsulta con los datos del seguimiento seleccionado
       this.seguimientoConsulta = { ...seguimiento };
-      console.log('Seguimiento seleccionado:', this.seguimientoConsulta);
+      //console.log('Seguimiento seleccionado:', this.seguimientoConsulta);
     } else {
       // Limpia los datos si no hay un seguimiento correspondiente
       this.seguimientoConsulta = new SeguimientoConsultaMensual();
@@ -413,7 +413,7 @@ export class Ruta4Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a crear un nuevo  Seguimiento de consulta mensual.');
+      console.error('No se proporcionó ID, se asume que se va a crear un nuevo  Seguimiento de consulta mensual.');
     }
   }
 
@@ -471,7 +471,7 @@ export class Ruta4Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a crear un nuevo Seguimiento Complementario.');
+      console.error('No se proporcionó ID, se asume que se va a crear un nuevo Seguimiento Complementario.');
     }
   }
 
@@ -528,7 +528,7 @@ export class Ruta4Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a crear un nuevo Seguimiento Complementario.');
+      console.error('No se proporcionó ID, se asume que se va a crear un nuevo Seguimiento Complementario.');
     }
   }
 

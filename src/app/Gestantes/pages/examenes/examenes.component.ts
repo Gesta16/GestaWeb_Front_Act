@@ -154,9 +154,9 @@ export class ExamenesComponent {
     this.laboratorioIService.getLaboratorioISemestrebyId(this.idUsuario, 1).subscribe(
       data => {
         this.laboratorioITrimestre = data.data;
-        console.log('Laboratorio I', this.laboratorioITrimestre);
+        //console.log('Laboratorio I', this.laboratorioITrimestre);
         this.examenes1.forEach(examen => {
-          console.log(this.laboratorioITrimestre?.[examen.key])
+          //console.log(this.laboratorioITrimestre?.[examen.key])
           examen.completado = !!this.laboratorioITrimestre?.[examen.key]; // Convierte el valor a true/false
         });
         this.marcarExamenesRiesgoObstetrico(); // Marcar exámenes de riesgo obstétrico
@@ -171,9 +171,9 @@ export class ExamenesComponent {
     this.laboratorioIIService.getLaboratorioIISemestrebyId(this.idUsuario, 1).subscribe(
       data => {
         this.laboratorioIITrimestre = data.data;
-        console.log('Laboratorio II', this.laboratorioIITrimestre);
+        //console.log('Laboratorio II', this.laboratorioIITrimestre);
         this.examenes2.forEach(examen => {
-          console.log(this.laboratorioIITrimestre?.[examen.key])
+          //console.log(this.laboratorioIITrimestre?.[examen.key])
           examen.completado = !!this.laboratorioIITrimestre?.[examen.key]; // Convierte el valor a true/false
         });
         this.marcarExamenesRiesgoObstetrico(); // Marcar exámenes de riesgo obstétrico
@@ -188,9 +188,9 @@ export class ExamenesComponent {
     this.laboratorioIIIService.getLaboratorioIIISemestrebyId(this.idUsuario, 1).subscribe(
       data => {
         this.laboratorioIIITrimestre = data.data;
-        console.log('Laboratorio III', this.laboratorioIIITrimestre);
+        //console.log('Laboratorio III', this.laboratorioIIITrimestre);
         this.examenes3.forEach(examen => {
-          console.log(this.laboratorioIIITrimestre?.[examen.key])
+          //console.log(this.laboratorioIIITrimestre?.[examen.key])
           examen.completado = !!this.laboratorioIIITrimestre?.[examen.key]; // Convierte el valor a true/false
         });
         this.marcarExamenesRiesgoObstetrico(); // Marcar exámenes de riesgo obstétrico

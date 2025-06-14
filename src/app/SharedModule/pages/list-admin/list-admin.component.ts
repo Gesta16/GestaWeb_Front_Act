@@ -75,7 +75,7 @@ export class ListAdminComponent implements OnInit {
   private loadAdmins(): void {
     this.adminService.getAdmins().subscribe(
       (response: any) => {
-        console.log('Respuesta del backend:', response);
+        //console.log('Respuesta del backend:', response);
         this.admins = response.admin;
         this.updatePagination();
       },

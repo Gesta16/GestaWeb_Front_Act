@@ -172,7 +172,7 @@ export class DashboardComponent implements OnInit {
   }
 
   abrirModal(alarma: any): void {
-    console.log(alarma);
+    //console.log(alarma);
     this._matDialog.open(ModalAlertaComponent, {
       enterAnimationDuration: '0ms',
       exitAnimationDuration: '0ms',
@@ -228,7 +228,7 @@ export class DashboardComponent implements OnInit {
     const usuarioId = currentUser?.userable.id_usuario;
 
     if (isAccepted && usuarioId) {
-      console.log('Usuario aceptó los términos');
+      //console.log('Usuario aceptó los términos');
       
       // Obtener el currentUser
       currentUser.userable.autorizacion = 1;
@@ -236,7 +236,7 @@ export class DashboardComponent implements OnInit {
       // Llamar al servicio para hacer la actualización en la base de datos
       this.usuarioService.updateUsuario(usuarioId, currentUser.userable).subscribe({
         next: (response) => {
-          console.log('Autorización actualizada correctamente', response);
+          //console.log('Autorización actualizada correctamente', response);
           this.isModalVisible = false;  // Ocultar el modal si la actualización fue exitosa
 
           // Guardamos en localStorage que los términos fueron aceptados para este usuario específico
@@ -247,7 +247,7 @@ export class DashboardComponent implements OnInit {
         }
       });
     } else {
-      console.log('Usuario no aceptó los términos');
+      //console.log('Usuario no aceptó los términos');
     }
   }
 
@@ -396,7 +396,7 @@ export class DashboardComponent implements OnInit {
   getPresion() {
     this.dashboardGestanteService.getPesoyPresionGestante().subscribe(
       data => {
-        console.log('Presión gestante', data);
+        //console.log('Presión gestante', data);
 
         // Extraer los valores de tensión arterial del array data o inicializar con ceros
         let tensionSisData = data.data.length > 0 ? data.data.map(item => parseFloat(item.tension_sis)) : Array(12).fill(0);
@@ -516,7 +516,7 @@ export class DashboardComponent implements OnInit {
   getRutas() {
     this.rutaPymsService.getRutaPymsId(this.idUsuario,1).subscribe(
       data => {
-        console.log(data);
+        //console.log(data);
         this.vacunasBebe[0]['bcgFec'] = data.data.fec_bcg;
         this.vacunasBebe[0]['completadoBcf'] = !!data.data.aplico_vacuna_bcg;
         this.vacunasBebe[1]['hepatiFec'] = data.data.fec_hepatitis;
@@ -539,7 +539,7 @@ export class DashboardComponent implements OnInit {
       (response: any) => {
         if(response.signo_alarma){
           this.signoAlarma = response.signo_alarma;
-          console.log('signo alarma',response)
+          //console.log('signo alarma',response)
         }
       },
       (error) => {

@@ -305,7 +305,7 @@ export class Ruta3Component {
       this.getTercerLaboratorio();
       this.getIts();
     } else {
-      console.log('No se proporcionó un ID válido.');
+      console.error('No se proporcionó un ID válido.');
     }
 
     this.cargarHemoclasificacion();
@@ -776,7 +776,7 @@ export class Ruta3Component {
 
   cargarRPR(): void {
     this.rprService.getPruebaRPR().subscribe(response => {
-      console.log('Respuesta del servicio:', response); // Verifica la respuesta
+      //console.log('Respuesta del servicio:', response); // Verifica la respuesta
       if (response.estado === 'Ok') {
         this.Rpr = response['Prueba no Treponemica RPR']; // Usa el nombre correcto
         //console.log('Datos de RPR:', this.Rpr); // Comprueba que se asigna correctamente
@@ -812,7 +812,7 @@ export class Ruta3Component {
           });
         },
         error: (error) => {
-          //console.error('Error al actualizar el Primer laboratorio trimestre:', error);
+          console.error('Error al actualizar el Primer laboratorio trimestre:', error);
           this.alertService.errorAlert('Error', error.error.message);
         }
       });
@@ -823,10 +823,10 @@ export class Ruta3Component {
       }
       this.laboratorioITrimestre.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
 
-      console.log(this.laboratorioITrimestre);
+      //console.log(this.laboratorioITrimestre);
       this.laboratorioISemestreservice.createLaboratorioPrimerSemestre(this.laboratorioITrimestre).subscribe({
         next: (response) => {
-          console.log('Laboratorio del primer semestre creado:', response);
+          //console.log('Laboratorio del primer semestre creado:', response);
           this.alertService.successAlert('Exito', response.mensaje).then(() => {
             this.id_laboratorioI = response.data.cod_laboratorio ?? null;
             this.isReadOnlyLaboratorioI = true;
@@ -855,7 +855,7 @@ export class Ruta3Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a crear un nuevo laboratorio del primer trimestre.');
+      console.error('No se proporcionó ID, se asume que se va a crear un nuevo laboratorio del primer trimestre.');
     }
   }
 
@@ -884,7 +884,7 @@ export class Ruta3Component {
       this.laboratorioIITrimestre.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
 
 
-      console.log(this.laboratorioIITrimestre);
+      //console.log(this.laboratorioIITrimestre);
       this.laboratorioIISemestreservice.createLaboratorioSegundoSemestre(this.laboratorioIITrimestre).subscribe({
         next: (response) => {
           //console.log('Laboratorio del segundo semestre creado:', response);
@@ -945,7 +945,7 @@ export class Ruta3Component {
       this.laboratorioIIITrimestre.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
 
 
-      console.log(this.laboratorioIIITrimestre);
+      //console.log(this.laboratorioIIITrimestre);
       this.laboratorioIIISemestreservice.createLaboratorioTercerSemestre(this.laboratorioIIITrimestre).subscribe({
         next: (response) => {
           //console.log('Laboratorio del tercer semestre creado:', response);
@@ -979,7 +979,7 @@ export class Ruta3Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a crear un nuevo laboratorio del tercer trimestre.');
+      console.error('No se proporcionó ID, se asume que se va a crear un nuevo laboratorio del tercer trimestre.');
     }
   }
 
@@ -1009,7 +1009,7 @@ export class Ruta3Component {
       this.its.num_proceso = this.num_proceso !== null ? this.num_proceso : 0;
 
 
-      console.log(this.its);
+      //console.log(this.its);
       this.itsService.createIts(this.its).subscribe({
         next: (response) => {
           //console.log('Its creada:', response);
@@ -1017,7 +1017,7 @@ export class Ruta3Component {
             this.id_its = response.data.cod_its ?? null;
             this.isReadOnlyIts = true;
             this.isEditing = false;
-            console.log(response);
+            //console.log(response);
           });
         },
         error: (error) => {
@@ -1043,7 +1043,7 @@ export class Ruta3Component {
         }
       );
     } else {
-      console.log('No se proporcionó ID, se asume que se va a crear un nuevo its.');
+      console.error('No se proporcionó ID, se asume que se va a crear un nuevo its.');
     }
   }
 

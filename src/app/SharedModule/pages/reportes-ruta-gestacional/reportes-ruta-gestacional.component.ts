@@ -123,10 +123,10 @@ export class ReportesRutaGestacionalComponent implements OnInit {
 
   ngOnInit(): void {
     const currentUser = this.authService.currentUserValue;
-    console.log('Current User:', currentUser); // Debug
+    //console.log('Current User:', currentUser); // Debug
 
     this.usuarioId = currentUser?.userable.id_usuario;
-    console.log('Usuario ID:', this.usuarioId); // Debug
+    //console.log('Usuario ID:', this.usuarioId); // Debug
 
     this.menuService.isExpanded$.subscribe(isExpanded => {
       this.isExpanded = isExpanded;
@@ -162,9 +162,9 @@ export class ReportesRutaGestacionalComponent implements OnInit {
     const idUsuario = this.authService.currentUserValue?.userable.id_usuario;
 
     // Logs para ver los datos enviados
-    console.log('Categoría seleccionada:', categoriaNombre);
-    console.log('Subcategoría seleccionada:', subcategoriaNombre);
-    console.log('ID del usuario:', idUsuario);
+    // console.log('Categoría seleccionada:', categoriaNombre);
+    // console.log('Subcategoría seleccionada:', subcategoriaNombre);
+    // console.log('ID del usuario:', idUsuario);
 
     if (!idUsuario) {
       this.error = 'No se pudo obtener el ID del usuario';
@@ -178,9 +178,9 @@ export class ReportesRutaGestacionalComponent implements OnInit {
       .subscribe({
         next: (response: Blob) => {
           // Log para ver la respuesta del backend
-          console.log('Respuesta del backend:', response);
-          console.log('Tipo de respuesta:', response.type);
-          console.log('Tamaño de la respuesta:', response.size);
+          // console.log('Respuesta del backend:', response);
+          // console.log('Tipo de respuesta:', response.type);
+          // console.log('Tamaño de la respuesta:', response.size);
 
           // Crear un enlace temporal para descargar el PDF
           const url = window.URL.createObjectURL(response);

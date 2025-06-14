@@ -128,7 +128,7 @@ export class ImportExcelComponent implements AfterViewInit {
         this.importExcelService.importExcel(this.selectedFile, this.idOperador).subscribe({
           // si sale bien se hara:
           next: (response) => {
-            console.log(response);
+            //console.log(response);
             this.alertService.successAlert('Exito', 'El Excel se Importo Correctamente');
             this.limpiarInput(false); // limpiamos las cajas sin mostrar alerta
             this.enviandose = false;  // reseteamos el texto del boton
