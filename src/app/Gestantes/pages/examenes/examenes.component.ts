@@ -32,18 +32,23 @@ export class ExamenesComponent {
     { nombre: 'Prueba rápida de VIH', key: 'real_prueb_rapi_vih', completado: false },
     { nombre: 'Prueba Treponémica Rápida Para Sífilis', key: 'reali_prueb_trepo_rapid_sifilis', completado: false },
     { nombre: 'Urocultivo', key: 'realizo_urocultivo', completado: false },
+    { nombre: 'Citomegalovirus IgG', key: 'real_igg_citomegalovirus', completado: false },
+    { nombre: 'Citomegalovirus IgM', key: 'real_igm_citomegalovirus', completado: false },
     { nombre: 'Antibiograma', key: 'realizo_antibiograma', completado: false },
     { nombre: 'IG-G Rubeola', key: 'real_ig_rubeola', completado: false },
     { nombre: 'IG-G Toxoplasma', key: 'real_ig_toxoplasma', completado: false },
     { nombre: 'IG-M Toxoplasma', key: 'real_igm_toxoplasma', completado: false },
+    { nombre: 'IG-M Rubéola', key: 'real_igm_rubeola', completado: false },
     { nombre: 'Hemoparasito - Gota Gruesa', key: 'real_hemoparasito', completado: false },
     { nombre: 'Prueba De Elisa Antigenos Totales/Crudo En (Zonas Endémicas Chagas)', key: 'real_prueb_eliza_anti_total', completado: false },
     { nombre: 'Elisa Antigeno Recombinante', key: 'real_prueb_eliza_anti_recomb', completado: false },
     { nombre: 'Coombs Indirecto Cuantitativo', key: 'real_prueb_coombis_indi_cuanti', completado: false },
     { nombre: 'Ecografia Obstetrica de translucencia nucal semana 11-14', key: 'real_eco_obste_tamizaje', completado: false },
+    { nombre: 'Doppler de arteria uterina < semana 15', key: 'real_doppler_art_uterina_sem_15', completado: false },
   ];
 
   examenes2 = [
+    { nombre: 'Urocultivo', key: 'real_urocultivo_2', completado: false },
     { nombre: 'Prueba rápida de VIH', key: 'reali_prueb_rapi_vih', completado: false },
     { nombre: 'Prueba Treponémica Rápida Para Sífilis', key: 'real_prueb_trep_rap_sifilis', completado: false },
     { nombre: 'Prueba De Tolerancia Oral A La Glucosa Basal', key: 'real_prueb_oral', completado: false },
@@ -59,6 +64,7 @@ export class ExamenesComponent {
   ];
 
   examenes3 = [
+    { nombre: 'Urocultivo', key: 'reali_urocultivo_3', completado: false },
     { nombre: 'Hemograma', key: 'reali_hemograma', completado: false },
     { nombre: 'VIH', key: 'reali_prueb_rapi_vih_3', completado: false },
     { nombre: 'Prueba Treponémica Rápida Para Sífilis', key: 'reali_prueb_trepo_rapi_sifilis', completado: false },
