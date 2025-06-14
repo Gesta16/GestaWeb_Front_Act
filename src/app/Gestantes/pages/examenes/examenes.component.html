@@ -102,7 +102,7 @@
                 <div class="divide-y divide-yellow-200">
                     <div *ngFor="let exam of examenesRiesgoObstetrico" class="flex justify-between items-center py-2">
                         <span class="text-sm text-gray-700">{{ exam.nombre }}</span>
-                        <ng-container *ngIf="exam.realizado; else notDone">
+                        <ng-container *ngIf="exam.completado; else notDone">
                             <span class="text-green-600 font-bold flex items-center">
                                 Realizado
                                 <svg class="h-5 w-5 ml-1" fill="none" stroke="currentColor" stroke-width="2"

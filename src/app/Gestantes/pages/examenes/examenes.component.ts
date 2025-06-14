@@ -72,32 +72,32 @@ export class ExamenesComponent {
       nombre: 'Coombs indirecto',
       // Claves posibles para Coombs en los 3 trimestres:
       keys: ['real_prueb_coombis_indi_cuanti', 'reali_prueb_coombis_indi_cuanti'],
-      realizado: false
+      completado: false
     },
     {
       nombre: 'Toxoplasma IgA',
       keys: ['reali_prueb_toxoplasmosis_ig_a'],
-      realizado: false
+      completado: false
     },
     {
       nombre: 'Prueba de Avidez IgG para toxoplasma',
       keys: ['reali_prueb_avidez_ig_g'],
-      realizado: false
+      completado: false
     },
     // {
     //   nombre: 'TSH',
     //   keys: ['tsh'], // Ajusta si tienes el nombre en tu modelo
-    //   realizado: false
+    //   completado: false
     // },
     {
       nombre: 'VDRL (prueba no treponémica para sífilis)',
       keys: ['real_prueb_trepo_rapid_sifilis', 'real_prueb_trep_rap_sifilis', 'reali_prueb_trepo_rapid_sifilis', 'reali_prueb_trepo_rapi_sifilis'],
-      realizado: false
+      completado: false
     },
     // {
     //   nombre: 'Hemoglobina Glicosilada',
     //   keys: ['hemoglobina_glicosilada'], // Ajusta si tienes el nombre en tu modelo
-    //   realizado: false
+    //   completado: false
     // },
     // {
     //   nombre: 'Creatinina',
@@ -137,7 +137,7 @@ export class ExamenesComponent {
 
   marcarExamenesRiesgoObstetrico() {
   this.examenesRiesgoObstetrico.forEach(examen => {
-    examen.realizado =
+    examen.completado =
       examen.keys.some(key => !!this.laboratorioITrimestre?.[key]) ||
       examen.keys.some(key => !!this.laboratorioIITrimestre?.[key]) ||
       examen.keys.some(key => !!this.laboratorioIIITrimestre?.[key]);
@@ -153,6 +153,7 @@ export class ExamenesComponent {
           console.log(this.laboratorioITrimestre?.[examen.key])
           examen.completado = !!this.laboratorioITrimestre?.[examen.key]; // Convierte el valor a true/false
         });
+        this.marcarExamenesRiesgoObstetrico(); // Marcar exámenes de riesgo obstétrico
       },
       err => {
         console.log(err);
@@ -169,6 +170,7 @@ export class ExamenesComponent {
           console.log(this.laboratorioIITrimestre?.[examen.key])
           examen.completado = !!this.laboratorioIITrimestre?.[examen.key]; // Convierte el valor a true/false
         });
+        this.marcarExamenesRiesgoObstetrico(); // Marcar exámenes de riesgo obstétrico
       },
       err => {
         console.log(err);
@@ -185,6 +187,7 @@ export class ExamenesComponent {
           console.log(this.laboratorioIIITrimestre?.[examen.key])
           examen.completado = !!this.laboratorioIIITrimestre?.[examen.key]; // Convierte el valor a true/false
         });
+        this.marcarExamenesRiesgoObstetrico(); // Marcar exámenes de riesgo obstétrico
       },
       err => {
         console.log(err);
