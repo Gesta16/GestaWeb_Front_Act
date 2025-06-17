@@ -64,7 +64,7 @@ export class ExamenesComponent {
   ];
 
   examenes3 = [
-    { nombre: 'Urocultivo', key: 'reali_urocultivo_3', completado: false },
+    { nombre: 'Urocultivo', key: 'real_urocultivo_3', completado: false },
     { nombre: 'Hemograma', key: 'reali_hemograma', completado: false },
     { nombre: 'VIH', key: 'reali_prueb_rapi_vih_3', completado: false },
     { nombre: 'Prueba Treponémica Rápida Para Sífilis', key: 'reali_prueb_trepo_rapi_sifilis', completado: false },
@@ -76,7 +76,6 @@ export class ExamenesComponent {
   examenesRiesgoObstetrico = [
     {
       nombre: 'Coombs indirecto',
-      // Claves posibles para Coombs en los 3 trimestres:
       keys: ['real_prueb_coombis_indi_cuanti', 'reali_prueb_coombis_indi_cuanti'],
       completado: false
     },
@@ -90,26 +89,36 @@ export class ExamenesComponent {
       keys: ['reali_prueb_avidez_ig_g'],
       completado: false
     },
-    // {
-    //   nombre: 'TSH',
-    //   keys: ['tsh'], // Ajusta si tienes el nombre en tu modelo
-    //   completado: false
-    // },
     {
       nombre: 'VDRL (prueba no treponémica para sífilis)',
       keys: ['real_prueb_trepo_rapid_sifilis', 'real_prueb_trep_rap_sifilis', 'reali_prueb_trepo_rapid_sifilis', 'reali_prueb_trepo_rapi_sifilis'],
       completado: false
     },
-    // {
-    //   nombre: 'Hemoglobina Glicosilada',
-    //   keys: ['hemoglobina_glicosilada'], // Ajusta si tienes el nombre en tu modelo
-    //   completado: false
-    // },
-    // {
-    //   nombre: 'Creatinina',
-    //   keys: ['creatinina'], // Ajusta si tienes el nombre en tu modelo
-    //   realizado: false
-    // }
+    {
+      nombre: 'Citomegalovirus IgG',
+      keys: ['real_igg_citomegalovirus'], 
+      completado: false
+    },
+    {
+      nombre: 'Citomegalovirus IgM',
+      keys: ['real_igm_citomegalovirus'], 
+      completado: false
+    },
+    {
+      nombre: 'Doppler de arteria uterina < semana 15',
+      keys: ['real_doppler_art_uterina_sem_15'], 
+      realizado: false
+    },
+    {
+      nombre: 'Urocultivo (Segundo Trimestre)',
+      keys: ['real_urocultivo_2'], 
+      realizado: false
+    },
+    {
+      nombre: 'Urocultivo (Tercer Trimestre)',
+      keys: ['real_urocultivo_3'], 
+      realizado: false
+    }
   ];
 
 
