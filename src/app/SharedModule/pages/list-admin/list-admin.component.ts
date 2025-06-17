@@ -31,8 +31,8 @@ export class ListAdminComponent implements OnInit {
     private tipoDocumentoService: TipoDocumentoService,
     private _matDialog: MatDialog,
     private menuService: MenuService
-    
-  ) {}
+
+  ) { }
 
   ngOnInit() {
     this.checkScreenSize();
@@ -96,10 +96,11 @@ export class ListAdminComponent implements OnInit {
     );
   }
 
-  getTipoDocumentoNombre(cod_documento: number): string {
-    const tipo = this.tiposDocumento.find(td => td.cod_documento === cod_documento);
+  getTipoDocumentoNombre(cod_documento: any): string {
+    const tipo = this.tiposDocumento.find(td => td.cod_documento === Number(cod_documento));
     return tipo ? tipo.nom_documento : 'Desconocido';
   }
+
 
   private updatePagination(): void {
     this.totalPages = Math.ceil(this.admins.length / this.itemsPerPage);
@@ -115,6 +116,6 @@ export class ListAdminComponent implements OnInit {
   get totalPagesArray(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
-  
+
 
 }
