@@ -93,8 +93,8 @@ export class ListOperadoresComponent {
     );
   }
 
-  getTipoDocumentoNombre(cod_documento: number): string {
-    const tipo = this.tiposDocumento.find(td => td.cod_documento === cod_documento);
+  getTipoDocumentoNombre(cod_documento: any): string {
+    const tipo = this.tiposDocumento.find(td => td.cod_documento === Number(cod_documento));
     return tipo ? tipo.nom_documento : 'Desconocido';
   }
 

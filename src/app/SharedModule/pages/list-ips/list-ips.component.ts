@@ -108,8 +108,8 @@ export class ListIpsComponent {
     );
   }
 
-  getDepartamentoNombre(cod_departamento: number): string {
-    const departamento = this.departamentos.find(dep => dep.cod_departamento === cod_departamento);
+  getDepartamentoNombre(cod_departamento: any): string {
+    const departamento = this.departamentos.find(dep => dep.cod_departamento === Number(cod_departamento));
     return departamento ? departamento.nom_departamento : 'Desconocido';
   }
 
